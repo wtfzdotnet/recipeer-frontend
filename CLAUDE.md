@@ -66,3 +66,43 @@ Your final output should be structured as follows:
 </next_steps>
 
 Remember to focus on providing a clear, concise summary of your work and recommendations in your final output. Do not include your thought process or intermediate steps in the final response.
+
+## Project Context - Frontend Recipeer
+
+### Current Tech Stack
+- **Framework**: React 19.1.0 with Vite 6.3.5
+- **Styling**: Tailwind CSS 4.1.10 + shadcn/ui 0.0.4
+- **Testing**: Vitest 3.2.3 + Playwright 1.53.0
+- **Documentation**: Storybook 9.0.8
+- **Linting**: ESLint 9.25.0 with React hooks + Storybook plugins
+
+### Key Commands
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint (ALWAYS run after code changes)
+- `npm run storybook` - Start Storybook development server
+- `npm run build-storybook` - Build Storybook for production
+
+### Project Structure
+```
+src/
+├── components/         # Reusable UI components
+│   └── ui/            # shadcn/ui components
+├── lib/
+│   └── utils.js       # Utility functions (cn() for className merging)
+├── stories/           # Storybook stories
+└── App.jsx           # Main application component
+```
+
+### Development Guidelines
+- Use `cn()` utility from `src/lib/utils.js` for conditional className merging
+- Follow Component-Driven Development principles
+- Create Storybook stories for all new components
+- Write tests using Vitest + Playwright for browser testing
+- ALWAYS run `npm run lint` before committing changes
+- Use shadcn/ui components when possible, extend with custom styling as needed
+
+### shadcn/ui Setup
+- Utility function `cn()` is configured in `src/lib/utils.js`
+- Components directory structure ready at `src/components/ui/`
+- Install new shadcn/ui components with: `npx shadcn@latest add [component-name]`
