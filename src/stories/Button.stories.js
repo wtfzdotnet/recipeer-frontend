@@ -1,49 +1,169 @@
 import { fn } from 'storybook/test';
+import { ChevronRight, Download, Heart } from 'lucide-react';
 
-import { Button } from './Button';
+import { Button } from '../components/Button.jsx';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Example/Button',
+  title: 'Components/Button',
   component: Button,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    variant: {
+      control: 'select',
+      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
+      description: 'The visual style variant of the button',
+    },
+    size: {
+      control: 'select',
+      options: ['default', 'sm', 'lg', 'icon'],
+      description: 'The size of the button',
+    },
+    loading: { 
+      control: 'boolean',
+      description: 'Shows loading spinner and disables the button',
+    },
+    disabled: { 
+      control: 'boolean',
+      description: 'Disables the button',
+    },
+    children: {
+      control: 'text',
+      description: 'The content of the button',
+    },
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: { onClick: fn() },
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary = {
+// Default variants
+export const Default = {
   args: {
-    primary: true,
-    label: 'Button',
+    children: 'Button',
+    variant: 'default',
+  },
+};
+
+export const Destructive = {
+  args: {
+    children: 'Delete',
+    variant: 'destructive',
+  },
+};
+
+export const Outline = {
+  args: {
+    children: 'Button',
+    variant: 'outline',
   },
 };
 
 export const Secondary = {
   args: {
-    label: 'Button',
+    children: 'Button',
+    variant: 'secondary',
   },
 };
 
+export const Ghost = {
+  args: {
+    children: 'Button',
+    variant: 'ghost',
+  },
+};
+
+export const Link = {
+  args: {
+    children: 'Link Button',
+    variant: 'link',
+  },
+};
+
+// Sizes
 export const Large = {
   args: {
-    size: 'large',
-    label: 'Button',
+    children: 'Large Button',
+    size: 'lg',
   },
 };
 
 export const Small = {
   args: {
-    size: 'small',
-    label: 'Button',
+    children: 'Small Button',
+    size: 'sm',
   },
+};
+
+// States
+export const Loading = {
+  args: {
+    children: 'Loading...',
+    loading: true,
+  },
+};
+
+export const Disabled = {
+  args: {
+    children: 'Disabled',
+    disabled: true,
+  },
+};
+
+// With Icons
+export const WithLeftIcon = {
+  args: {
+    children: 'Download',
+    leftIcon: <Download />,
+    variant: 'outline',
+  },
+};
+
+export const WithRightIcon = {
+  args: {
+    children: 'Continue',
+    rightIcon: <ChevronRight />,
+  },
+};
+
+export const IconOnly = {
+  args: {
+    children: <Heart />,
+    size: 'icon',
+    variant: 'ghost',
+  },
+};
+
+// Combinations
+export const LoadingWithIcon = {
+  args: {
+    children: 'Processing...',
+    loading: true,
+    leftIcon: <Download />,
+  },
+};
+
+// All variants showcase
+export const AllVariants = {
+  render: () => (
+    <div className="flex flex-wrap gap-4 items-center">
+      <Button variant="default">Default</Button>
+      <Button variant="destructive">Destructive</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
+    </div>
+  ),
+};
+
+export const AllSizes = {
+  render: () => (
+    <div className="flex flex-wrap gap-4 items-center">
+      <Button size="sm">Small</Button>
+      <Button size="default">Default</Button>
+      <Button size="lg">Large</Button>
+      <Button size="icon"><Heart /></Button>
+    </div>
+  ),
 };

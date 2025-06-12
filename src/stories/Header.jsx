@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import { Button } from './Button';
+import { Button } from '../components/Button';
 import './header.css';
 
 export const Header = ({ user = null, onLogin, onLogout, onCreateAccount }) => (
@@ -33,12 +33,12 @@ export const Header = ({ user = null, onLogin, onLogout, onCreateAccount }) => (
             <span className="welcome">
               Welcome, <b>{user.name}</b>!
             </span>
-            <Button size="small" onClick={onLogout} label="Log out" />
+            <Button size="sm" onClick={onLogout} variant="outline">Log out</Button>
           </>
         ) : (
           <>
-            <Button size="small" onClick={onLogin} label="Log in" />
-            <Button primary size="small" onClick={onCreateAccount} label="Sign up" />
+            <Button size="sm" onClick={onLogin} variant="ghost">Log in</Button>
+            <Button size="sm" onClick={onCreateAccount}>Sign up</Button>
           </>
         )}
       </div>
