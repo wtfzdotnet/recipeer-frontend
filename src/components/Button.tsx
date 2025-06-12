@@ -1,13 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Button as ShadcnButton } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { VariantProps } from 'class-variance-authority';
+import { buttonVariants } from '@/components/ui/button';
+
+interface ButtonProps 
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  /** Button contents */
+  children: React.ReactNode;
+  /** Loading state - shows spinner and disables button */
+  loading?: boolean;
+  /** Icon to display on the left */
+  leftIcon?: React.ReactNode;
+  /** Icon to display on the right */
+  rightIcon?: React.ReactNode;
+  /** Render as child component */
+  asChild?: boolean;
+}
 
 /**
  * Custom Button component wrapping shadcn/ui Button with extended functionality
  * Built for the Frontend Recipeer design system
  */
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'default',
   size = 'default',
@@ -43,34 +59,6 @@ export const Button = ({
       {rightIcon && !loading && rightIcon}
     </ShadcnButton>
   );
-};
-
-Button.propTypes = {
-  /** Button contents */
-  children: PropTypes.node.isRequired,
-  /** Button variant style */
-  variant: PropTypes.oneOf([
-    'default',
-    'destructive', 
-    'outline',
-    'secondary',
-    'ghost',
-    'link'
-  ]),
-  /** Button size */
-  size: PropTypes.oneOf(['default', 'sm', 'lg', 'icon']),
-  /** Loading state - shows spinner and disables button */
-  loading: PropTypes.bool,
-  /** Icon to display on the left */
-  leftIcon: PropTypes.node,
-  /** Icon to display on the right */
-  rightIcon: PropTypes.node,
-  /** Additional CSS classes */
-  className: PropTypes.string,
-  /** Disabled state */
-  disabled: PropTypes.bool,
-  /** Click handler */
-  onClick: PropTypes.func,
 };
 
 export default Button;

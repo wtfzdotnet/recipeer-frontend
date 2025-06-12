@@ -1,9 +1,11 @@
-import { fn } from 'storybook/test';
+import type { Meta, StoryObj } from '@storybook/react';
+// Simple mock function for stories
+const fn = () => () => {};
 import { ChevronRight, Download, Heart } from 'lucide-react';
 
-import { Button } from '../components/Button.jsx';
+import { Button } from '../components/Button';
 
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   parameters: {
@@ -36,6 +38,9 @@ export default {
   },
   args: { onClick: fn() },
 };
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 // Default variants
 export const Default = {
