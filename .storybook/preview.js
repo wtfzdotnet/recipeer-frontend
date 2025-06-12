@@ -1,3 +1,5 @@
+import '../src/index.css'; // Add this line to import Tailwind CSS
+
 /** @type { import('@storybook/react-vite').Preview } */
 const preview = {
   parameters: {
