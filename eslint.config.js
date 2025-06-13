@@ -9,7 +9,7 @@ import tsParser from '@typescript-eslint/parser'
 import tsPlugin from '@typescript-eslint/eslint-plugin'
 
 export default [
-  { ignores: ['dist'] }, 
+  { ignores: ['dist', 'storybook-static'] }, 
   // JavaScript files
   {
     files: ['**/*.{js,jsx}'],
