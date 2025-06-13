@@ -1,9 +1,10 @@
 import React from 'react';
-import { Clock, Users, ChefHat, Star, Heart, Share2, Bookmark, User } from 'lucide-react';
+import { Clock, Users, ChefHat, Heart, Share2, Bookmark, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/Button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Rating } from '@/components/ui/rating';
 
 // Core interface as specified in the requirements
 export interface RecipeCardProps {
@@ -105,33 +106,7 @@ const RecipeMetadata: React.FC<{
   );
 };
 
-// Star rating component
-const StarRating: React.FC<{
-  rating?: number;
-  reviewCount?: number;
-  compact?: boolean;
-}> = ({ rating, reviewCount, compact = false }) => {
-  if (!rating) return null;
-  
-  return (
-    <div className="flex items-center space-x-1">
-      <div className="flex">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Star 
-            key={star} 
-            className={cn(
-              "h-4 w-4",
-              star <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
-            )} 
-          />
-        ))}
-      </div>
-      {reviewCount && !compact && (
-        <span className="text-sm text-muted-foreground">({reviewCount})</span>
-      )}
-    </div>
-  );
-};
+// Star rating component is now replaced by the reusable Rating component
 
 // Loading skeleton component
 const LoadingSkeleton: React.FC<{ variant: string }> = ({ variant }) => (
@@ -329,18 +304,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               </div>
               {rating && (
                 <div className="flex items-center space-x-1">
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star 
-                        key={star} 
-                        className={cn(
-                          "h-3 w-3",
-                          star <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
-                        )} 
-                      />
-                    ))}
-                  </div>
-                  <span className="text-xs text-muted-foreground">({reviewCount})</span>
+                  <Rating 
+                    value={rating} 
+                    readonly 
+                    size="sm" 
+                    reviewCount={reviewCount}
+                    showReviewCount={reviewCount !== undefined}
+                  />
                 </div>
               )}
             </div>
@@ -396,7 +366,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
                 </div>
                 {rating && (
                   <div className="mt-2">
-                    <StarRating rating={rating} reviewCount={reviewCount} />
+                    <Rating 
+                      value={rating} 
+                      readonly 
+                      size="md" 
+                      reviewCount={reviewCount}
+                      showReviewCount={reviewCount !== undefined}
+                    />
                   </div>
                 )}
               </div>
@@ -490,7 +466,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             difficulty={difficulty}
           />
           {rating && (
-            <StarRating rating={rating} reviewCount={reviewCount} />
+            <Rating 
+              value={rating} 
+              readonly 
+              size="md" 
+              reviewCount={reviewCount}
+              showReviewCount={reviewCount !== undefined}
+            />
           )}
           {tags && tags.length > 0 && (
             <div className="flex flex-wrap gap-1">
@@ -569,7 +551,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             difficulty={difficulty}
           />
           {rating && (
-            <StarRating rating={rating} reviewCount={reviewCount} />
+            <Rating 
+              value={rating} 
+              readonly 
+              size="md" 
+              reviewCount={reviewCount}
+              showReviewCount={reviewCount !== undefined}
+            />
           )}
         </div>
       </div>
@@ -620,7 +608,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           />
           
           {rating && (
-            <StarRating rating={rating} reviewCount={reviewCount} />
+            <Rating 
+              value={rating} 
+              readonly 
+              size="md" 
+              reviewCount={reviewCount}
+              showReviewCount={reviewCount !== undefined}
+            />
           )}
           
           {author && (
@@ -730,7 +724,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           difficulty={difficulty}
         />
         {rating && (
-          <StarRating rating={rating} reviewCount={reviewCount} />
+          <Rating 
+            value={rating} 
+            readonly 
+            size="md" 
+            reviewCount={reviewCount}
+            showReviewCount={reviewCount !== undefined}
+          />
         )}
       </CardContent>
       <CardFooter className="flex gap-2">
