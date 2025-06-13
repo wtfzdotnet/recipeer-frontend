@@ -1,3 +1,4 @@
+import React from 'react';
 import '../src/index.css'; // Add this line to import Tailwind CSS
 
 // Import Google Fonts for Typography stories
@@ -68,7 +69,6 @@ const preview = {
 
   // Global decorators
   decorators: [
-    // eslint-disable-next-line no-unused-vars
     (Story) => (
       <div style={{ padding: '1rem' }}>
         <Story />

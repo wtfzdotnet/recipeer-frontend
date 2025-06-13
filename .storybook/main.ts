@@ -1,5 +1,10 @@
 
 
+import path from 'path';
+import { fileURLToPath } from 'node:url';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
   "stories": [
@@ -15,6 +20,15 @@ const config = {
   "framework": {
     "name": "@storybook/react-vite",
     "options": {}
+  },
+  async viteFinal(config) {
+    // Merge Vite config with Storybook's
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.resolve(dirname, "../src"),
+    };
+    return config;
   }
 };
 export default config;
