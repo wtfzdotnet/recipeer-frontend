@@ -59,6 +59,12 @@ This project uses automated CI/CD with semantic versioning:
   - GitHub releases with tagged versions
   - Version bumping in `package.json`
 
+### Storybook Deployment
+- **Trigger**: Push to `main` branch
+- **Target**: GitHub Pages
+- **URL**: Available at `https://<username>.github.io/<repository>/` once deployed
+- **Content**: Built Storybook documentation and component library
+
 ### Commit Message Format
 
 This project follows [Conventional Commits](https://www.conventionalcommits.org/):
