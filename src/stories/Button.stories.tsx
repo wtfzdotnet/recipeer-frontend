@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 // Simple mock function for stories
 const fn = () => () => {};
 import { ChevronRight, Download, Heart } from 'lucide-react';
