@@ -8,6 +8,7 @@ export { RadioGroup } from './radio-group';
 export { Select } from './select';
 export { Slider } from './slider';
 export { Card } from './card';
+export { Alert } from './alert';
 
 // Re-export types
 export type { QuantityAdjusterProps } from './quantity-adjuster';
@@ -17,3 +18,4 @@ export type { RadioGroupProps } from './radio-group';
 export type { SelectProps } from './select';
 export type { SliderProps } from './slider';
 export type { CardProps } from './card';
+export type { AlertProps } from './alert';

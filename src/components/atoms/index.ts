@@ -12,6 +12,7 @@ export { Badge } from './badge';
 export { Avatar } from './avatar';
 export { Separator } from './separator';
 export { Skeleton } from './skeleton';
+export { Progress } from './progress';
 
 // Re-export types
 export type { ButtonProps } from './button';
@@ -25,3 +26,4 @@ export type { BadgeProps } from './badge';
 export type { AvatarProps } from './avatar';
 export type { SeparatorProps } from './separator';
 export type { SkeletonProps } from './skeleton';
+export type { ProgressProps } from './progress';
