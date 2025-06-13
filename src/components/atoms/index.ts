@@ -1,18 +1,18 @@
-// Atomic Design - Atoms Barrel Export
-// Basic building blocks that cannot be broken down further
+// Barrel export for atoms
+export * from './button';
+export * from './input';
+export * from './label';
+export * from './checkbox';
+export * from './switch';
+export * from './textarea';
+export * from './typography';
+export * from './badge';
+export * from './avatar';
+export * from './separator';
+export * from './skeleton';
+export * from './progress';
 
-export { Button } from './button';
-export { Input } from './input';
-export { Label } from './label';
-export { Checkbox } from './checkbox';
-export { Switch } from './switch';
-export { Textarea } from './textarea';
-export { Typography } from './typography';
-export { Badge } from './badge';
-export { Avatar } from './avatar';
-export { Separator } from './separator';
-export { Skeleton } from './skeleton';
-export { Progress } from './progress';
+// Add new atom exports below
 
 // Re-export types
 export type { ButtonProps } from './button';

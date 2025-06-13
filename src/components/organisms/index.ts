@@ -13,3 +13,8 @@ export type { IngredientChecklistProps } from './ingredient-checklist';
 export type { NutritionFactsProps } from './nutrition-facts';
 export type { RecipeCollectionSaverProps } from './recipe-collection-saver';
 export type { DialogProps } from './dialog';
+
+// Barrel export for organisms
+// export * from './recipe-card';
+// export * from './navigation-header';
+// Add new organism exports below

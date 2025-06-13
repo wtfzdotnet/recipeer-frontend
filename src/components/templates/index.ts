@@ -1,6 +1,9 @@
 // Atomic Design - Templates Barrel Export
 // Page-level layouts that define content structure
-// Currently empty - templates will be added as needed
 
-// export { RecipeLayout } from './recipe-layout';
-// export type { RecipeLayoutProps } from './recipe-layout';
+export { RecipePageLayout } from './recipe-page-layout';
+export type { RecipePageLayoutProps } from './recipe-page-layout';
+
+// Barrel export for templates
+// export * from './dashboard-layout';
+// Add new template exports below

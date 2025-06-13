@@ -19,3 +19,8 @@ export type { SelectProps } from './select';
 export type { SliderProps } from './slider';
 export type { CardProps } from './card';
 export type { AlertProps } from './alert';
+
+// Barrel export for molecules
+// export * from './quantity-adjuster';
+// export * from './form-field';
+// Add new molecule exports below
