@@ -28,7 +28,7 @@ const meta: Meta<typeof Timer> = {
     },
     variant: {
       control: { type: 'select' },
-      options: ['compact', 'full', 'floating'],
+      options: ['compact', 'full', 'floating', 'pasta', 'steak', 'bread'],
       description: 'Timer variant for different use cases'
     },
     onComplete: { action: 'timer completed' },
@@ -63,12 +63,22 @@ export const Floating: Story = {
     variant: 'floating'
   },
   parameters: {
+    layout: 'fullscreen',
     docs: {
       description: {
-        story: 'Floating timer that appears in the bottom right corner for background operation.'
+        story: 'Floating timer that appears in the bottom right corner for background operation. Note: In Storybook, this appears in the iframe context - in a real app it would be fixed to the viewport.'
       }
     }
-  }
+  },
+  render: (args) => (
+    <div style={{ height: '100vh', position: 'relative', background: '#f8f9fa', padding: '20px' }}>
+      <div style={{ marginBottom: '20px', fontSize: '14px', color: '#666' }}>
+        This demonstrates the floating timer positioned in the bottom-right corner.
+        In a real application, it would be fixed relative to the viewport.
+      </div>
+      <Timer {...args} />
+    </div>
+  )
 }
 
 export const AutoStart: Story = {
@@ -124,16 +134,23 @@ export const SteakRest: Story = {
 
 export const BreadRise: Story = {
   render: () => (
-    <Timer
-      duration={3600} // 1 hour
-      label="Bread Dough Rising"
-      variant="floating"
-    />
+    <div style={{ height: '100vh', position: 'relative', background: '#f8f9fa', padding: '20px' }}>
+      <div style={{ marginBottom: '20px', fontSize: '14px', color: '#666' }}>
+        Long timer for bread rising using floating variant for background operation.
+        In a real application, this would be fixed to the viewport corner.
+      </div>
+      <Timer
+        duration={3600} // 1 hour
+        label="Bread Dough Rising"
+        variant="floating"
+      />
+    </div>
   ),
   parameters: {
+    layout: 'fullscreen',
     docs: {
       description: {
-        story: 'Long timer for bread rising - uses floating variant for background operation.'
+        story: 'Long timer for bread rising - uses floating variant for background operation. Note: In Storybook, this appears in the iframe context - in a real app it would be fixed to the viewport.'
       }
     }
   }
@@ -237,12 +254,22 @@ export const LongTimer: Story = {
     variant: 'floating'
   },
   parameters: {
+    layout: 'fullscreen',
     docs: {
       description: {
-        story: 'Long timer for slow cooking processes.'
+        story: 'Long timer for slow cooking processes. Note: In Storybook, this appears in the iframe context - in a real app it would be fixed to the viewport.'
       }
     }
-  }
+  },
+  render: (args) => (
+    <div style={{ height: '100vh', position: 'relative', background: '#f8f9fa', padding: '20px' }}>
+      <div style={{ marginBottom: '20px', fontSize: '14px', color: '#666' }}>
+        Long timer for slow cooking processes using floating variant.
+        In a real application, this would be fixed to the viewport corner.
+      </div>
+      <Timer {...args} />
+    </div>
+  )
 }
 
 export const WithoutLabel: Story = {
@@ -254,6 +281,88 @@ export const WithoutLabel: Story = {
     docs: {
       description: {
         story: 'Timer without a label for simple countdown needs.'
+      }
+    }
+  }
+}
+
+// Background themed variants
+export const PastaTimer: Story = {
+  args: {
+    duration: 480, // 8 minutes
+    label: 'Al Dente Pasta',
+    variant: 'pasta',
+    autoStart: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Pasta-themed timer with subtle background pattern and warm colors.'
+      }
+    }
+  }
+}
+
+export const SteakTimer: Story = {
+  args: {
+    duration: 300, // 5 minutes
+    label: 'Medium-Rare Steak',
+    variant: 'steak'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Steak-themed timer with rich red tones and subtle meat pattern.'
+      }
+    }
+  }
+}
+
+export const BreadTimer: Story = {
+  args: {
+    duration: 1800, // 30 minutes
+    label: 'Artisan Bread Baking',
+    variant: 'bread'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Bread-themed timer with warm golden colors and subtle texture pattern.'
+      }
+    }
+  }
+}
+
+// Themed timers in action
+export const ThemedCookingSession: Story = {
+  render: () => (
+    <div className="space-y-6 p-6 bg-gray-50 rounded-lg">
+      <h3 className="text-xl font-semibold mb-4">Themed Cooking Timers</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <Timer
+          duration={480} // 8 minutes
+          label="Fresh Linguine"
+          variant="pasta"
+          autoStart={true}
+        />
+        <Timer
+          duration={420} // 7 minutes
+          label="Ribeye Steak"
+          variant="steak"
+        />
+        <Timer
+          duration={2700} // 45 minutes
+          label="Sourdough Loaf"
+          variant="bread"
+        />
+      </div>
+    </div>
+  ),
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story: 'Multiple themed timers showing the different background variants in a cooking session.'
       }
     }
   }
