@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Clock, Users, ChefHat, Star, Heart, Share2, Bookmark, Tag } from 'lucide-react';
-import { RecipeCard } from '@/components/RecipeCard';
-import type { RecipeCardProps } from '@/components/RecipeCard';
+import { RecipeCard } from './RecipeCard';
+import type { RecipeCardProps } from './RecipeCard';
 
 // Sample recipe data
 const sampleRecipeData: Omit<RecipeCardProps, 'variant'> = {

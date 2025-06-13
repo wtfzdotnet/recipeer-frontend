@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Mail, Search, Eye, EyeOff } from 'lucide-react';
-import { Input } from '@/components/Input';
+import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {
   title: 'Design System/Components/Form/Input',
