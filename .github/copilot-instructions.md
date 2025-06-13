@@ -47,6 +47,10 @@ src/
 └── App.tsx                       # Main application component
 ```
 
+## Storybook guidelines 
+- Try to mimic real world usage of components in stories, so derive examples that 
+  demonstrate how components will be used in the application. That also includes images, icons, and other assets.
+
 ## Key Commands
 
 - `npm run dev` - Start development server
