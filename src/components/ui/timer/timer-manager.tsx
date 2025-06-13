@@ -85,7 +85,7 @@ const TimerManager = React.forwardRef<HTMLDivElement, TimerManagerProps>(
       setTimers(prev => prev.filter(timer => timer.id !== timerId))
     }
 
-    const updateTimer = (timerId: string, updates: Partial<TimerConfig>) => {
+    const _updateTimer = (timerId: string, updates: Partial<TimerConfig>) => {
       setTimers(prev => prev.map(timer => 
         timer.id === timerId ? { ...timer, ...updates } : timer
       ))

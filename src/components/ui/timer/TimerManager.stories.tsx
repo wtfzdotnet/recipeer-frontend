@@ -208,7 +208,7 @@ export const BreadBaking: Story = {
 export const PizzaNight: Story = {
   render: () => (
     <TimerManager
-      layout: "grid"
+      layout="grid"
       maxTimers={6}
       initialTimers={[
         {
