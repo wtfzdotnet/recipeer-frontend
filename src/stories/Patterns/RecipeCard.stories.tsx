@@ -7,7 +7,7 @@ import type { RecipeCardProps } from '@/components/RecipeCard';
 const sampleRecipeData: Omit<RecipeCardProps, 'variant'> = {
   title: "Grandma's Apple Pie",
   description: "A classic homemade apple pie with flaky crust and perfectly spiced apple filling",
-  image: "https://images.unsplash.com/photo-1568471173648-b8fffe7fb8d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  image: "https://picsum.photos/seed/apple-pie/800/600",
   imageAlt: "Golden brown apple pie with lattice crust",
   cookTime: 45,
   prepTime: 30,
@@ -17,7 +17,7 @@ const sampleRecipeData: Omit<RecipeCardProps, 'variant'> = {
   reviewCount: 124,
   author: {
     name: "Chef Maria",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b1c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+    avatar: "https://picsum.photos/seed/chef-maria/150/150"
   },
   tags: ["Dessert", "Traditional", "Holiday"],
   cuisine: "American",
@@ -147,7 +147,7 @@ export const Hero: Story = {
     variant: 'hero',
     title: "Authentic Spaghetti Carbonara",
     description: "Traditional Roman pasta dish with eggs, cheese, and pancetta. Learn the authentic technique for silky, creamy results.",
-    image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://picsum.photos/seed/carbonara/800/600",
     tags: ["Italian", "Pasta", "Traditional", "Quick"]
   },
   parameters: {
@@ -181,7 +181,7 @@ export const Detailed: Story = {
     variant: 'detailed',
     title: "Chocolate Chip Cookies",
     description: "Classic homemade chocolate chip cookies with the perfect chewy texture and crispy edges.",
-    image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://picsum.photos/seed/cookies/800/600",
     tags: ["Dessert", "Baking", "Classic", "Easy", "Kid-Friendly"],
     cuisine: "American"
   },

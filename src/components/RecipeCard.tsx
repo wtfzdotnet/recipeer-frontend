@@ -187,19 +187,23 @@ const RecipeImage: React.FC<{
     'auto': 'h-auto'
   };
 
+  // Create a themed placeholder image
+  const placeholderImage = `data:image/svg+xml;charset=UTF-8,%3Csvg width="400" height="300" xmlns="http://www.w3.org/2000/svg"%3E%3Crect width="100%25" height="100%25" fill="%23f9fafb"/%3E%3Crect x="20" y="20" width="360" height="260" fill="none" stroke="%23d1d5db" stroke-width="2" stroke-dasharray="8,4"/%3E%3Ctext x="50%25" y="45%25" font-family="Arial, sans-serif" font-size="16" fill="%236b7280" text-anchor="middle"%3E📖%3C/text%3E%3Ctext x="50%25" y="60%25" font-family="Arial, sans-serif" font-size="12" fill="%239ca3af" text-anchor="middle"%3ERecipe Image%3C/text%3E%3C/svg%3E`;
+
   return (
     <div className={cn(
-      'relative overflow-hidden bg-gray-200',
+      'relative overflow-hidden bg-gray-100',
       aspectRatioClasses[aspectRatio],
       className
     )}>
       <img
         src={src}
         alt={alt}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover transition-opacity duration-200"
         onError={(e) => {
-          e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk3OTc5NyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBhdmFpbGFibGU8L3RleHQ+PC9zdmc+';
+          e.currentTarget.src = placeholderImage;
         }}
+        loading="lazy"
       />
     </div>
   );
