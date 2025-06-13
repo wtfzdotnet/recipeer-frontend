@@ -50,6 +50,8 @@ src/
 ## Storybook guidelines 
 - Try to mimic real world usage of components in stories, so derive examples that 
   demonstrate how components will be used in the application. That also includes images, icons, and other assets.
+- When adding icons or images, try to be consistent with the design system. Use SVGs for icons and ensure they match the design tokens. The exception to this rule is 
+    when the design system does not provide an icon for a specific use case, in which case you can use any icon that fits the use case. Also think about something like lettuce icons to display a category of recipes, we don't want these colorized.
 
 ## Key Commands
 
