@@ -182,13 +182,13 @@ export const VideoContent: Story = {
             <div className="absolute bottom-4 left-4 right-4">
               <div className="bg-black/50 rounded-lg p-3">
                 <div className="flex items-center gap-3">
-                  <Play className="h-4 w-4 text-white" />
+                  <Play className="h-5 w-5 text-white" />
                   <div className="flex-1 h-1 bg-white/20 rounded-full">
                     <div className="h-full w-1/3 bg-red-500 rounded-full"></div>
                   </div>
                   <span className="text-white text-xs">5:12 / 15:32</span>
-                  <Volume2 className="h-4 w-4 text-white" />
-                  <Maximize className="h-4 w-4 text-white" />
+                  <Volume2 className="h-5 w-5 text-white" />
+                  <Maximize className="h-5 w-5 text-white" />
                 </div>
               </div>
             </div>
