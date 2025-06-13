@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from './badge';
 import { Star, Utensils, Clock, Users, AlertTriangle, CheckCircle, Leaf, Flame } from 'lucide-react';
 
