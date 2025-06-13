@@ -136,21 +136,41 @@ const StarRating: React.FC<{
 // Loading skeleton component
 const LoadingSkeleton: React.FC<{ variant: string }> = ({ variant }) => (
   <Card className="animate-pulse">
-    {variant === 'hero' && (
+    {(variant === 'hero' || variant === 'default' || variant === 'detailed' || variant === 'minimal') && (
       <div className="h-48 bg-gray-200 rounded-t-lg" />
     )}
     <CardHeader>
-      <div className="h-6 bg-gray-200 rounded w-3/4" />
+      <div className="h-6 bg-gray-200 rounded w-3/4 mb-2" />
       <div className="h-4 bg-gray-200 rounded w-full" />
+      <div className="h-4 bg-gray-200 rounded w-2/3" />
     </CardHeader>
     <CardContent>
-      <div className="space-y-2">
-        <div className="h-4 bg-gray-200 rounded w-full" />
-        <div className="h-4 bg-gray-200 rounded w-2/3" />
+      <div className="space-y-3">
+        <div className="flex space-x-4">
+          <div className="h-4 bg-gray-200 rounded w-16" />
+          <div className="h-4 bg-gray-200 rounded w-20" />
+          <div className="h-4 bg-gray-200 rounded w-16" />
+        </div>
+        <div className="flex space-x-1">
+          {[1,2,3,4,5].map(i => (
+            <div key={i} className="h-4 w-4 bg-gray-200 rounded" />
+          ))}
+        </div>
+        {variant === 'detailed' && (
+          <>
+            <div className="h-4 bg-gray-200 rounded w-1/2" />
+            <div className="flex flex-wrap gap-1">
+              <div className="h-6 bg-gray-200 rounded-full w-16" />
+              <div className="h-6 bg-gray-200 rounded-full w-20" />
+              <div className="h-6 bg-gray-200 rounded-full w-14" />
+            </div>
+          </>
+        )}
       </div>
     </CardContent>
-    <CardFooter>
-      <div className="h-8 bg-gray-200 rounded w-full" />
+    <CardFooter className="gap-2">
+      <div className="h-9 bg-gray-200 rounded flex-1" />
+      <div className="h-9 bg-gray-200 rounded flex-1" />
     </CardFooter>
   </Card>
 );
@@ -179,7 +199,8 @@ const RecipeImage: React.FC<{
   alt: string;
   aspectRatio?: '4:3' | '16:9' | '1:1' | 'auto';
   className?: string;
-}> = ({ src, alt, aspectRatio = '4:3', className }) => {
+  rounded?: boolean;
+}> = ({ src, alt, aspectRatio = '4:3', className, rounded = false }) => {
   const aspectRatioClasses = {
     '4:3': 'aspect-[4/3]',
     '16:9': 'aspect-video',
@@ -194,6 +215,7 @@ const RecipeImage: React.FC<{
     <div className={cn(
       'relative overflow-hidden bg-gray-100',
       aspectRatioClasses[aspectRatio],
+      rounded && 'rounded-lg',
       className
     )}>
       <img
@@ -269,40 +291,59 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   if (variant === 'compact') {
     return (
       <Card 
-        className={cn(cardClasses, 'w-64')} 
+        className={cn(cardClasses, 'w-72 min-w-72')} 
         onClick={onClick}
         role="article"
         aria-labelledby={`recipe-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
         {...props}
       >
-        <div className="flex items-start space-x-3 p-4">
+        <div className="flex items-start space-x-4 p-4">
           <RecipeImage
             src={image}
             alt={imageAlt}
             aspectRatio="1:1"
-            className="w-16 h-16 rounded-md flex-shrink-0"
+            className="w-20 h-20 flex-shrink-0"
+            rounded={true}
           />
           <div className="flex-1 min-w-0">
             <h3 
               id={`recipe-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
-              className="font-semibold text-sm overflow-hidden text-ellipsis whitespace-nowrap"
+              className="font-semibold text-sm leading-tight line-clamp-2 mb-2"
             >
               {title}
             </h3>
-            <div className="mt-1">
-              <RecipeMetadata
-                cookTime={cookTime}
-                prepTime={prepTime}
-                servings={servings}
-                difficulty={difficulty}
-                compact
-              />
-            </div>
-            {rating && (
-              <div className="mt-1">
-                <StarRating rating={rating} reviewCount={reviewCount} compact />
+            <div className="space-y-1">
+              <div className="flex items-center text-xs text-muted-foreground flex-wrap gap-2">
+                <div className="flex items-center space-x-1">
+                  <Clock className="h-3 w-3" />
+                  <span>{formatTime(cookTime + prepTime)}</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Users className="h-3 w-3" />
+                  <span>{servings}</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <ChefHat className="h-3 w-3" />
+                  <span className={getDifficultyColor(difficulty)}>{difficulty}</span>
+                </div>
               </div>
-            )}
+              {rating && (
+                <div className="flex items-center space-x-1">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star 
+                        key={star} 
+                        className={cn(
+                          "h-3 w-3",
+                          star <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
+                        )} 
+                      />
+                    ))}
+                  </div>
+                  <span className="text-xs text-muted-foreground">({reviewCount})</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </Card>
@@ -324,7 +365,8 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             src={image}
             alt={imageAlt}
             aspectRatio="4:3"
-            className="w-32 h-24 rounded-lg flex-shrink-0"
+            className="w-32 h-24 flex-shrink-0"
+            rounded={true}
           />
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between">
@@ -408,7 +450,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             src={image}
             alt={imageAlt}
             aspectRatio="16:9"
-            className="h-64 rounded-t-lg"
+            className="h-64"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -424,11 +466,14 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
                   <img 
                     src={author.avatar} 
                     alt={author.name}
-                    className="w-6 h-6 rounded-full"
+                    className="w-6 h-6 rounded-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                    }}
                   />
-                ) : (
-                  <User className="w-6 h-6" />
-                )}
+                ) : null}
+                <User className={cn("w-6 h-6", author.avatar && "hidden")} />
                 <span className="text-sm">{author.name}</span>
               </div>
             )}
@@ -498,7 +543,8 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           src={image}
           alt={imageAlt}
           aspectRatio={aspectRatio}
-          className="rounded-lg mb-3"
+          className="mb-3"
+          rounded={true}
         />
         <div className="space-y-2">
           <h3 
@@ -544,7 +590,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           src={image}
           alt={imageAlt}
           aspectRatio={aspectRatio}
-          className="h-48 rounded-t-lg"
+          className="h-48"
         />
         <CardHeader>
           <CardTitle 
@@ -611,11 +657,12 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             </div>
           )}
         </CardContent>
-        <CardFooter className="space-x-2">
+        <CardFooter className="flex gap-2 p-6 pt-0">
           {onSave && (
             <Button 
               variant="outline" 
               size="sm"
+              className="flex-1"
               onClick={(e) => {
                 e.stopPropagation();
                 onSave();
@@ -630,6 +677,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             <Button 
               variant="outline" 
               size="sm"
+              className="flex-1"
               onClick={(e) => {
                 e.stopPropagation();
                 onShare();
@@ -661,7 +709,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         src={image}
         alt={imageAlt}
         aspectRatio={aspectRatio}
-        className="h-48 rounded-t-lg"
+        className="h-48"
       />
       <CardHeader>
         <CardTitle 
@@ -685,7 +733,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           <StarRating rating={rating} reviewCount={reviewCount} />
         )}
       </CardContent>
-      <CardFooter className="space-x-2">
+      <CardFooter className="flex gap-2">
         {onSave && (
           <Button 
             variant="outline" 

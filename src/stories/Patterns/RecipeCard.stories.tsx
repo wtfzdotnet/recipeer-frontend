@@ -5,22 +5,22 @@ import type { RecipeCardProps } from '@/components/RecipeCard';
 
 // Sample recipe data
 const sampleRecipeData: Omit<RecipeCardProps, 'variant'> = {
-  title: "Grandma's Apple Pie",
-  description: "A classic homemade apple pie with flaky crust and perfectly spiced apple filling",
-  image: "https://picsum.photos/seed/apple-pie/800/600",
-  imageAlt: "Golden brown apple pie with lattice crust",
-  cookTime: 45,
-  prepTime: 30,
+  title: "Classic Homemade Lasagna",
+  description: "Rich layers of pasta, meat sauce, and three cheeses baked to bubbly perfection. A family favorite that brings everyone to the table.",
+  image: "https://picsum.photos/seed/lasagna-classic/800/600",
+  imageAlt: "Golden brown lasagna with melted cheese on top",
+  cookTime: 60,
+  prepTime: 45,
   servings: 8,
   difficulty: 'Medium',
   rating: 4.8,
-  reviewCount: 124,
+  reviewCount: 247,
   author: {
-    name: "Chef Maria",
-    avatar: "https://picsum.photos/seed/chef-maria/150/150"
+    name: "Maria Rossi",
+    avatar: "https://picsum.photos/seed/chef-maria-rossi/150/150"
   },
-  tags: ["Dessert", "Traditional", "Holiday"],
-  cuisine: "American",
+  tags: ["Italian", "Comfort Food", "Family Dinner"],
+  cuisine: "Italian",
   dietaryRestrictions: ["Vegetarian"],
   onSave: () => console.log('Recipe saved!'),
   onShare: () => console.log('Recipe shared!'),
@@ -129,7 +129,14 @@ export const Compact: Story = {
   args: {
     ...sampleRecipeData,
     variant: 'compact',
-    title: "Quick Omelette"
+    title: "Mediterranean Chicken Bowl",
+    description: "Grilled chicken with quinoa, fresh vegetables, and tzatziki sauce",
+    image: "https://picsum.photos/seed/mediterranean-chicken-bowl/800/600",
+    cookTime: 25,
+    prepTime: 15,
+    difficulty: 'Easy',
+    rating: 4.6,
+    reviewCount: 89
   },
   parameters: {
     docs: {
@@ -145,10 +152,17 @@ export const Hero: Story = {
   args: {
     ...sampleRecipeData,
     variant: 'hero',
-    title: "Authentic Spaghetti Carbonara",
-    description: "Traditional Roman pasta dish with eggs, cheese, and pancetta. Learn the authentic technique for silky, creamy results.",
-    image: "https://picsum.photos/seed/carbonara/800/600",
-    tags: ["Italian", "Pasta", "Traditional", "Quick"]
+    title: "Authentic Beef Bourguignon",
+    description: "Traditional French slow-cooked beef stew with wine, vegetables, and herbs. A restaurant-quality dish perfect for special occasions.",
+    image: "https://picsum.photos/seed/beef-bourguignon/800/600",
+    tags: ["French", "Slow Cooking", "Wine Pairing", "Special Occasion"],
+    cookTime: 180,
+    prepTime: 30,
+    difficulty: 'Hard',
+    author: {
+      name: "Chef Antoine Dubois",
+      avatar: "https://picsum.photos/seed/chef-antoine/150/150"
+    }
   },
   parameters: {
     docs: {
@@ -179,11 +193,20 @@ export const Detailed: Story = {
   args: {
     ...sampleRecipeData,
     variant: 'detailed',
-    title: "Chocolate Chip Cookies",
-    description: "Classic homemade chocolate chip cookies with the perfect chewy texture and crispy edges.",
-    image: "https://picsum.photos/seed/cookies/800/600",
-    tags: ["Dessert", "Baking", "Classic", "Easy", "Kid-Friendly"],
-    cuisine: "American"
+    title: "Artisan Sourdough Bread",
+    description: "Traditional sourdough bread with a crispy crust and tangy, chewy interior. Master the art of wild fermentation and create bakery-quality bread at home.",
+    image: "https://picsum.photos/seed/sourdough-bread/800/600",
+    tags: ["Bread", "Artisan", "Fermentation", "Advanced"],
+    cuisine: "European",
+    cookTime: 45,
+    prepTime: 720, // 12 hours including fermentation
+    difficulty: 'Hard',
+    rating: 4.9,
+    reviewCount: 156,
+    author: {
+      name: "Baker Sarah Chen",
+      avatar: "https://picsum.photos/seed/baker-sarah/150/150"
+    }
   },
   parameters: {
     docs: {
@@ -199,9 +222,17 @@ export const List: Story = {
   args: {
     ...sampleRecipeData,
     variant: 'list',
-    title: "Mediterranean Quinoa Salad",
-    description: "Fresh and healthy quinoa salad with vegetables, feta cheese, and a zesty lemon dressing.",
-    dietaryRestrictions: ["Vegetarian", "Gluten-Free"]
+    title: "Thai Green Curry with Jasmine Rice",
+    description: "Aromatic Thai green curry with coconut milk, fresh vegetables, and fragrant jasmine rice. A perfect balance of spice, sweetness, and herbs.",
+    image: "https://picsum.photos/seed/thai-green-curry/800/600",
+    dietaryRestrictions: ["Vegan", "Gluten-Free"],
+    tags: ["Thai", "Curry", "Coconut", "Spicy"],
+    cuisine: "Thai",
+    cookTime: 30,
+    prepTime: 20,
+    difficulty: 'Medium',
+    rating: 4.7,
+    reviewCount: 203
   },
   parameters: {
     layout: 'padded',
@@ -251,7 +282,17 @@ export const Sizes: Story = {
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-semibold mb-3">Small</h3>
-        <RecipeCard {...sampleRecipeData} variant="default" size="small" />
+        <RecipeCard 
+          {...sampleRecipeData} 
+          variant="default" 
+          size="small"
+          title="Quick Pancakes"
+          description="Fluffy pancakes ready in 15 minutes"
+          image="https://picsum.photos/seed/pancakes-quick/800/600"
+          cookTime={10}
+          prepTime={5}
+          difficulty="Easy"
+        />
       </div>
       <div>
         <h3 className="text-lg font-semibold mb-3">Medium</h3>
@@ -259,7 +300,17 @@ export const Sizes: Story = {
       </div>
       <div>
         <h3 className="text-lg font-semibold mb-3">Large</h3>
-        <RecipeCard {...sampleRecipeData} variant="default" size="large" />
+        <RecipeCard 
+          {...sampleRecipeData} 
+          variant="default" 
+          size="large"
+          title="Gourmet Mushroom Risotto"
+          description="Creamy Arborio rice with wild mushrooms, white wine, and Parmigiano-Reggiano cheese"
+          image="https://picsum.photos/seed/mushroom-risotto/800/600"
+          cookTime={45}
+          prepTime={15}
+          difficulty="Hard"
+        />
       </div>
     </div>
   ),
@@ -281,25 +332,40 @@ export const DifficultyLevels: Story = {
         {...sampleRecipeData} 
         variant="default" 
         difficulty="Easy"
-        title="Simple Pasta Salad"
-        cookTime={15}
-        prepTime={10}
+        title="Avocado Toast"
+        description="Perfectly ripe avocado on toasted sourdough with a sprinkle of everything seasoning"
+        image="https://picsum.photos/seed/avocado-toast/800/600"
+        cookTime={5}
+        prepTime={5}
+        servings={2}
+        rating={4.3}
+        reviewCount={67}
       />
       <RecipeCard 
         {...sampleRecipeData} 
         variant="default" 
         difficulty="Medium"
-        title="Beef Stir Fry"
+        title="Honey Garlic Salmon"
+        description="Pan-seared salmon with a sweet and savory glaze, served with steamed vegetables"
+        image="https://picsum.photos/seed/honey-garlic-salmon/800/600"
         cookTime={20}
         prepTime={15}
+        servings={4}
+        rating={4.7}
+        reviewCount={134}
       />
       <RecipeCard 
         {...sampleRecipeData} 
         variant="default" 
         difficulty="Hard"
-        title="Sourdough Bread"
-        cookTime={180}
-        prepTime={240}
+        title="Wellington Beef Tenderloin"
+        description="Premium beef tenderloin wrapped in puff pastry with mushroom duxelles and prosciutto"
+        image="https://picsum.photos/seed/beef-wellington/800/600"
+        cookTime={120}
+        prepTime={180}
+        servings={6}
+        rating={4.9}
+        reviewCount={89}
       />
     </div>
   ),
@@ -320,73 +386,86 @@ export const ResponsiveGrid: Story = {
       <RecipeCard
         {...sampleRecipeData}
         variant="default"
-        title="Chocolate Chip Cookies"
-        description="Classic homemade cookies with the perfect texture"
-        cookTime={12}
-        prepTime={15}
+        title="Korean Kimchi Fried Rice"
+        description="Spicy and savory fried rice with fermented kimchi, topped with a fried egg"
+        image="https://picsum.photos/seed/kimchi-fried-rice/800/600"
+        cookTime={15}
+        prepTime={10}
         difficulty="Easy"
-        rating={4.9}
-        reviewCount={89}
+        rating={4.6}
+        reviewCount={178}
+        tags={["Korean", "Spicy", "Quick"]}
+        cuisine="Korean"
       />
       <RecipeCard
         {...sampleRecipeData}
         variant="default"
-        title="Beef Stir Fry"
-        description="Quick and healthy dinner option with fresh vegetables"
-        cookTime={15}
+        title="Moroccan Tagine"
+        description="Aromatic slow-cooked stew with tender lamb, apricots, and warm spices"
+        image="https://picsum.photos/seed/moroccan-tagine/800/600"
+        cookTime={120}
+        prepTime={30}
+        difficulty="Medium"
+        rating={4.8}
+        reviewCount={94}
+        dietaryRestrictions={["Gluten-Free"]}
+        tags={["Moroccan", "Slow Cooking", "Spices"]}
+        cuisine="Moroccan"
+      />
+      <RecipeCard
+        {...sampleRecipeData}
+        variant="default"
+        title="Homemade Neapolitan Pizza"
+        description="Authentic wood-fired style pizza with San Marzano tomatoes and fresh mozzarella"
+        image="https://picsum.photos/seed/neapolitan-pizza/800/600"
+        cookTime={90}
+        prepTime={180}
+        difficulty="Hard"
+        rating={4.9}
+        reviewCount={267}
+        tags={["Italian", "Pizza", "Wood-Fired"]}
+        cuisine="Italian"
+      />
+      <RecipeCard
+        {...sampleRecipeData}
+        variant="default"
+        title="Buddha Bowl"
+        description="Nourishing bowl with quinoa, roasted vegetables, and tahini dressing"
+        image="https://picsum.photos/seed/buddha-bowl/800/600"
+        cookTime={30}
+        prepTime={15}
+        difficulty="Easy"
+        rating={4.4}
+        reviewCount={145}
+        dietaryRestrictions={["Vegan", "Gluten-Free"]}
+        tags={["Healthy", "Plant-Based", "Colorful"]}
+      />
+      <RecipeCard
+        {...sampleRecipeData}
+        variant="default"
+        title="Cedar Plank Salmon"
+        description="Grilled salmon infused with smoky cedar flavors and citrus herbs"
+        image="https://picsum.photos/seed/cedar-plank-salmon/800/600"
+        cookTime={25}
         prepTime={20}
         difficulty="Medium"
-        rating={4.6}
-        reviewCount={34}
-        dietaryRestrictions={["Gluten-Free"]}
-      />
-      <RecipeCard
-        {...sampleRecipeData}
-        variant="default"
-        title="Homemade Pizza"
-        description="From scratch pizza dough and sauce for the perfect pie"
-        cookTime={180}
-        prepTime={90}
-        difficulty="Hard"
-        rating={4.8}
-        reviewCount={67}
-        tags={["Italian", "Comfort Food"]}
-      />
-      <RecipeCard
-        {...sampleRecipeData}
-        variant="default"
-        title="Fresh Garden Salad"
-        description="Crisp vegetables with homemade vinaigrette dressing"
-        cookTime={0}
-        prepTime={15}
-        difficulty="Easy"
-        rating={4.3}
-        reviewCount={23}
-        dietaryRestrictions={["Vegan", "Gluten-Free"]}
-      />
-      <RecipeCard
-        {...sampleRecipeData}
-        variant="default"
-        title="Grilled Salmon"
-        description="Perfectly seasoned salmon with lemon and herbs"
-        cookTime={12}
-        prepTime={10}
-        difficulty="Medium"
         rating={4.7}
-        reviewCount={56}
-        tags={["Healthy", "Seafood"]}
+        reviewCount={112}
+        tags={["Grilling", "Seafood", "Summer"]}
       />
       <RecipeCard
         {...sampleRecipeData}
         variant="default"
-        title="Banana Bread"
-        description="Moist and delicious banana bread with walnuts"
-        cookTime={60}
-        prepTime={15}
-        difficulty="Easy"
+        title="French Macarons"
+        description="Delicate almond cookies with smooth tops and ruffled feet, filled with ganache"
+        image="https://picsum.photos/seed/french-macarons/800/600"
+        cookTime={45}
+        prepTime={120}
+        difficulty="Hard"
         rating={4.5}
-        reviewCount={78}
-        tags={["Baking", "Breakfast"]}
+        reviewCount={203}
+        tags={["French", "Pastry", "Elegant"]}
+        cuisine="French"
       />
     </div>
   ),
