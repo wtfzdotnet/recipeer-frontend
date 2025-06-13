@@ -14,6 +14,7 @@ const preview = {
        color: /(background|color)$/i,
        date: /Date$/i,
       },
+      expanded: true, // Expand controls panel by default
     },
 
     a11y: {
@@ -21,8 +22,59 @@ const preview = {
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
       test: "todo"
-    }
+    },
+
+    viewport: {
+      viewports: {
+        mobile: {
+          name: 'Mobile',
+          styles: {
+            width: '375px',
+            height: '667px',
+          },
+        },
+        tablet: {
+          name: 'Tablet',
+          styles: {
+            width: '768px',
+            height: '1024px',
+          },
+        },
+        desktop: {
+          name: 'Desktop',
+          styles: {
+            width: '1200px',
+            height: '900px',
+          },
+        },
+        large: {
+          name: 'Large Desktop',
+          styles: {
+            width: '1440px',
+            height: '900px',
+          },
+        },
+      },
+    },
+
+    // Add actions for interactive components
+    actions: { argTypesRegex: "^on[A-Z].*" },
+
+    // Documentation settings
+    docs: {
+      toc: true, // Show table of contents in docs
+    },
   },
+
+  // Global decorators
+  decorators: [
+    // eslint-disable-next-line no-unused-vars
+    (Story) => (
+      <div style={{ padding: '1rem' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default preview;
