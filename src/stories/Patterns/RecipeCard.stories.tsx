@@ -1,36 +1,61 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Clock, Users, ChefHat, Star, Heart, Share2, Bookmark, Tag } from 'lucide-react';
-import { Button } from '../../components/Button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../components/ui/card';
-import { Alert, AlertDescription } from '../../components/ui/alert';
+import { RecipeCard } from '../../components/RecipeCard';
+import type { RecipeCardProps } from '../../components/RecipeCard';
 
-const meta: Meta = {
+// Sample recipe data
+const sampleRecipeData: Omit<RecipeCardProps, 'variant'> = {
+  title: "Grandma's Apple Pie",
+  description: "A classic homemade apple pie with flaky crust and perfectly spiced apple filling",
+  image: "https://images.unsplash.com/photo-1568471173648-b8fffe7fb8d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  imageAlt: "Golden brown apple pie with lattice crust",
+  cookTime: 45,
+  prepTime: 30,
+  servings: 8,
+  difficulty: 'Medium',
+  rating: 4.8,
+  reviewCount: 124,
+  author: {
+    name: "Chef Maria",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b1c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  },
+  tags: ["Dessert", "Traditional", "Holiday"],
+  cuisine: "American",
+  dietaryRestrictions: ["Vegetarian"],
+  onSave: () => console.log('Recipe saved!'),
+  onShare: () => console.log('Recipe shared!'),
+  onClick: () => console.log('Recipe clicked!')
+};
+
+const meta: Meta<typeof RecipeCard> = {
   title: 'Design System/Patterns/Recipe Card',
+  component: RecipeCard,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component: `
-# Recipe Card Pattern
+# Recipe Card Component System
 
-A comprehensive recipe card pattern that showcases how multiple design system components work together to create engaging recipe displays.
-
-## Components Used
-
-- **Card** - Main container structure
-- **Button** - Action buttons with icons
-- **Alert** - Special dietary information
-- **Typography** - Structured content hierarchy
-- **Icons** - Visual indicators for metadata
+A comprehensive, flexible Recipe Card component system with multiple display variants, states, and interaction patterns suitable for modern recipe websites and applications.
 
 ## Features
 
-- **Recipe Metadata** - Cook time, servings, difficulty level
-- **Rating System** - Star ratings and review counts
-- **Action Buttons** - Save, share, and view actions
-- **Dietary Alerts** - Allergen and dietary restriction warnings
-- **Responsive Layout** - Adapts to different screen sizes
-- **Visual Hierarchy** - Clear content organization
+- **6 Display Variants**: default, compact, hero, minimal, detailed, list
+- **Interactive States**: loading, saved, error, hover effects
+- **Responsive Design**: Adapts to different screen sizes
+- **Accessibility**: Full ARIA support and keyboard navigation
+- **TypeScript**: Complete type safety with comprehensive interface
+- **Customizable**: Flexible props for different use cases
+
+## Variants
+
+- **Default**: Standard grid layouts, recipe collections
+- **Compact**: Sidebar recommendations, mobile lists
+- **Hero**: Featured recipes, homepage highlights  
+- **Minimal**: Clean layouts, premium experiences
+- **Detailed**: Recipe browsing, comparison views
+- **List**: Search results, category listings
 
 ## Use Cases
 
@@ -44,250 +69,347 @@ A comprehensive recipe card pattern that showcases how multiple design system co
     }
   },
   tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['default', 'compact', 'hero', 'minimal', 'detailed', 'list'],
+      description: 'Display variant of the recipe card'
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+      description: 'Size of the recipe card'
+    },
+    aspectRatio: {
+      control: 'select',
+      options: ['4:3', '16:9', '1:1', 'auto'],
+      description: 'Aspect ratio for the recipe image'
+    },
+    orientation: {
+      control: 'select',
+      options: ['vertical', 'horizontal'],
+      description: 'Layout orientation'
+    },
+    difficulty: {
+      control: 'select',
+      options: ['Easy', 'Medium', 'Hard'],
+      description: 'Recipe difficulty level'
+    },
+    isLoading: {
+      control: 'boolean',
+      description: 'Loading state of the component'
+    },
+    isSaved: {
+      control: 'boolean',
+      description: 'Whether the recipe is saved by the user'
+    }
+  }
 };
 
 export default meta;
+type Story = StoryObj<typeof RecipeCard>;
 
-const RecipeMetadata = ({ time, servings, difficulty }: { time: string; servings: string; difficulty: string }) => (
-  <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-    <div className="flex items-center space-x-1">
-      <Clock className="h-4 w-4" />
-      <span>{time}</span>
-    </div>
-    <div className="flex items-center space-x-1">
-      <Users className="h-4 w-4" />
-      <span>{servings}</span>
-    </div>
-    <div className="flex items-center space-x-1">
-      <ChefHat className="h-4 w-4" />
-      <span>{difficulty}</span>
-    </div>
-  </div>
-);
-
-const StarRating = ({ rating, reviewCount }: { rating: number; reviewCount: number }) => (
-  <div className="flex items-center space-x-1">
-    <div className="flex">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star 
-          key={star} 
-          className={`h-4 w-4 ${star <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
-        />
-      ))}
-    </div>
-    <span className="text-sm text-muted-foreground">({reviewCount})</span>
-  </div>
-);
-
-export const BasicRecipeCard = {
-  render: () => (
-    <Card className="w-80">
-      <CardHeader>
-        <CardTitle>Grandma's Apple Pie</CardTitle>
-        <CardDescription>A classic homemade apple pie with flaky crust</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <RecipeMetadata time="2h 15min" servings="8 slices" difficulty="Medium" />
-        <p className="text-sm">
-          This traditional apple pie recipe has been passed down through generations. 
-          Features a buttery, flaky crust and perfectly spiced apple filling.
-        </p>
-        <StarRating rating={5} reviewCount={42} />
-      </CardContent>
-      <CardFooter className="space-x-2">
-        <Button variant="outline" size="sm" className="flex-1">
-          <Heart className="h-4 w-4 mr-2" />
-          Save
-        </Button>
-        <Button size="sm" className="flex-1">
-          View Recipe
-        </Button>
-      </CardFooter>
-    </Card>
-  ),
+// Default variant story
+export const Default: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'default'
+  },
   parameters: {
     docs: {
       description: {
-        story: 'Basic recipe card with essential information and actions.'
+        story: 'Standard recipe card for grid layouts and general use. Shows essential information with a clean, accessible design.'
       }
     }
   }
 };
 
-export const RecipeCardWithAlert = {
-  render: () => (
-    <Card className="w-80">
-      <CardHeader>
-        <CardTitle>Chocolate Peanut Brownies</CardTitle>
-        <CardDescription>Rich, fudgy brownies with peanut butter swirl</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <Alert variant="warning">
-          <Tag className="h-4 w-4" />
-          <AlertDescription>
-            Contains nuts and gluten. Check allergen information.
-          </AlertDescription>
-        </Alert>
-        <RecipeMetadata time="45min" servings="16 pieces" difficulty="Easy" />
-        <p className="text-sm">
-          Decadent brownies with a perfect balance of chocolate and peanut butter. 
-          These are always a hit at parties and family gatherings.
-        </p>
-        <StarRating rating={4} reviewCount={28} />
-      </CardContent>
-      <CardFooter className="space-x-2">
-        <Button variant="outline" size="sm">
-          <Heart className="h-4 w-4" />
-        </Button>
-        <Button variant="outline" size="sm">
-          <Share2 className="h-4 w-4" />
-        </Button>
-        <Button variant="outline" size="sm">
-          <Bookmark className="h-4 w-4" />
-        </Button>
-        <Button size="sm" className="flex-1">
-          Cook Now
-        </Button>
-      </CardFooter>
-    </Card>
-  ),
+// Compact variant story
+export const Compact: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'compact',
+    title: "Quick Omelette"
+  },
   parameters: {
     docs: {
       description: {
-        story: 'Recipe card with allergen alert and multiple action buttons.'
+        story: 'Compact recipe card optimized for sidebars and mobile lists. Shows only essential information in a space-efficient layout.'
       }
     }
   }
 };
 
-export const FeaturedRecipeCard = {
+// Hero variant story
+export const Hero: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'hero',
+    title: "Authentic Spaghetti Carbonara",
+    description: "Traditional Roman pasta dish with eggs, cheese, and pancetta. Learn the authentic technique for silky, creamy results.",
+    image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    tags: ["Italian", "Pasta", "Traditional", "Quick"]
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Hero recipe card for featured content and homepage highlights. Includes overlay text, author information, and prominent call-to-action.'
+      }
+    }
+  }
+};
+
+// Minimal variant story  
+export const Minimal: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'minimal'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Minimal recipe card with clean typography-focused design. Perfect for premium experiences and elegant layouts.'
+      }
+    }
+  }
+};
+
+// Detailed variant story
+export const Detailed: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'detailed',
+    title: "Chocolate Chip Cookies",
+    description: "Classic homemade chocolate chip cookies with the perfect chewy texture and crispy edges.",
+    image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    tags: ["Dessert", "Baking", "Classic", "Easy", "Kid-Friendly"],
+    cuisine: "American"
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Detailed recipe card showing comprehensive information including dietary restrictions, author, cuisine, and tags.'
+      }
+    }
+  }
+};
+
+// List variant story
+export const List: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'list',
+    title: "Mediterranean Quinoa Salad",
+    description: "Fresh and healthy quinoa salad with vegetables, feta cheese, and a zesty lemon dressing.",
+    dietaryRestrictions: ["Vegetarian", "Gluten-Free"]
+  },
+  parameters: {
+    layout: 'padded',
+    docs: {
+      description: {
+        story: 'Horizontal list variant optimized for search results and category listings. Efficient space usage with comprehensive information.'
+      }
+    }
+  }
+};
+
+// Loading state story
+export const Loading: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'default',
+    isLoading: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Loading state with skeleton UI and shimmer effect. Shows placeholder content while data is being fetched.'
+      }
+    }
+  }
+};
+
+// Saved state story
+export const Saved: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'default',
+    isSaved: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Recipe card in saved state with visual indicator and updated button text.'
+      }
+    }
+  }
+};
+
+// Different sizes story
+export const Sizes: Story = {
   render: () => (
-    <Card className="w-80">
-      <div className="relative">
-        <div className="h-48 bg-gradient-to-br from-orange-200 to-red-200 rounded-t-lg flex items-center justify-center">
-          <span className="text-6xl">🍝</span>
-        </div>
-        <div className="absolute top-3 right-3">
-          <div className="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
-            FEATURED
-          </div>
-        </div>
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-3">Small</h3>
+        <RecipeCard {...sampleRecipeData} variant="default" size="small" />
       </div>
-      <CardHeader>
-        <CardTitle>Authentic Spaghetti Carbonara</CardTitle>
-        <CardDescription>Traditional Roman pasta dish with eggs, cheese, and pancetta</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <RecipeMetadata time="20min" servings="4 people" difficulty="Medium" />
-        <p className="text-sm">
-          Learn to make authentic carbonara the traditional way - no cream needed! 
-          This recipe uses the classic technique for silky, creamy results.
-        </p>
-        <StarRating rating={5} reviewCount={156} />
-        <div className="flex flex-wrap gap-1">
-          <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Italian</span>
-          <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Pasta</span>
-          <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Quick</span>
-        </div>
-      </CardContent>
-      <CardFooter className="space-x-2">
-        <Button variant="outline" size="sm" className="flex-1">
-          <Heart className="h-4 w-4 mr-2" />
-          Save
-        </Button>
-        <Button size="sm" className="flex-1">
-          Start Cooking
-        </Button>
-      </CardFooter>
-    </Card>
+      <div>
+        <h3 className="text-lg font-semibold mb-3">Medium</h3>
+        <RecipeCard {...sampleRecipeData} variant="default" size="medium" />
+      </div>
+      <div>
+        <h3 className="text-lg font-semibold mb-3">Large</h3>
+        <RecipeCard {...sampleRecipeData} variant="default" size="large" />
+      </div>
+    </div>
   ),
   parameters: {
+    layout: 'padded',
     docs: {
       description: {
-        story: 'Featured recipe card with image placeholder, tags, and enhanced styling.'
+        story: 'Recipe cards in different sizes: small, medium, and large.'
       }
     }
   }
 };
 
-export const CompactRecipeCard = {
+// Difficulty levels story
+export const DifficultyLevels: Story = {
   render: () => (
-    <Card className="w-64">
-      <CardHeader className="pb-3">
-        <CardTitle className="text-lg">Quick Omelette</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-3">
-        <RecipeMetadata time="5min" servings="1" difficulty="Easy" />
-        <StarRating rating={4} reviewCount={12} />
-      </CardContent>
-      <CardFooter>
-        <Button size="sm" className="w-full">View Recipe</Button>
-      </CardFooter>
-    </Card>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Compact recipe card for sidebar or grid layouts.'
-      }
-    }
-  }
-};
-
-export const RecipeCardGrid = {
-  render: () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-6xl">
-      <Card>
-        <CardHeader>
-          <CardTitle>Chocolate Chip Cookies</CardTitle>
-          <CardDescription>Classic homemade cookies</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <RecipeMetadata time="30min" servings="24 cookies" difficulty="Easy" />
-          <StarRating rating={5} reviewCount={89} />
-        </CardContent>
-        <CardFooter>
-          <Button size="sm" className="w-full">View Recipe</Button>
-        </CardFooter>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Beef Stir Fry</CardTitle>
-          <CardDescription>Quick and healthy dinner option</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Alert variant="info">
-            <AlertDescription>High protein, low carb</AlertDescription>
-          </Alert>
-          <RecipeMetadata time="15min" servings="4 people" difficulty="Easy" />
-          <StarRating rating={4} reviewCount={34} />
-        </CardContent>
-        <CardFooter>
-          <Button size="sm" className="w-full">View Recipe</Button>
-        </CardFooter>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Homemade Pizza</CardTitle>
-          <CardDescription>From scratch pizza dough and sauce</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <RecipeMetadata time="3h" servings="2 pizzas" difficulty="Hard" />
-          <StarRating rating={5} reviewCount={67} />
-        </CardContent>
-        <CardFooter>
-          <Button size="sm" className="w-full">View Recipe</Button>
-        </CardFooter>
-      </Card>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <RecipeCard 
+        {...sampleRecipeData} 
+        variant="default" 
+        difficulty="Easy"
+        title="Simple Pasta Salad"
+        cookTime={15}
+        prepTime={10}
+      />
+      <RecipeCard 
+        {...sampleRecipeData} 
+        variant="default" 
+        difficulty="Medium"
+        title="Beef Stir Fry"
+        cookTime={20}
+        prepTime={15}
+      />
+      <RecipeCard 
+        {...sampleRecipeData} 
+        variant="default" 
+        difficulty="Hard"
+        title="Sourdough Bread"
+        cookTime={180}
+        prepTime={240}
+      />
     </div>
   ),
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
-        story: 'Recipe cards arranged in a responsive grid layout.'
+        story: 'Recipe cards showing different difficulty levels with appropriate color coding.'
+      }
+    }
+  }
+};
+
+// Responsive grid story
+export const ResponsiveGrid: Story = {
+  render: () => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-6xl">
+      <RecipeCard
+        {...sampleRecipeData}
+        variant="default"
+        title="Chocolate Chip Cookies"
+        description="Classic homemade cookies with the perfect texture"
+        cookTime={12}
+        prepTime={15}
+        difficulty="Easy"
+        rating={4.9}
+        reviewCount={89}
+      />
+      <RecipeCard
+        {...sampleRecipeData}
+        variant="default"
+        title="Beef Stir Fry"
+        description="Quick and healthy dinner option with fresh vegetables"
+        cookTime={15}
+        prepTime={20}
+        difficulty="Medium"
+        rating={4.6}
+        reviewCount={34}
+        dietaryRestrictions={["Gluten-Free"]}
+      />
+      <RecipeCard
+        {...sampleRecipeData}
+        variant="default"
+        title="Homemade Pizza"
+        description="From scratch pizza dough and sauce for the perfect pie"
+        cookTime={180}
+        prepTime={90}
+        difficulty="Hard"
+        rating={4.8}
+        reviewCount={67}
+        tags={["Italian", "Comfort Food"]}
+      />
+      <RecipeCard
+        {...sampleRecipeData}
+        variant="default"
+        title="Fresh Garden Salad"
+        description="Crisp vegetables with homemade vinaigrette dressing"
+        cookTime={0}
+        prepTime={15}
+        difficulty="Easy"
+        rating={4.3}
+        reviewCount={23}
+        dietaryRestrictions={["Vegan", "Gluten-Free"]}
+      />
+      <RecipeCard
+        {...sampleRecipeData}
+        variant="default"
+        title="Grilled Salmon"
+        description="Perfectly seasoned salmon with lemon and herbs"
+        cookTime={12}
+        prepTime={10}
+        difficulty="Medium"
+        rating={4.7}
+        reviewCount={56}
+        tags={["Healthy", "Seafood"]}
+      />
+      <RecipeCard
+        {...sampleRecipeData}
+        variant="default"
+        title="Banana Bread"
+        description="Moist and delicious banana bread with walnuts"
+        cookTime={60}
+        prepTime={15}
+        difficulty="Easy"
+        rating={4.5}
+        reviewCount={78}
+        tags={["Baking", "Breakfast"]}
+      />
+    </div>
+  ),
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story: 'Responsive grid layout showcasing recipe cards with various content and metadata.'
+      }
+    }
+  }
+};
+
+// Interactive playground story
+export const Playground: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'default'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Interactive playground to test different props and configurations of the Recipe Card component.'
       }
     }
   }
