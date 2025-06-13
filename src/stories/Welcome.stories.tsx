@@ -31,23 +31,37 @@ Our design system is built around creating warm, inviting experiences for recipe
 
 ## Getting Started
 
-1. **Browse Components** - Explore our component library organized by category
+1. **Browse Components** - Explore our component library organized by Atomic Design principles
 2. **Review Foundation** - Understand our design tokens (colors, typography, spacing)
 3. **See Patterns** - Check out common UI patterns and templates
 4. **Read Documentation** - Each component includes usage guidelines and examples
 
-## Component Categories
+## Atomic Design Architecture
 
-### Foundation
-Core design elements that form the basis of all components.
+Our components are organized using **Atomic Design methodology** for maximum reusability and consistency:
 
-### Components
-Organized by functional categories:
-- **Form** - Input fields, buttons, selectors
-- **Layout** - Cards, containers, dividers  
-- **Feedback** - Alerts, toasts, badges
-- **Navigation** - Menus, tabs, breadcrumbs
-- **Data Display** - Tables, lists, avatars
+### Atoms
+Basic building blocks that cannot be broken down further:
+- **Form Elements** - Button, Input, Label, Checkbox, Switch
+- **Text Display** - Typography, badges, avatars
+- **Basic UI** - Icons, separators, skeleton loaders
+
+### Molecules  
+Simple combinations of atoms that function together as a unit:
+- **Form Fields** - Search fields, quantity adjusters, toggles
+- **Interactive Elements** - Rating displays, difficulty indicators
+- **Control Groups** - Radio groups, select dropdowns, sliders
+
+### Organisms
+Complex components that form distinct sections of an interface:
+- **Recipe Components** - Recipe cards, ingredient checklists, nutrition facts
+- **Navigation** - Headers, menus, collection savers
+- **Content Sections** - Complex data displays and interactive components
+
+### Templates
+Page-level layouts that define content structure (coming soon):
+- **Recipe Layouts** - Recipe detail pages, listing pages
+- **Dashboard Layouts** - User profile, collection management
 
 ### Patterns
 Common UI patterns and page templates combining multiple components.

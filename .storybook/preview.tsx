@@ -1,6 +1,6 @@
 import React from 'react';
 import '../src/index.css'; // Add this line to import Tailwind CSS
-import { ThemeProvider } from '../src/components/ThemeProvider';
+import { ThemeProvider } from '../src/providers/ThemeProvider';
 
 // Import Google Fonts for Typography stories
 const link = document.createElement('link');

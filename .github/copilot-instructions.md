@@ -9,50 +9,137 @@ This is a modern React application built with:
 - **Documentation**: Storybook 9.0.8
 - **Linting**: ESLint 9.25.0
 
+## Atomic Design + Component-Driven Development
+
+This project follows **Atomic Design methodology** with strict component isolation. When generating components, ALWAYS consider the atomic hierarchy and ensure proper placement:
+
+### Automatic Component Classification
+
+When GitHub Copilot suggests components, automatically classify them by complexity:
+
+#### Atoms (Basic Building Blocks)
+- **Auto-detect**: Single-purpose UI elements that can't be broken down further
+- **Examples**: Button, Input, Label, Icon, Typography, Avatar, Badge, Checkbox, Switch
+- **Location**: `src/components/atoms/{component-name}/`
+- **Characteristics**: Pure UI, no business logic, accepts only presentation props
+
+#### Molecules (Simple Combinations) 
+- **Auto-detect**: 2-5 atoms working together as a functional unit
+- **Examples**: SearchField (Input + Button), FormField (Label + Input + Error), QuantityAdjuster, Rating
+- **Location**: `src/components/molecules/{component-name}/`
+- **Characteristics**: Simple interaction logic, reusable across contexts
+
+#### Organisms (Complex Sections)
+- **Auto-detect**: Complex components with business logic, multiple molecules/atoms
+- **Examples**: RecipeCard, NavigationHeader, RecipeForm, IngredientChecklist, NutritionFacts
+- **Location**: `src/components/organisms/{component-name}/`
+- **Characteristics**: Self-contained, may connect to services/hooks
+
+#### Templates (Page Layouts)
+- **Auto-detect**: Layout components that define page structure
+- **Examples**: RecipePageLayout, DashboardLayout, AuthLayout
+- **Location**: `src/components/templates/{component-name}/`
+- **Characteristics**: Data-agnostic, handle layout and responsive behavior
+
+### Component Generation Rules
+
+When generating components, GitHub Copilot should:
+
+1. **Suggest Atomic Level**: Always indicate which atomic level the component belongs to
+2. **Detect Complexity**: If a suggested component is too complex, recommend breaking it down
+3. **Auto-generate Files**: Create the complete file structure:
+   ```
+   component-name/
+   ├── component-name.tsx
+   ├── ComponentName.stories.tsx  
+   ├── ComponentName.test.tsx
+   └── index.ts
+   ```
+4. **Follow Naming**: Use kebab-case folders, PascalCase components
+5. **Add Dependencies**: Automatically import from appropriate atomic levels
+6. **TypeScript Interfaces**: Generate comprehensive props interfaces with JSDoc
+7. **Accessibility**: Include ARIA attributes and semantic HTML
+8. **Internationalization**: Avoid hardcoded strings, use placeholder props
+
 ## Development Guidelines
 
 - Use `cn()` utility from `src/lib/utils.js` for conditional className merging
-- Follow strict Component-Driven Development (CDD) principles with co-located stories
+- Follow **Atomic Design + Component-Driven Development (CDD)** with strict component isolation
 - Create Storybook stories for all new components, co-located with the component
 - Separate design tokens from component usage examples - tokens go in `src/foundation/tokens/`
 - Write tests using Vitest + Playwright for browser testing
 - ALWAYS run `npm run lint` before committing changes
 - Use shadcn/ui components when possible, extend with custom styling as needed
-- Organize UI components in proper subdirectories with clean exports via `index.ts`
+- Organize UI components in atomic hierarchy with clean exports via `index.ts`
 - **NEW REQUIREMENT**: Design all components with internationalization (i18n) in mind - avoid hardcoded strings, plan for text expansion, and consider RTL languages
+
+## Copilot-Specific Instructions
+
+### Component Suggestions
+When suggesting components, Copilot should:
+- **Always specify atomic level** in suggestions
+- **Auto-detect overcomplexity** and suggest atomic breakdown
+- **Generate complete file structure** (component, story, test, index)
+- **Follow established patterns** from existing components
+- **Import from correct atomic levels** (respect hierarchy)
+
+### Code Generation Patterns
+- **TypeScript First**: Always generate TypeScript interfaces
+- **Accessibility First**: Include ARIA labels and semantic HTML
+- **Responsive First**: Consider mobile and desktop layouts
+- **Test First**: Generate test cases alongside components
+- **Story First**: Create comprehensive Storybook examples
 
 ## Project Structure
 
 ```
 src/
-├── components/                    # Reusable UI components
-│   ├── ui/                       # shadcn/ui components (organized in subdirectories)
-│   │   ├── alert/                # alert.tsx, Alert.stories.tsx, index.ts
-│   │   ├── button/               # button.tsx, index.ts
-│   │   ├── card/                 # card.tsx, Card.stories.tsx, index.ts
-│   │   └── input/                # input.tsx, index.ts
-│   ├── Button/                   # Custom components with stories co-located
-│   ├── Input/                    # Component.tsx, Component.stories.tsx
-│   ├── RecipeCard/              
-│   └── Typography/              
-├── foundation/                   # Design system foundations
-│   └── tokens/                   # Pure design tokens (NO component usage examples)
-│       ├── Colors.stories.tsx    # Color palette documentation
-│       ├── Spacing.stories.tsx   # Spacing scale tokens
-│       └── Typography.stories.tsx # Font families, scales, weights
+├── components/                    # Atomic Design component hierarchy
+│   ├── atoms/                    # Basic building blocks
+│   │   ├── button/              # button.tsx, Button.stories.tsx, Button.test.tsx, index.ts
+│   │   ├── input/               # input.tsx, Input.stories.tsx, Input.test.tsx, index.ts
+│   │   ├── typography/          # typography.tsx, Typography.stories.tsx, index.ts
+│   │   └── index.ts             # Barrel exports for all atoms
+│   ├── molecules/               # Simple combinations of atoms
+│   │   ├── quantity-adjuster/   # QuantityAdjuster.tsx, QuantityAdjuster.stories.tsx, index.ts
+│   │   ├── difficulty-indicator/ # DifficultyIndicator.tsx, DifficultyIndicator.stories.tsx, index.ts
+│   │   └── index.ts             # Barrel exports for all molecules
+│   ├── organisms/               # Complex sections and components
+│   │   ├── recipe-card/         # RecipeCard.tsx, RecipeCard.stories.tsx, RecipeCard.test.tsx, index.ts
+│   │   ├── ingredient-checklist/ # IngredientChecklist.tsx, IngredientChecklist.stories.tsx, index.ts
+│   │   └── index.ts             # Barrel exports for all organisms
+│   ├── templates/               # Page layout templates
+│   │   └── index.ts             # Barrel exports for all templates
+│   └── index.ts                 # Master barrel export
+├── pages/                       # Specific page instances with data
+├── hooks/                       # Custom React hooks
+├── services/                    # API and business logic
+├── utils/                       # Helper functions
+├── types/                       # TypeScript definitions
+├── constants/                   # App constants
+├── styles/                      # Global styles
+├── foundation/                  # Design system foundations
+│   └── tokens/                  # Pure design tokens
 ├── lib/
-│   └── utils.js                  # Utility functions (cn() for className merging)
-├── stories/                      # General Storybook configuration stories
-│   ├── Configure.mdx            # Storybook setup documentation
-│   └── Welcome.stories.tsx       # Welcome page
-└── App.tsx                       # Main application component
+│   └── utils.js                 # Utility functions (cn() for className merging)
+├── stories/                     # General Storybook configuration stories
+└── App.tsx                      # Main application component
 ```
 
-## Storybook guidelines 
-- Try to mimic real world usage of components in stories, so derive examples that 
-  demonstrate how components will be used in the application. That also includes images, icons, and other assets.
-- When adding icons or images, try to be consistent with the design system. Use SVGs for icons and ensure they match the design tokens. The exception to this rule is 
-    when the design system does not provide an icon for a specific use case, in which case you can use any icon that fits the use case. Also think about something like lettuce icons to display a category of recipes, we don't want these colorized.
+## Storybook Organization
+
+### Atomic Design Story Structure
+- **Atoms**: `"Atoms/Button"`, `"Atoms/Input"`, `"Atoms/Typography"`
+- **Molecules**: `"Molecules/QuantityAdjuster"`, `"Molecules/SearchField"`
+- **Organisms**: `"Organisms/RecipeCard"`, `"Organisms/NavigationHeader"`
+- **Templates**: `"Templates/RecipeLayout"`, `"Templates/DashboardLayout"`
+
+### Story Requirements
+- Demonstrate realistic usage with mock data
+- Include multiple variants and states (default, loading, error)
+- Show component composition (molecules showing their atoms)
+- Use consistent design system assets (icons, images)
+- Consider accessibility scenarios (high contrast, screen readers)
 
 ## Key Commands
 
@@ -65,31 +152,70 @@ src/
 
 ## Coding Standards
 
-- Use TypeScript/JavaScript ES6+ syntax
+- Use TypeScript/JavaScript ES6+ syntax with comprehensive interfaces
 - Prefer functional components with hooks
 - Use Tailwind CSS classes for styling
-- Implement proper error boundaries
-- Write comprehensive tests for all components
-- Document components with Storybook stories **co-located** with components
-- Maintain strict separation between design tokens and component usage examples
+- Implement proper error boundaries for organisms and above
+- Write comprehensive tests for molecules and organisms
+- Document all components with Storybook stories **co-located** with components
+- Maintain strict atomic design hierarchy (no upward imports)
 - Use proper component subdirectory structure with clean `index.ts` exports
-- Follow Component-Driven Development principles for all new additions
+- Follow Atomic Design + Component-Driven Development principles
 
-## Component Organization Rules
+## Atomic Design Component Rules
 
-### UI Components (shadcn/ui)
-- Organize in subdirectories: `src/components/ui/{component-name}/`
-- Include: `{component-name}.tsx`, `{ComponentName}.stories.tsx` (if applicable), `index.ts`
-- Export component cleanly via `index.ts`
+### Import Hierarchy (Strictly Enforced)
+```typescript
+// ✅ Atoms can import: foundation, lib, utils
+import { cn } from '@/lib/utils';
 
-### Custom Components
-- Co-locate stories with components: `Component.tsx` + `Component.stories.tsx`
-- Stories should demonstrate component usage, not design tokens
+// ✅ Molecules can import: atoms, foundation, lib, utils  
+import { Button } from '@/components/atoms';
 
-### Design Tokens
-- Place in `src/foundation/tokens/` directory
-- Focus purely on design system foundations (colors, typography scales, spacing)
-- NO component usage examples in token stories
+// ✅ Organisms can import: molecules, atoms, foundation, lib, utils
+import { QuantityAdjuster } from '@/components/molecules';
+import { Button } from '@/components/atoms';
+
+// ❌ NEVER: Atoms importing molecules/organisms
+import { RecipeCard } from '@/components/organisms'; // ERROR in atoms
+
+// ❌ NEVER: Molecules importing organisms  
+import { NavigationHeader } from '@/components/organisms'; // ERROR in molecules
+```
+
+### Auto-Generated Component Structure
+When creating components, generate this structure:
+```
+component-name/
+├── component-name.tsx          # Main component
+├── ComponentName.stories.tsx   # Storybook stories
+├── ComponentName.test.tsx      # Unit tests (molecules+)
+├── component-name.types.ts     # Types (if complex)
+└── index.ts                    # Clean export
+```
+
+### TypeScript Interface Pattern
+```typescript
+/**
+ * Props for ComponentName - [Atomic Level]
+ * 
+ * @example
+ * <ComponentName title="Example" size="md" />
+ */
+export interface ComponentNameProps {
+  /** Main title text */
+  title: string;
+  
+  /** Size variant */
+  size?: 'sm' | 'md' | 'lg';
+  
+  /** Custom CSS class */
+  className?: string;
+  
+  /** ARIA label for accessibility */
+  'aria-label'?: string;
+}
+```
 
 ## Commit Message Guidelines
 
@@ -119,10 +245,18 @@ This project follows [Conventional Commits v1.0.0](https://www.conventionalcommi
 
 Use these scopes when relevant to the change:
 
-- **components**: UI components (custom components)
-- **ui**: shadcn/ui components and variants
-- **stories**: Storybook stories and documentation
+- **atoms**: Atomic level components (buttons, inputs, typography)
+- **molecules**: Molecular level components (quantity adjusters, form fields)
+- **organisms**: Organism level components (recipe cards, navigation)
+- **templates**: Template level components (page layouts)
+- **pages**: Page components and routing
+- **hooks**: Custom React hooks
+- **services**: API and business logic services
+- **utils**: Helper functions and utilities
+- **types**: TypeScript type definitions
+- **constants**: Application constants
 - **tokens**: Design tokens and foundation elements
+- **stories**: Storybook stories and documentation
 - **tests**: Test files and testing utilities
 - **docs**: Documentation updates
 - **config**: Configuration files (eslint, vite, etc.)
@@ -192,11 +326,14 @@ Refactored code
 
 #### ✅ Conventional (Use)
 ```bash
-style(ui): update button hover and focus states
-fix(components): resolve RecipeCard image loading issue
-feat(components): add NutritionLabel component
+style(atoms): update button hover and focus states
+fix(organisms): resolve RecipeCard image loading issue
+feat(molecules): add NutritionLabel component
 docs(storybook): add component usage examples
 refactor(tokens): consolidate spacing scale definitions
+feat(atoms): add new Typography variant
+fix(molecules): resolve QuantityAdjuster accessibility issue
+refactor(organisms): extract RecipeCard sub-components to molecules
 ```
 
 ### Validation Guidelines
@@ -222,6 +359,7 @@ When using AI tools (like GitHub Copilot) for commit message suggestions:
 - Validate the suggestion follows the format before using
 
 Example prompts:
-- "Generate a conventional commit message for adding authentication components"
-- "Create a commit message following conventional commits for fixing a button styling bug"
-- "Suggest a commit with breaking change notation for redesigned component API"
+- "Generate a conventional commit message for adding atomic-level authentication components"
+- "Create a commit message following conventional commits for fixing a molecule-level styling bug"  
+- "Suggest a commit with breaking change notation for redesigned organism component API"
+- "Generate commit message for refactoring components from flat structure to atomic design"

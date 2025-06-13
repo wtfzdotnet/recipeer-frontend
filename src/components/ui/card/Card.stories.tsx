@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Clock, Users, ChefHat, Star } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './card';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/atoms';
 
 const meta: Meta<typeof Card> = {
   title: 'Design System/Components/Layout/Card',

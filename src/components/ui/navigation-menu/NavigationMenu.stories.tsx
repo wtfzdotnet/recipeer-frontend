@@ -10,7 +10,7 @@ import {
   NavigationMenuViewport
 } from './navigation-menu';
 import { ChefHat, Search, User, Heart, Clock, Utensils } from 'lucide-react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/atoms';
 
 const meta: Meta<typeof NavigationMenu> = {
   title: 'Design System/Components/Navigation/Navigation Menu',

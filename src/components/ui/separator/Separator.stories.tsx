@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Separator } from './separator';
 import { Clock, Users, ChefHat, Star, Heart, Share2 } from 'lucide-react';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/atoms';
 
 const meta: Meta<typeof Separator> = {
   title: 'Design System/Components/Layout/Separator',
