@@ -68,6 +68,7 @@ const preview = {
 
   // Global decorators
   decorators: [
+    // eslint-disable-next-line no-unused-vars
     (Story) => (
       <div style={{ padding: '1rem' }}>
         <Story />
