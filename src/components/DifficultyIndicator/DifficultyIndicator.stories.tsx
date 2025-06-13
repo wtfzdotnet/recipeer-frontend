@@ -349,6 +349,50 @@ export const RecipeCardIntegration: Story = {
   }
 };
 
+// Legacy integration example
+export const LegacyIntegration: Story = {
+  render: () => {
+    // Example showing how to integrate with existing RecipeCard data
+    const legacyRecipes = [
+      { name: 'Simple Salad', difficulty: 'Easy' as const, time: '10min' },
+      { name: 'Chicken Stir Fry', difficulty: 'Medium' as const, time: '25min' },
+      { name: 'Sourdough Bread', difficulty: 'Hard' as const, time: '8 hours' }
+    ];
+
+    return (
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold mb-3">Legacy Recipe Integration</h3>
+        <p className="text-sm text-gray-600 mb-4">
+          Example showing how to map existing difficulty levels ('Easy', 'Medium', 'Hard') 
+          to the new component ('beginner', 'intermediate', 'advanced').
+        </p>
+        {legacyRecipes.map((recipe, index) => {
+          // Map legacy difficulty to new format
+          const level = recipe.difficulty === 'Easy' ? 'beginner' : 
+                       recipe.difficulty === 'Medium' ? 'intermediate' : 'advanced';
+          
+          return (
+            <div key={index} className="flex items-center justify-between p-3 border rounded">
+              <div>
+                <h4 className="font-medium">{recipe.name}</h4>
+                <span className="text-sm text-gray-500">{recipe.time}</span>
+              </div>
+              <DifficultyIndicator level={level} variant="compact" />
+            </div>
+          );
+        })}
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Example integration showing how to map legacy difficulty levels to the new component format.'
+      }
+    }
+  }
+};
+
 // Accessibility showcase
 export const Accessibility: Story = {
   render: () => (

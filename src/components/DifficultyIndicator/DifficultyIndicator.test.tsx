@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import DifficultyIndicator from './DifficultyIndicator';
+import DifficultyIndicator, { mapLegacyDifficulty, suggestFactorsForLevel } from './DifficultyIndicator';
 
 describe('DifficultyIndicator', () => {
   it('renders beginner level correctly', () => {
@@ -80,5 +80,36 @@ describe('DifficultyIndicator', () => {
     render(<DifficultyIndicator level="beginner" className="custom-class" />);
     const element = screen.getByLabelText(/Recipe difficulty: Beginner/);
     expect(element).toHaveClass('custom-class');
+  });
+});
+
+describe('mapLegacyDifficulty', () => {
+  it('maps Easy to beginner', () => {
+    expect(mapLegacyDifficulty('Easy')).toBe('beginner');
+  });
+
+  it('maps Medium to intermediate', () => {
+    expect(mapLegacyDifficulty('Medium')).toBe('intermediate');
+  });
+
+  it('maps Hard to advanced', () => {
+    expect(mapLegacyDifficulty('Hard')).toBe('advanced');
+  });
+});
+
+describe('suggestFactorsForLevel', () => {
+  it('suggests appropriate factors for beginner level', () => {
+    const factors = suggestFactorsForLevel('beginner');
+    expect(factors).toEqual({ prep: 1, technique: 1, time: 2 });
+  });
+
+  it('suggests appropriate factors for intermediate level', () => {
+    const factors = suggestFactorsForLevel('intermediate');
+    expect(factors).toEqual({ prep: 3, technique: 3, time: 3 });
+  });
+
+  it('suggests appropriate factors for advanced level', () => {
+    const factors = suggestFactorsForLevel('advanced');
+    expect(factors).toEqual({ prep: 4, technique: 4, time: 4 });
   });
 });
