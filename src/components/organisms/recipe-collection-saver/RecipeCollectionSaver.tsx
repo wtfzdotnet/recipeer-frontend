@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Heart, Bookmark, Plus, Check, X, ChevronDown, Loader2, FolderPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/atoms';
 
 // Types and interfaces
 export interface Collection {

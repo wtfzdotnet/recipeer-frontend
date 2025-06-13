@@ -1,7 +1,7 @@
-import { Button } from '@/components/Button'
+import { Button } from '@/components/atoms'
 import { Button as ShadcnButton } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/ThemeToggle'
-import { NutritionFacts } from '@/components/NutritionFacts'
+import { ThemeToggle } from '@/components/molecules'
+import { NutritionFacts } from '@/components/organisms'
 import './App.css'
 
 // Sample nutrition data for demonstration

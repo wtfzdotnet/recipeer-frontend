@@ -2,7 +2,7 @@ import React from 'react';
 import { Clock, Users, ChefHat, Heart, Share2, Bookmark, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/atoms';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Rating } from '@/components/ui/rating';
 

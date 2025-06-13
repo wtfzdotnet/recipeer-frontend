@@ -6,7 +6,7 @@ import { ChevronRight, Download, Heart } from 'lucide-react';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
-  title: 'Design System/Components/Form/Button',
+  title: 'Atoms/Button',
   component: Button,
   parameters: {
     layout: 'centered',

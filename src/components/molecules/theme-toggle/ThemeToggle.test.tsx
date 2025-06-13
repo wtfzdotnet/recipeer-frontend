@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, act } from '@testing-library/react'
 import { describe, it, expect, beforeEach } from 'vitest'
 import { ThemeToggle } from './ThemeToggle'
-import { ThemeProvider } from '../ThemeProvider'
+import { ThemeProvider } from '@/providers/ThemeProvider'
 
 // Helper function to render ThemeToggle with provider
 const renderWithProvider = (defaultTheme = 'system') => {

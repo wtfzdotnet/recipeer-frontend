@@ -3,7 +3,7 @@ import { Mail, Search, Eye, EyeOff } from 'lucide-react';
 import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {
-  title: 'Design System/Components/Form/Input',
+  title: 'Atoms/Input',
   component: Input,
   parameters: {
     layout: 'centered',

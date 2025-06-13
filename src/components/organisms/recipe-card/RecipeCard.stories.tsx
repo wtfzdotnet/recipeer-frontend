@@ -28,7 +28,7 @@ const sampleRecipeData: Omit<RecipeCardProps, 'variant'> = {
 };
 
 const meta: Meta<typeof RecipeCard> = {
-  title: 'Design System/Patterns/Recipe Card',
+  title: 'Organisms/RecipeCard',
   component: RecipeCard,
   parameters: {
     layout: 'centered',

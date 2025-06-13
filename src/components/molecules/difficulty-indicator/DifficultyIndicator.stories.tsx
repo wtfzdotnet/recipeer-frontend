@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import DifficultyIndicator from './DifficultyIndicator';
 
 const meta: Meta<typeof DifficultyIndicator> = {
-  title: 'Design System/Components/Data Display/DifficultyIndicator',
+  title: 'Molecules/DifficultyIndicator',
   component: DifficultyIndicator,
   parameters: {
     layout: 'padded',

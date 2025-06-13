@@ -3,7 +3,7 @@ import { QuantityAdjuster, scaleQuantity } from './QuantityAdjuster';
 import { useState } from 'react';
 
 const meta = {
-  title: 'Components/QuantityAdjuster',
+  title: 'Molecules/QuantityAdjuster',
   component: QuantityAdjuster,
   parameters: {
     layout: 'centered',
