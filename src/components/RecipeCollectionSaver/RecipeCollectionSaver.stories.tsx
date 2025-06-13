@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import React from 'react';
 // Simple mock function for stories
 const fn = () => () => {};
 import RecipeCollectionSaver from './RecipeCollectionSaver';
@@ -401,6 +402,81 @@ export const VariedCollections: Story = {
     docs: {
       description: {
         story: 'Demonstrates collections with varying amounts of metadata (description, recipe count, etc.)'
+      }
+    }
+  }
+};
+
+// Integration with RecipeCard example
+export const RecipeCardIntegration: Story = {
+  render: () => {
+    // Example of how to integrate with RecipeCard
+    const collections = mockCollections;
+    const [savedCollections, setSavedCollections] = React.useState<string[]>(['favorites']);
+    
+    const handleSave = (collectionId: string) => {
+      setSavedCollections(prev => [...prev, collectionId]);
+    };
+    
+    const handleUnsave = (collectionId: string) => {
+      setSavedCollections(prev => prev.filter(id => id !== collectionId));
+    };
+    
+    const handleCreateCollection = (name: string) => {
+      console.log('Creating collection:', name);
+      // In real implementation, this would create the collection
+    };
+
+    return (
+      <div className="max-w-sm">
+        {/* Recipe Card with integrated collection saver */}
+        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
+            <span className="text-white text-lg font-semibold">Recipe Image</span>
+          </div>
+          <div className="p-4">
+            <h3 className="text-lg font-semibold mb-2">Mediterranean Pasta Salad</h3>
+            <p className="text-gray-600 text-sm mb-3">
+              A fresh and flavorful pasta salad with olives, tomatoes, and feta cheese. 
+              Perfect for summer gatherings.
+            </p>
+            <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+              <span className="flex items-center gap-1">
+                <span>⏱️</span> 20 min
+              </span>
+              <span className="flex items-center gap-1">
+                <span>👥</span> 4 servings
+              </span>
+              <span className="flex items-center gap-1">
+                <span>👨‍🍳</span> Easy
+              </span>
+            </div>
+            <div className="flex gap-2">
+              <RecipeCollectionSaver
+                recipeId="mediterranean-pasta-salad"
+                collections={collections}
+                savedCollections={savedCollections}
+                onSave={handleSave}
+                onUnsave={handleUnsave}
+                onCreateCollection={handleCreateCollection}
+                variant="heart"
+                size="sm"
+                quickSaveToFavorites={true}
+                className="flex-1"
+              />
+              <button className="flex-1 px-4 py-2 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors">
+                View Recipe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Example of integrating RecipeCollectionSaver with a recipe card. The component replaces the simple save button with full collection management functionality.'
       }
     }
   }
