@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Typography } from './Typography';
 
 const meta: Meta<typeof Typography> = {
-  title: 'Design System/Foundation/Typography',
+  title: 'Design System/Components/Typography',
   component: Typography,
   parameters: {
     layout: 'fullscreen',
