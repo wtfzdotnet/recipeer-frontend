@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card/card';
 
 const meta: Meta = {
   title: 'Design System/Patterns/Login Form',
