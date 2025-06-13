@@ -19,6 +19,7 @@ This is a modern React application built with:
 - ALWAYS run `npm run lint` before committing changes
 - Use shadcn/ui components when possible, extend with custom styling as needed
 - Organize UI components in proper subdirectories with clean exports via `index.ts`
+- **NEW REQUIREMENT**: Design all components with internationalization (i18n) in mind - avoid hardcoded strings, plan for text expansion, and consider RTL languages
 
 ## Project Structure
 
