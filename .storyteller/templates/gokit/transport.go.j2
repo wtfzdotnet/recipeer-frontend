@@ -1,0 +1,61 @@
+// Package {{ package_name }} provides HTTP transport for {{ service_name }} service.
+package {{ package_name }}
+
+import (
+	"context"
+	"encoding/json"
+	"net/http"
+
+	"github.com/go-kit/kit/log"
+	"github.com/go-kit/kit/transport/http"
+	"github.com/gorilla/mux"
+{% if imports %}
+{% for import_line in imports %}
+	"{{ import_line }}"
+{% endfor %}
+{% endif %}
+)
+
+// New{{ service_name }}HTTPHandler returns an HTTP handler that makes a set of endpoints
+// available on predefined paths.
+func New{{ service_name }}HTTPHandler(endpoints Endpoints, logger log.Logger) http.Handler {
+	r := mux.NewRouter()
+{% for method in methods %}
+	r.Methods("{{ method.http_method|default('POST') }}").Path("{{ method.path|default('/' + method.name.lower()) }}").Handler(http.NewServer(
+		endpoints.{{ method.name }}Endpoint,
+		decode{{ method.name }}Request,
+		encodeResponse,
+	))
+{% endfor %}
+
+	return r
+}
+
+{% for method in methods %}
+// decode{{ method.name }}Request is a transport/http.DecodeRequestFunc that decodes a
+// JSON-encoded request from the HTTP request body.
+func decode{{ method.name }}Request(_ context.Context, r *http.Request) (interface{}, error) {
+	var request {{ method.name }}Request
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		return nil, err
+	}
+	return request, nil
+}
+
+{% endfor %}
+
+// encodeResponse is a transport/http.EncodeResponseFunc that encodes
+// the response as JSON to the response writer.
+func encodeResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	return json.NewEncoder(w).Encode(response)
+}
+
+// encodeError encodes errors from business-logic.
+func encodeError(_ context.Context, err error, w http.ResponseWriter) {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(http.StatusInternalServerError)
+	json.NewEncoder(w).Encode(map[string]interface{}{
+		"error": err.Error(),
+	})
+}

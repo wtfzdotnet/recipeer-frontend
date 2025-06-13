@@ -1,0 +1,35 @@
+"""Test module for {{ module_name }}."""
+
+import pytest
+{% if imports %}
+{% for import_line in imports %}
+{{ import_line }}
+{% endfor %}
+{% endif %}
+
+
+class Test{{ class_name }}:
+    """Test class for {{ class_name }}."""
+
+    def setup_method(self):
+        """Set up test fixtures before each test method."""
+        pass
+
+    def teardown_method(self):
+        """Clean up after each test method."""
+        pass
+{% if test_methods %}
+
+{% for method in test_methods %}
+    def test_{{ method.name }}(self):
+        """Test {{ method.description }}."""
+        # Arrange
+        {{ method.arrange | indent(8) }}
+        
+        # Act
+        {{ method.act | indent(8) }}
+        
+        # Assert
+        {{ method.assert | indent(8) }}
+{% endfor %}
+{% endif %}

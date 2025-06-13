@@ -1,0 +1,62 @@
+// Package {{ package_name }} provides endpoints for {{ service_name }} service.
+package {{ package_name }}
+
+import (
+	"context"
+
+	"github.com/go-kit/kit/endpoint"
+{% if imports %}
+{% for import_line in imports %}
+	"{{ import_line }}"
+{% endfor %}
+{% endif %}
+)
+
+// Endpoints collects all of the endpoints that compose the {{ service_name }} service.
+type Endpoints struct {
+{% for method in methods %}
+	{{ method.name }}Endpoint endpoint.Endpoint
+{% endfor %}
+}
+
+// New{{ service_name }}Endpoints returns an Endpoints struct that wraps the provided service.
+func New{{ service_name }}Endpoints(svc {{ service_name }}Service) Endpoints {
+	return Endpoints{
+{% for method in methods %}
+		{{ method.name }}Endpoint: make{{ method.name }}Endpoint(svc),
+{% endfor %}
+	}
+}
+
+{% for method in methods %}
+// {{ method.name }}Request collects the request parameters for the {{ method.name }} method.
+type {{ method.name }}Request struct {
+{% for param in method.params %}
+	{{ param.name|title }} {{ param.type }} `json:"{{ param.name }}"`
+{% endfor %}
+}
+
+// {{ method.name }}Response collects the response parameters for the {{ method.name }} method.
+type {{ method.name }}Response struct {
+{% for result in method.results %}
+	{{ result.name|title }} {{ result.type }} `json:"{{ result.name }}"`
+{% endfor %}
+}
+
+// make{{ method.name }}Endpoint creates an endpoint for the {{ method.name }} method.
+func make{{ method.name }}Endpoint(svc {{ service_name }}Service) endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (interface{}, error) {
+		req := request.({{ method.name }}Request)
+		{% if method.results|length == 1 %}result, err{% else %}{% for result in method.results %}{{ result.name }}{% if not loop.last %}, {% endif %}{% endfor %}, err{% endif %} := svc.{{ method.name }}(ctx{% for param in method.params %}, req.{{ param.name|title }}{% endfor %})
+		if err != nil {
+			return {{ method.name }}Response{}, err
+		}
+		return {{ method.name }}Response{
+{% for result in method.results %}
+			{{ result.name|title }}: {{ result.name }},
+{% endfor %}
+		}, nil
+	}
+}
+
+{% endfor %}

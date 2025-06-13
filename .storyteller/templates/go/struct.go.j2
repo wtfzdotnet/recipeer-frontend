@@ -1,0 +1,39 @@
+// Package {{ package_name }} provides {{ struct_description }}.
+package {{ package_name }}
+
+{% if imports %}
+import (
+{% for import_line in imports %}
+	"{{ import_line }}"
+{% endfor %}
+)
+
+{% endif %}
+// {{ struct_name }} represents {{ struct_description }}.
+type {{ struct_name }} struct {
+{% for field in fields %}
+	{{ field.name }} {{ field.type }}{% if field.tag %} `{{ field.tag }}`{% endif %}{% if field.comment %} // {{ field.comment }}{% endif %}
+{% endfor %}
+}
+
+{% if constructor %}
+// New{{ struct_name }} creates a new {{ struct_name }} instance.
+func New{{ struct_name }}({% for field in constructor.params %}{{ field.name }} {{ field.type }}{% if not loop.last %}, {% endif %}{% endfor %}) *{{ struct_name }} {
+	return &{{ struct_name }}{
+{% for field in constructor.params %}
+		{{ field.name|title }}: {{ field.name }},
+{% endfor %}
+	}
+}
+{% endif %}
+
+{% for method in methods %}
+// {{ method.name }} {{ method.description }}.
+func ({{ receiver_name }} *{{ struct_name }}) {{ method.name }}({% for param in method.params %}{{ param.name }} {{ param.type }}{% if not loop.last %}, {% endif %}{% endfor %}){% if method.results %} ({% for result in method.results %}{{ result.type }}{% if not loop.last %}, {% endif %}{% endfor %}){% endif %} {
+	// TODO: Implement {{ method.name }}
+{% if method.default_return %}
+	return {{ method.default_return }}
+{% endif %}
+}
+
+{% endfor %}

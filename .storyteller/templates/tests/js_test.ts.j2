@@ -1,0 +1,26 @@
+/**
+ * Test module for {{ module_name }}
+ */
+
+{% if framework == 'jest' %}
+import { render, screen } from '@testing-library/react';
+{% elif framework == 'vitest' %}
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+{% endif %}
+{% if imports %}
+{% for import_line in imports %}
+{{ import_line }}
+{% endfor %}
+{% endif %}
+
+describe('{{ component_name }}', () => {
+{% if test_cases %}
+{% for test in test_cases %}
+  it('{{ test.description }}', () => {
+    {{ test.code | indent(4) }}
+  });
+
+{% endfor %}
+{% endif %}
+});

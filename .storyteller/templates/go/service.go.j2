@@ -1,0 +1,47 @@
+// Package {{ package_name }} provides {{ service_description }}.
+package {{ package_name }}
+
+import (
+	"context"
+{% if imports %}
+{% for import_line in imports %}
+	"{{ import_line }}"
+{% endfor %}
+{% endif %}
+)
+
+// {{ service_name }}Service represents the {{ service_name }} service interface.
+type {{ service_name }}Service interface {
+{% for method in methods %}
+	{{ method.name }}(ctx context.Context{% for param in method.params %}, {{ param.name }} {{ param.type }}{% endfor %}) ({% for result in method.results %}{{ result.type }}{% if not loop.last %}, {% endif %}{% endfor %})
+{% endfor %}
+}
+
+// {{ service_name.lower() }}Service is a concrete implementation of {{ service_name }}Service.
+type {{ service_name.lower() }}Service struct {
+{% for field in fields %}
+	{{ field.name }} {{ field.type }}
+{% endfor %}
+}
+
+// New{{ service_name }}Service creates a new {{ service_name }} service.
+func New{{ service_name }}Service({% for field in fields %}{{ field.name }} {{ field.type }}{% if not loop.last %}, {% endif %}{% endfor %}) {{ service_name }}Service {
+	return &{{ service_name.lower() }}Service{
+{% for field in fields %}
+		{{ field.name }}: {{ field.name }},
+{% endfor %}
+	}
+}
+
+{% for method in methods %}
+// {{ method.name }} {{ method.description }}.
+func (s *{{ service_name.lower() }}Service) {{ method.name }}(ctx context.Context{% for param in method.params %}, {{ param.name }} {{ param.type }}{% endfor %}) ({% for result in method.results %}{{ result.type }}{% if not loop.last %}, {% endif %}{% endfor %}) {
+	// TODO: Implement {{ method.name }}
+{% if method.results|length == 1 %}
+	return {{ method.default_return }}
+{% else %}
+	return {{ method.default_returns|join(', ') }}
+{% endif %}
+}
+
+{% endfor %}

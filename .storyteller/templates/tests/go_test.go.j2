@@ -1,0 +1,42 @@
+// Package {{ package_name }} provides tests for {{ module_name }}.
+package {{ package_name }}
+
+import (
+	"testing"
+{% if imports %}
+{% for import_line in imports %}
+	"{{ import_line }}"
+{% endfor %}
+{% endif %}
+)
+
+{% for test in tests %}
+// {{ test.name }} tests {{ test.description }}.
+func {{ test.name }}(t *testing.T) {
+	// Arrange
+	{{ test.arrange | indent(4) }}
+
+	// Act
+	{{ test.act | indent(4) }}
+
+	// Assert
+	{{ test.assert | indent(4) }}
+}
+
+{% endfor %}
+
+{% if benchmark_tests %}
+{% for benchmark in benchmark_tests %}
+// {{ benchmark.name }} benchmarks {{ benchmark.description }}.
+func {{ benchmark.name }}(b *testing.B) {
+	// Setup
+	{{ benchmark.setup | indent(4) }}
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		{{ benchmark.operation | indent(8) }}
+	}
+}
+
+{% endfor %}
+{% endif %}

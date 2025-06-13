@@ -1,108 +1,91 @@
-You are an expert UX/UI designer and frontend developer with extensive experience in TypeScript, React, Vite, Storybook, and shadcn/ui. You are also familiar with integrating REST APIs, WebSockets, and implementing authentication and authorization. Your primary responsibility is to create, modify, or refactor components according to the Component-Driven Development approach (https://www.componentdriven.org/) while maintaining and improving the existing design system.
+<!-- Use this file to provide workspace-specific custom instructions to Copilot. For more details, visit https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file -->
 
-You will be presented with the following information:
+# Frontend Recipeer - Copilot Instructions
 
-<task_description>
-{{TASK_DESCRIPTION}}
-</task_description>
-
-<existing_components>
-{{EXISTING_COMPONENTS}}
-</existing_components>
-
-<design_system>
-{{DESIGN_SYSTEM}}
-</design_system>
-
-Your process should be as follows:
-
-1. Analyze the task description and break it down into smaller, manageable pieces.
-2. Review the existing components and design system to identify potential reusable elements or areas for improvement.
-3. For each component or feature:
-   a. Determine if an existing shadcn/ui component can be used or adapted.
-   b. If no suitable shadcn/ui component exists, propose custom solutions or alternatives.
-   c. Design and implement the component, ensuring it adheres to the design system.
-   d. Create variations and document them in Storybook.
-   e. Write tests for the component and its variations.
-4. Update the design system documentation if necessary.
-5. Prepare a summary of your work, including:
-   - Components created or modified
-   - Design decisions and rationale
-   - Any updates to the design system
-   - Storybook documentation additions
-   - Test coverage
-
-Throughout this process, keep the following in mind:
-- Always prioritize reusability and consistency with the existing design system.
-- If you encounter a problem without a clear solution, propose multiple options and explain the pros and cons of each.
-- Ensure all components are well-documented in Storybook with various use cases and variations.
-- Write comprehensive tests for all components and their variations.
-- Break down complex tasks into smaller, manageable pieces and save your thought process in .ai/tasks/*.md files for future reference.
-
-Your final output should be structured as follows:
-
-<component_summary>
-[List of components created or modified, with brief descriptions]
-</component_summary>
-
-<design_decisions>
-[Explanation of key design decisions and their rationale]
-</design_decisions>
-
-<design_system_updates>
-[Any updates or additions to the design system]
-</design_system_updates>
-
-<storybook_documentation>
-[Summary of new or updated Storybook documentation]
-</storybook_documentation>
-
-<test_coverage>
-[Overview of test coverage for new or modified components]
-</test_coverage>
-
-<next_steps>
-[Recommendations for further improvements or considerations]
-</next_steps>
-
-Remember to focus on providing a clear, concise summary of your work and recommendations in your final output. Do not include your thought process or intermediate steps in the final response.
-
-## Project Context - Frontend Recipeer
-
-### Current Tech Stack
+This is a modern React application built with:
 - **Framework**: React 19.1.0 with Vite 6.3.5
 - **Styling**: Tailwind CSS 4.1.10 + shadcn/ui 0.0.4
 - **Testing**: Vitest 3.2.3 + Playwright 1.53.0
 - **Documentation**: Storybook 9.0.8
-- **Linting**: ESLint 9.25.0 with React hooks + Storybook plugins
+- **Linting**: ESLint 9.25.0
 
-### Key Commands
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint (ALWAYS run after code changes)
-- `npm run storybook` - Start Storybook development server
-- `npm run build-storybook` - Build Storybook for production
+## Development Guidelines
 
-### Project Structure
-```
-src/
-├── components/         # Reusable UI components
-│   └── ui/            # shadcn/ui components
-├── lib/
-│   └── utils.js       # Utility functions (cn() for className merging)
-├── stories/           # Storybook stories
-└── App.jsx           # Main application component
-```
-
-### Development Guidelines
 - Use `cn()` utility from `src/lib/utils.js` for conditional className merging
-- Follow Component-Driven Development principles
-- Create Storybook stories for all new components
+- Follow strict Component-Driven Development (CDD) principles with co-located stories
+- Create Storybook stories for all new components, co-located with the component
+- Separate design tokens from component usage examples - tokens go in `src/foundation/tokens/`
 - Write tests using Vitest + Playwright for browser testing
 - ALWAYS run `npm run lint` before committing changes
 - Use shadcn/ui components when possible, extend with custom styling as needed
+- Organize UI components in proper subdirectories with clean exports via `index.ts`
 
-### shadcn/ui Setup
-- Utility function `cn()` is configured in `src/lib/utils.js`
-- Components directory structure ready at `src/components/ui/`
-- Install new shadcn/ui components with: `npx shadcn@latest add [component-name]`
+## Project Structure
+
+```
+src/
+├── components/                    # Reusable UI components
+│   ├── ui/                       # shadcn/ui components (organized in subdirectories)
+│   │   ├── alert/                # alert.tsx, Alert.stories.tsx, index.ts
+│   │   ├── button/               # button.tsx, index.ts
+│   │   ├── card/                 # card.tsx, Card.stories.tsx, index.ts
+│   │   └── input/                # input.tsx, index.ts
+│   ├── Button/                   # Custom components with stories co-located
+│   ├── Input/                    # Component.tsx, Component.stories.tsx
+│   ├── RecipeCard/              
+│   └── Typography/              
+├── foundation/                   # Design system foundations
+│   └── tokens/                   # Pure design tokens (NO component usage examples)
+│       ├── Colors.stories.tsx    # Color palette documentation
+│       ├── Spacing.stories.tsx   # Spacing scale tokens
+│       └── Typography.stories.tsx # Font families, scales, weights
+├── lib/
+│   └── utils.js                  # Utility functions (cn() for className merging)
+├── stories/                      # General Storybook configuration stories
+│   ├── Configure.mdx            # Storybook setup documentation
+│   └── Welcome.stories.tsx       # Welcome page
+└── App.tsx                       # Main application component
+```
+
+## Storybook guidelines 
+- Try to mimic real world usage of components in stories, so derive examples that 
+  demonstrate how components will be used in the application. That also includes images, icons, and other assets.
+- When adding icons or images, try to be consistent with the design system. Use SVGs for icons and ensure they match the design tokens. The exception to this rule is 
+    when the design system does not provide an icon for a specific use case, in which case you can use any icon that fits the use case. Also think about something like lettuce icons to display a category of recipes, we don't want these colorized.
+
+## Key Commands
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint (ALWAYS run after code changes)
+- `npm run test` - Run unit tests
+- `npm run storybook` - Start Storybook development server
+- `npm run build-storybook` - Build Storybook for production
+
+## Coding Standards
+
+- Use TypeScript/JavaScript ES6+ syntax
+- Prefer functional components with hooks
+- Use Tailwind CSS classes for styling
+- Implement proper error boundaries
+- Write comprehensive tests for all components
+- Document components with Storybook stories **co-located** with components
+- Maintain strict separation between design tokens and component usage examples
+- Use proper component subdirectory structure with clean `index.ts` exports
+- Follow Component-Driven Development principles for all new additions
+
+## Component Organization Rules
+
+### UI Components (shadcn/ui)
+- Organize in subdirectories: `src/components/ui/{component-name}/`
+- Include: `{component-name}.tsx`, `{ComponentName}.stories.tsx` (if applicable), `index.ts`
+- Export component cleanly via `index.ts`
+
+### Custom Components
+- Co-locate stories with components: `Component.tsx` + `Component.stories.tsx`
+- Stories should demonstrate component usage, not design tokens
+
+### Design Tokens
+- Place in `src/foundation/tokens/` directory
+- Focus purely on design system foundations (colors, typography scales, spacing)
+- NO component usage examples in token stories

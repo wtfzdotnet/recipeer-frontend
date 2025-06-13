@@ -1,0 +1,52 @@
+<template>
+  <div class="{{ container_class }}">
+    <h1>{{ component_name }}</h1>
+    <!-- TODO: Implement component template -->
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent{% if has_props %}, PropType{% endif %} } from 'vue';
+
+export default defineComponent({
+  name: '{{ component_name }}',
+{% if props %}
+  props: {
+{% for prop in props %}
+    {{ prop.name }}: {
+      type: {{ prop.type }} as PropType<{{ prop.type_name }}>,
+{% if prop.required %}
+      required: true,
+{% else %}
+      default: {{ prop.default }},
+{% endif %}
+    },
+{% endfor %}
+  },
+{% endif %}
+{% if has_data %}
+  data() {
+    return {
+{% for data_item in data %}
+      {{ data_item.name }}: {{ data_item.default }},
+{% endfor %}
+    };
+  },
+{% endif %}
+{% if methods %}
+  methods: {
+{% for method in methods %}
+    {{ method.name }}({{ method.params }}) {
+      // TODO: Implement {{ method.name }}
+    },
+{% endfor %}
+  },
+{% endif %}
+});
+</script>
+
+<style scoped>
+.{{ container_class }} {
+  /* TODO: Add component styles */
+}
+</style>

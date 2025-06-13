@@ -1,0 +1,12 @@
+{% if props_interface %}{{ props_interface }}
+
+{% endif %}const {{ component_name }} = ({{ props_destructure }}) => {
+  return (
+    <div className="{{ container_class }}">
+      <h1>{{ component_name }}</h1>
+      {/* TODO: Implement component content */}
+    </div>
+  );
+};
+
+export default {{ component_name }};

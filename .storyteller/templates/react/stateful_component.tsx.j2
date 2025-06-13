@@ -1,0 +1,20 @@
+{% if props_interface %}{{ props_interface }}
+
+{% endif %}import { useState } from 'react';
+
+const {{ component_name }} = ({{ props_destructure }}) => {
+  {% if state_variables %}
+  {% for var in state_variables %}
+  const [{{ var.name }}, set{{ var.name | title }}] = useState{{ var.type_annotation }}({{ var.default_value }});
+  {% endfor %}
+  {% endif %}
+
+  return (
+    <div className="{{ container_class }}">
+      <h1>{{ component_name }}</h1>
+      {/* TODO: Implement component content */}
+    </div>
+  );
+};
+
+export default {{ component_name }};

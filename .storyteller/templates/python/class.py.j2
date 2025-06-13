@@ -1,0 +1,31 @@
+"""{{ description }}."""
+
+{% if imports %}
+{% for import_line in imports %}
+{{ import_line }}
+{% endfor %}
+
+{% endif %}
+class {{ class_name }}:
+    """{{ class_description }}."""
+
+    def __init__(self{% if init_params %}, {{ init_params }}{% endif %}):
+        """Initialize the {{ class_name }}.
+        
+{% if init_docstring %}
+        {{ init_docstring }}
+{% endif %}
+        """
+{% if attributes %}
+{% for attr in attributes %}
+        self.{{ attr.name }} = {{ attr.value }}
+{% endfor %}
+{% endif %}
+{% if methods %}
+
+{% for method in methods %}
+    def {{ method.name }}(self{% if method.params %}, {{ method.params }}{% endif %}):
+        """{{ method.description }}."""
+        {{ method.body | indent(8) }}
+{% endfor %}
+{% endif %}

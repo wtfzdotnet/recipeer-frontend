@@ -1,0 +1,50 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import {{ component_name }} from './{{ component_file }}';
+
+const meta: Meta<typeof {{ component_name }}> = {
+  title: '{{ story_title }}',
+  component: {{ component_name }},
+  parameters: {
+    layout: 'centered',
+  },
+{% if arg_types %}
+  argTypes: {
+{% for arg in arg_types %}
+    {{ arg.name }}: {
+      control: '{{ arg.control }}',
+{% if arg.description %}
+      description: '{{ arg.description }}',
+{% endif %}
+    },
+{% endfor %}
+  },
+{% endif %}
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+{% if default_args %}
+  args: {
+{% for arg, value in default_args.items() %}
+    {{ arg }}: {{ value }},
+{% endfor %}
+  },
+{% endif %}
+};
+
+{% if additional_stories %}
+{% for story in additional_stories %}
+export const {{ story.name }}: Story = {
+{% if story.args %}
+  args: {
+{% for arg, value in story.args.items() %}
+    {{ arg }}: {{ value }},
+{% endfor %}
+  },
+{% endif %}
+};
+
+{% endfor %}
+{% endif %}
