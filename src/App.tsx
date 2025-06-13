@@ -1,5 +1,5 @@
-import { Button } from './components/Button'
-import { Button as ShadcnButton } from './components/ui/button/button'
+import { Button } from '@/components/Button'
+import { Button as ShadcnButton } from '@/components/ui/button'
 import './App.css'
 
 function App() {
