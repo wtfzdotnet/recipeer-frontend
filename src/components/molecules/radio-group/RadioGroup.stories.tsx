@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { RadioGroup } from './RadioGroup';
 
 const meta: Meta<typeof RadioGroup> = {
-  title: 'Design System/Components/RadioGroup',
+  title: 'Molecules/RadioGroup',
   component: RadioGroup,
   parameters: {
     layout: 'centered',

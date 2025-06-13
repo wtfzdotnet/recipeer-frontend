@@ -41,7 +41,7 @@ const mockCollections: Collection[] = [
 ];
 
 const meta = {
-  title: 'Components/RecipeCollectionSaver',
+  title: 'Organisms/RecipeCollectionSaver',
   component: RecipeCollectionSaver,
   parameters: {
     layout: 'centered',

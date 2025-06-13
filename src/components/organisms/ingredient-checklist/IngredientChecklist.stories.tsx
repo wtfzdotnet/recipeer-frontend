@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { IngredientChecklist, type Ingredient } from './IngredientChecklist';
 
 const meta: Meta<typeof IngredientChecklist> = {
-  title: 'Design System/Components/Recipe/IngredientChecklist',
+  title: 'Organisms/IngredientChecklist',
   component: IngredientChecklist,
   parameters: {
     layout: 'centered',

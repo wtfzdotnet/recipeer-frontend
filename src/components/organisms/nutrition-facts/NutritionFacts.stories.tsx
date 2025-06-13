@@ -88,7 +88,7 @@ const allergenFree: AllergenInfo = {
 };
 
 const meta: Meta<typeof NutritionFacts> = {
-  title: 'Design System/Components/Data Display/NutritionFacts',
+  title: 'Organisms/NutritionFacts',
   component: NutritionFacts,
   parameters: {
     layout: 'centered',

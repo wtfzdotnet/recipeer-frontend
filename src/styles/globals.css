@@ -1,0 +1,10 @@
+/* Global styles and themes */
+/* Currently empty - global styles will be added as needed */
+
+/* Import Tailwind base */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components'; 
+@import 'tailwindcss/utilities';
+
+/* Custom global styles */
+/* TODO: Add global component styles here */
