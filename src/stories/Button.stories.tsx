@@ -6,10 +6,15 @@ import { ChevronRight, Download, Heart } from 'lucide-react';
 import { Button } from '../components/Button';
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'Design System/Components/Button',
   component: Button,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'A versatile button component built on top of shadcn/ui with extended functionality for recipe applications. Supports loading states, icons, and all standard button variants.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
