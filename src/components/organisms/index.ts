@@ -6,6 +6,10 @@ export { IngredientChecklist } from './ingredient-checklist';
 export { NutritionFacts } from './nutrition-facts';
 export { RecipeCollectionSaver } from './recipe-collection-saver';
 export { Dialog } from './dialog';
+export { LoginForm } from './login-form';
+
+// New organisms
+export * from './navigation-menu';
 
 // Re-export types
 export type { RecipeCardProps } from './recipe-card';
@@ -13,8 +17,4 @@ export type { IngredientChecklistProps } from './ingredient-checklist';
 export type { NutritionFactsProps } from './nutrition-facts';
 export type { RecipeCollectionSaverProps } from './recipe-collection-saver';
 export type { DialogProps } from './dialog';
-
-// Barrel export for organisms
-// export * from './recipe-card';
-// export * from './navigation-header';
-// Add new organism exports below
+export type { LoginFormProps } from './login-form';

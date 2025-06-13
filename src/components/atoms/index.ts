@@ -11,6 +11,8 @@ export * from './avatar';
 export * from './separator';
 export * from './skeleton';
 export * from './progress';
+export * from './aspect-ratio';
+export * from './rating';
 
 // Add new atom exports below
 
@@ -27,3 +29,4 @@ export type { AvatarProps } from './avatar';
 export type { SeparatorProps } from './separator';
 export type { SkeletonProps } from './skeleton';
 export type { ProgressProps } from './progress';
+export type { RatingProps } from './rating';

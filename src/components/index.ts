@@ -12,6 +12,3 @@ export * from './organisms';
 
 // Templates - Page layouts
 export * from './templates';
-
-// Legacy UI components (shadcn/ui) - will be reorganized gradually
-export * from './ui';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { RadioGroup as ShadcnRadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
+import { Label } from '@/components/atoms/label';
 import { cn } from '@/lib/utils';
 
 export interface RadioOption {

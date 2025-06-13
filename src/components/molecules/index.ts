@@ -10,6 +10,20 @@ export { Slider } from './slider';
 export { Card } from './card';
 export { Alert } from './alert';
 
+// New molecules
+export * from './accordion';
+export * from './alert-dialog';
+export * from './breadcrumb';
+export * from './drawer';
+export * from './hover-card';
+export * from './popover';
+export * from './sheet';
+export * from './table';
+export * from './tabs';
+export * from './timer';
+export * from './toast';
+export * from './tooltip';
+
 // Re-export types
 export type { QuantityAdjusterProps } from './quantity-adjuster';
 export type { DifficultyIndicatorProps } from './difficulty-indicator';
@@ -19,8 +33,4 @@ export type { SelectProps } from './select';
 export type { SliderProps } from './slider';
 export type { CardProps } from './card';
 export type { AlertProps } from './alert';
-
-// Barrel export for molecules
-// export * from './quantity-adjuster';
-// export * from './form-field';
-// Add new molecule exports below
+export type { TimerProps } from './timer';

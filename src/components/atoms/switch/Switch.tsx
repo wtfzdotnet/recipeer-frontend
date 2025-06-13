@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch as ShadcnSwitch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
+import { Label } from '@/components/atoms/label';
 import { cn } from '@/lib/utils';
 
 export interface SwitchProps {

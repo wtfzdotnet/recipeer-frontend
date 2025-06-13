@@ -1,6 +1,6 @@
 import React from 'react';
 import { Checkbox as ShadcnCheckbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
+import { Label } from '@/components/atoms/label';
 import { cn } from '@/lib/utils';
 
 export interface CheckboxProps {
