@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.0.0...v1.1.0) (2025-06-13)
+
+
+### Bug Fixes
+
+* **eslint:** add test globals and restore base UI components ([cf683de](https://github.com/wtfzdotnet/recipeer-frontend/commit/cf683de7172f9feb393c48529aad8b40aa78b155))
+
+
+### Features
+
+* **architecture:** complete atomic design refactoring with comprehensive component stories ([712a7a6](https://github.com/wtfzdotnet/recipeer-frontend/commit/712a7a62c69de314261a2d03e6bcabed38ec179a))
+* **atomic-design:** complete UI directory migration to atomic design structure ([d586c0a](https://github.com/wtfzdotnet/recipeer-frontend/commit/d586c0ae79f7f453fd87cb144e71f61088f35f1a))
+
 # 1.0.0 (2025-06-13)
 
 
