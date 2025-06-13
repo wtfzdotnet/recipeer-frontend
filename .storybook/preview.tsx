@@ -1,5 +1,6 @@
 import React from 'react';
 import '../src/index.css'; // Add this line to import Tailwind CSS
+import { ThemeProvider } from '../src/components/ThemeProvider';
 
 // Import Google Fonts for Typography stories
 const link = document.createElement('link');
@@ -65,14 +66,31 @@ const preview = {
     docs: {
       toc: true, // Show table of contents in docs
     },
+
+    // Background options for theme testing
+    backgrounds: {
+      default: 'light',
+      values: [
+        {
+          name: 'light',
+          value: 'oklch(1 0 0)',
+        },
+        {
+          name: 'dark',
+          value: 'oklch(0.141 0.005 285.823)',
+        },
+      ],
+    },
   },
 
   // Global decorators
   decorators: [
     (Story) => (
-      <div style={{ padding: '1rem' }}>
-        <Story />
-      </div>
+      <ThemeProvider defaultTheme="light" storageKey="storybook-ui-theme">
+        <div style={{ padding: '1rem' }} className="bg-background text-foreground min-h-screen">
+          <Story />
+        </div>
+      </ThemeProvider>
     ),
   ],
 };
