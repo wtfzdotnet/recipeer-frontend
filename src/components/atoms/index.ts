@@ -8,6 +8,10 @@ export { Checkbox } from './checkbox';
 export { Switch } from './switch';
 export { Textarea } from './textarea';
 export { Typography } from './typography';
+export { Badge } from './badge';
+export { Avatar } from './avatar';
+export { Separator } from './separator';
+export { Skeleton } from './skeleton';
 
 // Re-export types
 export type { ButtonProps } from './button';
@@ -17,3 +21,7 @@ export type { CheckboxProps } from './checkbox';
 export type { SwitchProps } from './switch';
 export type { TextareaProps } from './textarea';
 export type { TypographyProps } from './typography';
+export type { BadgeProps } from './badge';
+export type { AvatarProps } from './avatar';
+export type { SeparatorProps } from './separator';
+export type { SkeletonProps } from './skeleton';
