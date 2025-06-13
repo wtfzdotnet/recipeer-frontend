@@ -7,6 +7,29 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        // Classic & Cozy combination
+        'playfair': ['Playfair Display', 'serif'],
+        'source-sans': ['Source Sans Pro', 'sans-serif'],
+        'caveat': ['Caveat', 'cursive'],
+        
+        // Modern Warmth combination
+        'poppins': ['Poppins', 'sans-serif'],
+        'open-sans': ['Open Sans', 'sans-serif'],
+        'merriweather': ['Merriweather', 'serif'],
+        
+        // Rustic Charm combination
+        'crimson': ['Crimson Text', 'serif'],
+        'lato': ['Lato', 'sans-serif'],
+        'dancing-script': ['Dancing Script', 'cursive'],
+      },
+      letterSpacing: {
+        'warm': '0.02em',
+      },
+      lineHeight: {
+        'relaxed-reading': '1.6',
+        'comfortable': '1.8',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
