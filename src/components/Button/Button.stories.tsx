@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 const fn = () => () => {};
 import { ChevronRight, Download, Heart } from 'lucide-react';
 
-import { Button } from '../components/Button';
+import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Design System/Components/Form/Button',

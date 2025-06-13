@@ -1,9 +1,9 @@
 import React from 'react';
 import { Clock, Users, ChefHat, Star, Heart, Share2, Bookmark, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
-import { Button } from './Button';
-import { Alert, AlertDescription } from './ui/alert';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/Button';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 // Core interface as specified in the requirements
 export interface RecipeCardProps {
