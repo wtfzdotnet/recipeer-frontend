@@ -177,33 +177,31 @@ export const RecipeCategories: Story = {
             Diet
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="w-[300px] gap-3 p-4">
-              <div className="grid gap-2">
-                <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                  <div className="text-sm font-medium leading-none">Vegetarian</div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                    Plant-based recipes without meat
-                  </p>
-                </NavigationMenuLink>
-                <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                  <div className="text-sm font-medium leading-none">Vegan</div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                    Completely plant-based recipes
-                  </p>
-                </NavigationMenuLink>
-                <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                  <div className="text-sm font-medium leading-none">Gluten-Free</div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                    Recipes safe for gluten sensitivities
-                  </p>
-                </NavigationMenuLink>
-                <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                  <div className="text-sm font-medium leading-none">Keto</div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                    Low-carb, high-fat ketogenic recipes
-                  </p>
-                </NavigationMenuLink>
-              </div>
+            <div className="grid w-[300px] gap-2 p-4">
+              <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <div className="text-sm font-medium leading-none">Vegetarian</div>
+                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  Plant-based recipes without meat
+                </p>
+              </NavigationMenuLink>
+              <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <div className="text-sm font-medium leading-none">Vegan</div>
+                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  Completely plant-based recipes
+                </p>
+              </NavigationMenuLink>
+              <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <div className="text-sm font-medium leading-none">Gluten-Free</div>
+                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  Recipes safe for gluten sensitivities
+                </p>
+              </NavigationMenuLink>
+              <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <div className="text-sm font-medium leading-none">Keto</div>
+                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  Low-carb, high-fat ketogenic recipes
+                </p>
+              </NavigationMenuLink>
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
