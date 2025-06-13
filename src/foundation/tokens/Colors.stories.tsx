@@ -45,7 +45,7 @@ const ColorSwatch = ({
   <div className="flex items-center space-x-4 p-4 border rounded-lg bg-card">
     <div 
       className="w-16 h-16 rounded-lg border-2 border-border"
-      style={{ backgroundColor: `oklch(var(${variable}))` }}
+      style={{ backgroundColor: `var(${variable})` }}
     />
     <div className="flex-1">
       <h3 className="font-semibold text-lg text-card-foreground">{name}</h3>
@@ -53,7 +53,7 @@ const ColorSwatch = ({
       <p className="text-sm text-muted-foreground">{description}</p>
       {showValue && (
         <p className="text-xs text-muted-foreground font-mono mt-1">
-          oklch(var({variable}))
+          var({variable})
         </p>
       )}
     </div>
