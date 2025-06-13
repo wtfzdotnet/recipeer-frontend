@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button as ShadcnButton } from '@/components/ui/button/button';
+import { Button as ShadcnButton } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { VariantProps } from 'class-variance-authority';
-import { buttonVariants } from '@/components/ui/button/button';
+import { buttonVariants } from '@/components/ui/button';
 
 interface ButtonProps 
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
