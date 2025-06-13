@@ -12,22 +12,39 @@ This is a modern React application built with:
 ## Development Guidelines
 
 - Use `cn()` utility from `src/lib/utils.js` for conditional className merging
-- Follow Component-Driven Development principles
-- Create Storybook stories for all new components
+- Follow strict Component-Driven Development (CDD) principles with co-located stories
+- Create Storybook stories for all new components, co-located with the component
+- Separate design tokens from component usage examples - tokens go in `src/foundation/tokens/`
 - Write tests using Vitest + Playwright for browser testing
 - ALWAYS run `npm run lint` before committing changes
 - Use shadcn/ui components when possible, extend with custom styling as needed
+- Organize UI components in proper subdirectories with clean exports via `index.ts`
 
 ## Project Structure
 
 ```
 src/
-├── components/         # Reusable UI components
-│   └── ui/            # shadcn/ui components
+├── components/                    # Reusable UI components
+│   ├── ui/                       # shadcn/ui components (organized in subdirectories)
+│   │   ├── alert/                # alert.tsx, Alert.stories.tsx, index.ts
+│   │   ├── button/               # button.tsx, index.ts
+│   │   ├── card/                 # card.tsx, Card.stories.tsx, index.ts
+│   │   └── input/                # input.tsx, index.ts
+│   ├── Button/                   # Custom components with stories co-located
+│   ├── Input/                    # Component.tsx, Component.stories.tsx
+│   ├── RecipeCard/              
+│   └── Typography/              
+├── foundation/                   # Design system foundations
+│   └── tokens/                   # Pure design tokens (NO component usage examples)
+│       ├── Colors.stories.tsx    # Color palette documentation
+│       ├── Spacing.stories.tsx   # Spacing scale tokens
+│       └── Typography.stories.tsx # Font families, scales, weights
 ├── lib/
-│   └── utils.js       # Utility functions (cn() for className merging)
-├── stories/           # Storybook stories
-└── App.jsx           # Main application component
+│   └── utils.js                  # Utility functions (cn() for className merging)
+├── stories/                      # General Storybook configuration stories
+│   ├── Configure.mdx            # Storybook setup documentation
+│   └── Welcome.stories.tsx       # Welcome page
+└── App.tsx                       # Main application component
 ```
 
 ## Key Commands
@@ -46,4 +63,23 @@ src/
 - Use Tailwind CSS classes for styling
 - Implement proper error boundaries
 - Write comprehensive tests for all components
-- Document components with Storybook stories
+- Document components with Storybook stories **co-located** with components
+- Maintain strict separation between design tokens and component usage examples
+- Use proper component subdirectory structure with clean `index.ts` exports
+- Follow Component-Driven Development principles for all new additions
+
+## Component Organization Rules
+
+### UI Components (shadcn/ui)
+- Organize in subdirectories: `src/components/ui/{component-name}/`
+- Include: `{component-name}.tsx`, `{ComponentName}.stories.tsx` (if applicable), `index.ts`
+- Export component cleanly via `index.ts`
+
+### Custom Components
+- Co-locate stories with components: `Component.tsx` + `Component.stories.tsx`
+- Stories should demonstrate component usage, not design tokens
+
+### Design Tokens
+- Place in `src/foundation/tokens/` directory
+- Focus purely on design system foundations (colors, typography scales, spacing)
+- NO component usage examples in token stories
