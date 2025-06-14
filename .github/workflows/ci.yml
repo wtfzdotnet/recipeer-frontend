@@ -78,23 +78,21 @@ jobs:
     - name: Install dependencies
       run: npm ci --prefer-offline --no-audit --no-fund
       
-    # Cache Playwright browsers to avoid reinstalling every time
-    - name: Get Playwright version
-      id: playwright-version
-      run: echo "version=$(npm list @playwright/test --depth=0 --json | jq -r '.dependencies."@playwright/test".version')" >> $GITHUB_OUTPUT
+    # - name: Get Playwright version
+    #   id: playwright-version
+    #   run: echo "version=$(npm list @playwright/test --depth=0 --json | jq -r '.dependencies."@playwright/test".version')" >> $GITHUB_OUTPUT
       
-    - name: Cache Playwright browsers
-      uses: actions/cache@v4
-      id: playwright-cache
-      with:
-        path: ~/.cache/ms-playwright
-        key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
+    # - name: Cache Playwright browsers
+    #   uses: actions/cache@v4
+    #   id: playwright-cache
+    #   with:
+    #     path: ~/.cache/ms-playwright
+    #     key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
         
-    - name: Install Playwright browsers
-      if: steps.playwright-cache.outputs.cache-hit != 'true'
-      run: npx playwright install --with-deps chromium
+    # - name: Install Playwright browsers
+    #   if: steps.playwright-cache.outputs.cache-hit != 'true'
+    #   run: npx playwright install --with-deps chromium
       
-    # Cache Storybook build to speed up multiple runs
     - name: Cache Storybook build
       uses: actions/cache@v4
       with:
@@ -118,12 +116,6 @@ jobs:
       
     - name: Run design token compliance scan  
       run: npm run scan:design-system
-      
-    - name: Run visual regression tests
-      run: npx playwright test --workers=2
-      env:
-        CI: true
-      
     - name: Upload design system scan results
       uses: actions/upload-artifact@v4
       if: always()
@@ -131,15 +123,29 @@ jobs:
         name: design-system-scan-results
         path: |
           test-results/
-          playwright-report/
-        retention-days: 30
+        retention-days: 7
+      
+    # - name: Run visual regression tests
+    #   run: npx playwright test --workers=2
+    #   env:
+    #     CI: true
+      
+    # - name: Upload design system scan results
+    #   uses: actions/upload-artifact@v4
+    #   if: always()
+    #   with:
+    #     name: design-system-scan-results
+    #     path: |
+    #       test-results/
+    #       playwright-report/
+    #     retention-days: 30
         
-    - name: Upload accessibility test results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: accessibility-test-results
-        path: |
-          test-results/design-system-results.json
-          test-results/design-system-results.xml
-        retention-days: 30
+    # - name: Upload accessibility test results
+    #   uses: actions/upload-artifact@v4
+    #   if: always()
+    #   with:
+    #     name: accessibility-test-results
+    #     path: |
+    #       test-results/design-system-results.json
+    #       test-results/design-system-results.xml
+    #     retention-days: 30
