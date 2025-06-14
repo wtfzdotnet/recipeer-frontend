@@ -1,3 +1,17 @@
+# [1.3.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.2.0...v1.3.0) (2025-06-14)
+
+
+### Bug Fixes
+
+* **components:** Fix incorrect import paths in Story files following atomic design hierarchy ([ab47383](https://github.com/wtfzdotnet/recipeer-frontend/commit/ab473834f9157ded58663c033da57e93058d9c73))
+* csp injection ([edc2b33](https://github.com/wtfzdotnet/recipeer-frontend/commit/edc2b33fc8af349fcf9879b9b21e8a8c360972cc))
+
+
+### Features
+
+* **tools:** Add automated design system scanning tools ([1f5b857](https://github.com/wtfzdotnet/recipeer-frontend/commit/1f5b857c743af6a80062ac6ffc65a2faa6f00fdb))
+* **tools:** Complete automated design system scanning implementation ([6ae329e](https://github.com/wtfzdotnet/recipeer-frontend/commit/6ae329ead5acb281c932abbb43a17e7e2d223834))
+
 # [1.2.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.1.0...v1.2.0) (2025-06-14)
 
 
