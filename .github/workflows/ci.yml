@@ -6,32 +6,47 @@ on:
   pull_request:
     branches: [ main, develop ]
 
+# Cancel in-progress runs on new pushes to the same PR/branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [20]
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 20
         cache: 'npm'
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Run linter
       run: npm run lint
       
     - name: Run style linter
       run: npm run lint:style
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci --prefer-offline --no-audit --no-fund
       
     - name: Run tests
       run: npm run test
@@ -48,7 +63,7 @@ jobs:
 
   design-system-scan:
     runs-on: ubuntu-latest
-    needs: test
+    needs: [lint, test]
     
     steps:
     - name: Checkout code
@@ -61,22 +76,53 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
+    # Cache Playwright browsers to avoid reinstalling every time
+    - name: Get Playwright version
+      id: playwright-version
+      run: echo "version=$(npm list @playwright/test --depth=0 --json | jq -r '.dependencies."@playwright/test".version')" >> $GITHUB_OUTPUT
+      
+    - name: Cache Playwright browsers
+      uses: actions/cache@v4
+      id: playwright-cache
+      with:
+        path: ~/.cache/ms-playwright
+        key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
+        
     - name: Install Playwright browsers
-      run: npx playwright install --with-deps
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+      run: npx playwright install --with-deps chromium
       
+    # Cache Storybook build to speed up multiple runs
+    - name: Cache Storybook build
+      uses: actions/cache@v4
+      with:
+        path: storybook-static
+        key: storybook-${{ runner.os }}-${{ hashFiles('src/**/*', '.storybook/**/*', 'package-lock.json') }}
+        restore-keys: |
+          storybook-${{ runner.os }}-
+          
     - name: Build Storybook
       run: npm run build-storybook
+      env:
+        NODE_ENV: production
+        # Skip font loading and optimize for CI
+        CI: true
+        NODE_OPTIONS: '--max-old-space-size=4096'
+        # Disable source maps for faster builds
+        GENERATE_SOURCEMAP: false
       
     - name: Run design system accessibility scan
       run: npm run test:a11y
       
-    - name: Run design token compliance scan
+    - name: Run design token compliance scan  
       run: npm run scan:design-system
       
     - name: Run visual regression tests
-      run: npx playwright test
+      run: npx playwright test --workers=2
+      env:
+        CI: true
       
     - name: Upload design system scan results
       uses: actions/upload-artifact@v4

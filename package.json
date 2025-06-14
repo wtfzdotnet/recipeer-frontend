@@ -103,6 +103,7 @@
     "stylelint-config-standard": "^38.0.0",
     "stylelint-config-tailwindcss": "^1.0.0",
     "stylelint-order": "^7.0.0",
+    "terser": "^5.42.0",
     "tw-animate-css": "^1.3.4",
     "vite": "^6.3.5",
     "vitest": "^3.2.3"
