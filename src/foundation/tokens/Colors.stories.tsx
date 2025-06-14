@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ThemeToggle } from '../../components/ThemeToggle';
+import { ThemeToggle } from '../../components/molecules/theme-toggle/ThemeToggle';
 
 const meta: Meta = {
   title: 'Design System/Foundation/Colors',

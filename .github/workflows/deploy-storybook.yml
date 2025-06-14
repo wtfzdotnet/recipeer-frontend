@@ -32,11 +32,24 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --prefer-offline --no-audit --no-fund
       
+    # Cache Storybook build for faster deployments
+    - name: Cache Storybook build
+      uses: actions/cache@v4
+      with:
+        path: storybook-static
+        key: storybook-deploy-${{ runner.os }}-${{ hashFiles('src/**/*', '.storybook/**/*', 'package-lock.json') }}
+        restore-keys: |
+          storybook-deploy-${{ runner.os }}-
+          
     - name: Build Storybook
       run: npm run build-storybook
-      
+      env:
+        NODE_ENV: production
+        NODE_OPTIONS: '--max-old-space-size=4096'
+        GENERATE_SOURCEMAP: false
+        
     - name: Setup Pages
       uses: actions/configure-pages@v5
       

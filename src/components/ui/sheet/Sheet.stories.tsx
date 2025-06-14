@@ -11,9 +11,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from './sheet';
-import { Button } from '../button/button';
-import { Badge } from '../badge/badge';
-import { Checkbox } from '../checkbox/checkbox';
+import { Button } from '../../atoms/button';
+import { Badge } from '../../atoms/badge';
+import { Checkbox } from '../../atoms/checkbox';
 
 const meta: Meta<typeof Sheet> = {
   title: 'Design System/Components/Feedback/Sheet',

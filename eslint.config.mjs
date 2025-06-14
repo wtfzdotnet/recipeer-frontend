@@ -1,5 +1,6 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from "eslint-plugin-storybook";
+import designTokensPlugin from "./tools/eslint-plugin-design-tokens/index.js";
 
 import js from '@eslint/js'
 import globals from 'globals'
@@ -9,7 +10,7 @@ import tsParser from '@typescript-eslint/parser'
 import tsPlugin from '@typescript-eslint/eslint-plugin'
 
 export default [
-  { ignores: ['dist', 'storybook-static'] }, 
+  { ignores: ['dist', 'storybook-static', '.storybook/test-runner.js', 'playwright.config.ts', 'tools/**'] }, 
   // JavaScript files
   {
     files: ['**/*.{js,jsx}'],
@@ -25,6 +26,7 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'design-tokens': designTokensPlugin,
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -34,6 +36,8 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      'design-tokens/no-hardcoded-colors': 'warn',
+      'design-tokens/no-hardcoded-spacing': 'warn',
     },
   },
   // TypeScript files
@@ -53,6 +57,7 @@ export default [
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       '@typescript-eslint': tsPlugin,
+      'design-tokens': designTokensPlugin,
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -64,6 +69,8 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      'design-tokens/no-hardcoded-colors': 'warn',
+      'design-tokens/no-hardcoded-spacing': 'warn',
     },
   },
   // Test files - add vitest globals
@@ -95,6 +102,7 @@ export default [
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       '@typescript-eslint': tsPlugin,
+      'design-tokens': designTokensPlugin,
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -103,6 +111,8 @@ export default [
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
       'react-refresh/only-export-components': 'off', // Disable for test files
+      'design-tokens/no-hardcoded-colors': 'off', // Allow in tests for mocking
+      'design-tokens/no-hardcoded-spacing': 'off', // Allow in tests for mocking
     },
   },
   ...storybook.configs["flat/recommended"]

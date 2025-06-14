@@ -10,7 +10,7 @@ import {
   DialogTitle, 
   DialogTrigger 
 } from './dialog';
-import { Button } from '../button/button';
+import { Button } from '../../atoms/button';
 import { Input } from '../input/input';
 import { Label } from '../label/label';
 
