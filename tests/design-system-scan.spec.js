@@ -25,25 +25,27 @@ test.describe('Design System Accessibility Tests', () => {
     await page.waitForSelector('[data-testid="storybook-preview-iframe"]', { timeout: 10000 });
   });
 
-  const stories = await getStoryUrls();
-  
-  for (const storyUrl of stories) {
-    const storyId = storyUrl.split('id=')[1];
+  test('Run accessibility tests for all stories', async ({ page }) => {
+    const stories = await getStoryUrls();
     
-    test(`Accessibility check for ${storyId}`, async ({ page }) => {
-      await runAccessibilityTests(page, storyUrl);
-    });
+    for (const storyUrl of stories) {
+      const storyId = storyUrl.split('id=')[1];
+      
+      await test.step(`Accessibility check for ${storyId}`, async () => {
+        await runAccessibilityTests(page, storyUrl);
+      });
 
-    test(`Keyboard navigation for ${storyId}`, async ({ page }) => {
-      await page.goto(storyUrl);
-      await runKeyboardNavigationTest(page);
-    });
+      await test.step(`Keyboard navigation for ${storyId}`, async () => {
+        await page.goto(storyUrl);
+        await runKeyboardNavigationTest(page);
+      });
 
-    test(`Color contrast for ${storyId}`, async ({ page }) => {
-      await page.goto(storyUrl);
-      await runColorContrastTest(page);
-    });
-  }
+      await test.step(`Color contrast for ${storyId}`, async () => {
+        await page.goto(storyUrl);
+        await runColorContrastTest(page);
+      });
+    }
+  });
 });
 
 test.describe('Design Token Compliance Tests', () => {
