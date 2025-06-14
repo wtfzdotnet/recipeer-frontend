@@ -1,0 +1,15 @@
+{
+  "threshold": 0.2,
+  "include": ["**/*.stories.js", "**/*.stories.tsx", "**/*.stories.ts"],
+  "exclude": [],
+  "enableOnMerge": true,
+  "workingDirectory": "./storybook-static",
+  "actualDir": "./visual-regression/actual",
+  "expectedDir": "./visual-regression/expected", 
+  "diffDir": "./visual-regression/diff",
+  "report": "./visual-regression/report.html",
+  "json": "./visual-regression/report.json",
+  "ximgdiff": {
+    "invocationType": "auto"
+  }
+}
