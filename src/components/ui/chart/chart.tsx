@@ -77,8 +77,10 @@ const SimpleBarChart = React.forwardRef<
           backgroundColor: "hsl(var(--popover))",
           border: "1px solid hsl(var(--border))",
           borderRadius: "6px",
+          color: "hsl(var(--popover-foreground))",
         }}
         labelStyle={{ color: "hsl(var(--popover-foreground))" }}
+        itemStyle={{ color: "hsl(var(--popover-foreground))" }}
       />
       <Bar dataKey={dataKey} fill={color} radius={[4, 4, 0, 0]} />
     </BarChart>
@@ -107,8 +109,10 @@ const SimpleLineChart = React.forwardRef<
           backgroundColor: "hsl(var(--popover))",
           border: "1px solid hsl(var(--border))",
           borderRadius: "6px",
+          color: "hsl(var(--popover-foreground))",
         }}
         labelStyle={{ color: "hsl(var(--popover-foreground))" }}
+        itemStyle={{ color: "hsl(var(--popover-foreground))" }}
       />
       <Line 
         type="monotone" 
@@ -161,10 +165,12 @@ const SimplePieChart = React.forwardRef<
           backgroundColor: "hsl(var(--popover))",
           border: "1px solid hsl(var(--border))",
           borderRadius: "6px",
+          color: "hsl(var(--popover-foreground))",
         }}
         labelStyle={{ color: "hsl(var(--popover-foreground))" }}
+        itemStyle={{ color: "hsl(var(--popover-foreground))" }}
       />
-      <Legend />
+      <Legend wrapperStyle={{ color: "hsl(var(--foreground))" }} />
     </PieChart>
   </ChartContainer>
 ))
