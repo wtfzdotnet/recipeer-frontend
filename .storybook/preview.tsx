@@ -59,10 +59,9 @@ const preview = {
       },
     },
 
-    // Add actions for interactive components
-    actions: { argTypesRegex: "^on[A-Z].*" },
-
     // Documentation settings
+    // Note: Removed deprecated actions.argTypesRegex to resolve Storybook 9.0.9+ warning
+    // Actions should now be configured explicitly using fn() in individual stories
     docs: {
       toc: true, // Show table of contents in docs
     },
