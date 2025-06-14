@@ -41,7 +41,7 @@ test.describe('Design System Accessibility Tests', () => {
       // Try to wait for sidebar or any Storybook UI element
       await page.waitForSelector('body', { timeout: 5000 });
       await page.waitForTimeout(1000); // Give Storybook time to initialize
-    } catch (error) {
+    } catch {
       console.warn('Storybook UI not fully loaded, continuing with story tests');
     }
   });
@@ -91,7 +91,6 @@ test.describe('Design Token Compliance Tests', () => {
           const violations = [];
           
           elements.forEach(el => {
-            const style = window.getComputedStyle(el);
             const inlineStyle = el.getAttribute('style');
             
             // Check for hardcoded hex colors in inline styles
