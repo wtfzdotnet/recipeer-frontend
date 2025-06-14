@@ -72,6 +72,72 @@ When generating components, GitHub Copilot should:
 - Use shadcn/ui components when possible, extend with custom styling as needed
 - Organize UI components in atomic hierarchy with clean exports via `index.ts`
 - **NEW REQUIREMENT**: Design all components with internationalization (i18n) in mind - avoid hardcoded strings, plan for text expansion, and consider RTL languages
+- **CRITICAL**: Follow design token compliance rules - NO hardcoded colors or spacing values
+- **CRITICAL**: Export only React components from component files (separate constants/functions)
+
+## Design Token Compliance Rules
+
+**MANDATORY**: All GitHub Copilot suggestions MUST adhere to design token compliance. The CI pipeline automatically scans for violations and will block builds.
+
+### ❌ NEVER Suggest These Patterns:
+
+```typescript
+// ❌ Hardcoded Tailwind colors
+className="bg-blue-500 text-red-600 border-gray-200"
+
+// ❌ Arbitrary color values
+className="bg-[#3b82f6] text-[rgb(239,68,68)]"
+
+// ❌ RGB/hex in style objects
+style={{ backgroundColor: '#3b82f6', color: 'rgb(239, 68, 68)' }}
+
+// ❌ Arbitrary spacing values
+className="p-[12px] m-[24px] gap-[8px]"
+
+// ❌ Mixing components with constants
+export const RECIPE_TYPES = ['breakfast', 'lunch'];
+export const RecipeCard = () => { /* component */ };
+```
+
+### ✅ ALWAYS Suggest These Patterns:
+
+```typescript
+// ✅ Design token colors
+className="bg-primary text-destructive border-border"
+className="bg-background text-foreground"
+className="bg-muted text-muted-foreground"
+className="bg-card text-card-foreground"
+
+// ✅ Design token spacing
+className="p-2 m-4 gap-2"           // 8px padding, 16px margin, 8px gap
+className="px-4 py-2"               // 16px horizontal, 8px vertical padding
+className="space-y-4"               // 16px vertical spacing between children
+
+// ✅ Separate files for constants
+// constants/recipe-constants.ts
+export const RECIPE_TYPES = ['breakfast', 'lunch'];
+
+// components/organisms/recipe-card/recipe-card.tsx  
+export const RecipeCard = () => { /* component */ };
+```
+
+### Available Design Tokens for Copilot Suggestions:
+
+#### Colors:
+- `primary`, `primary-foreground`
+- `secondary`, `secondary-foreground`
+- `accent`, `accent-foreground`
+- `background`, `foreground`
+- `card`, `card-foreground`
+- `muted`, `muted-foreground`
+- `border`, `input`, `ring`
+- `destructive`, `destructive-foreground`
+
+#### Spacing:
+- `p-1` (4px), `p-2` (8px), `p-4` (16px), `p-6` (24px), `p-8` (32px)
+- `m-1` (4px), `m-2` (8px), `m-4` (16px), `m-6` (24px), `m-8` (32px)
+- `gap-1` (4px), `gap-2` (8px), `gap-4` (16px), `gap-6` (24px)
+- `space-y-2` (8px), `space-y-4` (16px), `space-y-6` (24px)
 
 ## Copilot-Specific Instructions
 
@@ -85,6 +151,8 @@ When suggesting components, Copilot should:
 
 ### Code Generation Patterns
 - **TypeScript First**: Always generate TypeScript interfaces
+- **Design Token First**: Use only design token colors and spacing
+- **Component Separation**: Export only React components (separate constants/functions)
 - **Accessibility First**: Include ARIA labels and semantic HTML
 - **Responsive First**: Consider mobile and desktop layouts
 - **Test First**: Generate test cases alongside components
@@ -154,7 +222,10 @@ src/
 
 - Use TypeScript/JavaScript ES6+ syntax with comprehensive interfaces
 - Prefer functional components with hooks
-- Use Tailwind CSS classes for styling
+- Use Tailwind CSS classes for styling **with design token compliance**
+- **NEVER use hardcoded colors** (bg-blue-500, #3b82f6, rgb(59,130,246))
+- **NEVER use arbitrary spacing** (p-[12px], gap-[8px])
+- **NEVER mix component exports with constants/functions** (breaks Fast Refresh)
 - Implement proper error boundaries for organisms and above
 - Write comprehensive tests for molecules and organisms
 - Document all components with Storybook stories **co-located** with components

@@ -20,6 +20,134 @@ This is a modern React application built with:
 - Use shadcn/ui components when possible, extend with custom styling as needed
 - Organize UI components in atomic hierarchy with clean exports via `index.ts`
 - **NEW REQUIREMENT**: Design all components with internationalization (i18n) in mind - avoid hardcoded strings, plan for text expansion, and consider RTL languages
+- **CRITICAL**: Follow design token compliance rules (see Design Token Guidelines section below)
+
+## Design Token Guidelines
+
+This project enforces strict design token compliance through automated CI scanning. ALL new code must adhere to these rules to pass validation:
+
+### Color Usage Rules
+
+**❌ NEVER use hardcoded colors:**
+```typescript
+// ❌ Hardcoded Tailwind color classes
+<div className="bg-blue-500 text-red-600">
+
+// ❌ Hardcoded RGB/hex values in styles
+<div style={{ backgroundColor: '#3b82f6', color: 'rgb(239, 68, 68)' }}>
+
+// ❌ Arbitrary color values in Tailwind
+<div className="bg-[#3b82f6] text-[rgb(239,68,68)]">
+```
+
+**✅ ALWAYS use design token colors:**
+```typescript
+// ✅ Semantic design token colors
+<div className="bg-primary text-destructive">
+
+// ✅ Design system color tokens
+<div className="bg-background text-foreground">
+<div className="bg-muted text-muted-foreground">
+<div className="bg-card text-card-foreground">
+<div className="bg-accent text-accent-foreground">
+
+// ✅ Status colors from design tokens
+<div className="bg-success text-success-foreground">
+<div className="bg-warning text-warning-foreground">
+<div className="bg-destructive text-destructive-foreground">
+```
+
+### Spacing Usage Rules
+
+**❌ NEVER use arbitrary spacing values:**
+```typescript
+// ❌ Arbitrary spacing values
+<div className="p-[12px] m-[24px]">
+<div className="gap-[8px] space-y-[16px]">
+
+// ❌ Hardcoded pixel values in styles
+<div style={{ padding: '12px', margin: '24px' }}>
+```
+
+**✅ ALWAYS use design token spacing:**
+```typescript
+// ✅ Design token spacing scale
+<div className="p-1 m-2">      // 4px padding, 8px margin
+<div className="p-2 m-4">      // 8px padding, 16px margin  
+<div className="p-4 m-6">      // 16px padding, 24px margin
+<div className="p-6 m-8">      // 24px padding, 32px margin
+
+// ✅ Consistent spacing tokens
+<div className="gap-2 space-y-4">
+<div className="px-4 py-2">
+<div className="mx-auto my-8">
+```
+
+### Component Export Rules
+
+**❌ NEVER export non-components from component files:**
+```typescript
+// ❌ Mixing constants with component exports
+export const RECIPE_TYPES = ['breakfast', 'lunch', 'dinner'];
+export const RecipeCard = () => { /* component */ };
+```
+
+**✅ ALWAYS separate constants from component exports:**
+```typescript
+// ✅ Create separate constants file
+// constants/recipe-constants.ts
+export const RECIPE_TYPES = ['breakfast', 'lunch', 'dinner'];
+
+// components/organisms/recipe-card/recipe-card.tsx
+export const RecipeCard = () => { /* component */ };
+```
+
+### Available Design Tokens
+
+#### Color Tokens
+- **Primary Colors**: `primary`, `primary-foreground`
+- **Secondary Colors**: `secondary`, `secondary-foreground`  
+- **Accent Colors**: `accent`, `accent-foreground`
+- **Background Colors**: `background`, `foreground`
+- **Surface Colors**: `card`, `card-foreground`, `popover`, `popover-foreground`
+- **Muted Colors**: `muted`, `muted-foreground`
+- **Border Colors**: `border`, `input`, `ring`
+- **Status Colors**: `destructive`, `destructive-foreground`
+
+#### Spacing Tokens
+- **Micro Spacing**: `p-0.5` (2px), `p-1` (4px), `p-1.5` (6px)
+- **Small Spacing**: `p-2` (8px), `p-3` (12px), `p-4` (16px)
+- **Medium Spacing**: `p-5` (20px), `p-6` (24px), `p-8` (32px)
+- **Large Spacing**: `p-10` (40px), `p-12` (48px), `p-16` (64px)
+- **XL Spacing**: `p-20` (80px), `p-24` (96px), `p-32` (128px)
+
+### Enforcement Rules
+
+1. **CI Pipeline**: All code is automatically scanned for design token compliance
+2. **Build Blocking**: Non-compliant code will cause CI failures
+3. **ESLint Rules**: Custom rules enforce token usage at development time
+4. **Pull Request Checks**: PRs cannot merge with design token violations
+5. **Storybook Integration**: Stories must demonstrate proper token usage
+
+### Migration Strategy
+
+When updating existing code with hardcoded values:
+
+1. **Identify the Purpose**: Determine if the color/spacing serves a semantic purpose
+2. **Map to Tokens**: Find the appropriate design token that matches the intent
+3. **Update Systematically**: Replace all instances of hardcoded values
+4. **Test Thoroughly**: Ensure visual consistency is maintained
+5. **Document Changes**: Note any visual differences in PR descriptions
+
+### Design Token Creation
+
+If you need a design token that doesn't exist:
+
+1. **Justify the Need**: Explain why existing tokens are insufficient
+2. **Follow Naming Convention**: Use semantic names, not visual descriptions
+3. **Add to Design System**: Update `src/foundation/tokens/` 
+4. **Document Usage**: Add examples to Storybook token stories
+5. **Get Approval**: Design token additions require design system review
 
 ## Atomic Design Architecture
 
@@ -168,13 +296,16 @@ src/
 
 - Use TypeScript/JavaScript ES6+ syntax
 - Prefer functional components with hooks
-- Use Tailwind CSS classes for styling
+- Use Tailwind CSS classes for styling (following design token compliance)
 - Implement proper error boundaries
 - Write comprehensive tests for all components
 - Document components with Storybook stories **co-located** with components
 - Maintain strict separation between design tokens and component usage examples
 - Use proper component subdirectory structure with clean `index.ts` exports
 - Follow Component-Driven Development principles for all new additions
+- **CRITICAL**: Separate component exports from constants/functions to maintain Fast Refresh compatibility
+- **CRITICAL**: Use only design tokens for colors and spacing (no hardcoded values)
+- **CRITICAL**: Export only React components from component files
 
 ## Component Development Guidelines
 
