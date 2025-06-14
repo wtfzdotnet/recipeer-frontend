@@ -30,6 +30,7 @@ This directory contains comprehensive documentation for auditing design system c
 |----------|---------|
 | [ADR-0001: Atomic Design Component Architecture](../adr/0001-atomic-design-component-architecture.md) | Foundation architectural decisions |
 | [ADR-001: Adopt Atomic Design + Component-Driven Development](../adr/001-atomic-design-architecture.md) | Implementation details and validation |
+| [Example: Button Component Audit](./example-button-audit.md) | Demonstration of audit methodology in practice |
 
 ## Audit Framework
 
@@ -97,7 +98,7 @@ This directory contains comprehensive documentation for auditing design system c
 ### For New Auditors
 
 1. **Read the documentation**: Start with audit criteria and scoring methodology
-2. **Review examples**: Examine existing components in Storybook
+2. **Review the example audit**: Study the [Button component audit example](./example-button-audit.md) to understand the process
 3. **Practice scoring**: Audit a simple atom component to understand the process
 4. **Shadow experienced auditor**: Observe an audit session for complex components
 5. **Start with low-risk audits**: Begin with non-critical components
