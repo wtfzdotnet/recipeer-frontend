@@ -8,6 +8,14 @@ export { RecipeCollectionSaver } from './recipe-collection-saver';
 export { Dialog } from './dialog';
 export { LoginForm } from './login-form';
 
+// Advanced Components
+export { RecipeDataTable } from './recipe-data-table';
+export { MealPlanningCalendar } from './meal-planning-calendar';
+export { RecipeCommandPalette } from './recipe-command-palette';
+export { FeaturedRecipesCarousel } from './featured-recipes-carousel';
+export { NutritionAnalyticsChart } from './nutrition-analytics-chart';
+export { RecipeCollectionsCollapsible } from './recipe-collections-collapsible';
+
 // New organisms
 export * from './navigation-menu';
 
@@ -18,3 +26,11 @@ export type { NutritionFactsProps } from './nutrition-facts';
 export type { RecipeCollectionSaverProps } from './recipe-collection-saver';
 export type { DialogProps } from './dialog';
 export type { LoginFormProps } from './login-form';
+
+// Advanced Component Types
+export type { RecipeDataTableProps, Recipe } from './recipe-data-table';
+export type { MealPlanningCalendarProps, MealPlan } from './meal-planning-calendar';
+export type { RecipeCommandPaletteProps, CommandAction, RecipeSearchResult } from './recipe-command-palette';
+export type { FeaturedRecipesCarouselProps, FeaturedRecipe } from './featured-recipes-carousel';
+export type { NutritionAnalyticsChartProps, NutritionData, MacroBreakdown, WeeklyNutritionSummary } from './nutrition-analytics-chart';
+export type { RecipeCollectionsCollapsibleProps, RecipeCollection, CollectionRecipe } from './recipe-collections-collapsible';

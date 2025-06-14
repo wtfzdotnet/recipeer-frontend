@@ -10,6 +10,9 @@ export { Slider } from './slider';
 export { Card } from './card';
 export { Alert } from './alert';
 
+// Advanced Components
+export { IngredientCombobox } from './ingredient-combobox';
+
 // New molecules
 export * from './accordion';
 export * from './alert-dialog';
@@ -34,3 +37,6 @@ export type { SliderProps } from './slider';
 export type { CardProps } from './card';
 export type { AlertProps } from './alert';
 export type { TimerProps } from './timer';
+
+// Advanced Component Types
+export type { IngredientComboboxProps, Ingredient } from './ingredient-combobox';
