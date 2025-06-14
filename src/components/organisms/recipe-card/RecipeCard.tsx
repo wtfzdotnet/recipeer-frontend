@@ -112,21 +112,21 @@ const RecipeMetadata: React.FC<{
 
 // Loading skeleton component with variant-specific layouts
 const LoadingSkeleton: React.FC<{ variant: string }> = ({ variant }) => {
-  // Base card classes for sizing consistency
-  const baseCardClasses = "group transition-all duration-200 w-80";
+  // Base card classes for sizing consistency - make responsive
+  const baseCardClasses = "group transition-all duration-200 w-full max-w-80";
 
   switch (variant) {
     case 'compact':
       return (
-        <Card className={cn(baseCardClasses, 'w-72 min-w-72')}>
+        <Card className={cn(baseCardClasses, 'w-full max-w-72 min-w-72')}>
           <div className="flex items-start space-x-4 p-4">
-            <Skeleton className="w-20 h-20 flex-shrink-0 rounded-lg" />
+            <Skeleton className="w-20 h-20 flex-shrink-0 rounded-lg animate-pulse" />
             <div className="flex-1 space-y-2">
-              <Skeleton className="h-5 w-full" />
-              <Skeleton className="h-4 w-3/4" />
+              <Skeleton className="h-5 w-full animate-pulse" />
+              <Skeleton className="h-4 w-3/4 animate-pulse" />
               <div className="flex space-x-2 mt-2">
-                <Skeleton className="h-3 w-12" />
-                <Skeleton className="h-3 w-16" />
+                <Skeleton className="h-3 w-12 animate-pulse" />
+                <Skeleton className="h-3 w-16 animate-pulse" />
               </div>
             </div>
           </div>
@@ -135,38 +135,38 @@ const LoadingSkeleton: React.FC<{ variant: string }> = ({ variant }) => {
 
     case 'hero':
       return (
-        <Card className={cn(baseCardClasses, 'w-96')}>
+        <Card className={cn(baseCardClasses, 'w-full max-w-96')}>
           <div className="relative">
-            <Skeleton className="w-full h-64 rounded-t-lg" />
+            <Skeleton className="w-full h-64 rounded-t-lg animate-pulse" />
             <div className="absolute top-4 right-4">
-              <Skeleton className="h-8 w-8 rounded-full" />
+              <Skeleton className="h-8 w-8 rounded-full animate-pulse" />
             </div>
           </div>
           <CardHeader className="pb-4">
-            <Skeleton className="h-7 w-3/4 mb-2" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-2/3" />
+            <Skeleton className="h-7 w-3/4 mb-2 animate-pulse" />
+            <Skeleton className="h-4 w-full animate-pulse" />
+            <Skeleton className="h-4 w-2/3 animate-pulse" />
             <div className="flex items-center space-x-1 mt-2">
               {[1,2,3,4,5].map(i => (
-                <Skeleton key={i} className="h-4 w-4 rounded" />
+                <Skeleton key={i} className="h-4 w-4 rounded animate-pulse" />
               ))}
-              <Skeleton className="h-4 w-16 ml-2" />
+              <Skeleton className="h-4 w-16 ml-2 animate-pulse" />
             </div>
           </CardHeader>
           <CardContent className="pt-0">
             <div className="flex justify-between items-center mb-4">
               <div className="flex space-x-4">
-                <Skeleton className="h-4 w-16" />
-                <Skeleton className="h-4 w-20" />
-                <Skeleton className="h-4 w-16" />
+                <Skeleton className="h-4 w-16 animate-pulse" />
+                <Skeleton className="h-4 w-20 animate-pulse" />
+                <Skeleton className="h-4 w-16 animate-pulse" />
               </div>
-              <Skeleton className="h-5 w-12" />
+              <Skeleton className="h-5 w-12 animate-pulse" />
             </div>
           </CardContent>
           <CardFooter className="gap-2">
-            <Skeleton variant="button" className="flex-1 h-10" />
-            <Skeleton className="h-10 w-10 rounded-md" />
-            <Skeleton className="h-10 w-10 rounded-md" />
+            <Skeleton variant="button" className="flex-1 h-10 animate-pulse" />
+            <Skeleton className="h-10 w-10 rounded-md animate-pulse" />
+            <Skeleton className="h-10 w-10 rounded-md animate-pulse" />
           </CardFooter>
         </Card>
       );
@@ -175,63 +175,63 @@ const LoadingSkeleton: React.FC<{ variant: string }> = ({ variant }) => {
       return (
         <Card className={baseCardClasses}>
           <div className="relative">
-            <Skeleton className="w-full h-48 rounded-t-lg" />
+            <Skeleton className="w-full h-48 rounded-t-lg animate-pulse" />
             <div className="absolute top-4 right-4 space-y-2">
-              <Skeleton className="h-8 w-8 rounded-full" />
-              <Skeleton className="h-8 w-8 rounded-full" />
+              <Skeleton className="h-8 w-8 rounded-full animate-pulse" />
+              <Skeleton className="h-8 w-8 rounded-full animate-pulse" />
             </div>
           </div>
           <CardHeader>
-            <Skeleton className="h-6 w-3/4 mb-2" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-2/3" />
+            <Skeleton className="h-6 w-3/4 mb-2 animate-pulse" />
+            <Skeleton className="h-4 w-full animate-pulse" />
+            <Skeleton className="h-4 w-2/3 animate-pulse" />
             <div className="flex items-center space-x-1 mt-2">
               {[1,2,3,4,5].map(i => (
-                <Skeleton key={i} className="h-4 w-4 rounded" />
+                <Skeleton key={i} className="h-4 w-4 rounded animate-pulse" />
               ))}
-              <Skeleton className="h-4 w-16 ml-2" />
+              <Skeleton className="h-4 w-16 ml-2 animate-pulse" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="flex justify-between">
                 <div className="flex space-x-4">
-                  <Skeleton className="h-4 w-16" />
-                  <Skeleton className="h-4 w-20" />
-                  <Skeleton className="h-4 w-16" />
+                  <Skeleton className="h-4 w-16 animate-pulse" />
+                  <Skeleton className="h-4 w-20 animate-pulse" />
+                  <Skeleton className="h-4 w-16 animate-pulse" />
                 </div>
-                <Skeleton className="h-5 w-12" />
+                <Skeleton className="h-5 w-12 animate-pulse" />
               </div>
               <div className="flex items-center space-x-2">
-                <Skeleton className="h-6 w-6 rounded-full" />
-                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-6 w-6 rounded-full animate-pulse" />
+                <Skeleton className="h-4 w-20 animate-pulse" />
               </div>
               <div className="flex flex-wrap gap-1">
-                <Skeleton className="h-6 w-16 rounded-full" />
-                <Skeleton className="h-6 w-20 rounded-full" />
-                <Skeleton className="h-6 w-14 rounded-full" />
+                <Skeleton className="h-6 w-16 rounded-full animate-pulse" />
+                <Skeleton className="h-6 w-20 rounded-full animate-pulse" />
+                <Skeleton className="h-6 w-14 rounded-full animate-pulse" />
               </div>
             </div>
           </CardContent>
           <CardFooter className="gap-2">
-            <Skeleton variant="button" className="flex-1" />
-            <Skeleton className="h-9 w-9 rounded-md" />
-            <Skeleton className="h-9 w-9 rounded-md" />
+            <Skeleton variant="button" className="flex-1 animate-pulse" />
+            <Skeleton className="h-9 w-9 rounded-md animate-pulse" />
+            <Skeleton className="h-9 w-9 rounded-md animate-pulse" />
           </CardFooter>
         </Card>
       );
 
     case 'minimal':
       return (
-        <Card className={cn(baseCardClasses, 'w-64')}>
+        <Card className={cn(baseCardClasses, 'w-full max-w-64')}>
           <div className="relative">
-            <Skeleton className="w-full h-32 rounded-t-lg" />
+            <Skeleton className="w-full h-32 rounded-t-lg animate-pulse" />
           </div>
           <CardContent className="p-4">
-            <Skeleton className="h-5 w-3/4 mb-2" />
+            <Skeleton className="h-5 w-3/4 mb-2 animate-pulse" />
             <div className="flex space-x-4 text-sm">
-              <Skeleton className="h-3 w-12" />
-              <Skeleton className="h-3 w-16" />
+              <Skeleton className="h-3 w-12 animate-pulse" />
+              <Skeleton className="h-3 w-16 animate-pulse" />
             </div>
           </CardContent>
         </Card>
@@ -241,19 +241,19 @@ const LoadingSkeleton: React.FC<{ variant: string }> = ({ variant }) => {
       return (
         <Card className="w-full">
           <div className="flex items-center space-x-4 p-4">
-            <Skeleton className="w-16 h-16 flex-shrink-0 rounded-lg" />
+            <Skeleton className="w-16 h-16 flex-shrink-0 rounded-lg animate-pulse" />
             <div className="flex-1 space-y-2">
-              <Skeleton className="h-5 w-1/2" />
-              <Skeleton className="h-4 w-3/4" />
+              <Skeleton className="h-5 w-1/2 animate-pulse" />
+              <Skeleton className="h-4 w-3/4 animate-pulse" />
               <div className="flex space-x-4">
-                <Skeleton className="h-3 w-12" />
-                <Skeleton className="h-3 w-16" />
-                <Skeleton className="h-3 w-12" />
+                <Skeleton className="h-3 w-12 animate-pulse" />
+                <Skeleton className="h-3 w-16 animate-pulse" />
+                <Skeleton className="h-3 w-12 animate-pulse" />
               </div>
             </div>
             <div className="flex space-x-2">
-              <Skeleton className="h-8 w-8 rounded-md" />
-              <Skeleton className="h-8 w-8 rounded-md" />
+              <Skeleton className="h-8 w-8 rounded-md animate-pulse" />
+              <Skeleton className="h-8 w-8 rounded-md animate-pulse" />
             </div>
           </div>
         </Card>
@@ -263,35 +263,35 @@ const LoadingSkeleton: React.FC<{ variant: string }> = ({ variant }) => {
       return (
         <Card className={baseCardClasses}>
           <div className="relative">
-            <Skeleton className="w-full h-48 rounded-t-lg" />
+            <Skeleton className="w-full h-48 rounded-t-lg animate-pulse" />
             <div className="absolute top-4 right-4">
-              <Skeleton className="h-8 w-8 rounded-full" />
+              <Skeleton className="h-8 w-8 rounded-full animate-pulse" />
             </div>
           </div>
           <CardHeader>
-            <Skeleton className="h-6 w-3/4 mb-2" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-2/3" />
+            <Skeleton className="h-6 w-3/4 mb-2 animate-pulse" />
+            <Skeleton className="h-4 w-full animate-pulse" />
+            <Skeleton className="h-4 w-2/3 animate-pulse" />
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               <div className="flex space-x-4">
-                <Skeleton className="h-4 w-16" />
-                <Skeleton className="h-4 w-20" />
-                <Skeleton className="h-4 w-16" />
+                <Skeleton className="h-4 w-16 animate-pulse" />
+                <Skeleton className="h-4 w-20 animate-pulse" />
+                <Skeleton className="h-4 w-16 animate-pulse" />
               </div>
               <div className="flex space-x-1">
                 {[1,2,3,4,5].map(i => (
-                  <Skeleton key={i} className="h-4 w-4 rounded" />
+                  <Skeleton key={i} className="h-4 w-4 rounded animate-pulse" />
                 ))}
-                <Skeleton className="h-4 w-16 ml-2" />
+                <Skeleton className="h-4 w-16 ml-2 animate-pulse" />
               </div>
             </div>
           </CardContent>
           <CardFooter className="gap-2">
-            <Skeleton variant="button" className="flex-1" />
-            <Skeleton className="h-9 w-9 rounded-md" />
-            <Skeleton className="h-9 w-9 rounded-md" />
+            <Skeleton variant="button" className="flex-1 animate-pulse" />
+            <Skeleton className="h-9 w-9 rounded-md animate-pulse" />
+            <Skeleton className="h-9 w-9 rounded-md animate-pulse" />
           </CardFooter>
         </Card>
       );
@@ -411,9 +411,9 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
 
   // Size variants
   const sizeClasses = {
-    small: 'w-64',
-    medium: 'w-80',
-    large: 'w-96'
+    small: 'w-full max-w-64',
+    medium: 'w-full max-w-80',
+    large: 'w-full max-w-96'
   };
 
   // Base card classes
@@ -430,7 +430,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   if (variant === 'compact') {
     return (
       <Card 
-        className={cn(cardClasses, 'w-72 min-w-72')} 
+        className={cn(cardClasses, 'w-full max-w-72 min-w-72')} 
         onClick={onClick}
         role="article"
         aria-labelledby={`recipe-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
