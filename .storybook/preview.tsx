@@ -2,16 +2,21 @@ import React from 'react';
 import '../src/index.css'; // Add this line to import Tailwind CSS
 import { ThemeProvider } from '../src/providers/ThemeProvider';
 
-declare const process: { env: { CI?: string } }; // Fix for process.env.CI usage
-
-// Optimized font loading for CI/CD - only load essential fonts in development
-// Skip all font loading in CI for maximum performance
-if (typeof window !== 'undefined' && !process.env.CI && !window.location.href.includes('chromatic')) {
-  // Only load essential fonts in development
-  const link = document.createElement('link');
-  link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap';
-  link.rel = 'stylesheet';
-  document.head.appendChild(link);
+// Optimized font loading for all environments
+// Load fonts efficiently with display=swap for better performance
+if (typeof window !== 'undefined') {
+  // Check if fonts are already loaded to avoid duplicate requests
+  const existingFontLink = document.querySelector('link[href*="fonts.googleapis.com"]');
+  
+  if (!existingFontLink) {
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap';
+    link.rel = 'stylesheet';
+    // Add media="print" initially, then change to "all" after load for faster initial rendering
+    link.media = 'print';
+    link.onload = () => { link.media = 'all'; };
+    document.head.appendChild(link);
+  }
 }
 
 /** @type { import('@storybook/react-vite').Preview } */
@@ -92,7 +97,7 @@ const preview = {
   decorators: [
     (Story) => (
       <ThemeProvider defaultTheme="light" storageKey="storybook-ui-theme">
-        <div style={{ padding: '1rem' }} className="bg-background text-foreground min-h-screen">
+        <div style={{ padding: '1rem' }} className="bg-background text-foreground">
           <Story />
         </div>
       </ThemeProvider>

@@ -493,3 +493,79 @@ export const Playground: Story = {
     }
   }
 };
+
+// Loading state stories for all variants
+export const LoadingCompact: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'compact',
+    isLoading: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Compact variant loading state with skeleton UI optimized for smaller cards.'
+      }
+    }
+  }
+};
+
+export const LoadingHero: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'hero',
+    isLoading: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Hero variant loading state with larger skeleton placeholders for featured recipes.'
+      }
+    }
+  }
+};
+
+export const LoadingDetailed: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'detailed',
+    isLoading: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Detailed variant loading state with comprehensive skeleton layout including tags and author info.'
+      }
+    }
+  }
+};
+
+export const LoadingMinimal: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'minimal',
+    isLoading: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Minimal variant loading state with clean, simplified skeleton layout.'
+      }
+    }
+  }
+};
+
+export const LoadingList: Story = {
+  args: {
+    ...sampleRecipeData,
+    variant: 'list',
+    isLoading: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'List variant loading state with horizontal skeleton layout for table/list views.'
+      }
+    }
+  }
+};

@@ -60,6 +60,7 @@ When generating components, GitHub Copilot should:
 6. **TypeScript Interfaces**: Generate comprehensive props interfaces with JSDoc
 7. **Accessibility**: Include ARIA attributes and semantic HTML
 8. **Internationalization**: Avoid hardcoded strings, use placeholder props
+9. **Mock Functions**: Use `const fn = () => () => {};` pattern instead of `@storybook/test` imports
 
 ## Development Guidelines
 
@@ -201,6 +202,35 @@ src/
 - **Molecules**: `"Molecules/QuantityAdjuster"`, `"Molecules/SearchField"`
 - **Organisms**: `"Organisms/RecipeCard"`, `"Organisms/NavigationHeader"`
 - **Templates**: `"Templates/RecipeLayout"`, `"Templates/DashboardLayout"`
+
+### Mock Functions and Imports
+
+**CRITICAL**: This project does NOT use `@storybook/test` package. GitHub Copilot must use the established mock function pattern:
+
+```typescript
+// ❌ NEVER suggest importing from @storybook/test (package not available)
+import { fn } from '@storybook/test'
+
+// ✅ ALWAYS suggest simple mock function pattern
+// Simple mock function for stories
+const fn = () => () => {};
+```
+
+**Auto-Generate Pattern**:
+When creating Storybook stories, GitHub Copilot should automatically include:
+1. The mock function declaration at the top
+2. Proper usage in story args
+3. Consistent pattern across all story files
+
+**Usage in Generated Stories**:
+```typescript
+import type { Meta, StoryObj } from '@storybook/react-vite'
+// Simple mock function for stories
+const fn = () => () => {};
+import { ComponentName } from './ComponentName'
+
+// ...story configuration with fn() usage...
+```
 
 ### Story Requirements
 - Demonstrate realistic usage with mock data

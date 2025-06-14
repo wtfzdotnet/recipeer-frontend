@@ -29,4 +29,39 @@ describe('RecipeCard - Basic Tests', () => {
     expect(screen.getByText('Test Recipe')).toBeInTheDocument();
     expect(screen.getByText('45min')).toBeInTheDocument();
   });
+
+  it('renders loading skeleton for default variant', () => {
+    render(<RecipeCard {...basicProps} isLoading={true} />);
+    
+    // Should render skeleton elements, not the actual content
+    expect(screen.queryByText('Test Recipe')).not.toBeInTheDocument();
+    expect(screen.queryByText('45min')).not.toBeInTheDocument();
+    
+    // Should render skeleton placeholder elements
+    const skeletonElements = document.querySelectorAll('[class*="animate-pulse"]');
+    expect(skeletonElements.length).toBeGreaterThan(0);
+  });
+
+  it('renders loading skeleton for compact variant', () => {
+    render(<RecipeCard {...basicProps} variant="compact" isLoading={true} />);
+    
+    // Should render skeleton elements, not the actual content
+    expect(screen.queryByText('Test Recipe')).not.toBeInTheDocument();
+    expect(screen.queryByText('45min')).not.toBeInTheDocument();
+    
+    // Should render skeleton placeholder elements
+    const skeletonElements = document.querySelectorAll('[class*="animate-pulse"]');
+    expect(skeletonElements.length).toBeGreaterThan(0);
+  });
+
+  it('renders loading skeleton for hero variant', () => {
+    render(<RecipeCard {...basicProps} variant="hero" isLoading={true} />);
+    
+    // Should render skeleton elements, not the actual content
+    expect(screen.queryByText('Test Recipe')).not.toBeInTheDocument();
+    
+    // Should render skeleton placeholder elements with hero-specific layout
+    const skeletonElements = document.querySelectorAll('[class*="animate-pulse"]');
+    expect(skeletonElements.length).toBeGreaterThan(0);
+  });
 });

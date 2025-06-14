@@ -1,0 +1,1 @@
+export { RecipeDataTable, type RecipeDataTableProps, type Recipe } from './RecipeDataTable';

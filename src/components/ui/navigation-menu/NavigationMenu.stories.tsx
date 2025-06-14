@@ -16,7 +16,7 @@ const meta: Meta<typeof NavigationMenu> = {
   title: 'Design System/Components/Navigation/Navigation Menu',
   component: NavigationMenu,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
         component: `
