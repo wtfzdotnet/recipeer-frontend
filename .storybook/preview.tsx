@@ -2,6 +2,8 @@ import React from 'react';
 import '../src/index.css'; // Add this line to import Tailwind CSS
 import { ThemeProvider } from '../src/providers/ThemeProvider';
 
+declare const process: { env: { CI?: string } }; // Fix for process.env.CI usage
+
 // Optimized font loading for CI/CD - only load essential fonts in development
 // Skip all font loading in CI for maximum performance
 if (typeof window !== 'undefined' && !process.env.CI && !window.location.href.includes('chromatic')) {

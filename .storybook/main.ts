@@ -3,6 +3,8 @@
 import path from 'path';
 import { fileURLToPath } from 'node:url';
 
+declare const process: { env: { CI?: string; NODE_ENV?: string } }; // Fix for process.env.CI usage
+
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type { import('@storybook/react-vite').StorybookConfig } */

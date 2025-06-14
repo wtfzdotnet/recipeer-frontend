@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite';
 
-export default defineConfig(({ mode }) => {
+// Fix for process.env usage in JavaScript
+const process = globalThis.process || { env: {} };
+
+export default defineConfig(() => {
   const isCI = process.env.CI === 'true';
   
   return {
