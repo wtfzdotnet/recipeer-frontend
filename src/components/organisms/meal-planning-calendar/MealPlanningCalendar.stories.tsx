@@ -121,7 +121,7 @@ const mockMealPlans: MealPlan[] = [
 ]
 
 // Interactive wrapper for controlled state
-const MealPlanningCalendarWithState = (args: any) => {
+const MealPlanningCalendarWithState = (args: typeof Default.args) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(args.selectedDate)
   
   return (

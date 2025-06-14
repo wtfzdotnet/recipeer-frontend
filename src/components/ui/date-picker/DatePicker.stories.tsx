@@ -32,7 +32,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 // Interactive wrapper for controlled date state
-const DatePickerWithState = (args: any) => {
+const DatePickerWithState = (args: typeof Default.args) => {
   const [date, setDate] = useState<Date | undefined>(args.date)
   
   return (
