@@ -1,32 +1,25 @@
+const { injectAxe, checkA11y } = require('axe-playwright');
+
 module.exports = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   testTimeout: 60000,
   // Run accessibility tests for all stories
   async preRender(page, context) {
-    // Inject axe-core for accessibility testing
-    await page.addScriptTag({
-      url: 'https://unpkg.com/axe-core@4.8.1/axe.min.js',
-    });
+    // Use axe-playwright which handles CSP issues properly
+    await injectAxe(page);
   },
   async postRender(page, context) {
-    // Run accessibility checks after each story renders
-    const accessibilityResults = await page.evaluate(async () => {
-      if (typeof window.axe !== 'undefined') {
-        return await window.axe.run();
-      }
-      return null;
-    });
-
-    if (accessibilityResults && accessibilityResults.violations.length > 0) {
-      console.warn(`Accessibility violations found in ${context.title}:`);
-      accessibilityResults.violations.forEach((violation, index) => {
-        console.warn(`${index + 1}. ${violation.description}`);
-        console.warn(`   Impact: ${violation.impact}`);
-        console.warn(`   Help: ${violation.help}`);
-        violation.nodes.forEach((node, nodeIndex) => {
-          console.warn(`   Element ${nodeIndex + 1}: ${node.html}`);
-        });
+    // Run accessibility checks after each story renders using axe-playwright
+    try {
+      await checkA11y(page, undefined, {
+        detailedReport: false, // Set to true for more detailed output
+        reporter: 'no-passes', // Only report violations and incomplete
       });
+    } catch (error) {
+      // Log accessibility violations but don't fail the build
+      console.warn(`\n⚠️  Accessibility violations found in story: ${context.title}`);
+      console.warn(error.message);
+      console.warn('────────────────────────────────────────\n');
     }
   },
 };
