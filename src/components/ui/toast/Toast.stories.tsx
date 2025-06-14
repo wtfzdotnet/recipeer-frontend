@@ -10,7 +10,7 @@ import {
   ToastTitle, 
   ToastViewport 
 } from './toast';
-import { Button } from '../button/button';
+import { Button } from '../../atoms/button';
 
 const meta: Meta<typeof Toast> = {
   title: 'Design System/Components/Feedback/Toast',

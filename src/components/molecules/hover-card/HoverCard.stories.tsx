@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ChefHat, Clock, Users, Star, Calendar } from 'lucide-react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from './hover-card';
-import { Button } from '../button/button';
-import { Badge } from '../badge/badge';
-import { Avatar } from '../avatar/avatar';
+import { Button } from '../../atoms/button';
+import { Badge } from '../../atoms/badge';
+import { Avatar } from '../../atoms/avatar';
 
 const meta: Meta<typeof HoverCard> = {
   title: 'Molecules/HoverCard',

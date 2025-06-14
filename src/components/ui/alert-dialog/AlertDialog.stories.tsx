@@ -11,7 +11,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from './alert-dialog';
-import { Button } from '../button/button';
+import { Button } from '../../atoms/button';
 
 const meta: Meta<typeof AlertDialog> = {
   title: 'Design System/Components/Feedback/Alert Dialog',

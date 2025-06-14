@@ -11,10 +11,10 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from './drawer';
-import { Button } from '../button/button';
-import { Badge } from '../badge/badge';
-import { Checkbox } from '../checkbox/checkbox';
-import { Progress } from '../../../components/ui/progress/progress';
+import { Button } from '../../atoms/button';
+import { Badge } from '../../atoms/badge';
+import { Checkbox } from '../../atoms/checkbox';
+import { Progress } from '../../atoms/progress';
 
 const meta: Meta<typeof Drawer> = {
   title: 'Design System/Components/Feedback/Drawer',

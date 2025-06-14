@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Info, ChefHat, Clock, Lightbulb, Scale, Utensils } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
-import { Button } from '../button/button';
-import { Badge } from '../../../components/ui/badge/badge';
+import { Button } from '../../atoms/button';
+import { Badge } from '../../atoms/badge';
 
 const meta: Meta<typeof Popover> = {
   title: 'Molecules/Popover',
