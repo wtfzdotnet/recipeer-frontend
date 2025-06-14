@@ -6,7 +6,7 @@ const meta: Meta<typeof FeaturedRecipesCarousel> = {
   title: 'Organisms/FeaturedRecipesCarousel',
   component: FeaturedRecipesCarousel,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
   },
   tags: ['autodocs'],
 }

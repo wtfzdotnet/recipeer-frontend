@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/atoms';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Rating } from '@/components/ui/rating';
+import { AspectRatio } from '@/components/atoms/aspect-ratio';
+import { Skeleton } from '@/components/atoms/skeleton';
 
 // Core interface as specified in the requirements
 export interface RecipeCardProps {
@@ -65,13 +67,13 @@ const formatTime = (minutes: number): string => {
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
     case 'Easy':
-      return 'text-green-600';
+      return 'text-primary';
     case 'Medium':
-      return 'text-yellow-600';
+      return 'text-secondary';
     case 'Hard':
-      return 'text-red-600';
+      return 'text-destructive';
     default:
-      return 'text-gray-600';
+      return 'text-muted-foreground';
   }
 };
 
@@ -108,58 +110,204 @@ const RecipeMetadata: React.FC<{
 
 // Star rating component is now replaced by the reusable Rating component
 
-// Loading skeleton component
-const LoadingSkeleton: React.FC<{ variant: string }> = ({ variant }) => (
-  <Card className="animate-pulse">
-    {(variant === 'hero' || variant === 'default' || variant === 'detailed' || variant === 'minimal') && (
-      <div className="h-48 bg-gray-200 rounded-t-lg" />
-    )}
-    <CardHeader>
-      <div className="h-6 bg-gray-200 rounded w-3/4 mb-2" />
-      <div className="h-4 bg-gray-200 rounded w-full" />
-      <div className="h-4 bg-gray-200 rounded w-2/3" />
-    </CardHeader>
-    <CardContent>
-      <div className="space-y-3">
-        <div className="flex space-x-4">
-          <div className="h-4 bg-gray-200 rounded w-16" />
-          <div className="h-4 bg-gray-200 rounded w-20" />
-          <div className="h-4 bg-gray-200 rounded w-16" />
-        </div>
-        <div className="flex space-x-1">
-          {[1,2,3,4,5].map(i => (
-            <div key={i} className="h-4 w-4 bg-gray-200 rounded" />
-          ))}
-        </div>
-        {variant === 'detailed' && (
-          <>
-            <div className="h-4 bg-gray-200 rounded w-1/2" />
-            <div className="flex flex-wrap gap-1">
-              <div className="h-6 bg-gray-200 rounded-full w-16" />
-              <div className="h-6 bg-gray-200 rounded-full w-20" />
-              <div className="h-6 bg-gray-200 rounded-full w-14" />
+// Loading skeleton component with variant-specific layouts
+const LoadingSkeleton: React.FC<{ variant: string }> = ({ variant }) => {
+  // Base card classes for sizing consistency
+  const baseCardClasses = "group transition-all duration-200 w-80";
+
+  switch (variant) {
+    case 'compact':
+      return (
+        <Card className={cn(baseCardClasses, 'w-72 min-w-72')}>
+          <div className="flex items-start space-x-4 p-4">
+            <Skeleton className="w-20 h-20 flex-shrink-0 rounded-lg" />
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-5 w-full" />
+              <Skeleton className="h-4 w-3/4" />
+              <div className="flex space-x-2 mt-2">
+                <Skeleton className="h-3 w-12" />
+                <Skeleton className="h-3 w-16" />
+              </div>
             </div>
-          </>
-        )}
-      </div>
-    </CardContent>
-    <CardFooter className="gap-2">
-      <div className="h-9 bg-gray-200 rounded flex-1" />
-      <div className="h-9 bg-gray-200 rounded flex-1" />
-    </CardFooter>
-  </Card>
-);
+          </div>
+        </Card>
+      );
+
+    case 'hero':
+      return (
+        <Card className={cn(baseCardClasses, 'w-96')}>
+          <div className="relative">
+            <Skeleton className="w-full h-64 rounded-t-lg" />
+            <div className="absolute top-4 right-4">
+              <Skeleton className="h-8 w-8 rounded-full" />
+            </div>
+          </div>
+          <CardHeader className="pb-4">
+            <Skeleton className="h-7 w-3/4 mb-2" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-2/3" />
+            <div className="flex items-center space-x-1 mt-2">
+              {[1,2,3,4,5].map(i => (
+                <Skeleton key={i} className="h-4 w-4 rounded" />
+              ))}
+              <Skeleton className="h-4 w-16 ml-2" />
+            </div>
+          </CardHeader>
+          <CardContent className="pt-0">
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex space-x-4">
+                <Skeleton className="h-4 w-16" />
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-4 w-16" />
+              </div>
+              <Skeleton className="h-5 w-12" />
+            </div>
+          </CardContent>
+          <CardFooter className="gap-2">
+            <Skeleton variant="button" className="flex-1 h-10" />
+            <Skeleton className="h-10 w-10 rounded-md" />
+            <Skeleton className="h-10 w-10 rounded-md" />
+          </CardFooter>
+        </Card>
+      );
+
+    case 'detailed':
+      return (
+        <Card className={baseCardClasses}>
+          <div className="relative">
+            <Skeleton className="w-full h-48 rounded-t-lg" />
+            <div className="absolute top-4 right-4 space-y-2">
+              <Skeleton className="h-8 w-8 rounded-full" />
+              <Skeleton className="h-8 w-8 rounded-full" />
+            </div>
+          </div>
+          <CardHeader>
+            <Skeleton className="h-6 w-3/4 mb-2" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-2/3" />
+            <div className="flex items-center space-x-1 mt-2">
+              {[1,2,3,4,5].map(i => (
+                <Skeleton key={i} className="h-4 w-4 rounded" />
+              ))}
+              <Skeleton className="h-4 w-16 ml-2" />
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex justify-between">
+                <div className="flex space-x-4">
+                  <Skeleton className="h-4 w-16" />
+                  <Skeleton className="h-4 w-20" />
+                  <Skeleton className="h-4 w-16" />
+                </div>
+                <Skeleton className="h-5 w-12" />
+              </div>
+              <div className="flex items-center space-x-2">
+                <Skeleton className="h-6 w-6 rounded-full" />
+                <Skeleton className="h-4 w-20" />
+              </div>
+              <div className="flex flex-wrap gap-1">
+                <Skeleton className="h-6 w-16 rounded-full" />
+                <Skeleton className="h-6 w-20 rounded-full" />
+                <Skeleton className="h-6 w-14 rounded-full" />
+              </div>
+            </div>
+          </CardContent>
+          <CardFooter className="gap-2">
+            <Skeleton variant="button" className="flex-1" />
+            <Skeleton className="h-9 w-9 rounded-md" />
+            <Skeleton className="h-9 w-9 rounded-md" />
+          </CardFooter>
+        </Card>
+      );
+
+    case 'minimal':
+      return (
+        <Card className={cn(baseCardClasses, 'w-64')}>
+          <div className="relative">
+            <Skeleton className="w-full h-32 rounded-t-lg" />
+          </div>
+          <CardContent className="p-4">
+            <Skeleton className="h-5 w-3/4 mb-2" />
+            <div className="flex space-x-4 text-sm">
+              <Skeleton className="h-3 w-12" />
+              <Skeleton className="h-3 w-16" />
+            </div>
+          </CardContent>
+        </Card>
+      );
+
+    case 'list':
+      return (
+        <Card className="w-full">
+          <div className="flex items-center space-x-4 p-4">
+            <Skeleton className="w-16 h-16 flex-shrink-0 rounded-lg" />
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-5 w-1/2" />
+              <Skeleton className="h-4 w-3/4" />
+              <div className="flex space-x-4">
+                <Skeleton className="h-3 w-12" />
+                <Skeleton className="h-3 w-16" />
+                <Skeleton className="h-3 w-12" />
+              </div>
+            </div>
+            <div className="flex space-x-2">
+              <Skeleton className="h-8 w-8 rounded-md" />
+              <Skeleton className="h-8 w-8 rounded-md" />
+            </div>
+          </div>
+        </Card>
+      );
+
+    default: // 'default' variant
+      return (
+        <Card className={baseCardClasses}>
+          <div className="relative">
+            <Skeleton className="w-full h-48 rounded-t-lg" />
+            <div className="absolute top-4 right-4">
+              <Skeleton className="h-8 w-8 rounded-full" />
+            </div>
+          </div>
+          <CardHeader>
+            <Skeleton className="h-6 w-3/4 mb-2" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-2/3" />
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div className="flex space-x-4">
+                <Skeleton className="h-4 w-16" />
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-4 w-16" />
+              </div>
+              <div className="flex space-x-1">
+                {[1,2,3,4,5].map(i => (
+                  <Skeleton key={i} className="h-4 w-4 rounded" />
+                ))}
+                <Skeleton className="h-4 w-16 ml-2" />
+              </div>
+            </div>
+          </CardContent>
+          <CardFooter className="gap-2">
+            <Skeleton variant="button" className="flex-1" />
+            <Skeleton className="h-9 w-9 rounded-md" />
+            <Skeleton className="h-9 w-9 rounded-md" />
+          </CardFooter>
+        </Card>
+      );
+  }
+};
 
 // Error state component
 const ErrorCard: React.FC<{ title: string }> = ({ title }) => (
-  <Card className="border-red-200">
+  <Card className="border-destructive">
     <CardContent className="p-6">
       <div className="text-center">
-        <div className="h-32 bg-red-50 rounded-lg flex items-center justify-center mb-4">
-          <span className="text-red-400 text-sm">Image failed to load</span>
+        <div className="h-32 bg-destructive/5 rounded-lg flex items-center justify-center mb-4">
+          <span className="text-destructive text-sm">Image failed to load</span>
         </div>
-        <h3 className="font-semibold text-red-900">{title}</h3>
-        <p className="text-sm text-red-600 mt-1">Failed to load recipe data</p>
+        <h3 className="font-semibold text-destructive">{title}</h3>
+        <p className="text-sm text-destructive/80 mt-1">Failed to load recipe data</p>
         <Button variant="outline" size="sm" className="mt-3">
           Retry
         </Button>
@@ -168,7 +316,7 @@ const ErrorCard: React.FC<{ title: string }> = ({ title }) => (
   </Card>
 );
 
-// Image component with aspect ratio support
+// Image component with aspect ratio support using proper AspectRatio component
 const RecipeImage: React.FC<{
   src: string;
   alt: string;
@@ -176,23 +324,40 @@ const RecipeImage: React.FC<{
   className?: string;
   rounded?: boolean;
 }> = ({ src, alt, aspectRatio = '4:3', className, rounded = false }) => {
-  const aspectRatioClasses = {
-    '4:3': 'aspect-[4/3]',
-    '16:9': 'aspect-video',
-    '1:1': 'aspect-square',
-    'auto': 'h-auto'
+  const aspectRatioValues = {
+    '4:3': 4/3,
+    '16:9': 16/9,
+    '1:1': 1,
+    'auto': undefined
   };
 
   // Create a themed placeholder image
   const placeholderImage = `data:image/svg+xml;charset=UTF-8,%3Csvg width="400" height="300" xmlns="http://www.w3.org/2000/svg"%3E%3Crect width="100%25" height="100%25" fill="%23f9fafb"/%3E%3Crect x="20" y="20" width="360" height="260" fill="none" stroke="%23d1d5db" stroke-width="2" stroke-dasharray="8,4"/%3E%3Ctext x="50%25" y="45%25" font-family="Arial, sans-serif" font-size="16" fill="%236b7280" text-anchor="middle"%3E📖%3C/text%3E%3Ctext x="50%25" y="60%25" font-family="Arial, sans-serif" font-size="12" fill="%239ca3af" text-anchor="middle"%3ERecipe Image%3C/text%3E%3C/svg%3E`;
 
+  const ratio = aspectRatioValues[aspectRatio];
+
+  if (aspectRatio === 'auto') {
+    return (
+      <div className={cn(
+        'relative overflow-hidden bg-muted w-full',
+        rounded && 'rounded-lg',
+        className
+      )}>
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-auto object-cover transition-opacity duration-200"
+          onError={(e) => {
+            e.currentTarget.src = placeholderImage;
+          }}
+          loading="lazy"
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className={cn(
-      'relative overflow-hidden bg-gray-100',
-      aspectRatioClasses[aspectRatio],
-      rounded && 'rounded-lg',
-      className
-    )}>
+    <AspectRatio ratio={ratio} className={cn('overflow-hidden bg-muted', rounded && 'rounded-lg', className)}>
       <img
         src={src}
         alt={alt}
@@ -202,7 +367,7 @@ const RecipeImage: React.FC<{
         }}
         loading="lazy"
       />
-    </div>
+    </AspectRatio>
   );
 };
 
@@ -257,7 +422,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
     sizeClasses[size || 'medium'],
     {
       'hover:shadow-xl': variant === 'hero',
-      'shadow-none border-0': variant === 'minimal',
     },
     className
   );
@@ -387,7 +551,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
                     }}
                     aria-label={`${isSaved ? 'Remove' : 'Save'} ${title}`}
                   >
-                    <Heart className={cn("h-4 w-4", isSaved && "fill-red-500 text-red-500")} />
+                    <Heart className={cn("h-4 w-4", isSaved && "fill-destructive text-destructive")} />
                   </Button>
                 )}
                 {onShare && (
@@ -426,7 +590,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             src={image}
             alt={imageAlt}
             aspectRatio="16:9"
-            className="h-64"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -479,7 +642,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               {tags.slice(0, 3).map((tag, index) => (
                 <span 
                   key={index}
-                  className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                  className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded-full"
                 >
                   {tag}
                 </span>
@@ -499,11 +662,11 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               }}
               aria-label={`${isSaved ? 'Remove' : 'Save'} ${title}`}
             >
-              <Heart className={cn("h-4 w-4 mr-2", isSaved && "fill-red-500 text-red-500")} />
+              <Heart className={cn("h-4 w-4 mr-2", isSaved && "fill-destructive text-destructive")} />
               {isSaved ? 'Saved' : 'Save'}
             </Button>
           )}
-          <Button size="sm" className="flex-1">
+          <Button size="sm" variant="default" className="flex-1" onClick={onClick}>
             Start Cooking
           </Button>
         </CardFooter>
@@ -515,7 +678,11 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   if (variant === 'minimal') {
     return (
       <div 
-        className={cn(cardClasses, 'border-0 shadow-none bg-transparent')} 
+        className={cn(
+          'group transition-all duration-200 cursor-pointer border-0 shadow-none bg-transparent',
+          sizeClasses[size || 'medium'],
+          className
+        )} 
         onClick={onClick}
         role="article"
         aria-labelledby={`recipe-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
@@ -578,7 +745,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           src={image}
           alt={imageAlt}
           aspectRatio={aspectRatio}
-          className="h-48"
         />
         <CardHeader>
           <CardTitle 
@@ -643,7 +809,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               {tags.map((tag, index) => (
                 <span 
                   key={index}
-                  className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full"
+                  className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded-full"
                 >
                   {tag}
                 </span>
@@ -663,7 +829,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               }}
               aria-label={`${isSaved ? 'Remove' : 'Save'} ${title}`}
             >
-              <Heart className={cn("h-4 w-4 mr-2", isSaved && "fill-red-500 text-red-500")} />
+              <Heart className={cn("h-4 w-4 mr-2", isSaved && "fill-destructive text-destructive")} />
               {isSaved ? 'Saved' : 'Save'}
             </Button>
           )}
@@ -682,7 +848,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               Share
             </Button>
           )}
-          <Button size="sm" className="flex-1">
+          <Button size="sm" variant="default" className="flex-1" onClick={onClick}>
             View Recipe
           </Button>
         </CardFooter>
@@ -703,7 +869,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         src={image}
         alt={imageAlt}
         aspectRatio={aspectRatio}
-        className="h-48"
       />
       <CardHeader>
         <CardTitle 
@@ -745,11 +910,11 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             }}
             aria-label={`${isSaved ? 'Remove' : 'Save'} ${title}`}
           >
-            <Heart className={cn("h-4 w-4 mr-2", isSaved && "fill-red-500 text-red-500")} />
+            <Heart className={cn("h-4 w-4 mr-2", isSaved && "fill-destructive text-destructive")} />
             {isSaved ? 'Saved' : 'Save'}
           </Button>
         )}
-        <Button size="sm" className="flex-1">
+        <Button size="sm" variant="default" className="flex-1" onClick={onClick}>
           View Recipe
         </Button>
       </CardFooter>

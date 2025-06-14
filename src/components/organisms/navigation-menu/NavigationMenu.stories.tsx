@@ -16,7 +16,7 @@ const meta: Meta<typeof NavigationMenu> = {
   title: 'Organisms/NavigationMenu',
   component: NavigationMenu,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
         component: `

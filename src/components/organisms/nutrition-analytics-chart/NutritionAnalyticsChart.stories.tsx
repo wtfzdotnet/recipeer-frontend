@@ -6,7 +6,7 @@ const meta: Meta<typeof NutritionAnalyticsChart> = {
   title: 'Organisms/NutritionAnalyticsChart',
   component: NutritionAnalyticsChart,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
   },
   tags: ['autodocs'],
 }

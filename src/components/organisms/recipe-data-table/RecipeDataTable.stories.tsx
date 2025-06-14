@@ -6,7 +6,7 @@ const meta: Meta<typeof RecipeDataTable> = {
   title: 'Organisms/RecipeDataTable',
   component: RecipeDataTable,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
   },
   tags: ['autodocs'],
 }

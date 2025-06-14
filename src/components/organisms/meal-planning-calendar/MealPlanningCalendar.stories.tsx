@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { fn } from '@storybook/test'
+// Simple mock function for stories
+const fn = () => () => {};
 import { MealPlanningCalendar, type MealPlan } from './MealPlanningCalendar'
 import { useState } from 'react'
 
@@ -7,7 +8,7 @@ const meta: Meta<typeof MealPlanningCalendar> = {
   title: 'Organisms/MealPlanningCalendar',
   component: MealPlanningCalendar,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
     docs: {
       description: {
         component: 'A comprehensive meal planning calendar with cultural content organization and seasonal recipe integration.',

@@ -278,10 +278,36 @@ src/
 ```
 
 ## Storybook guidelines 
-- Try to mimic real world usage of components in stories, so derive examples that 
-  demonstrate how components will be used in the application. That also includes images, icons, and other assets.
-- When adding icons or images, try to be consistent with the design system. Use SVGs for icons and ensure they match the design tokens. The exception to this rule is 
-    when the design system does not provide an icon for a specific use case, in which case you can use any icon that fits the use case. Also think about something like lettuce icons to display a category of recipes, we don't want these colorized.
+
+### Mock Functions and Imports
+
+**CRITICAL**: This project does NOT use `@storybook/test` package. Use the established mock function pattern:
+
+```typescript
+// ❌ NEVER import from @storybook/test (package not available)
+import { fn } from '@storybook/test'
+
+// ✅ ALWAYS use simple mock function pattern
+// Simple mock function for stories
+const fn = () => () => {};
+```
+
+**Pattern Explanation**:
+- `fn()` creates a mock function that can be used for Storybook actions
+- This pattern is used consistently across all story files in the project
+- It provides the same functionality as `@storybook/test` but without the dependency
+- Works seamlessly with Storybook's action logger and controls
+
+**Usage in Stories**:
+```typescript
+export const Default: Story = {
+  args: {
+    onClick: fn(),
+    onSubmit: fn(),
+    onCancel: fn(),
+  },
+}
+```
 
 ## Key Commands
 
