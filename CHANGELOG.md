@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.1.0...v1.2.0) (2025-06-14)
+
+
+### Features
+
+* **docs:** implement comprehensive design system audit criteria and methodology ([71b6689](https://github.com/wtfzdotnet/recipeer-frontend/commit/71b668910cf9fc6838abd20bf5ccfa5890d250c5))
+
 # [1.1.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.0.0...v1.1.0) (2025-06-13)
 
 
