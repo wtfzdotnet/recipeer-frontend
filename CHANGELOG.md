@@ -1,3 +1,19 @@
+# [1.4.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.3.0...v1.4.0) (2025-06-14)
+
+
+### Bug Fixes
+
+* **stories,components:** Add missing stories and fix design system issues ([4a51b78](https://github.com/wtfzdotnet/recipeer-frontend/commit/4a51b784ce431cbf30f6a911b6ca236f18310978))
+* **stories:** Fix TypeScript any types in story components ([4dfb4ae](https://github.com/wtfzdotnet/recipeer-frontend/commit/4dfb4ae871001d0300e3fbc21f8598235b5bb69d))
+
+
+### Features
+
+* **advanced-components:** Add 8 advanced interface components with atomic design structure ([e8ddbed](https://github.com/wtfzdotnet/recipeer-frontend/commit/e8ddbed86b29d98a89fd997d196fedb63464b793))
+* **advanced-components:** Initial analysis and planning for Priority 5 components ([0708507](https://github.com/wtfzdotnet/recipeer-frontend/commit/07085072131513aa719c78bf304d1b9104255ae8))
+* **stories:** Add comprehensive Storybook stories for advanced components ([5b30a58](https://github.com/wtfzdotnet/recipeer-frontend/commit/5b30a58e641e1b75f05fd37158e369abab0aca8b))
+* various other fixes ([7470260](https://github.com/wtfzdotnet/recipeer-frontend/commit/747026059780e839b32ac87d96e5e1090c1526a3))
+
 # [1.3.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.2.0...v1.3.0) (2025-06-14)
 
 
