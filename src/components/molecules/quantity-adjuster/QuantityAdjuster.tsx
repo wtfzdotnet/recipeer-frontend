@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Plus, Minus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { scaleQuantity } from './quantity-utils';
 
 export interface QuantityAdjusterProps {
   /** Original serving size of the recipe */
@@ -69,7 +70,7 @@ export const QuantityAdjuster: React.FC<QuantityAdjusterProps> = ({
         <Minus className="h-4 w-4" />
       </Button>
       
-      <div className="flex flex-col items-center min-w-[80px]">
+      <div className="flex flex-col items-center min-w-20">
         <div className="text-lg font-semibold">
           {currentServings}
         </div>
@@ -77,7 +78,7 @@ export const QuantityAdjuster: React.FC<QuantityAdjusterProps> = ({
           {currentServings === 1 ? 'serving' : 'servings'}
         </div>
         {isScaled && (
-          <div className="text-xs text-orange-600 font-medium">
+          <div className="text-xs text-primary font-medium">
             {scalingFactor > 1 ? `×${scalingFactor.toFixed(1)}` : `×${scalingFactor.toFixed(2)}`}
           </div>
         )}
@@ -95,36 +96,6 @@ export const QuantityAdjuster: React.FC<QuantityAdjusterProps> = ({
       </Button>
     </div>
   );
-};
-
-/**
- * Utility function to scale ingredient quantities based on serving adjustments
- * @param originalQuantity The original quantity from the recipe
- * @param originalServings The original number of servings
- * @param currentServings The current number of servings
- * @returns Scaled quantity with smart rounding for practical measurements
- */
-export const scaleQuantity = (
-  originalQuantity: number,
-  originalServings: number,
-  currentServings: number
-): number => {
-  const scalingFactor = currentServings / originalServings;
-  const scaledQuantity = originalQuantity * scalingFactor;
-  
-  // Smart rounding for practical measurements
-  if (scaledQuantity < 0.125) {
-    return Number((scaledQuantity).toFixed(3));
-  } else if (scaledQuantity < 1) {
-    // Round to nearest 1/8 for fractions
-    return Math.round(scaledQuantity * 8) / 8;
-  } else if (scaledQuantity < 10) {
-    // Round to nearest 1/4 for small quantities
-    return Math.round(scaledQuantity * 4) / 4;
-  } else {
-    // Round to nearest 0.5 for larger quantities
-    return Math.round(scaledQuantity * 2) / 2;
-  }
 };
 
 export default QuantityAdjuster;

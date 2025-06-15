@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { QuantityAdjuster, scaleQuantity } from './QuantityAdjuster';
+import { QuantityAdjuster } from './QuantityAdjuster';
+import { scaleQuantity } from './quantity-utils';
 import { useState } from 'react';
 
 const meta = {
@@ -189,7 +190,7 @@ export const RecipeExample: Story = {
         </div>
         
         {servings !== originalServings && (
-          <div className="text-center text-xs text-orange-600 bg-orange-50 p-2 rounded">
+          <div className="text-center text-xs text-warning-foreground bg-warning/10 p-2 rounded">
             Recipe scaled {servings > originalServings ? 'up' : 'down'} by {((servings / originalServings) * 100).toFixed(0)}%
           </div>
         )}

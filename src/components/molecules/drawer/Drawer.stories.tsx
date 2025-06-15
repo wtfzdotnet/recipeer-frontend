@@ -104,7 +104,7 @@ export const IngredientChecklist: Story = {
         <DrawerContent side="bottom" className="h-[80vh]">
           <DrawerHeader>
             <DrawerTitle className="flex items-center gap-2">
-              <ChefHat className="h-5 w-5 text-orange-600" />
+              <ChefHat className="h-5 w-5 text-primary" />
               Risotto Ingredients
             </DrawerTitle>
             <DrawerDescription>
@@ -134,7 +134,7 @@ export const IngredientChecklist: Story = {
                       <div 
                         key={item.id} 
                         className={`flex items-center gap-3 p-3 border rounded-lg cursor-pointer transition-colors ${
-                          checkedItems.has(item.id) ? 'bg-green-50 border-green-200' : 'hover:bg-muted'
+                          checkedItems.has(item.id) ? 'bg-success/10 border-success' : 'hover:bg-muted'
                         }`}
                         onClick={() => toggleItem(item.id)}
                       >
@@ -146,7 +146,7 @@ export const IngredientChecklist: Story = {
                           {item.name}
                         </span>
                         {checkedItems.has(item.id) && (
-                          <Check className="h-4 w-4 text-green-600" />
+                          <Check className="h-4 w-4 text-success" />
                         )}
                       </div>
                     ))}
@@ -263,14 +263,14 @@ export const CookingProgress: Story = {
                   <div 
                     key={step.id}
                     className={`flex items-start gap-3 p-3 border rounded-lg cursor-pointer transition-colors ${
-                      isCompleted ? 'bg-green-50 border-green-200' : 
-                      isCurrent ? 'bg-blue-50 border-blue-200' : 'hover:bg-muted'
+                      isCompleted ? 'bg-success/10 border-success' : 
+                      isCurrent ? 'bg-primary/10 border-primary' : 'hover:bg-muted'
                     }`}
                     onClick={() => toggleStep(step.id)}
                   >
                     <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium mt-0.5 ${
-                      isCompleted ? 'bg-green-600 text-white' :
-                      isCurrent ? 'bg-blue-600 text-white' : 'bg-muted text-muted-foreground'
+                      isCompleted ? 'bg-success text-success-foreground' :
+                      isCurrent ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
                     }`}>
                       {isCompleted ? <Check className="h-3 w-3" /> : step.id}
                     </div>

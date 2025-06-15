@@ -45,9 +45,9 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         ref={ref}
         variant={variant === 'success' || variant === 'warning' || variant === 'info' ? 'default' : variant}
         className={cn(
-          variant === 'success' && 'border-green-500 text-green-700 dark:text-green-400',
-          variant === 'warning' && 'border-orange-500 text-orange-700 dark:text-orange-400',
-          variant === 'info' && 'border-blue-500 text-blue-700 dark:text-blue-400',
+          variant === 'success' && 'border-success text-success',
+          variant === 'warning' && 'border-warning text-warning',
+          variant === 'info' && 'border-primary text-primary',
           className
         )}
         {...props}
