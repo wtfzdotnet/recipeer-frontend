@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.6.1...v1.6.2) (2025-06-15)
+
+
+### Bug Fixes
+
+* resolve all ESLint warnings for design tokens and fast refresh ([2590be1](https://github.com/wtfzdotnet/recipeer-frontend/commit/2590be176ac154e5fcd220cf95d522392222272f))
+
 ## [1.6.1](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.6.0...v1.6.1) (2025-06-15)
 
 
