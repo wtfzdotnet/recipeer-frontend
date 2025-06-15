@@ -10,3 +10,4 @@ export {
   DialogTitle,
   DialogDescription,
 } from './dialog'
+export type { DialogProps } from './dialog'
