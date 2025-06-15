@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.8.0...v1.9.0) (2025-06-15)
+
+
+### Bug Fixes
+
+* **storybook:** add language selector and fix i18n initialization errors ([bf9b57c](https://github.com/wtfzdotnet/recipeer-frontend/commit/bf9b57cf6fe138ef9d63dda9dc794666338b1e19))
+
+
+### Features
+
+* **i18n:** implement Arabic (ar-SA) RTL language support and fix test infrastructure ([8f73ed0](https://github.com/wtfzdotnet/recipeer-frontend/commit/8f73ed0e91b9e8449e52c7ec8d0f708ddc2c4538))
+
 # [1.8.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.7.0...v1.8.0) (2025-06-15)
 
 
