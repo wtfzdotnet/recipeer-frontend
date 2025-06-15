@@ -279,8 +279,8 @@ export const Saved: Story = {
 // Different sizes story
 export const Sizes: Story = {
   render: () => (
-    <div className="space-y-6">
-      <div>
+    <div className="space-y-6 max-w-4xl mx-auto">
+      <div className="flex flex-col items-center">
         <h3 className="text-lg font-semibold mb-3">Small</h3>
         <RecipeCard 
           {...sampleRecipeData} 
@@ -294,11 +294,11 @@ export const Sizes: Story = {
           difficulty="Easy"
         />
       </div>
-      <div>
+      <div className="flex flex-col items-center">
         <h3 className="text-lg font-semibold mb-3">Medium</h3>
         <RecipeCard {...sampleRecipeData} variant="default" size="medium" />
       </div>
-      <div>
+      <div className="flex flex-col items-center">
         <h3 className="text-lg font-semibold mb-3">Large</h3>
         <RecipeCard 
           {...sampleRecipeData} 
@@ -327,7 +327,7 @@ export const Sizes: Story = {
 // Difficulty levels story
 export const DifficultyLevels: Story = {
   render: () => (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto p-6">
       <RecipeCard 
         {...sampleRecipeData} 
         variant="default" 
@@ -382,7 +382,7 @@ export const DifficultyLevels: Story = {
 // Responsive grid story
 export const ResponsiveGrid: Story = {
   render: () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-6xl">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto">
       <RecipeCard
         {...sampleRecipeData}
         variant="default"
