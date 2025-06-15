@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.5.0...v1.5.1) (2025-06-15)
+
+
+### Bug Fixes
+
+* **tests:** resolve failing test imports and assertions ([a4d0603](https://github.com/wtfzdotnet/recipeer-frontend/commit/a4d060321568aa4b2d2fe17ed1e64d3765bf562c))
+
 # [1.5.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.4.0...v1.5.0) (2025-06-15)
 
 
