@@ -2,6 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLocale } from '@/hooks/useLocale';
+import { SupportedLocale } from '@/types/locale.types';
 import {
   Select,
   SelectContent,
@@ -13,8 +15,8 @@ import {
 /**
  * Props for LanguageDropdown - Molecule
  * 
- * Molecule-level component that combines a select input with language options
- * to provide language switching functionality with persistence.
+ * Molecule-level component that combines a select input with locale options
+ * to provide language switching functionality with measurement unit and currency support.
  * 
  * @example
  * ```tsx
@@ -30,62 +32,52 @@ export interface LanguageDropdownProps {
   'aria-label'?: string;
 }
 
-/**
- * Language configuration with display names and flag emojis
- */
-const LANGUAGES = [
-  {
-    code: 'en',
-    name: 'English',
-    flag: '🇺🇸',
-  },
-  {
-    code: 'es', 
-    name: 'Español',
-    flag: '🇪🇸',
-  },
-] as const;
-
 export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
   className,
   'aria-label': ariaLabel,
 }) => {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
+  const { locale, availableLocales, changeLocale } = useLocale();
 
-  const handleLanguageChange = (language: string) => {
-    i18n.changeLanguage(language);
+  const handleLocaleChange = (newLocale: string) => {
+    changeLocale(newLocale as SupportedLocale);
   };
 
-  const currentLanguage = LANGUAGES.find(lang => lang.code === i18n.language) || LANGUAGES[0];
+  const currentLocale = availableLocales.find(l => l.locale === locale.locale) || availableLocales[0];
 
   return (
     <Select
-      value={i18n.language}
-      onValueChange={handleLanguageChange}
+      value={locale.locale}
+      onValueChange={handleLocaleChange}
       aria-label={ariaLabel || t('language.label')}
     >
       <SelectTrigger 
         className={cn(
-          "w-auto min-w-30 gap-2",
+          "w-auto min-w-40 gap-2",
           className
         )}
       >
         <div className="flex items-center gap-2">
           <Globe className="h-4 w-4" />
-          <span className="text-lg" role="img" aria-label={currentLanguage.name}>
-            {currentLanguage.flag}
+          <span className="text-lg" role="img" aria-label={currentLocale.name}>
+            {currentLocale.flag}
           </span>
         </div>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        {LANGUAGES.map((language) => (
-          <SelectItem key={language.code} value={language.code}>
+        {availableLocales.map((localeConfig) => (
+          <SelectItem key={localeConfig.locale} value={localeConfig.locale}>
             <div className="flex items-center gap-2">
-              <span className="text-lg" role="img" aria-label={language.name}>
-                {language.flag}
+              <span className="text-lg" role="img" aria-label={localeConfig.name}>
+                {localeConfig.flag}
               </span>
-              <span>{language.name}</span>
+              <div className="flex flex-col">
+                <span>{localeConfig.name}</span>
+                <span className="text-xs text-muted-foreground">
+                  {localeConfig.measurementSystem === 'metric' ? 'Metric' : 'Imperial'} • {localeConfig.currency}
+                </span>
+              </div>
             </div>
           </SelectItem>
         ))}

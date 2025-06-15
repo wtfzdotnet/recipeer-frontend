@@ -1,0 +1,56 @@
+{
+  "title": "Voedingswaarden",
+  "servingSize": "Portiegrootte",
+  "servings": {
+    "perContainer": "Porties per verpakking: {{count}}",
+    "amount": "{{count}} portie",
+    "amount_other": "{{count}} porties"
+  },
+  "calories": {
+    "label": "Calorieën",
+    "amount": "{{count}} kcal"
+  },
+  "percentDailyValue": "% Dagelijkse Waarde*",
+  "nutrients": {
+    "totalFat": "Totaal vet",
+    "saturatedFat": "Verzadigd vet",
+    "transFat": "Transvet",
+    "cholesterol": "Cholesterol", 
+    "sodium": "Natrium",
+    "totalCarbohydrate": "Totaal koolhydraten",
+    "dietaryFiber": "Voedingsvezel",
+    "totalSugars": "Totaal suikers",
+    "addedSugars": "Toegevoegde suikers",
+    "protein": "Eiwit",
+    "vitaminD": "Vitamine D",
+    "calcium": "Calcium",
+    "iron": "IJzer",
+    "potassium": "Kalium"
+  },
+  "units": {
+    "g": "g",
+    "mg": "mg",
+    "mcg": "mcg"
+  },
+  "dailyValueNote": "*De % Dagelijkse Waarde (DV) vertelt je hoeveel een voedingsstof in een portie voedsel bijdraagt aan een dagelijks dieet. 2000 calorieën per dag wordt gebruikt voor algemeen voedingsadvies.",
+  "badges": {
+    "organic": "Biologisch",
+    "glutenFree": "Glutenvrij",
+    "vegan": "Veganistisch",
+    "keto": "Keto",
+    "lowSodium": "Laag natrium"
+  },
+  "allergens": {
+    "warning": "Allergenen Waarschuwing",
+    "contains": "Bevat: {{allergens}}",
+    "mayContain": "Kan bevatten: {{allergens}}",
+    "milk": "melk",
+    "eggs": "eieren", 
+    "peanuts": "pinda's",
+    "treeNuts": "noten",
+    "soy": "soja",
+    "wheat": "tarwe",
+    "fish": "vis",
+    "shellfish": "schaaldieren"
+  }
+}

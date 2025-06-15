@@ -1,22 +1,23 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { DEFAULT_LOCALE } from '@/constants/locale-config';
 
 // Import translation resources
-import enCommon from './locales/en/common.json';
-import esCommon from './locales/es/common.json';
-import enNutrition from './locales/en/nutrition.json';
-import esNutrition from './locales/es/nutrition.json';
+import enUSCommon from './locales/en-US/common.json';
+import nlNLCommon from './locales/nl-NL/common.json';
+import enUSNutrition from './locales/en-US/nutrition.json';
+import nlNLNutrition from './locales/nl-NL/nutrition.json';
 
 // Translation resources
 const resources = {
-  en: {
-    common: enCommon,
-    nutrition: enNutrition,
+  'en-US': {
+    common: enUSCommon,
+    nutrition: enUSNutrition,
   },
-  es: {
-    common: esCommon,
-    nutrition: esNutrition,
+  'nl-NL': {
+    common: nlNLCommon,
+    nutrition: nlNLNutrition,
   },
 };
 
@@ -35,17 +36,23 @@ i18nInstance
   // Initialize i18next
   .init({
     resources,
-    fallbackLng: 'en',
+    fallbackLng: DEFAULT_LOCALE,
     debug: import.meta.env.DEV && !isTest,
     
     // Test configuration - set explicit language for tests
-    lng: isTest ? 'en' : undefined,
+    lng: isTest ? DEFAULT_LOCALE : undefined,
     
     // Language detection options (only used in non-test environments)
     detection: !isTest ? {
       order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
-      lookupLocalStorage: 'recipeer-language',
+      lookupLocalStorage: 'recipeer-locale',
+      convertDetectedLanguage: (lng: string) => {
+        // Map detected language to supported locales
+        if (lng.startsWith('nl')) return 'nl-NL';
+        if (lng.startsWith('en')) return 'en-US';
+        return DEFAULT_LOCALE;
+      },
     } : undefined,
 
     interpolation: {

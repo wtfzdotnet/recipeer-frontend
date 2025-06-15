@@ -29,6 +29,48 @@
   "language": {
     "label": "Language",
     "english": "English",
-    "spanish": "Español"
+    "dutch": "Dutch"
+  },
+  "units": {
+    "temperature": {
+      "celsius": "°C",
+      "fahrenheit": "°F"
+    },
+    "weight": {
+      "grams": "g",
+      "kilograms": "kg",
+      "ounces": "oz",
+      "pounds": "lbs"
+    },
+    "volume": {
+      "milliliters": "ml",
+      "liters": "l",
+      "cups": "cups",
+      "tablespoons": "tbsp",
+      "teaspoons": "tsp"
+    },
+    "length": {
+      "centimeters": "cm",
+      "meters": "m",
+      "inches": "in",
+      "feet": "ft"
+    }
+  },
+  "currency": {
+    "label": "Currency",
+    "symbol": "$",
+    "overrideNote": "Overriding locale default ({{defaultCurrency}})"
+  },
+  "locale": {
+    "preferences": "Locale Preferences",
+    "description": "Select your language, region, and measurement preferences."
+  },
+  "units": {
+    "measurementSystem": "Measurement System",
+    "metric": "Metric (°C, kg, cm)",
+    "imperial": "Imperial (°F, lbs, in)"
+  },
+  "dateFormat": {
+    "label": "Date Format"
   }
 }

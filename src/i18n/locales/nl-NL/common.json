@@ -1,0 +1,76 @@
+{
+  "app": {
+    "title": "Frontend Recipeer - Oranje Thema & Voedingswaarde Demo",
+    "description": "Een moderne receptenapplicatie met ondersteuning voor meerdere talen"
+  },
+  "buttons": {
+    "custom": "Aangepaste Knop",
+    "shadcn": "Shadcn Knop",
+    "default": "Standaard",
+    "destructive": "Destructief", 
+    "outline": "Omtrek",
+    "secondary": "Secundair",
+    "ghost": "Transparant",
+    "link": "Link"
+  },
+  "sections": {
+    "buttonTest": "Knop Test met Oranje Thema",
+    "nutritionDemo": "Voedingswaarde Component",
+    "recipeColors": "Recept-gethematiseerde Kleuren"
+  },
+  "descriptions": {
+    "directShadcn": "Directe shadcn/ui Knop:",
+    "customButton": "Aangepaste Knop (shadcn wrapper):",
+    "buttonVariantsShadcn": "Knop Varianten (Shadcn):",
+    "buttonVariantsCustom": "Knop Varianten (Aangepast):",
+    "nutritionLabel": "FDA-conforme voedingswaarde label met dagelijkse waarden, dieetcompliantie badges en allergeenwaarschuwingen.",
+    "colorTheme": "Dit warme oranje kleurenpalet is geïnspireerd door koken en voedselbereiding. De kleuren werken goed voor receptkaarten, ingrediëntenlijsten en kookinstructies. Probeer te schakelen tussen lichte en donkere modi met de knop in de rechterbovenhoek!"
+  },
+  "language": {
+    "label": "Taal",
+    "english": "Engels",
+    "dutch": "Nederlands"
+  },
+  "units": {
+    "temperature": {
+      "celsius": "°C",
+      "fahrenheit": "°F"
+    },
+    "weight": {
+      "grams": "g",
+      "kilograms": "kg",
+      "ounces": "oz",
+      "pounds": "lbs"
+    },
+    "volume": {
+      "milliliters": "ml",
+      "liters": "l",
+      "cups": "kopjes",
+      "tablespoons": "eetlepels",
+      "teaspoons": "theelepels"
+    },
+    "length": {
+      "centimeters": "cm",
+      "meters": "m",
+      "inches": "inch",
+      "feet": "voet"
+    }
+  },
+  "currency": {
+    "label": "Valuta",
+    "symbol": "€",
+    "overrideNote": "Overschrijft locale standaard ({{defaultCurrency}})"
+  },
+  "locale": {
+    "preferences": "Locale Voorkeuren",
+    "description": "Selecteer uw taal, regio en meetvoorkeuren."
+  },
+  "units": {
+    "measurementSystem": "Meetsysteem",
+    "metric": "Metrisch (°C, kg, cm)",
+    "imperial": "Imperiaal (°F, lbs, in)"
+  },
+  "dateFormat": {
+    "label": "Datumformaat"
+  }
+}
