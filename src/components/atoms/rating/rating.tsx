@@ -160,8 +160,8 @@ export const Rating = React.forwardRef<HTMLDivElement, RatingProps>(
               <Star
                 className={cn(
                   variant.star,
-                  'text-gray-300 transition-colors',
-                  isInteractive && 'cursor-pointer hover:text-yellow-400'
+                  'text-muted-foreground transition-colors',
+                  isInteractive && 'cursor-pointer hover:text-warning'
                 )}
                 aria-hidden="true"
               />
@@ -176,8 +176,8 @@ export const Rating = React.forwardRef<HTMLDivElement, RatingProps>(
                 <Star
                   className={cn(
                     variant.star,
-                    'fill-yellow-400 text-yellow-400 transition-colors',
-                    isInteractive && 'cursor-pointer hover:fill-yellow-500 hover:text-yellow-500'
+                    'fill-warning text-warning transition-colors',
+                    isInteractive && 'cursor-pointer hover:fill-primary hover:text-primary'
                   )}
                   aria-hidden="true"
                 />

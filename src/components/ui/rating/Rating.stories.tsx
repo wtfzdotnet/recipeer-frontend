@@ -145,7 +145,7 @@ export const RecipeExamples: Story = {
         <div className="border rounded-lg p-4 space-y-3">
           <h4 className="font-medium">Spaghetti Carbonara</h4>
           <Rating value={4.8} readonly size="sm" reviewCount={234} />
-          <p className="text-sm text-gray-600">Authentic Italian pasta dish</p>
+          <p className="text-sm text-muted-foreground">Authentic Italian pasta dish</p>
         </div>
 
         <div className="border rounded-lg p-4 space-y-3">

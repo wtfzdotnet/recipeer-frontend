@@ -66,6 +66,14 @@ export default {
           DEFAULT: "oklch(var(--destructive))",
           foreground: "oklch(var(--destructive-foreground))",
         },
+        success: {
+          DEFAULT: "oklch(var(--success))",
+          foreground: "oklch(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "oklch(var(--warning))",
+          foreground: "oklch(var(--warning-foreground))",
+        },
         border: "oklch(var(--border))",
         input: "oklch(var(--input))",
         ring: "oklch(var(--ring))",
@@ -78,13 +86,13 @@ export default {
         },
       },
       boxShadow: {
-        xs: "0px 1px 2px 0px rgba(0, 0, 0, 0.05)",
-        sm: "0px 1px 2px 0px rgba(0, 0, 0, 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.05)",
-        md: "0px 2px 4px -1px rgba(0, 0, 0, 0.1), 0px 4px 6px -1px rgba(0, 0, 0, 0.1)",
-        lg: "0px 4px 6px -2px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1)",
-        xl: "0px 10px 10px -5px rgba(0, 0, 0, 0.1), 0px 20px 25px -5px rgba(0, 0, 0, 0.1)",
-        "2xl": "0px 25px 50px -12px rgba(0, 0, 0, 0.25)",
-        inner: "inset 0px 2px 4px 0px rgba(0, 0, 0, 0.05)",
+        xs: "0px 1px 2px 0px hsl(0 0% 0% / 0.05)",
+        sm: "0px 1px 2px 0px hsl(0 0% 0% / 0.05), 0px 0px 0px 1px hsl(0 0% 0% / 0.05)",
+        md: "0px 2px 4px -1px hsl(0 0% 0% / 0.1), 0px 4px 6px -1px hsl(0 0% 0% / 0.1)",
+        lg: "0px 4px 6px -2px hsl(0 0% 0% / 0.1), 0px 10px 15px -3px hsl(0 0% 0% / 0.1)",
+        xl: "0px 10px 10px -5px hsl(0 0% 0% / 0.1), 0px 20px 25px -5px hsl(0 0% 0% / 0.1)",
+        "2xl": "0px 25px 50px -12px hsl(0 0% 0% / 0.25)",
+        inner: "inset 0px 2px 4px 0px hsl(0 0% 0% / 0.05)",
       },
       keyframes: {
         "accordion-down": {

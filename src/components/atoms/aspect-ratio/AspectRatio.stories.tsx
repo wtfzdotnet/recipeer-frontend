@@ -56,9 +56,9 @@ type Story = StoryObj<typeof AspectRatio>;
 // Default aspect ratio
 export const Default: Story = {
   render: () => (
-    <div className="w-[450px]">
+    <div className="w-full max-w-md">
       <AspectRatio ratio={16 / 9}>
-        <div className="rounded-lg bg-gradient-to-br from-orange-100 to-red-100 h-full w-full flex items-center justify-center">
+        <div className="rounded-lg bg-gradient-to-br from-secondary to-accent h-full w-full flex items-center justify-center">
           <span className="text-6xl">🍝</span>
         </div>
       </AspectRatio>
@@ -118,7 +118,7 @@ export const RecipeImageGallery: Story = {
         </AspectRatio>
         
         <AspectRatio ratio={1 / 1} className="overflow-hidden rounded-lg">
-          <div className="bg-gradient-to-br from-pink-100 to-red-100 h-full w-full flex items-center justify-center">
+          <div className="bg-gradient-to-br from-muted to-accent h-full w-full flex items-center justify-center">
             <span className="text-2xl">🥓</span>
           </div>
         </AspectRatio>
@@ -142,7 +142,7 @@ export const RecipeImageGallery: Story = {
           <div className="bg-gradient-to-br from-amber-100 to-orange-100 h-full w-full flex items-center justify-center relative">
             <span className="text-8xl">🍽️</span>
             <div className="absolute bottom-4 right-4">
-              <Badge variant="success" className="bg-green-500 text-white border-none">
+              <Badge variant="success" className="bg-success text-success-foreground border-none">
                 Final Dish
               </Badge>
             </div>
