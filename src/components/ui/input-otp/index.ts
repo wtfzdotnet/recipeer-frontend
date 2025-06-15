@@ -1,0 +1,1 @@
+export { InputOTP, InputOTPSlot } from "./input-otp"
