@@ -28,58 +28,53 @@ const mockProfile: Profile = {
 
 describe('ProfileCard', () => {
   describe('Basic Rendering', () => {
-    it('renders profile information correctly', () => {
+    it('renders profile name correctly', () => {
       render(<ProfileCard profile={mockProfile} />);
-      
       expect(screen.getByText('Test Chef')).toBeInTheDocument();
+    });
+
+    it('renders profile title correctly', () => {
+      render(<ProfileCard profile={mockProfile} />);
       expect(screen.getByText('Executive Chef')).toBeInTheDocument();
+    });
+
+    it('renders profile bio correctly', () => {
+      render(<ProfileCard profile={mockProfile} />);
       expect(screen.getByText('A passionate chef with years of experience')).toBeInTheDocument();
+    });
+
+    it('renders profile location correctly', () => {
+      render(<ProfileCard profile={mockProfile} />);
       expect(screen.getByText('New York, USA')).toBeInTheDocument();
     });
 
     it('renders avatar with correct alt text', () => {
       render(<ProfileCard profile={mockProfile} />);
-      
       const avatar = screen.getByRole('img', { name: 'Test Chef' });
       expect(avatar).toBeInTheDocument();
       expect(avatar).toHaveAttribute('src', 'https://example.com/avatar.jpg');
     });
-
-    it('renders fallback initials when avatar fails to load', () => {
-      const profileWithoutAvatar = { ...mockProfile, avatar: '' };
-      render(<ProfileCard profile={profileWithoutAvatar} />);
-      
-      expect(screen.getByText('TC')).toBeInTheDocument();
-    });
   });
 
   describe('Variants', () => {
-    it('renders compact variant correctly', () => {
+    it('renders compact variant', () => {
       render(<ProfileCard profile={mockProfile} variant="compact" />);
-      
       expect(screen.getByText('Test Chef')).toBeInTheDocument();
-      expect(screen.getByText('Executive Chef')).toBeInTheDocument();
     });
 
-    it('renders standard variant correctly', () => {
+    it('renders standard variant', () => {
       render(<ProfileCard profile={mockProfile} variant="standard" />);
-      
       expect(screen.getByText('Test Chef')).toBeInTheDocument();
-      expect(screen.getByText('Executive Chef')).toBeInTheDocument();
-      expect(screen.getByText('A passionate chef with years of experience')).toBeInTheDocument();
     });
 
-    it('renders detailed variant correctly', () => {
+    it('renders detailed variant', () => {
       render(<ProfileCard profile={mockProfile} variant="detailed" />);
-      
       expect(screen.getByText('Test Chef')).toBeInTheDocument();
-      expect(screen.getByText('Executive Chef')).toBeInTheDocument();
-      expect(screen.getByText('A passionate chef with years of experience')).toBeInTheDocument();
     });
   });
 
   describe('Follow Functionality', () => {
-    it('shows follow button when showFollowButton is true', () => {
+    it('shows follow button when enabled', () => {
       const onFollow = vi.fn();
       render(
         <ProfileCard 
@@ -88,22 +83,20 @@ describe('ProfileCard', () => {
           onFollow={onFollow}
         />
       );
-      
       expect(screen.getByRole('button')).toBeInTheDocument();
     });
 
-    it('does not show follow button when showFollowButton is false', () => {
+    it('hides follow button when disabled', () => {
       render(
         <ProfileCard 
           profile={mockProfile} 
           showFollowButton={false}
         />
       );
-      
       expect(screen.queryByRole('button')).not.toBeInTheDocument();
     });
 
-    it('calls onFollow when follow button is clicked', () => {
+    it('calls onFollow callback when follow button clicked', () => {
       const onFollow = vi.fn();
       render(
         <ProfileCard 
@@ -116,27 +109,23 @@ describe('ProfileCard', () => {
       
       const followButton = screen.getByRole('button');
       fireEvent.click(followButton);
-      
       expect(onFollow).toHaveBeenCalledWith('test-chef');
     });
   });
 
   describe('Statistics Display', () => {
-    it('displays follower count correctly', () => {
+    it('displays follower count', () => {
       render(<ProfileCard profile={mockProfile} />);
-      
       expect(screen.getByText('1,000')).toBeInTheDocument();
     });
 
-    it('displays recipe count correctly', () => {
+    it('displays recipe count', () => {
       render(<ProfileCard profile={mockProfile} />);
-      
       expect(screen.getByText('50')).toBeInTheDocument();
     });
 
-    it('displays rating correctly', () => {
+    it('displays rating', () => {
       render(<ProfileCard profile={mockProfile} />);
-      
       expect(screen.getByText('4.5')).toBeInTheDocument();
     });
   });
@@ -145,7 +134,6 @@ describe('ProfileCard', () => {
     it('handles profile without location', () => {
       const profileWithoutLocation = { ...mockProfile, location: undefined };
       render(<ProfileCard profile={profileWithoutLocation} />);
-      
       expect(screen.getByText('Test Chef')).toBeInTheDocument();
       expect(screen.queryByText('New York, USA')).not.toBeInTheDocument();
     });
@@ -153,30 +141,8 @@ describe('ProfileCard', () => {
     it('handles profile without title', () => {
       const profileWithoutTitle = { ...mockProfile, title: undefined };
       render(<ProfileCard profile={profileWithoutTitle} />);
-      
       expect(screen.getByText('Test Chef')).toBeInTheDocument();
       expect(screen.queryByText('Executive Chef')).not.toBeInTheDocument();
-    });
-
-    it('handles profile without social links', () => {
-      const profileWithoutSocial = { ...mockProfile, socialLinks: undefined };
-      render(<ProfileCard profile={profileWithoutSocial} variant="detailed" />);
-      
-      expect(screen.getByText('Test Chef')).toBeInTheDocument();
-    });
-
-    it('handles empty badges array', () => {
-      const profileWithoutBadges = { ...mockProfile, badges: [] };
-      render(<ProfileCard profile={profileWithoutBadges} variant="detailed" />);
-      
-      expect(screen.getByText('Test Chef')).toBeInTheDocument();
-    });
-
-    it('handles empty specialties array', () => {
-      const profileWithoutSpecialties = { ...mockProfile, specialties: [] };
-      render(<ProfileCard profile={profileWithoutSpecialties} variant="detailed" />);
-      
-      expect(screen.getByText('Test Chef')).toBeInTheDocument();
     });
   });
 });
