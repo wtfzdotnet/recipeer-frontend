@@ -3,6 +3,7 @@
 
 export { IngredientChecklist } from './ingredient-checklist';
 export { NutritionFacts } from './nutrition-facts';
+export { ProfileCard } from './profile-card';
 export { RecipeCollectionSaver } from './recipe-collection-saver';
 export { Dialog } from './dialog';
 export { LoginForm } from './login-form';
@@ -23,6 +24,7 @@ export { CountryLanguageSelector } from './country-language-selector';
 // Re-export types
 export type { IngredientChecklistProps } from './ingredient-checklist';
 export type { NutritionFactsProps } from './nutrition-facts';
+export type { ProfileCardProps } from './profile-card';
 export type { RecipeCollectionSaverProps } from './recipe-collection-saver';
 export type { DialogProps } from './dialog';
 export type { LoginFormProps } from './login-form';

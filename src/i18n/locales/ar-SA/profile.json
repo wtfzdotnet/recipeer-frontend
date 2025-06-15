@@ -1,0 +1,24 @@
+{
+  "stats": {
+    "followers": "متابعون",
+    "recipes": "وصفات",
+    "recipesShort": "وصفات",
+    "rating": "التقييم"
+  },
+  "actions": {
+    "follow": "متابعة",
+    "following": "متابع",
+    "unfollow": "إلغاء المتابعة"
+  },
+  "sections": {
+    "specialties": "التخصصات",
+    "achievements": "الإنجازات",
+    "socialLinks": "روابط التواصل"
+  },
+  "badges": {
+    "verified": "ملف شخصي موثق"
+  },
+  "socialLinks": {
+    "ariaLabel": "زيارة ملف {{platform}} الشخصي {{handle}}"
+  }
+}
