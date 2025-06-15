@@ -2,36 +2,78 @@
  * Recipe type definitions for the recipe platform
  */
 
+export interface Author {
+  id: string;
+  name: string;
+  avatar?: string;
+  isVerified?: boolean;
+}
+
+export interface RatingData {
+  average: number;
+  count: number;
+  distribution?: Record<number, number>; // 1-5 star distribution
+}
+
+export interface TimingInfo {
+  prepTime: number; // in minutes
+  cookTime: number; // in minutes
+  totalTime: number; // in minutes
+}
+
+export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced';
+
+export interface NutritionSummary {
+  calories?: number;
+  protein?: number;
+  carbs?: number;
+  fat?: number;
+  fiber?: number;
+}
+
 export interface Recipe {
   /** Unique recipe identifier */
   id: string;
   /** Recipe title */
-  name: string;
+  title?: string;
+  name?: string; // Legacy support
   /** Recipe description */
   description?: string;
   /** Recipe image URL */
   image?: string;
-  /** Cooking time in minutes */
+  /** Recipe author */
+  author?: Author | string;
+  /** Recipe rating data */
+  ratings?: RatingData;
+  /** Legacy rating (1-5) */
+  rating?: number;
+  /** Legacy review count */
+  reviewCount?: number;
+  /** Recipe timing information */
+  timing?: TimingInfo;
+  /** Legacy cooking time in minutes */
   cookingTime?: number;
-  /** Preparation time in minutes */
+  /** Legacy preparation time in minutes */
   prepTime?: number;
   /** Recipe difficulty level */
-  difficulty?: 'easy' | 'medium' | 'hard';
+  difficulty?: DifficultyLevel | 'easy' | 'medium' | 'hard';
   /** Number of servings */
   servings?: number;
-  /** Recipe rating (1-5) */
-  rating?: number;
-  /** Number of reviews */
-  reviewCount?: number;
-  /** Recipe author */
-  author?: string;
   /** Recipe tags */
   tags?: string[];
   /** Recipe cuisine type */
   cuisine?: string;
   /** Whether recipe is featured/trending */
   featured?: boolean;
+  /** Nutrition summary */
+  nutrition?: NutritionSummary;
+  /** Whether recipe is bookmarked */
+  isBookmarked?: boolean;
+  /** Saved collections */
+  savedCollections?: string[];
 }
+
+export type RecipeCardVariant = 'compact' | 'standard' | 'featured';
 
 export interface CategoryCultural {
   /** Geographic region */
