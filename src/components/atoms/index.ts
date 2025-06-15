@@ -15,6 +15,7 @@ export * from './progress';
 export * from './aspect-ratio';
 export * from './rating';
 export * from './menubar';
+export * from './toggle';
 
 // Add new atom exports below
 
@@ -34,3 +35,4 @@ export type { SkeletonProps } from './skeleton';
 export type { ProgressProps } from './progress';
 export type { RatingProps } from './rating';
 export type { MenubarProps, MenuConfig, MenuItem } from './menubar';
+export type { ToggleProps } from './toggle';
