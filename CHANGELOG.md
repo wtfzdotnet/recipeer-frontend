@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.10.0...v1.11.0) (2025-06-15)
+
+
+### Features
+
+* **organisms:** implement MealPlanCard component with full i18n and RTL support ([40f12b0](https://github.com/wtfzdotnet/recipeer-frontend/commit/40f12b0f7ae16798ff429d9d293eb1004de85d6d))
+
 # [1.10.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.9.0...v1.10.0) (2025-06-15)
 
 
