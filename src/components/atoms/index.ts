@@ -14,6 +14,7 @@ export * from './skeleton';
 export * from './progress';
 export * from './aspect-ratio';
 export * from './rating';
+export * from './menubar';
 
 // Add new atom exports below
 
@@ -32,3 +33,4 @@ export type { SeparatorProps } from './separator';
 export type { SkeletonProps } from './skeleton';
 export type { ProgressProps } from './progress';
 export type { RatingProps } from './rating';
+export type { MenubarProps, MenuConfig, MenuItem } from './menubar';
