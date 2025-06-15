@@ -143,7 +143,7 @@ const RecipeCard = React.forwardRef<HTMLDivElement, RecipeCardProps>(({
                 showReviewCount={false}
                 className="text-white"
               />
-              <div className="flex items-center space-x-2 text-white text-xs">
+              <div className="flex items-center space-x-2 rtl:space-x-reverse text-white text-xs">
                 <Clock className="h-3 w-3" />
                 <span>{formatTime(recipe.timing.totalTime)}</span>
               </div>
@@ -199,16 +199,16 @@ const RecipeCard = React.forwardRef<HTMLDivElement, RecipeCardProps>(({
             )}
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4 rtl:space-x-reverse">
                 <Avatar src={recipe.author.avatar} alt={recipe.author.name} size="sm" />
                 <div>
                   <p className="text-white font-medium text-sm">{recipe.author.name}</p>
-                  <div className="flex items-center space-x-4 text-white/80 text-xs">
-                    <div className="flex items-center space-x-1">
+                  <div className="flex items-center space-x-4 rtl:space-x-reverse text-white/80 text-xs">
+                    <div className="flex items-center space-x-1 rtl:space-x-reverse">
                       <Clock className="h-3 w-3" />
                       <span>{formatTime(recipe.timing.totalTime)}</span>
                     </div>
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center space-x-1 rtl:space-x-reverse">
                       <Users className="h-3 w-3" />
                       <span>{t('servings', { count: recipe.servings })}</span>
                     </div>
@@ -216,7 +216,7 @@ const RecipeCard = React.forwardRef<HTMLDivElement, RecipeCardProps>(({
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 rtl:space-x-reverse">
                 <Rating
                   value={recipe.ratings.average}
                   size="sm"
@@ -323,7 +323,7 @@ const RecipeCard = React.forwardRef<HTMLDivElement, RecipeCardProps>(({
           />
           <div className="flex-1 min-w-0">
             <p className="font-medium text-sm text-foreground">{recipe.author.name}</p>
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center space-x-1 rtl:space-x-reverse">
               <Rating
                 value={recipe.ratings.average}
                 size="sm"

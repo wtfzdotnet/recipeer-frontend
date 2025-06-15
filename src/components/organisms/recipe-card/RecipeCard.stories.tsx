@@ -425,3 +425,53 @@ export const MobileView: Story = {
     }
   }
 };
+
+// RTL (Right-to-Left) language support
+export const RTLSupport: Story = {
+  render: () => (
+    <div dir="rtl" className="rtl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        <RecipeCard
+          recipe={{
+            ...mockRecipe,
+            title: 'فطيرة التفاح التقليدية',
+            description: 'فطيرة تفاح لذيذة تقليدية مع عجينة مقرمشة وحشوة تفاح متبلة بشكل مثالي',
+            author: {
+              ...mockRecipe.author,
+              name: 'سارة أحمد'
+            }
+          }}
+          variant="standard"
+          collections={mockCollections}
+          onSave={fn()}
+          onShare={fn()}
+          onPrint={fn()}
+          onAddToMealPlan={fn()}
+          onClick={fn()}
+        />
+        <RecipeCard
+          recipe={{
+            ...mockBeginnerRecipe,
+            title: 'עוגיות שוקולד צ\'יפס פשוטות',
+            description: 'עוגיות שוקולד צ\'יפס קלות להכנה, מושלמות למתחילים',
+            author: {
+              ...mockBeginnerRecipe.author,
+              name: 'מיכאל כהן'
+            }
+          }}
+          variant="compact"
+          collections={mockCollections}
+          onSave={fn()}
+          onClick={fn()}
+        />
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Recipe cards with RTL (right-to-left) language support, demonstrating proper layout and spacing for Arabic and Hebrew text.'
+      }
+    }
+  }
+};
