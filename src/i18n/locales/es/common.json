@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "Recipeer Frontend - Demostración de Tema Naranja y Nutrición",
+    "description": "Una aplicación moderna de recetas con soporte de internacionalización"
+  },
+  "buttons": {
+    "custom": "Botón Personalizado",
+    "shadcn": "Botón Shadcn",
+    "default": "Predeterminado",
+    "destructive": "Destructivo",
+    "outline": "Contorno",
+    "secondary": "Secundario",
+    "ghost": "Fantasma",
+    "link": "Enlace"
+  },
+  "sections": {
+    "buttonTest": "Prueba de Botones con Tema Naranja",
+    "nutritionDemo": "Componente de Información Nutricional",
+    "recipeColors": "Colores Temáticos de Recetas"
+  },
+  "descriptions": {
+    "directShadcn": "Botón shadcn/ui directo:",
+    "customButton": "Botón personalizado (envuelve shadcn):",
+    "buttonVariantsShadcn": "Variantes de Botón (Shadcn):",
+    "buttonVariantsCustom": "Variantes de Botón (Personalizado):",
+    "nutritionLabel": "Etiqueta nutricional compatible con FDA con valores diarios, insignias de cumplimiento dietético y advertencias de alérgenos.",
+    "colorTheme": "Esta paleta de colores naranjas cálidos está inspirada en la cocina y la preparación de alimentos. Los colores funcionan bien para tarjetas de recetas, listas de ingredientes e instrucciones de cocina. ¡Prueba alternar entre los modos claro y oscuro usando el botón en la esquina superior derecha!"
+  },
+  "language": {
+    "label": "Idioma",
+    "english": "English",
+    "spanish": "Español"
+  }
+}

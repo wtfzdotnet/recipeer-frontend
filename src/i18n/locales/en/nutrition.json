@@ -1,0 +1,58 @@
+{
+  "title": "Nutrition Facts",
+  "servings": {
+    "perContainer": "Servings per container: {{count}}",
+    "servingSize": "Serving size: 1 serving"
+  },
+  "calories": "Calories",
+  "dailyValue": "% Daily Value*",
+  "nutrients": {
+    "totalFat": "Total Fat",
+    "saturatedFat": "Saturated Fat", 
+    "transFat": "Trans Fat",
+    "cholesterol": "Cholesterol",
+    "sodium": "Sodium",
+    "totalCarbohydrates": "Total Carbohydrates",
+    "dietaryFiber": "Dietary Fiber",
+    "totalSugars": "Total Sugars",
+    "addedSugars": "Added Sugars",
+    "protein": "Protein",
+    "vitaminD": "Vitamin D",
+    "calcium": "Calcium",
+    "iron": "Iron",
+    "potassium": "Potassium",
+    "vitaminA": "Vitamin A",
+    "vitaminC": "Vitamin C"
+  },
+  "units": {
+    "grams": "g",
+    "milligrams": "mg",
+    "micrograms": "mcg"
+  },
+  "compliance": {
+    "keto": "Keto",
+    "lowCarb": "Low Carb",
+    "highProtein": "High Protein",
+    "lowFat": "Low Fat", 
+    "lowSodium": "Low Sodium",
+    "highFiber": "High Fiber"
+  },
+  "allergens": {
+    "title": "Allergen Information",
+    "contains": "Contains:",
+    "mayContain": "May contain:",
+    "freeFrom": "Free from:",
+    "common": {
+      "milk": "Milk",
+      "eggs": "Eggs", 
+      "wheat": "Wheat",
+      "treeNuts": "Tree nuts",
+      "soy": "Soy",
+      "peanuts": "Peanuts",
+      "fish": "Fish",
+      "shellfish": "Shellfish"
+    }
+  },
+  "dailyValueFooter": "* The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.",
+  "dietaryCompliance": "Dietary Compliance"
+}

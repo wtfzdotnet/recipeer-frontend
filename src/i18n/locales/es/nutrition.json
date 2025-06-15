@@ -1,0 +1,58 @@
+{
+  "title": "Información Nutricional",
+  "servings": {
+    "perContainer": "Porciones por envase: {{count}}",
+    "servingSize": "Tamaño de porción: 1 porción"
+  },
+  "calories": "Calorías",
+  "dailyValue": "% Valor Diario*",
+  "nutrients": {
+    "totalFat": "Grasa Total",
+    "saturatedFat": "Grasa Saturada",
+    "transFat": "Grasa Trans",
+    "cholesterol": "Colesterol",
+    "sodium": "Sodio",
+    "totalCarbohydrates": "Carbohidratos Totales",
+    "dietaryFiber": "Fibra Dietética",
+    "totalSugars": "Azúcares Totales",
+    "addedSugars": "Azúcares Añadidos",
+    "protein": "Proteína",
+    "vitaminD": "Vitamina D",
+    "calcium": "Calcio",
+    "iron": "Hierro",
+    "potassium": "Potasio",
+    "vitaminA": "Vitamina A",
+    "vitaminC": "Vitamina C"
+  },
+  "units": {
+    "grams": "g",
+    "milligrams": "mg",
+    "micrograms": "mcg"
+  },
+  "compliance": {
+    "keto": "Keto",
+    "lowCarb": "Bajo en Carbohidratos",
+    "highProtein": "Alto en Proteínas",
+    "lowFat": "Bajo en Grasa",
+    "lowSodium": "Bajo en Sodio",
+    "highFiber": "Alto en Fibra"
+  },
+  "allergens": {
+    "title": "Información de Alérgenos",
+    "contains": "Contiene:",
+    "mayContain": "Puede contener:",
+    "freeFrom": "Libre de:",
+    "common": {
+      "milk": "Leche",
+      "eggs": "Huevos",
+      "wheat": "Trigo",
+      "treeNuts": "Frutos secos",
+      "soy": "Soja",
+      "peanuts": "Cacahuetes",
+      "fish": "Pescado",
+      "shellfish": "Mariscos"
+    }
+  },
+  "dailyValueFooter": "* El % del Valor Diario (VD) le dice cuánto contribuye un nutriente en una porción de alimento a una dieta diaria. Se usan 2,000 calorías al día para consejos generales de nutrición.",
+  "dietaryCompliance": "Cumplimiento Dietético"
+}

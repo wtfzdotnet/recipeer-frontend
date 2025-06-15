@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "Frontend Recipeer - Orange Theme & Nutrition Demo",
+    "description": "A modern recipe application with internationalization support"
+  },
+  "buttons": {
+    "custom": "Custom Button",
+    "shadcn": "Shadcn Button",
+    "default": "Default",
+    "destructive": "Destructive", 
+    "outline": "Outline",
+    "secondary": "Secondary",
+    "ghost": "Ghost",
+    "link": "Link"
+  },
+  "sections": {
+    "buttonTest": "Button Test with Orange Theme",
+    "nutritionDemo": "Nutrition Facts Component",
+    "recipeColors": "Recipe-Themed Colors"
+  },
+  "descriptions": {
+    "directShadcn": "Direct shadcn/ui Button:",
+    "customButton": "Custom Button (wrapping shadcn):",
+    "buttonVariantsShadcn": "Button Variants (Shadcn):",
+    "buttonVariantsCustom": "Button Variants (Custom):",
+    "nutritionLabel": "FDA-compliant nutrition label with daily values, dietary compliance badges, and allergen warnings.",
+    "colorTheme": "This warm orange color palette is inspired by cooking and food preparation. The colors work well for recipe cards, ingredients lists, and cooking instructions. Try toggling between light and dark modes using the button in the top-right corner!"
+  },
+  "language": {
+    "label": "Language",
+    "english": "English",
+    "spanish": "Español"
+  }
+}

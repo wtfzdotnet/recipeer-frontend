@@ -60,13 +60,27 @@ import {
   findAllByTestId,
 } from '@testing-library/react';
 import { ReactElement } from 'react';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
+
+// Test wrapper component that provides i18n context
+function TestWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <I18nextProvider i18n={i18n}>
+      {children}
+    </I18nextProvider>
+  );
+}
 
 // Custom render function that can be extended with providers if needed
 export function renderWithProviders(
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
 ) {
-  return testingLibraryRender(ui, options);
+  return testingLibraryRender(ui, { 
+    wrapper: TestWrapper,
+    ...options 
+  });
 }
 
 // Re-export everything explicitly from testing-library/react

@@ -1,7 +1,8 @@
 import { Button } from '@/components/atoms'
 import { Button as ShadcnButton } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/molecules'
+import { ThemeToggle, LanguageDropdown } from '@/components/molecules'
 import { NutritionFacts } from '@/components/organisms'
+import { useTranslation } from 'react-i18next'
 import './App.css'
 
 // Sample nutrition data for demonstration
@@ -30,57 +31,60 @@ const sampleAllergens = {
 };
 
 function App() {
+  const { t } = useTranslation();
+  
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-8">
-      {/* Theme Toggle in top-right corner */}
-      <div className="fixed top-4 right-4">
+      {/* Controls in top-right corner */}
+      <div className="fixed top-4 right-4 flex items-center gap-2">
+        <LanguageDropdown />
         <ThemeToggle />
       </div>
 
-      <h1 className="text-4xl font-bold text-foreground mb-8">Frontend Recipeer - Orange Theme & Nutrition Demo</h1>
+      <h1 className="text-4xl font-bold text-foreground mb-8">{t('app.title')}</h1>
       
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
         
         {/* Button Testing Section */}
         <div className="card bg-card p-8 rounded-lg shadow-lg space-y-4 border">
           <div className="space-y-2">
-            <h3 className="text-lg font-semibold text-card-foreground">Button Test with Orange Theme</h3>
+            <h3 className="text-lg font-semibold text-card-foreground">{t('sections.buttonTest')}</h3>
             
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">Direct shadcn/ui Button:</p>
+              <p className="text-sm text-muted-foreground">{t('descriptions.directShadcn')}</p>
               <ShadcnButton>
-                Shadcn Button
+                {t('buttons.shadcn')}
               </ShadcnButton>
             </div>
             
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">Custom Button (wrapping shadcn):</p>
+              <p className="text-sm text-muted-foreground">{t('descriptions.customButton')}</p>
               <Button>
-                Custom Button
+                {t('buttons.custom')}
               </Button>
             </div>
             
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">Button Variants (Shadcn):</p>
+              <p className="text-sm text-muted-foreground">{t('descriptions.buttonVariantsShadcn')}</p>
               <div className="flex gap-2 flex-wrap">
-                <ShadcnButton variant="default">Default</ShadcnButton>
-                <ShadcnButton variant="destructive">Destructive</ShadcnButton>
-                <ShadcnButton variant="outline">Outline</ShadcnButton>
-                <ShadcnButton variant="secondary">Secondary</ShadcnButton>
-                <ShadcnButton variant="ghost">Ghost</ShadcnButton>
-                <ShadcnButton variant="link">Link</ShadcnButton>
+                <ShadcnButton variant="default">{t('buttons.default')}</ShadcnButton>
+                <ShadcnButton variant="destructive">{t('buttons.destructive')}</ShadcnButton>
+                <ShadcnButton variant="outline">{t('buttons.outline')}</ShadcnButton>
+                <ShadcnButton variant="secondary">{t('buttons.secondary')}</ShadcnButton>
+                <ShadcnButton variant="ghost">{t('buttons.ghost')}</ShadcnButton>
+                <ShadcnButton variant="link">{t('buttons.link')}</ShadcnButton>
               </div>
             </div>
 
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">Button Variants (Custom):</p>
+              <p className="text-sm text-muted-foreground">{t('descriptions.buttonVariantsCustom')}</p>
               <div className="flex gap-2 flex-wrap">
-                <Button variant="default">Default</Button>
-                <Button variant="destructive">Destructive</Button>
-                <Button variant="outline">Outline</Button>
-                <Button variant="secondary">Secondary</Button>
-                <Button variant="ghost">Ghost</Button>
-                <Button variant="link">Link</Button>
+                <Button variant="default">{t('buttons.default')}</Button>
+                <Button variant="destructive">{t('buttons.destructive')}</Button>
+                <Button variant="outline">{t('buttons.outline')}</Button>
+                <Button variant="secondary">{t('buttons.secondary')}</Button>
+                <Button variant="ghost">{t('buttons.ghost')}</Button>
+                <Button variant="link">{t('buttons.link')}</Button>
               </div>
             </div>
           </div>
@@ -89,9 +93,9 @@ function App() {
         {/* Nutrition Facts Demo Section */}
         <div className="card bg-card p-8 rounded-lg shadow-lg space-y-4 border">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-card-foreground">Nutrition Facts Component</h3>
+            <h3 className="text-lg font-semibold text-card-foreground">{t('sections.nutritionDemo')}</h3>
             <p className="text-sm text-muted-foreground">
-              FDA-compliant nutrition label with daily values, dietary compliance badges, and allergen warnings.
+              {t('descriptions.nutritionLabel')}
             </p>
             
             <div className="flex justify-center">
@@ -106,11 +110,9 @@ function App() {
           </div>
 
           <div className="mt-6 p-4 bg-secondary rounded-lg">
-            <h4 className="font-semibold text-secondary-foreground mb-2">🍳 Recipe-Themed Colors</h4>
+            <h4 className="font-semibold text-secondary-foreground mb-2">🍳 {t('sections.recipeColors')}</h4>
             <p className="text-secondary-foreground text-sm">
-              This warm orange color palette is inspired by cooking and food preparation. 
-              The colors work well for recipe cards, ingredients lists, and cooking instructions.
-              Try toggling between light and dark modes using the button in the top-right corner!
+              {t('descriptions.colorTheme')}
             </p>
           </div>
         </div>
