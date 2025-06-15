@@ -46,16 +46,27 @@ export const LocaleProvider: React.FC<LocaleProviderProps> = ({
 
   const changeLocale = (newLocale: SupportedLocale) => {
     setCurrentLocale(newLocale);
-    i18n.changeLanguage(newLocale);
+    
+    // Safely change language if i18n is initialized
+    if (i18n && typeof i18n.changeLanguage === 'function') {
+      i18n.changeLanguage(newLocale);
+    }
+    
     localStorage.setItem('recipeer-locale', newLocale);
     
     // Update document direction
-    document.documentElement.dir = locale.dir;
+    const newLocaleConfig = getLocaleConfig(newLocale);
+    document.documentElement.dir = newLocaleConfig.dir;
     document.documentElement.lang = newLocale;
   };
 
   // Sync with i18next when it changes
   useEffect(() => {
+    // Check if i18n instance is properly initialized
+    if (!i18n || typeof i18n.on !== 'function' || typeof i18n.off !== 'function') {
+      return;
+    }
+
     const handleLanguageChange = (lng: string) => {
       if (lng !== currentLocale && lng in LOCALE_CONFIGS) {
         setCurrentLocale(lng as SupportedLocale);

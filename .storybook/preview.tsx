@@ -1,6 +1,8 @@
 import React from 'react';
 import '../src/index.css'; // Add this line to import Tailwind CSS
 import { ThemeProvider } from '../src/providers/ThemeProvider';
+import { LocaleProvider } from '../src/providers/LocaleProvider';
+import '../src/i18n'; // Initialize i18n
 
 // Optimized font loading for all environments
 // Load fonts efficiently with display=swap for better performance
@@ -93,15 +95,43 @@ const preview = {
     },
   },
 
+  // Add global toolbar for locale selection
+  globalTypes: {
+    locale: {
+      description: 'Internationalization locale',
+      defaultValue: 'en-US',
+      toolbar: {
+        title: 'Locale',
+        icon: 'globe',
+        items: [
+          { value: 'en-US', title: '🇺🇸 English (US)', right: 'Imperial, USD' },
+          { value: 'nl-NL', title: '🇳🇱 Nederlands (NL)', right: 'Metric, EUR' },
+          { value: 'ar-SA', title: '🇸🇦 العربية (SA)', right: 'RTL, Metric, SAR' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+
   // Global decorators
   decorators: [
-    (Story) => (
-      <ThemeProvider defaultTheme="light" storageKey="storybook-ui-theme">
-        <div style={{ padding: '1rem' }} className="bg-background text-foreground">
-          <Story />
-        </div>
-      </ThemeProvider>
-    ),
+    (Story, context) => {
+      const { locale } = context.globals;
+      
+      return (
+        <ThemeProvider defaultTheme="light" storageKey="storybook-ui-theme">
+          <LocaleProvider defaultLocale={locale}>
+            <div 
+              style={{ padding: '1rem' }} 
+              className="bg-background text-foreground"
+              dir={locale === 'ar-SA' ? 'rtl' : 'ltr'}
+            >
+              <Story />
+            </div>
+          </LocaleProvider>
+        </ThemeProvider>
+      );
+    },
   ],
 };
 
