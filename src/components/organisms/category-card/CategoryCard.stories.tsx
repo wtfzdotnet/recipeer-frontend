@@ -10,7 +10,7 @@ const fn = () => () => {};
 const mockItalianCategory: Category = {
   id: 'italian-cuisine',
   name: 'Italian Cuisine',
-  image: '/api/placeholder/400/300',
+  image: 'https://picsum.photos/seed/italian-cuisine/400/300',
   description: 'Authentic Italian recipes from various regions',
   recipeCount: 145,
   trending: true,
@@ -27,21 +27,21 @@ const mockItalianCategory: Category = {
       name: 'Pasta Carbonara',
       cookingTime: 20,
       rating: 4.8,
-      image: '/api/placeholder/300/200'
+      image: 'https://picsum.photos/seed/carbonara/300/200'
     },
     {
       id: '2', 
       name: 'Margherita Pizza',
       cookingTime: 35,
       rating: 4.9,
-      image: '/api/placeholder/300/200'
+      image: 'https://picsum.photos/seed/pizza/300/200'
     },
     {
       id: '3',
       name: 'Tiramisu',
       cookingTime: 30,
       rating: 4.7,
-      image: '/api/placeholder/300/200'
+      image: 'https://picsum.photos/seed/tiramisu/300/200'
     }
   ]
 };
@@ -49,7 +49,7 @@ const mockItalianCategory: Category = {
 const mockVeganCategory: Category = {
   id: 'vegan-recipes',
   name: 'Vegan Recipes',
-  image: '/api/placeholder/400/300',
+  image: 'https://picsum.photos/seed/vegan-food/400/300',
   description: 'Plant-based recipes for healthy living',
   recipeCount: 89,
   trending: false,
@@ -60,14 +60,14 @@ const mockVeganCategory: Category = {
       name: 'Buddha Bowl',
       cookingTime: 25,
       rating: 4.6,
-      image: '/api/placeholder/300/200'
+      image: 'https://picsum.photos/seed/buddha-bowl/300/200'
     },
     {
       id: '5',
       name: 'Vegan Lasagna',
       cookingTime: 45,
       rating: 4.5,
-      image: '/api/placeholder/300/200'
+      image: 'https://picsum.photos/seed/vegan-lasagna/300/200'
     }
   ]
 };
@@ -75,7 +75,7 @@ const mockVeganCategory: Category = {
 const mockBreakfastCategory: Category = {
   id: 'breakfast',
   name: 'Breakfast',
-  image: '/api/placeholder/400/300',
+  image: 'https://picsum.photos/seed/breakfast/400/300',
   description: 'Start your day with delicious breakfast recipes',
   recipeCount: 67,
   trending: false,
@@ -85,7 +85,7 @@ const mockBreakfastCategory: Category = {
 const mockSeasonalCategory: Category = {
   id: 'summer-recipes',
   name: 'Summer Specials',
-  image: '/api/placeholder/400/300',
+  image: 'https://picsum.photos/seed/summer-food/400/300',
   description: 'Fresh and light recipes perfect for summer',
   recipeCount: 34,
   trending: true,

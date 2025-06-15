@@ -143,6 +143,6 @@ describe('CategoryCard', () => {
     const image = screen.getByAltText('Test Category');
     fireEvent.error(image);
     
-    expect(image).toHaveAttribute('src', '/api/placeholder/400/300');
+    expect(image).toHaveAttribute('src', 'https://picsum.photos/seed/fallback/400/300');
   });
 });

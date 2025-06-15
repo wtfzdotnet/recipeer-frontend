@@ -124,8 +124,12 @@ export const CategoryCard = React.forwardRef<HTMLDivElement, CategoryCardProps>(
             alt={category.name}
             className={cn(imageStyles[variant])}
             onError={(e) => {
-              // Fallback to placeholder
-              (e.target as HTMLImageElement).src = '/api/placeholder/400/300';
+              // Prevent infinite loops by only setting fallback once
+              const target = e.target as HTMLImageElement;
+              if (!target.dataset.fallback) {
+                target.dataset.fallback = 'true';
+                target.src = 'https://picsum.photos/seed/fallback/400/300';
+              }
             }}
           />
           
@@ -251,7 +255,7 @@ export const CategoryCard = React.forwardRef<HTMLDivElement, CategoryCardProps>(
 
     // Grid and hero variants with hover preview
     return (
-      <HoverCard>
+      <HoverCard openDelay={300} closeDelay={100}>
         <HoverCardTrigger asChild>
           <Card
             ref={ref}
