@@ -1,3 +1,19 @@
+# [1.5.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.4.0...v1.5.0) (2025-06-15)
+
+
+### Bug Fixes
+
+* **providers:** Export ThemeProviderContext for useTheme hook ([b8b132c](https://github.com/wtfzdotnet/recipeer-frontend/commit/b8b132cafc7d9ae50be5ebbaabc702029789b0f5))
+* **providers:** Fix Fast Refresh violations and import errors in ThemeProvider ([a6fb08b](https://github.com/wtfzdotnet/recipeer-frontend/commit/a6fb08b0dbb62992f81a50ae5c60a06b2933d0b8))
+
+
+### Features
+
+* **config:** Exclude Storybook files from design token scanning ([e87cbe9](https://github.com/wtfzdotnet/recipeer-frontend/commit/e87cbe923a844dcc07e45f3a2bdcab48546b1d9c))
+* **molecules:** Fix design tokens and Fast Refresh in molecule components ([dfb1140](https://github.com/wtfzdotnet/recipeer-frontend/commit/dfb1140150a421bda60090db7631942583d810aa))
+* **organisms:** Fix design tokens and Fast Refresh in organism/template components ([d31abb8](https://github.com/wtfzdotnet/recipeer-frontend/commit/d31abb8494b05182e5a23db0b63aededa14832d7))
+* **tokens:** Add success/warning design tokens and fix atomic components ([0c72cfa](https://github.com/wtfzdotnet/recipeer-frontend/commit/0c72cfaf6afc404af7d633b6d0db7e98dda3be43))
+
 # [1.4.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.3.0...v1.4.0) (2025-06-14)
 
 
