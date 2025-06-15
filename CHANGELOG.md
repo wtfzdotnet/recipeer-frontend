@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.7.0...v1.8.0) (2025-06-15)
+
+
+### Features
+
+* **molecules:** implement Pagination and ContextMenu components with React Hook Form integration ([853f7a3](https://github.com/wtfzdotnet/recipeer-frontend/commit/853f7a353d0518bc5c5a9d9ff21098fe57142726))
+
 # [1.7.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.6.2...v1.7.0) (2025-06-15)
 
 
