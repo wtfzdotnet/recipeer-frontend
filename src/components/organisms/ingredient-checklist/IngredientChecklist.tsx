@@ -100,24 +100,24 @@ export const IngredientChecklist: React.FC<IngredientChecklistProps> = ({
     switch (mode) {
       case 'shopping':
         return {
-          container: 'border-blue-200 bg-blue-50',
-          header: 'text-blue-900',
-          item: 'hover:bg-blue-100',
-          checked: 'line-through text-blue-600'
+          container: 'border-primary bg-primary/10',
+          header: 'text-primary-foreground',
+          item: 'hover:bg-primary/20',
+          checked: 'line-through text-primary'
         };
       case 'cook':
         return {
-          container: 'border-green-200 bg-green-50',
-          header: 'text-green-900',
-          item: 'hover:bg-green-100',
-          checked: 'line-through text-green-600'
+          container: 'border-success bg-success/10',
+          header: 'text-success-foreground',
+          item: 'hover:bg-success/20',
+          checked: 'line-through text-success'
         };
       default: // prep
         return {
-          container: 'border-orange-200 bg-orange-50',
-          header: 'text-orange-900',
-          item: 'hover:bg-orange-100',
-          checked: 'line-through text-orange-600'
+          container: 'border-warning bg-warning/10',
+          header: 'text-warning-foreground',
+          item: 'hover:bg-warning/20',
+          checked: 'line-through text-warning'
         };
     }
   };

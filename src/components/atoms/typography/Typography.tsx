@@ -133,14 +133,14 @@ export const Typography: React.FC<TypographyProps> = ({
           </h2>
           
           <div className="space-y-4">
-            <div className="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-200">
-              <p className={cn('text-lg italic text-orange-800', fonts.accent)}>
+            <div className="p-4 bg-secondary rounded-lg border-l-4 border-primary">
+              <p className={cn('text-lg italic text-secondary-foreground', fonts.accent)}>
                 "Grandma's Secret" - Chef's notes and personal tips
               </p>
             </div>
             
-            <div className="p-4 bg-amber-50 rounded-lg border-l-4 border-amber-200">
-              <p className={cn('text-base font-medium text-amber-800', fonts.body)}>
+            <div className="p-4 bg-warning/10 rounded-lg border-l-4 border-warning">
+              <p className={cn('text-base font-medium text-warning-foreground', fonts.body)}>
                 <strong>Cooking Tip:</strong> High contrast text for important instructions
               </p>
             </div>
@@ -152,16 +152,16 @@ export const Typography: React.FC<TypographyProps> = ({
 
   // Example recipe content
   return (
-    <div className={cn('max-w-4xl p-8 space-y-8 bg-gradient-to-br from-orange-50 to-amber-50', className)}>
-      <header className="text-center space-y-4 pb-8 border-b border-orange-200">
-        <h1 className={cn('text-4xl md:text-5xl font-bold text-orange-900 tracking-warm drop-shadow-sm', fonts.heading)}>
+    <div className={cn('max-w-4xl p-8 space-y-8 bg-gradient-to-br from-secondary to-accent', className)}>
+      <header className="text-center space-y-4 pb-8 border-b border-border">
+        <h1 className={cn('text-4xl md:text-5xl font-bold text-foreground tracking-warm drop-shadow-sm', fonts.heading)}>
           Grandma's Apple Cinnamon Bread
         </h1>
-        <p className={cn('text-lg text-orange-700 leading-comfortable tracking-warm', fonts.body)}>
+        <p className={cn('text-lg text-foreground leading-comfortable tracking-warm', fonts.body)}>
           A warm, comforting recipe passed down through generations. Perfect for cozy autumn mornings 
           with a cup of coffee and good company.
         </p>
-        <div className={cn('flex justify-center gap-8 text-sm text-orange-600', fonts.body)}>
+        <div className={cn('flex justify-center gap-8 text-sm text-muted-foreground', fonts.body)}>
           <span>⏱️ Prep: 15 min</span>
           <span>🔥 Cook: 60 min</span>
           <span>👥 Serves: 8</span>
@@ -169,13 +169,13 @@ export const Typography: React.FC<TypographyProps> = ({
       </header>
 
       <section className="space-y-6">
-        <h2 className={cn('text-3xl font-semibold text-orange-900 tracking-warm', fonts.heading)}>
+        <h2 className={cn('text-3xl font-semibold text-foreground tracking-warm', fonts.heading)}>
           Ingredients
         </h2>
         
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-3">
-            <h3 className={cn('text-xl font-medium text-orange-800', fonts.heading)}>
+            <h3 className={cn('text-xl font-medium text-foreground', fonts.heading)}>
               Dry Ingredients
             </h3>
             <ul className={cn('space-y-2 text-lg leading-relaxed-reading tracking-warm', fonts.body)}>
@@ -186,8 +186,8 @@ export const Typography: React.FC<TypographyProps> = ({
                 '½ tsp salt',
                 '¼ tsp nutmeg'
               ].map((ingredient, index) => (
-                <li key={index} className="flex items-start gap-3 text-orange-800">
-                  <span className="text-orange-500 font-bold mt-1">•</span>
+                <li key={index} className="flex items-start gap-3 text-foreground">
+                  <span className="text-primary font-bold mt-1">•</span>
                   <span>{ingredient}</span>
                 </li>
               ))}
@@ -195,7 +195,7 @@ export const Typography: React.FC<TypographyProps> = ({
           </div>
           
           <div className="space-y-3">
-            <h3 className={cn('text-xl font-medium text-orange-800', fonts.heading)}>
+            <h3 className={cn('text-xl font-medium text-foreground', fonts.heading)}>
               Wet Ingredients
             </h3>
             <ul className={cn('space-y-2 text-lg leading-relaxed-reading tracking-warm', fonts.body)}>
@@ -206,8 +206,8 @@ export const Typography: React.FC<TypographyProps> = ({
                 '1 large egg',
                 '1 tsp vanilla extract'
               ].map((ingredient, index) => (
-                <li key={index} className="flex items-start gap-3 text-orange-800">
-                  <span className="text-orange-500 font-bold mt-1">•</span>
+                <li key={index} className="flex items-start gap-3 text-foreground">
+                  <span className="text-primary font-bold mt-1">•</span>
                   <span>{ingredient}</span>
                 </li>
               ))}
@@ -217,7 +217,7 @@ export const Typography: React.FC<TypographyProps> = ({
       </section>
 
       <section className="space-y-6">
-        <h2 className={cn('text-3xl font-semibold text-orange-900 tracking-warm', fonts.heading)}>
+        <h2 className={cn('text-3xl font-semibold text-foreground tracking-warm', fonts.heading)}>
           Instructions
         </h2>
         

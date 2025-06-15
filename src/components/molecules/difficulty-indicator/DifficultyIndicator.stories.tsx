@@ -297,13 +297,13 @@ export const RecipeCardIntegration: Story = {
   render: () => (
     <div className="space-y-4 max-w-sm">
       <div className="border rounded-lg p-4">
-        <div className="h-32 bg-gray-100 rounded mb-3 flex items-center justify-center text-gray-500">
+        <div className="h-32 bg-muted rounded mb-3 flex items-center justify-center text-muted-foreground">
           Recipe Image
         </div>
         <h3 className="font-semibold mb-2">Classic Chocolate Chip Cookies</h3>
-        <p className="text-sm text-gray-600 mb-3">Easy, delicious cookies perfect for beginners</p>
+        <p className="text-sm text-muted-foreground mb-3">Easy, delicious cookies perfect for beginners</p>
         
-        <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
+        <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
           <span>⏱️ 25min</span>
           <span>👥 24 cookies</span>
         </div>

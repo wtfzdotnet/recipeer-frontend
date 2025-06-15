@@ -7,5 +7,5 @@ export {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-  navigationMenuTriggerStyle
 } from './navigation-menu';
+export { navigationMenuTriggerStyle } from './navigation-menu-styles';

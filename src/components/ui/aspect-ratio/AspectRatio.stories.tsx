@@ -56,9 +56,9 @@ type Story = StoryObj<typeof AspectRatio>;
 // Default aspect ratio
 export const Default: Story = {
   render: () => (
-    <div className="w-[450px]">
+    <div className="w-full max-w-md">
       <AspectRatio ratio={16 / 9}>
-        <div className="rounded-lg bg-gradient-to-br from-orange-100 to-red-100 h-full w-full flex items-center justify-center">
+        <div className="rounded-lg bg-gradient-to-br from-secondary to-accent h-full w-full flex items-center justify-center">
           <span className="text-6xl">🍝</span>
         </div>
       </AspectRatio>
@@ -118,7 +118,7 @@ export const RecipeImageGallery: Story = {
         </AspectRatio>
         
         <AspectRatio ratio={1 / 1} className="overflow-hidden rounded-lg">
-          <div className="bg-gradient-to-br from-pink-100 to-red-100 h-full w-full flex items-center justify-center">
+          <div className="bg-gradient-to-br from-muted to-accent h-full w-full flex items-center justify-center">
             <span className="text-2xl">🥓</span>
           </div>
         </AspectRatio>
@@ -142,7 +142,7 @@ export const RecipeImageGallery: Story = {
           <div className="bg-gradient-to-br from-amber-100 to-orange-100 h-full w-full flex items-center justify-center relative">
             <span className="text-8xl">🍽️</span>
             <div className="absolute bottom-4 right-4">
-              <Badge variant="success" className="bg-green-500 text-white border-none">
+              <Badge variant="success" className="bg-success text-success-foreground border-none">
                 Final Dish
               </Badge>
             </div>
@@ -241,7 +241,7 @@ export const RecipeCards: Story = {
       {/* Standard recipe card - 4:3 */}
       <div className="border rounded-lg overflow-hidden">
         <AspectRatio ratio={4 / 3}>
-          <div className="bg-gradient-to-br from-orange-100 to-red-100 h-full w-full flex items-center justify-center">
+          <div className="bg-gradient-to-br from-secondary to-accent h-full w-full flex items-center justify-center">
             <span className="text-6xl">🍝</span>
           </div>
         </AspectRatio>
@@ -362,11 +362,11 @@ export const AspectRatioComparison: Story = {
       
       <div className="space-y-4">
         {[
-          { ratio: 16 / 9, name: "16:9", description: "Widescreen - Perfect for video content and hero images", color: "from-blue-100 to-cyan-100" },
-          { ratio: 4 / 3, name: "4:3", description: "Traditional - Great for detailed food photography", color: "from-green-100 to-emerald-100" },
-          { ratio: 3 / 2, name: "3:2", description: "Standard Photo - Classic photography ratio", color: "from-yellow-100 to-amber-100" },
-          { ratio: 1 / 1, name: "1:1", description: "Square - Perfect for social media and thumbnails", color: "from-purple-100 to-pink-100" },
-          { ratio: 9 / 16, name: "9:16", description: "Portrait - Mobile stories and vertical videos", color: "from-orange-100 to-red-100" }
+          { ratio: 16 / 9, name: "16:9", description: "Widescreen - Perfect for video content and hero images", color: "from-secondary to-accent" },
+          { ratio: 4 / 3, name: "4:3", description: "Traditional - Great for detailed food photography", color: "from-muted to-secondary" },
+          { ratio: 3 / 2, name: "3:2", description: "Standard Photo - Classic photography ratio", color: "from-accent to-muted" },
+          { ratio: 1 / 1, name: "1:1", description: "Square - Perfect for social media and thumbnails", color: "from-primary/20 to-secondary" },
+          { ratio: 9 / 16, name: "9:16", description: "Portrait - Mobile stories and vertical videos", color: "from-secondary to-accent" }
         ].map((item, i) => (
           <div key={i} className="border rounded-lg p-4">
             <div className="flex items-center gap-4 mb-3">

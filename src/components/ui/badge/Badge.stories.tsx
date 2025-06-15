@@ -207,10 +207,10 @@ export const RecipeCardIntegration: Story = {
             4.8
           </Badge>
         </div>
-        <p className="text-sm text-gray-600 mb-3">
+        <p className="text-sm text-muted-foreground mb-3">
           Classic Italian pasta dish with eggs, cheese, and pancetta
         </p>
-        <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
+        <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
           <span>⏱️ 20min</span>
           <span>👥 4 servings</span>
         </div>

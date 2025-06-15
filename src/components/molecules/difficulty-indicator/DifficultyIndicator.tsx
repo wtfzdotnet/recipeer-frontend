@@ -27,25 +27,25 @@ export interface DifficultyIndicatorProps {
 const difficultyConfig = {
   beginner: {
     label: 'Beginner',
-    color: 'text-green-600',
-    bgColor: 'bg-green-50',
-    borderColor: 'border-green-200',
+    color: 'text-success',
+    bgColor: 'bg-success/10',
+    borderColor: 'border-success',
     icon: 1,
     description: 'Perfect for cooking beginners'
   },
   intermediate: {
     label: 'Intermediate',
-    color: 'text-amber-600',
-    bgColor: 'bg-amber-50',
-    borderColor: 'border-amber-200',
+    color: 'text-warning',
+    bgColor: 'bg-warning/10',
+    borderColor: 'border-warning',
     icon: 2,
     description: 'Requires some cooking experience'
   },
   advanced: {
     label: 'Advanced',
-    color: 'text-red-600',
-    bgColor: 'bg-red-50',
-    borderColor: 'border-red-200',
+    color: 'text-destructive',
+    bgColor: 'bg-destructive/10',
+    borderColor: 'border-destructive',
     icon: 3,
     description: 'For experienced home cooks'
   }
@@ -129,8 +129,8 @@ const FactorRating: React.FC<{
             className={cn(
               compact ? "h-2.5 w-2.5" : "h-3 w-3",
               star <= value 
-                ? 'fill-current text-amber-400' 
-                : 'text-gray-300'
+                ? 'fill-current text-warning' 
+                : 'text-muted-foreground'
             )}
           />
         ))}

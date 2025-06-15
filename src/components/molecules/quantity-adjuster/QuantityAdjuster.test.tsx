@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { QuantityAdjuster, scaleQuantity } from './QuantityAdjuster';
+import { QuantityAdjuster } from './QuantityAdjuster';
+import { scaleQuantity } from './quantity-utils';
 
 describe('QuantityAdjuster', () => {
   const defaultProps = {

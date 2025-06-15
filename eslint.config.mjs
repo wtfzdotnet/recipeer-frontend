@@ -115,5 +115,35 @@ export default [
       'design-tokens/no-hardcoded-spacing': 'off', // Allow in tests for mocking
     },
   },
+  // Storybook files - disable design token rules for documentation
+  {
+    files: ['**/*.stories.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+      '@typescript-eslint': tsPlugin,
+      'design-tokens': designTokensPlugin,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      ...tsPlugin.configs.recommended.rules,
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-refresh/only-export-components': 'off', // Disable for story files
+      'design-tokens/no-hardcoded-colors': 'off', // Allow in stories for demonstration
+      'design-tokens/no-hardcoded-spacing': 'off', // Allow in stories for demonstration
+    },
+  },
   ...storybook.configs["flat/recommended"]
 ];

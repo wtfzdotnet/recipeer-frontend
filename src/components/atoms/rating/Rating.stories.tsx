@@ -145,28 +145,28 @@ export const RecipeExamples: Story = {
         <div className="border rounded-lg p-4 space-y-3">
           <h4 className="font-medium">Spaghetti Carbonara</h4>
           <Rating value={4.8} readonly size="sm" reviewCount={234} />
-          <p className="text-sm text-gray-600">Authentic Italian pasta dish</p>
+          <p className="text-sm text-muted-foreground">Authentic Italian pasta dish</p>
         </div>
 
         <div className="border rounded-lg p-4 space-y-3">
           <h4 className="font-medium">Chocolate Chip Cookies</h4>
           <Rating value={4.3} readonly size="sm" reviewCount={156} />
-          <p className="text-sm text-gray-600">Classic homemade cookies</p>
+          <p className="text-sm text-muted-foreground">Classic homemade cookies</p>
         </div>
 
         <div className="border rounded-lg p-4 space-y-3">
           <h4 className="font-medium">Caesar Salad</h4>
           <Rating value={3.9} readonly size="sm" reviewCount={87} />
-          <p className="text-sm text-gray-600">Fresh romaine with homemade dressing</p>
+          <p className="text-sm text-muted-foreground">Fresh romaine with homemade dressing</p>
         </div>
       </div>
 
       <div className="space-y-3">
         <h3 className="text-lg font-semibold">Rate This Recipe</h3>
         <div className="border rounded-lg p-4">
-          <p className="text-sm text-gray-600 mb-3">How would you rate this recipe?</p>
+          <p className="text-sm text-muted-foreground mb-3">How would you rate this recipe?</p>
           <Rating value={0} readonly={false} precision={0.5} size="lg" />
-          <p className="text-xs text-gray-500 mt-2">Click to rate (supports half stars)</p>
+          <p className="text-xs text-muted-foreground mt-2">Click to rate (supports half stars)</p>
         </div>
       </div>
     </div>
@@ -244,7 +244,7 @@ export const AccessibilityDemo: Story = {
     <div className="space-y-4">
       <div className="space-y-2">
         <h3 className="text-sm font-medium">Keyboard Navigation Demo</h3>
-        <p className="text-xs text-gray-600">Focus the rating below and use arrow keys, number keys (1-5), Home, and End to navigate</p>
+        <p className="text-xs text-muted-foreground">Focus the rating below and use arrow keys, number keys (1-5), Home, and End to navigate</p>
         <Rating value={3} readonly={false} precision={0.5} aria-label="Rate this recipe" />
       </div>
       
