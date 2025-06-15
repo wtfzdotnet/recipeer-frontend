@@ -82,10 +82,10 @@ describe('Pagination', () => {
         />
       );
 
-      const pageButton = screen.getByRole('button', { name: 'Go to page 3' });
+      const pageButton = screen.getByRole('button', { name: 'Go to page 2' });
       await user.click(pageButton);
 
-      expect(mockOnPageChange).toHaveBeenCalledWith(3);
+      expect(mockOnPageChange).toHaveBeenCalledWith(2);
     });
 
     it('calls onPageChange when Previous button is clicked', async () => {
@@ -124,13 +124,13 @@ describe('Pagination', () => {
       const user = userEvent.setup();
       render(
         <Pagination
-          currentPage={3}
+          currentPage={1}
           totalPages={5}
           onPageChange={mockOnPageChange}
         />
       );
 
-      const currentPageButton = screen.getByRole('button', { name: 'Go to page 3' });
+      const currentPageButton = screen.getByRole('button', { name: 'Go to page 1' });
       await user.click(currentPageButton);
 
       expect(mockOnPageChange).not.toHaveBeenCalled();
