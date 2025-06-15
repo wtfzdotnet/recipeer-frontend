@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.5.1...v1.6.0) (2025-06-15)
+
+
+### Bug Fixes
+
+* **tokens:** correct CSS variable format in Tailwind config to display orange buttons ([5a4e7a2](https://github.com/wtfzdotnet/recipeer-frontend/commit/5a4e7a25b2985d10343a0cc1a4b3a6b187ab7c7a))
+
+
+### Features
+
+* **docs:** add diagnostic story for button color investigation ([499e2e9](https://github.com/wtfzdotnet/recipeer-frontend/commit/499e2e90cc60d5acdd1c99715a54099be00c3830))
+
 ## [1.5.1](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.5.0...v1.5.1) (2025-06-15)
 
 
