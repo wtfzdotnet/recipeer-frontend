@@ -20,6 +20,7 @@ export { RecipeCollectionsCollapsible } from './recipe-collections-collapsible';
 export * from './navigation-menu';
 export { CurrencySelector } from './currency-selector';
 export { CountryLanguageSelector } from './country-language-selector';
+export { MealPlanCard } from './meal-plan-card';
 
 // Re-export types
 export type { IngredientChecklistProps } from './ingredient-checklist';
@@ -38,3 +39,4 @@ export type { NutritionAnalyticsChartProps, NutritionData, MacroBreakdown, Weekl
 export type { RecipeCollectionsCollapsibleProps, RecipeCollection, CollectionRecipe } from './recipe-collections-collapsible';
 export type { CurrencySelectorProps } from './currency-selector';
 export type { CountryLanguageSelectorProps } from './country-language-selector';
+export type { MealPlanCardProps, MealPlan, Recipe as MealPlanRecipe } from './meal-plan-card';

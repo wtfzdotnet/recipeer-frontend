@@ -65,12 +65,46 @@
     "preferences": "Locale Voorkeuren",
     "description": "Selecteer uw taal, regio en meetvoorkeuren."
   },
-  "units": {
-    "measurementSystem": "Meetsysteem",
+  "measurementSystem": {
+    "label": "Meetsysteem",
     "metric": "Metrisch (°C, kg, cm)",
     "imperial": "Imperiaal (°F, lbs, in)"
   },
   "dateFormat": {
     "label": "Datumformaat"
+  },
+  "mealPlan": {
+    "mealTypes": {
+      "breakfast": "Ontbijt",
+      "lunch": "Lunch", 
+      "dinner": "Diner",
+      "snack": "Tussendoortje"
+    },
+    "status": {
+      "planned": "Gepland",
+      "prepped": "Voorbereid", 
+      "completed": "Voltooid"
+    },
+    "actions": {
+      "edit": "Bewerk Maaltijd",
+      "complete": "Markeer als Voltooid",
+      "remove": "Verwijderen",
+      "addNotes": "Notities Toevoegen",
+      "substitute": "Vervang Recept"
+    },
+    "labels": {
+      "servings": "{{count}} portie",
+      "servings_other": "{{count}} porties",
+      "calories": "{{count}}cal",
+      "prepTime": "{{time}} voorbereiding",
+      "notes": "Notities",
+      "scheduledFor": "Gepland voor {{date}}",
+      "dragToReorder": "Sleep om maaltijden te herordenen"
+    },
+    "variants": {
+      "daily": "Dagweergave",
+      "weekly": "Weekweergave", 
+      "calendar": "Kalenderweergave"
+    }
   }
 }
