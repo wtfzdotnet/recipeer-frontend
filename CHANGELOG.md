@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.6.0...v1.6.1) (2025-06-15)
+
+
+### Bug Fixes
+
+* add security fix ([d0a6f86](https://github.com/wtfzdotnet/recipeer-frontend/commit/d0a6f86c367550070c1df882153ec248712dd077))
+
 # [1.6.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.5.1...v1.6.0) (2025-06-15)
 
 
