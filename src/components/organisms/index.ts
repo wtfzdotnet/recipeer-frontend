@@ -7,6 +7,7 @@ export { NutritionFacts } from './nutrition-facts';
 export { RecipeCollectionSaver } from './recipe-collection-saver';
 export { Dialog } from './dialog';
 export { LoginForm } from './login-form';
+export { RecipeForm } from './form-examples';
 
 // Advanced Components
 export { RecipeDataTable } from './recipe-data-table';
@@ -26,6 +27,7 @@ export type { NutritionFactsProps } from './nutrition-facts';
 export type { RecipeCollectionSaverProps } from './recipe-collection-saver';
 export type { DialogProps } from './dialog';
 export type { LoginFormProps } from './login-form';
+export type { RecipeFormProps, RecipeFormData } from './form-examples';
 
 // Advanced Component Types
 export type { RecipeDataTableProps, Recipe } from './recipe-data-table';

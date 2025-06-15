@@ -4,6 +4,8 @@
 export { QuantityAdjuster } from './quantity-adjuster';
 export { DifficultyIndicator } from './difficulty-indicator';
 export { ThemeToggle } from './theme-toggle';
+export { Pagination } from './pagination';
+export { ContextMenu } from './context-menu';
 export { RadioGroup } from './radio-group';
 export { Select } from './select';
 export { Slider } from './slider';
@@ -31,6 +33,8 @@ export * from './tooltip';
 export type { QuantityAdjusterProps } from './quantity-adjuster';
 export type { DifficultyIndicatorProps } from './difficulty-indicator';
 export type { ThemeToggleProps } from './theme-toggle';
+export type { PaginationProps } from './pagination';
+export type { ContextMenuProps, ContextMenuItem } from './context-menu';
 export type { RadioGroupProps } from './radio-group';
 export type { SelectProps } from './select';
 export type { SliderProps } from './slider';
