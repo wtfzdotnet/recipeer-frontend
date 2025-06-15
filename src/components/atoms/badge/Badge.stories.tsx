@@ -192,8 +192,8 @@ export const RecipeExamples: Story = {
   }
 };
 
-// Recipe card integration
-export const RecipeCardIntegration: Story = {
+// Card integration example
+export const CardIntegration: Story = {
   render: () => (
     <div className="max-w-sm border rounded-lg overflow-hidden">
       <div className="h-48 bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center">
@@ -226,7 +226,7 @@ export const RecipeCardIntegration: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Example integration of badges within recipe cards showing how they enhance recipe categorization and metadata display.'
+        story: 'Example integration of badges within cards showing how they enhance categorization and metadata display.'
       }
     }
   }

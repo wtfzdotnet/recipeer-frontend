@@ -407,10 +407,10 @@ export const VariedCollections: Story = {
   }
 };
 
-// Integration with RecipeCard example
-export const RecipeCardIntegration: Story = {
+// Integration example
+export const IntegrationExample: Story = {
   render: () => {
-    // Example of how to integrate with RecipeCard
+    // Example of integration with components
     const collections = mockCollections;
     const [savedCollections, setSavedCollections] = React.useState<string[]>(['favorites']);
     

@@ -292,8 +292,8 @@ export const ResponsiveGrid: Story = {
   }
 };
 
-// Recipe card integration example
-export const RecipeCardIntegration: Story = {
+// Card integration example
+export const CardIntegration: Story = {
   render: () => (
     <div className="space-y-4 max-w-sm">
       <div className="border rounded-lg p-4">
@@ -343,7 +343,7 @@ export const RecipeCardIntegration: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Example integration of difficulty indicators within recipe cards, showing how they enhance recipe selection.'
+        story: 'Example integration of difficulty indicators within cards, showing how they enhance recipe selection.'
       }
     }
   }
@@ -352,7 +352,7 @@ export const RecipeCardIntegration: Story = {
 // Legacy integration example
 export const LegacyIntegration: Story = {
   render: () => {
-    // Example showing how to integrate with existing RecipeCard data
+    // Example showing how to integrate with existing recipe data
     const legacyRecipes = [
       { name: 'Simple Salad', difficulty: 'Easy' as const, time: '10min' },
       { name: 'Chicken Stir Fry', difficulty: 'Medium' as const, time: '25min' },
