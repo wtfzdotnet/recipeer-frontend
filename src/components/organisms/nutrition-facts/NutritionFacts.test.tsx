@@ -72,7 +72,7 @@ describe('NutritionFacts', () => {
       expect(screen.getByText('Trans Fat')).toBeInTheDocument();
       expect(screen.getByText('Cholesterol')).toBeInTheDocument();
       expect(screen.getByText('Sodium')).toBeInTheDocument();
-      expect(screen.getByText('Total Carbohydrate')).toBeInTheDocument();
+      expect(screen.getByText('Total Carbohydrates')).toBeInTheDocument();
       expect(screen.getByText('Dietary Fiber')).toBeInTheDocument();
       expect(screen.getByText('Total Sugars')).toBeInTheDocument();
       expect(screen.getByText('Added Sugars')).toBeInTheDocument();
@@ -257,7 +257,7 @@ describe('NutritionFacts', () => {
       
       expect(screen.getByText('Total Fat')).toBeInTheDocument();
       expect(screen.getByText('Protein')).toBeInTheDocument();
-      expect(screen.getByText('Total Carbohydrate')).toBeInTheDocument();
+      expect(screen.getByText('Total Carbohydrates')).toBeInTheDocument();
     });
   });
 

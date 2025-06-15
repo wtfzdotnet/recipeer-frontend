@@ -32,6 +32,20 @@ export const LOCALE_CONFIGS: Record<SupportedLocale, LocaleConfig> = {
       maximumFractionDigits: 2,
     },
   },
+  'ar-SA': {
+    locale: 'ar-SA',
+    name: 'العربية (السعودية)',
+    flag: '🇸🇦', 
+    measurementSystem: 'metric',
+    currency: 'SAR',
+    dir: 'rtl',
+    dateFormat: 'dd/MM/yyyy',
+    numberFormat: {
+      style: 'decimal',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    },
+  },
 };
 
 /**
@@ -49,6 +63,7 @@ export const CURRENCY_SYMBOLS = {
   CAD: 'C$',
   AUD: 'A$',
   JPY: '¥',
+  SAR: 'ر.س',
 } as const;
 
 /**

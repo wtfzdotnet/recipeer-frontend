@@ -10,8 +10,8 @@ describe('LanguageDropdown', () => {
     const trigger = screen.getByRole('combobox');
     expect(trigger).toBeInTheDocument();
     
-    // Check if it shows English as default
-    expect(screen.getByText('English')).toBeInTheDocument();
+    // Check if it shows English (United States) as default
+    expect(screen.getByText('English (United States)')).toBeInTheDocument();
     
     // Check if globe icon is present
     const globeIcon = document.querySelector('.lucide-globe');
@@ -21,8 +21,8 @@ describe('LanguageDropdown', () => {
   it('renders with flag emoji', () => {
     render(<LanguageDropdown />);
     
-    // Check if US flag emoji is present for default English
-    const flagElements = screen.getAllByLabelText('English');
+    // Check if US flag emoji is present for default English (United States)
+    const flagElements = screen.getAllByLabelText('English (United States)');
     expect(flagElements[0]).toBeInTheDocument();
     expect(flagElements[0]).toHaveTextContent('🇺🇸');
   });

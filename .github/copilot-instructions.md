@@ -139,8 +139,9 @@ export const RTLTest: Story = {
 |--------|----------|--------|-------------|----------|-----------|
 | en-US  | English  | United States | Imperial | USD | LTR |
 | nl-NL  | Dutch    | Netherlands | Metric | EUR | LTR |
+| ar-SA  | Arabic   | Saudi Arabia | Metric | SAR | RTL |
 
-*Future expansion planned for Arabic (ar-SA) with RTL support*
+*Arabic (ar-SA) demonstrates complete RTL layout support with right-to-left text direction*
 
 ## Atomic Design + Component-Driven Development
 

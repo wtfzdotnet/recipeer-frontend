@@ -1,0 +1,63 @@
+{
+  "language": {
+    "label": "اختر اللغة",
+    "english": "الإنجليزية",
+    "dutch": "الهولندية", 
+    "arabic": "العربية"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "recipes": "الوصفات",
+    "search": "البحث",
+    "profile": "الملف الشخصي"
+  },
+  "buttons": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "add": "إضافة",
+    "close": "إغلاق",
+    "submit": "إرسال",
+    "back": "العودة",
+    "next": "التالي",
+    "previous": "السابق"
+  },
+  "sections": {
+    "overview": "نظرة عامة",
+    "details": "التفاصيل",
+    "ingredients": "المكونات",
+    "instructions": "التعليمات",
+    "nutrition": "القيم الغذائية"
+  },
+  "forms": {
+    "required": "هذا الحقل مطلوب",
+    "email": {
+      "label": "البريد الإلكتروني",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "invalid": "البريد الإلكتروني غير صحيح"
+    },
+    "password": {
+      "label": "كلمة المرور",
+      "placeholder": "أدخل كلمة المرور",
+      "confirm": "تأكيد كلمة المرور"
+    },
+    "name": {
+      "label": "الاسم",
+      "placeholder": "أدخل اسمك"
+    }
+  },
+  "time": {
+    "minutes": "دقيقة",
+    "hours": "ساعة",
+    "seconds": "ثانية",
+    "prep": "وقت التحضير",
+    "cook": "وقت الطبخ",
+    "total": "الوقت الإجمالي"
+  },
+  "loading": "جاري التحميل...",
+  "error": "حدث خطأ",
+  "success": "تم بنجاح",
+  "confirmation": "تأكيد",
+  "warning": "تحذير"
+}

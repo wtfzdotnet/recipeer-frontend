@@ -17,7 +17,7 @@ This project implements comprehensive internationalization with locale-based sys
 ### Core i18n Architecture
 
 #### Locale System
-- **Supported Locales**: `en-US` (Imperial, USD), `nl-NL` (Metric, EUR)
+- **Supported Locales**: `en-US` (Imperial, USD), `nl-NL` (Metric, EUR), `ar-SA` (Metric, SAR, RTL)
 - **Measurement Systems**: Automatic switching based on locale (Imperial vs Metric)
 - **Currency Integration**: Locale-based currency defaults with manual override
 - **Date/Number Formatting**: Region-specific formatting patterns
@@ -170,10 +170,14 @@ src/i18n/locales/
 │   ├── common.json       # UI elements, buttons, navigation
 │   ├── nutrition.json    # Domain-specific nutrition terms
 │   └── validation.json   # Form validation messages
-└── nl-NL/
-    ├── common.json
-    ├── nutrition.json
-    └── validation.json
+├── nl-NL/
+│   ├── common.json
+│   ├── nutrition.json
+│   └── validation.json
+└── ar-SA/
+    ├── common.json       # Arabic translations with RTL support
+    ├── nutrition.json    # Nutrition terms in Arabic
+    └── validation.json   # Arabic validation messages
 ```
 
 #### Translation Key Naming Conventions

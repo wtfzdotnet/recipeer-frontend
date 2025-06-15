@@ -2,7 +2,7 @@
  * Locale system types for internationalization with measurement units and currency
  */
 
-export type SupportedLocale = 'en-US' | 'nl-NL';
+export type SupportedLocale = 'en-US' | 'nl-NL' | 'ar-SA';
 
 export type MeasurementSystem = 'metric' | 'imperial';
 
@@ -14,7 +14,7 @@ export type VolumeUnit = 'milliliters' | 'liters' | 'cups' | 'tablespoons' | 'te
 
 export type LengthUnit = 'centimeters' | 'meters' | 'inches' | 'feet';
 
-export type Currency = 'USD' | 'EUR' | 'GBP' | 'CAD' | 'AUD' | 'JPY';
+export type Currency = 'USD' | 'EUR' | 'GBP' | 'CAD' | 'AUD' | 'JPY' | 'SAR';
 
 export interface LocaleConfig {
   /** Locale code (e.g., 'en-US', 'nl-NL') */

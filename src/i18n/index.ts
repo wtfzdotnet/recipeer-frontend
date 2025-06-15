@@ -6,8 +6,10 @@ import { DEFAULT_LOCALE } from '@/constants/locale-config';
 // Import translation resources
 import enUSCommon from './locales/en-US/common.json';
 import nlNLCommon from './locales/nl-NL/common.json';
+import arSACommon from './locales/ar-SA/common.json';
 import enUSNutrition from './locales/en-US/nutrition.json';
 import nlNLNutrition from './locales/nl-NL/nutrition.json';
+import arSANutrition from './locales/ar-SA/nutrition.json';
 
 // Translation resources
 const resources = {
@@ -18,6 +20,10 @@ const resources = {
   'nl-NL': {
     common: nlNLCommon,
     nutrition: nlNLNutrition,
+  },
+  'ar-SA': {
+    common: arSACommon,
+    nutrition: arSANutrition,
   },
 };
 
@@ -49,6 +55,7 @@ i18nInstance
       lookupLocalStorage: 'recipeer-locale',
       convertDetectedLanguage: (lng: string) => {
         // Map detected language to supported locales
+        if (lng.startsWith('ar')) return 'ar-SA';
         if (lng.startsWith('nl')) return 'nl-NL';
         if (lng.startsWith('en')) return 'en-US';
         return DEFAULT_LOCALE;
