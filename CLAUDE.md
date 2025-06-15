@@ -9,10 +9,63 @@ This is a modern React application built with:
 - **Documentation**: Storybook 9.0.8
 - **Linting**: ESLint 9.25.0
 
+## Atomic Design + Component-Driven Development
+
+This project follows **Atomic Design methodology** with strict component isolation. When generating components, ALWAYS consider the atomic hierarchy and ensure proper placement:
+
+### Automatic Component Classification
+
+When GitHub Copilot suggests components, automatically classify them by complexity:
+
+#### Atoms (Basic Building Blocks)
+- **Auto-detect**: Single-purpose UI elements that can't be broken down further
+- **Examples**: Button, Input, Label, Icon, Typography, Avatar, Badge, Checkbox, Switch
+- **Location**: `src/components/atoms/{component-name}/`
+- **Characteristics**: Pure UI, no business logic, accepts only presentation props
+
+#### Molecules (Simple Combinations) 
+- **Auto-detect**: 2-5 atoms working together as a functional unit
+- **Examples**: SearchField (Input + Button), FormField (Label + Input + Error), QuantityAdjuster, Rating
+- **Location**: `src/components/molecules/{component-name}/`
+- **Characteristics**: Simple interaction logic, reusable across contexts
+
+#### Organisms (Complex Sections)
+- **Auto-detect**: Complex components with business logic, multiple molecules/atoms
+- **Examples**: RecipeCard, NavigationHeader, RecipeForm, IngredientChecklist, NutritionFacts
+- **Location**: `src/components/organisms/{component-name}/`
+- **Characteristics**: Self-contained, may connect to services/hooks
+
+#### Templates (Page Layouts)
+- **Auto-detect**: Layout components that define page structure
+- **Examples**: RecipePageLayout, DashboardLayout, AuthLayout
+- **Location**: `src/components/templates/{component-name}/`
+- **Characteristics**: Data-agnostic, handle layout and responsive behavior
+
+### Component Generation Rules
+
+When generating components, GitHub Copilot should:
+
+1. **Suggest Atomic Level**: Always indicate which atomic level the component belongs to
+2. **Detect Complexity**: If a suggested component is too complex, recommend breaking it down
+3. **Auto-generate Files**: Create the complete file structure:
+   ```
+   component-name/
+   ├── component-name.tsx
+   ├── ComponentName.stories.tsx  
+   ├── ComponentName.test.tsx
+   └── index.ts
+   ```
+4. **Follow Naming**: Use kebab-case folders, PascalCase components
+5. **Add Dependencies**: Automatically import from appropriate atomic levels
+6. **TypeScript Interfaces**: Generate comprehensive props interfaces with JSDoc
+7. **Accessibility**: Include ARIA attributes and semantic HTML
+8. **Internationalization**: Avoid hardcoded strings, use placeholder props
+9. **Mock Functions**: Use `const fn = () => () => {};` pattern instead of `@storybook/test` imports
+
 ## Development Guidelines
 
 - Use `cn()` utility from `src/lib/utils.js` for conditional className merging
-- Follow **Atomic Design + Component-Driven Development (CDD)** principles with strict component isolation
+- Follow **Atomic Design + Component-Driven Development (CDD)** with strict component isolation
 - Create Storybook stories for all new components, co-located with the component
 - Separate design tokens from component usage examples - tokens go in `src/foundation/tokens/`
 - Write tests using Vitest + Playwright for browser testing
@@ -20,106 +73,105 @@ This is a modern React application built with:
 - Use shadcn/ui components when possible, extend with custom styling as needed
 - Organize UI components in atomic hierarchy with clean exports via `index.ts`
 - **NEW REQUIREMENT**: Design all components with internationalization (i18n) in mind - avoid hardcoded strings, plan for text expansion, and consider RTL languages
-- **CRITICAL**: Follow design token compliance rules (see Design Token Guidelines section below)
+- **CRITICAL**: Follow design token compliance rules - NO hardcoded colors or spacing values
+- **CRITICAL**: Export only React components from component files (separate constants/functions)
 
-## Design Token Guidelines
+## Design Token Compliance Rules
 
-This project enforces strict design token compliance through automated CI scanning. ALL new code must adhere to these rules to pass validation:
+**MANDATORY**: All GitHub Copilot suggestions MUST adhere to design token compliance. The CI pipeline automatically scans for violations and will block builds.
 
-### Color Usage Rules
+### ❌ NEVER Suggest These Patterns:
 
-**❌ NEVER use hardcoded colors:**
 ```typescript
-// ❌ Hardcoded Tailwind color classes
-<div className="bg-blue-500 text-red-600">
+// ❌ Hardcoded Tailwind colors
+className="bg-blue-500 text-red-600 border-gray-200"
 
-// ❌ Hardcoded RGB/hex values in styles
-<div style={{ backgroundColor: '#3b82f6', color: 'rgb(239, 68, 68)' }}>
+// ❌ Arbitrary color values
+className="bg-[#3b82f6] text-[rgb(239,68,68)]"
 
-// ❌ Arbitrary color values in Tailwind
-<div className="bg-[#3b82f6] text-[rgb(239,68,68)]">
-```
+// ❌ RGB/hex in style objects
+style={{ backgroundColor: '#3b82f6', color: 'rgb(239, 68, 68)' }}
 
-**✅ ALWAYS use design token colors:**
-```typescript
-// ✅ Semantic design token colors
-<div className="bg-primary text-destructive">
-
-// ✅ Design system color tokens
-<div className="bg-background text-foreground">
-<div className="bg-muted text-muted-foreground">
-<div className="bg-card text-card-foreground">
-<div className="bg-accent text-accent-foreground">
-
-// ✅ Status colors from design tokens
-<div className="bg-success text-success-foreground">
-<div className="bg-warning text-warning-foreground">
-<div className="bg-destructive text-destructive-foreground">
-```
-
-### Spacing Usage Rules
-
-**❌ NEVER use arbitrary spacing values:**
-```typescript
 // ❌ Arbitrary spacing values
-<div className="p-[12px] m-[24px]">
-<div className="gap-[8px] space-y-[16px]">
+className="p-[12px] m-[24px] gap-[8px]"
 
-// ❌ Hardcoded pixel values in styles
-<div style={{ padding: '12px', margin: '24px' }}>
-```
-
-**✅ ALWAYS use design token spacing:**
-```typescript
-// ✅ Design token spacing scale
-<div className="p-1 m-2">      // 4px padding, 8px margin
-<div className="p-2 m-4">      // 8px padding, 16px margin  
-<div className="p-4 m-6">      // 16px padding, 24px margin
-<div className="p-6 m-8">      // 24px padding, 32px margin
-
-// ✅ Consistent spacing tokens
-<div className="gap-2 space-y-4">
-<div className="px-4 py-2">
-<div className="mx-auto my-8">
-```
-
-### Component Export Rules
-
-**❌ NEVER export non-components from component files:**
-```typescript
-// ❌ Mixing constants with component exports
-export const RECIPE_TYPES = ['breakfast', 'lunch', 'dinner'];
+// ❌ Mixing components with constants
+export const RECIPE_TYPES = ['breakfast', 'lunch'];
 export const RecipeCard = () => { /* component */ };
 ```
 
-**✅ ALWAYS separate constants from component exports:**
+### ✅ ALWAYS Suggest These Patterns:
+
 ```typescript
-// ✅ Create separate constants file
+// ✅ Design token colors
+className="bg-primary text-primary-foreground border-border"
+className="bg-background text-foreground"
+className="bg-card text-card-foreground"
+className="bg-muted text-muted-foreground"
+className="bg-destructive text-destructive-foreground"
+className="bg-success text-success-foreground"
+className="bg-warning text-warning-foreground"
+
+// ✅ Design token spacing
+className="p-2 m-4 gap-2"           // 8px padding, 16px margin, 8px gap
+className="px-4 py-2"               // 16px horizontal, 8px vertical padding
+className="space-y-4"               // 16px vertical spacing between children
+
+// ✅ Separate files for constants
 // constants/recipe-constants.ts
-export const RECIPE_TYPES = ['breakfast', 'lunch', 'dinner'];
+export const RECIPE_TYPES = ['breakfast', 'lunch'];
 
-// components/organisms/recipe-card/recipe-card.tsx
+// components/organisms/recipe-card/recipe-card.tsx  
 export const RecipeCard = () => { /* component */ };
 ```
 
-### Available Design Tokens
+### Available Design Tokens for Copilot Suggestions:
 
-#### Color Tokens
-- **Primary Colors**: `primary`, `primary-foreground`
-- **Secondary Colors**: `secondary`, `secondary-foreground`  
-- **Accent Colors**: `accent`, `accent-foreground`
-- **Background Colors**: `background`, `foreground`
-- **Surface Colors**: `card`, `card-foreground`, `popover`, `popover-foreground`
-- **Muted Colors**: `muted`, `muted-foreground`
-- **Border Colors**: `border`, `input`, `ring`
-- **Status Colors**: `destructive`, `destructive-foreground`
+#### Colors (Semantic):
+- `primary`, `primary-foreground`
+- `secondary`, `secondary-foreground`
+- `accent`, `accent-foreground`
+- `background`, `foreground`
+- `card`, `card-foreground`
+- `popover`, `popover-foreground`
+- `muted`, `muted-foreground`
+- `border`, `input`, `ring`
+- `destructive`, `destructive-foreground`
+- `success`, `success-foreground`
+- `warning`, `warning-foreground`
 
-#### Spacing Tokens
-- **Micro Spacing**: `p-0.5` (2px), `p-1` (4px), `p-1.5` (6px)
-- **Small Spacing**: `p-2` (8px), `p-3` (12px), `p-4` (16px)
-- **Medium Spacing**: `p-5` (20px), `p-6` (24px), `p-8` (32px)
-- **Large Spacing**: `p-10` (40px), `p-12` (48px), `p-16` (64px)
-- **XL Spacing**: `p-20` (80px), `p-24` (96px), `p-32` (128px)
+#### Colors (Data Visualization):
+- `chart-1`, `chart-2`, `chart-3`, `chart-4`, `chart-5`
+
+#### Spacing (Padding/Margin):
+- `p-0.5` (2px), `p-1` (4px), `p-1.5` (6px), `p-2` (8px), `p-3` (12px), `p-4` (16px), `p-5` (20px), `p-6` (24px), `p-8` (32px), `p-10` (40px), `p-12` (48px), `p-16` (64px), `p-20` (80px), `p-24` (96px), `p-32` (128px)
+- `m-0.5` (2px), `m-1` (4px), `m-1.5` (6px), `m-2` (8px), `m-3` (12px), `m-4` (16px), `m-5` (20px), `m-6` (24px), `m-8` (32px), `m-10` (40px), `m-12` (48px), `m-16` (64px), `m-20` (80px), `m-24` (96px), `m-32` (128px)
+- `gap-0.5` (2px), `gap-1` (4px), `gap-1.5` (6px), `gap-2` (8px), `gap-3` (12px), `gap-4` (16px), `gap-5` (20px), `gap-6` (24px), `gap-8` (32px), `gap-10` (40px), `gap-12` (48px), `gap-16` (64px)
+- `space-y-0.5` (2px), `space-y-1` (4px), `space-y-1.5` (6px), `space-y-2` (8px), `space-y-3` (12px), `space-y-4` (16px), `space-y-5` (20px), `space-y-6` (24px), `space-y-8` (32px), `space-y-10` (40px), `space-y-12` (48px), `space-y-16` (64px)
+
+### Real-World Token Usage Examples
+
+Based on actual component implementations in this codebase:
+
+```typescript
+// ✅ Button variants (from Button component)
+className="bg-primary text-primary-foreground hover:bg-primary/90"
+className="bg-destructive text-white hover:bg-destructive/90"
+className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
+className="hover:bg-accent hover:text-accent-foreground"
+
+// ✅ Alert variants (from Alert component)  
+className="border-success text-success"
+className="border-warning text-warning"
+className="border-primary text-primary"
+
+// ✅ Card styling (from Card component)
+className="hover:shadow-md transition-shadow"
+
+// ✅ Focus states (from Button component)
+className="focus-visible:ring-ring/50 focus-visible:ring-1"
+className="aria-invalid:ring-destructive/20"
+```
 
 ### Enforcement Rules
 
@@ -277,37 +329,69 @@ src/
 └── App.tsx                      # Main application component
 ```
 
-## Storybook guidelines 
+## Copilot-Specific Instructions
+
+### Component Suggestions
+When suggesting components, Copilot should:
+- **Always specify atomic level** in suggestions
+- **Auto-detect overcomplexity** and suggest atomic breakdown
+- **Generate complete file structure** (component, story, test, index)
+- **Follow established patterns** from existing components
+- **Import from correct atomic levels** (respect hierarchy)
+
+### Code Generation Patterns
+- **TypeScript First**: Always generate TypeScript interfaces
+- **Design Token First**: Use only design token colors and spacing
+- **Component Separation**: Export only React components (separate constants/functions)
+- **Accessibility First**: Include ARIA labels and semantic HTML
+- **Responsive First**: Consider mobile and desktop layouts
+- **Test First**: Generate test cases alongside components
+- **Story First**: Create comprehensive Storybook examples
+
+## Storybook Organization
+
+### Atomic Design Story Structure
+- **Atoms**: `"Atoms/Button"`, `"Atoms/Input"`, `"Atoms/Typography"`
+- **Molecules**: `"Molecules/QuantityAdjuster"`, `"Molecules/SearchField"`
+- **Organisms**: `"Organisms/RecipeCard"`, `"Organisms/NavigationHeader"`
+- **Templates**: `"Templates/RecipeLayout"`, `"Templates/DashboardLayout"`
 
 ### Mock Functions and Imports
 
-**CRITICAL**: This project does NOT use `@storybook/test` package. Use the established mock function pattern:
+**CRITICAL**: This project does NOT use `@storybook/test` package. GitHub Copilot must use the established mock function pattern:
 
 ```typescript
-// ❌ NEVER import from @storybook/test (package not available)
+// ❌ NEVER suggest importing from @storybook/test (package not available)
 import { fn } from '@storybook/test'
 
-// ✅ ALWAYS use simple mock function pattern
+// ✅ ALWAYS suggest simple mock function pattern
 // Simple mock function for stories
 const fn = () => () => {};
 ```
 
-**Pattern Explanation**:
-- `fn()` creates a mock function that can be used for Storybook actions
-- This pattern is used consistently across all story files in the project
-- It provides the same functionality as `@storybook/test` but without the dependency
-- Works seamlessly with Storybook's action logger and controls
+**Auto-Generate Pattern**:
+When creating Storybook stories, GitHub Copilot should automatically include:
+1. The mock function declaration at the top
+2. Proper usage in story args
+3. Consistent pattern across all story files
 
-**Usage in Stories**:
+**Usage in Generated Stories**:
 ```typescript
-export const Default: Story = {
-  args: {
-    onClick: fn(),
-    onSubmit: fn(),
-    onCancel: fn(),
-  },
-}
+import type { Meta, StoryObj } from '@storybook/react-vite'
+// Simple mock function for stories
+const fn = () => () => {};
+import { ComponentName } from './ComponentName'
+
+// ...story configuration with fn() usage...
 ```
+
+### Story Requirements
+- Demonstrate realistic usage with mock data
+- Include multiple variants and states (default, loading, error)
+- Show component composition (molecules showing their atoms)
+- Use consistent design system assets (icons, images)
+- Consider accessibility scenarios (high contrast, screen readers)
+
 
 ## Key Commands
 
@@ -320,18 +404,73 @@ export const Default: Story = {
 
 ## Coding Standards
 
-- Use TypeScript/JavaScript ES6+ syntax
+- Use TypeScript/JavaScript ES6+ syntax with comprehensive interfaces
 - Prefer functional components with hooks
-- Use Tailwind CSS classes for styling (following design token compliance)
-- Implement proper error boundaries
-- Write comprehensive tests for all components
-- Document components with Storybook stories **co-located** with components
-- Maintain strict separation between design tokens and component usage examples
+- Use Tailwind CSS classes for styling **with design token compliance**
+- **NEVER use hardcoded colors** (bg-blue-500, #3b82f6, rgb(59,130,246))
+- **NEVER use arbitrary spacing** (p-[12px], gap-[8px])
+- **NEVER mix component exports with constants/functions** (breaks Fast Refresh)
+- Implement proper error boundaries for organisms and above
+- Write comprehensive tests for molecules and organisms
+- Document all components with Storybook stories **co-located** with components
+- Maintain strict atomic design hierarchy (no upward imports)
 - Use proper component subdirectory structure with clean `index.ts` exports
-- Follow Component-Driven Development principles for all new additions
-- **CRITICAL**: Separate component exports from constants/functions to maintain Fast Refresh compatibility
-- **CRITICAL**: Use only design tokens for colors and spacing (no hardcoded values)
-- **CRITICAL**: Export only React components from component files
+- Follow Atomic Design + Component-Driven Development principles
+
+## Atomic Design Component Rules
+
+### Import Hierarchy (Strictly Enforced)
+```typescript
+// ✅ Atoms can import: foundation, lib, utils
+import { cn } from '@/lib/utils';
+
+// ✅ Molecules can import: atoms, foundation, lib, utils  
+import { Button } from '@/components/atoms';
+
+// ✅ Organisms can import: molecules, atoms, foundation, lib, utils
+import { QuantityAdjuster } from '@/components/molecules';
+import { Button } from '@/components/atoms';
+
+// ❌ NEVER: Atoms importing molecules/organisms
+import { RecipeCard } from '@/components/organisms'; // ERROR in atoms
+
+// ❌ NEVER: Molecules importing organisms  
+import { NavigationHeader } from '@/components/organisms'; // ERROR in molecules
+```
+
+### Auto-Generated Component Structure
+When creating components, generate this structure:
+```
+component-name/
+├── component-name.tsx          # Main component
+├── ComponentName.stories.tsx   # Storybook stories
+├── ComponentName.test.tsx      # Unit tests (molecules+)
+├── component-name.types.ts     # Types (if complex)
+└── index.ts                    # Clean export
+```
+
+### TypeScript Interface Pattern
+```typescript
+/**
+ * Props for ComponentName - [Atomic Level]
+ * 
+ * @example
+ * <ComponentName title="Example" size="md" />
+ */
+export interface ComponentNameProps {
+  /** Main title text */
+  title: string;
+  
+  /** Size variant */
+  size?: 'sm' | 'md' | 'lg';
+  
+  /** Custom CSS class */
+  className?: string;
+  
+  /** ARIA label for accessibility */
+  'aria-label'?: string;
+}
+```
 
 ## Component Development Guidelines
 
