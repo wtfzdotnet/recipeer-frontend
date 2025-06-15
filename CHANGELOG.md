@@ -1,3 +1,13 @@
+# [1.7.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.6.2...v1.7.0) (2025-06-15)
+
+
+### Features
+
+* **atoms:** add Input OTP component with accessibility support ([9c677b1](https://github.com/wtfzdotnet/recipeer-frontend/commit/9c677b16d7ac0b142bf1301e8de2972a46d36265))
+* **atoms:** add Menubar component with accessibility support ([23f11df](https://github.com/wtfzdotnet/recipeer-frontend/commit/23f11df6990a8d16cca952bd4550944ad244fe6a))
+* **atoms:** add Toggle component with accessibility labels ([d41841b](https://github.com/wtfzdotnet/recipeer-frontend/commit/d41841bd674666a86d35b83917f918540a23da90))
+* **molecules:** enhance Radio Group with cultural options support ([445818a](https://github.com/wtfzdotnet/recipeer-frontend/commit/445818a83e54561e5b95b7601dd7b9bd4a82fc22))
+
 ## [1.6.2](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.6.1...v1.6.2) (2025-06-15)
 
 
