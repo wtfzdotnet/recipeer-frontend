@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Button } from '@/components/atoms'
 import { Button as ShadcnButton } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/molecules'
@@ -30,14 +31,47 @@ const sampleAllergens = {
 };
 
 function App() {
+  const [showDialogTest, setShowDialogTest] = useState(false);
+
+  if (showDialogTest) {
+    return (
+      <>
+        <div className="fixed top-4 right-4 z-40">
+          <ThemeToggle />
+        </div>
+        <div className="fixed top-4 left-4 z-40">
+          <Button variant="outline" onClick={() => setShowDialogTest(false)}>
+            ← Back to Home
+          </Button>
+        </div>
+        <div className="min-h-screen bg-background">
+          <div className="container mx-auto px-4 py-8">
+            <h1 className="text-3xl font-bold mb-8">Dialog Tests Removed</h1>
+            <p className="text-muted-foreground">
+              All dialog verification components have been removed. Please use Storybook to test dialog components.
+            </p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen bg-background p-8">
       {/* Theme Toggle in top-right corner */}
       <div className="fixed top-4 right-4">
         <ThemeToggle />
       </div>
 
-      <h1 className="text-4xl font-bold text-foreground mb-8">Frontend Recipeer - Orange Theme & Nutrition Demo</h1>
+      {/* Test Dialog button */}
+      <div className="fixed top-4 left-4">
+        <Button variant="outline" onClick={() => setShowDialogTest(true)}>
+          Test Dialogs →
+        </Button>
+      </div>
+
+      <div className="flex flex-col items-center justify-center min-h-[80vh]">
+        <h1 className="text-4xl font-bold text-foreground mb-8">Frontend Recipeer - Orange Theme & Nutrition Demo</h1>
       
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
         
@@ -114,6 +148,7 @@ function App() {
             </p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   )

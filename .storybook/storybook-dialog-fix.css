@@ -1,0 +1,83 @@
+/* Storybook-specific fixes for dialog z-index issues */
+
+/* 
+ * STORYBOOK DIALOG Z-INDEX FIX
+ * 
+ * Storybook's iframe environment can create additional stacking contexts
+ * that interfere with RadixUI portal rendering. These rules ensure dialogs
+ * always appear correctly in Storybook stories.
+ */
+
+/* PRIMARY FIX: RadixUI Portal containers - maximum z-index */
+[data-radix-portal] {
+  z-index: 999999 !important;
+  position: fixed !important;
+}
+
+/* Storybook-specific container targeting */
+.sb-show-main [data-radix-portal] {
+  z-index: 999999 !important;
+  position: fixed !important;
+}
+
+.sb-main-padded [data-radix-portal],
+.docs-story [data-radix-portal],
+#storybook-root [data-radix-portal] {
+  z-index: 999999 !important;
+  position: fixed !important;
+}
+
+/* Dialog overlay (darkened background) */
+[data-state="open"][data-radix-dialog-overlay],
+[data-radix-dialog-overlay] {
+  z-index: 999998 !important;
+  position: fixed !important;
+}
+
+/* Dialog content (dialog box itself) */
+[data-state="open"][data-radix-dialog-content],
+[data-radix-dialog-content] {
+  z-index: 999999 !important;
+  position: fixed !important;
+}
+
+/* AlertDialog overlay */
+[data-state="open"][data-radix-alert-dialog-overlay],
+[data-radix-alert-dialog-overlay] {
+  z-index: 999998 !important;
+  position: fixed !important;
+}
+
+/* AlertDialog content */
+[data-state="open"][data-radix-alert-dialog-content],
+[data-radix-alert-dialog-content] {
+  z-index: 999999 !important;
+  position: fixed !important;
+}
+
+/* Sheet content */
+[data-state="open"][data-radix-sheet-content] {
+  z-index: 999999 !important;
+}
+
+/* Ensure Storybook's own elements don't create stacking contexts */
+#storybook-root,
+#storybook-root > div,
+.sb-show-main,
+.sb-main-padded,
+.docs-story {
+  position: relative !important;
+  z-index: auto !important;
+}
+
+/* Specific fix for stories with background content */
+.sb-story {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Ensure story content doesn't interfere with dialogs */
+[data-story] {
+  position: relative !important;
+  z-index: auto !important;
+}

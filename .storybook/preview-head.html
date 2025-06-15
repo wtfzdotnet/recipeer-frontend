@@ -1,1 +1,132 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https: http:; font-src 'self' data: https:;">
+
+<!-- TARGETED DIALOG Z-INDEX FIX FOR STORYBOOK -->
+<style>
+  /* ONLY target dialog-related elements with MAXIMUM possible z-index */
+  
+  /* Target dialog-specific elements with maximum z-index (higher than 2147483647) */
+  [data-radix-portal],
+  [data-radix-portal] *,
+  [data-radix-dialog-overlay],
+  [data-radix-dialog-content], 
+  [data-radix-alert-dialog-overlay],
+  [data-radix-alert-dialog-content],
+  [role="dialog"],
+  [role="alertdialog"],
+  [data-state="open"][role="dialog"],
+  [data-state="open"][role="alertdialog"] {
+    z-index: 2147483647 !important;
+  }
+  
+  /* Target by Radix UI class patterns for dialog content */
+  .fixed[class*="translate-x-[-50%]"][class*="translate-y-[-50%]"],
+  .fixed[class*="left-[50%]"][class*="top-[50%]"] {
+    z-index: 2147483647 !important;
+  }
+  
+  /* Target dialog overlays (backdrop) with slightly lower z-index */
+  [data-radix-dialog-overlay],
+  [data-radix-alert-dialog-overlay],
+  .fixed.inset-0[class*="bg-black"],
+  .fixed.inset-0[class*="bg-slate"] {
+    z-index: 2147483646 !important;
+  }
+  
+  /* Storybook-specific targeting */
+  .sb-show-main [role="dialog"],
+  .sb-show-main [role="alertdialog"],
+  .sb-main-padded [role="dialog"],
+  .sb-main-padded [role="alertdialog"],
+  .docs-story [role="dialog"],
+  .docs-story [role="alertdialog"] {
+    z-index: 2147483647 !important;
+  }
+  
+  /* DO NOT target all fixed elements - be specific */
+  /* Exclude test elements and other fixed elements from our override */
+  [data-testid="background-layer"],
+  .fixed[class*="bg-red-"],
+  .fixed[class*="bg-blue-"],
+  .fixed[class*="bg-green-"],
+  .fixed[class*="bg-yellow-"] {
+    z-index: inherit !important;
+  }
+  
+  /* Reset Storybook's own elements to avoid interference */
+  .sb-show-main,
+  .sb-main-padded,
+  .docs-story,
+  #storybook-root {
+    z-index: auto !important;
+    position: relative !important;
+  }
+</style>
+
+<script>
+  // Targeted JavaScript to force z-index only on dialog elements
+  (function() {
+    const forceDialogZIndex = () => {
+      // ONLY target dialog-related elements, not all fixed elements
+      const dialogSelectors = [
+        '[data-radix-portal]',
+        '[data-radix-dialog-overlay]',
+        '[data-radix-dialog-content]',
+        '[data-radix-alert-dialog-overlay]',
+        '[data-radix-alert-dialog-content]',
+        '[role="dialog"]',
+        '[role="alertdialog"]'
+      ];
+      
+      dialogSelectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          // Check that it's not a test element
+          if (!el.hasAttribute('data-testid') && 
+              !el.classList.contains('bg-red-500') && 
+              !el.classList.contains('bg-blue-500') && 
+              !el.classList.contains('bg-green-500') && 
+              !el.classList.contains('bg-yellow-500')) {
+            
+            el.style.zIndex = '2147483647';
+            el.style.setProperty('z-index', '2147483647', 'important');
+            
+            // Ensure dialog content has proper positioning
+            if (selector.includes('content') || selector.includes('dialog]')) {
+              el.style.position = 'fixed';
+              el.style.setProperty('position', 'fixed', 'important');
+            }
+          }
+        });
+      });
+    };
+    
+    // Run immediately
+    forceDialogZIndex();
+    
+    // Run on DOM changes
+    if (window.MutationObserver) {
+      const observer = new MutationObserver((mutations) => {
+        let hasDialogChanges = false;
+        mutations.forEach(mutation => {
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              const element = node;
+              if (element.matches && element.matches('[role="dialog"], [role="alertdialog"], [data-radix-portal], [data-radix-dialog-overlay], [data-radix-dialog-content]')) {
+                hasDialogChanges = true;
+              }
+            }
+          });
+        });
+        
+        if (hasDialogChanges) {
+          setTimeout(forceDialogZIndex, 10);
+        }
+      });
+      
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+    
+    // Periodic check but less frequent
+    setInterval(forceDialogZIndex, 1000);
+  })();
+</script>

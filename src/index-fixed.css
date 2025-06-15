@@ -111,15 +111,27 @@
 
 @layer base {
   /* 
-   * FIXED: Apply borders selectively instead of to all elements
-   * Original problematic rule: * { @apply border-border; }
+   * FIXED: Instead of applying border-border to ALL elements (*),
+   * we apply it selectively to avoid stacking context issues with overlays
    */
   
+  /* Apply borders to common UI elements that need them */
   button,
   input,
   textarea,
   select,
-  fieldset {
+  fieldset,
+  .border-element {
+    @apply border-border;
+  }
+  
+  /* Apply to specific component containers */
+  [data-component="card"],
+  [data-component="dialog"],
+  [data-component="popover"],
+  .card,
+  .dialog,
+  .popover {
     @apply border-border;
   }
   
@@ -128,5 +140,29 @@
     font-family: system-ui, -apple-system, sans-serif;
     margin: 0;
     min-height: 100vh;
+  }
+}
+
+/* Ensure overlays and portals always render above other content */
+@layer utilities {
+  /* RadixUI portal containers */
+  [data-radix-portal] {
+    z-index: 9999 !important;
+  }
+  
+  /* RadixUI overlay components */
+  [data-radix-dialog-overlay],
+  [data-radix-popover-content],
+  [data-radix-dropdown-menu-content],
+  [data-radix-context-menu-content],
+  [data-radix-menubar-content],
+  [data-radix-select-content],
+  [data-radix-tooltip-content] {
+    z-index: 9999 !important;
+  }
+  
+  /* Ensure dialog content is above overlay */
+  [data-radix-dialog-content] {
+    z-index: 10000 !important;
   }
 }
