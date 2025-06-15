@@ -1,6 +1,7 @@
 import { render, screen, act, fireEvent } from '@testing-library/react'
 import { describe, it, expect, beforeEach } from 'vitest'
-import { ThemeProvider, useTheme } from './ThemeProvider'
+import { ThemeProvider } from './ThemeProvider'
+import { useTheme } from './useTheme'
 
 // Test component that uses the theme context
 const TestComponent = () => {

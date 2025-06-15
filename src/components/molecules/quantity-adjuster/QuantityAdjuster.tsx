@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Plus, Minus } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { scaleQuantity } from './quantity-utils';
 
 export interface QuantityAdjusterProps {
   /** Original serving size of the recipe */
