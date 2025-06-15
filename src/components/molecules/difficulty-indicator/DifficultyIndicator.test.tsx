@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import DifficultyIndicator, { mapLegacyDifficulty, suggestFactorsForLevel } from './DifficultyIndicator';
+import DifficultyIndicator from './DifficultyIndicator';
+import { mapLegacyDifficulty, suggestFactorsForLevel } from './difficulty-utils';
 
 describe('DifficultyIndicator', () => {
   it('renders beginner level correctly', () => {

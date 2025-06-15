@@ -36,13 +36,13 @@ describe('Separator', () => {
     const { container } = render(<Separator />);
     const separator = container.firstChild as HTMLElement;
     
-    expect(separator).toHaveClass('h-[1px]', 'w-full');
+    expect(separator).toHaveClass('h-px', 'w-full');
   });
 
   it('applies vertical styles when orientation is vertical', () => {
     const { container } = render(<Separator orientation="vertical" />);
     const separator = container.firstChild as HTMLElement;
     
-    expect(separator).toHaveClass('h-full', 'w-[1px]');
+    expect(separator).toHaveClass('h-full', 'w-px');
   });
 });
