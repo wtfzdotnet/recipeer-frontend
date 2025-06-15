@@ -9,10 +9,10 @@ const progressVariants = cva(
     variants: {
       variant: {
         default: "bg-primary/20",
-        cooking: "bg-orange-100 dark:bg-orange-950",
-        prep: "bg-blue-100 dark:bg-blue-950", 
-        success: "bg-green-100 dark:bg-green-950",
-        warning: "bg-yellow-100 dark:bg-yellow-950",
+        cooking: "bg-warning/20",
+        prep: "bg-primary/20", 
+        success: "bg-success/20",
+        warning: "bg-warning/20",
       },
       size: {
         default: "h-2",
@@ -34,10 +34,10 @@ const progressIndicatorVariants = cva(
     variants: {
       variant: {
         default: "bg-primary",
-        cooking: "bg-orange-500",
-        prep: "bg-blue-500",
-        success: "bg-green-500", 
-        warning: "bg-yellow-500",
+        cooking: "bg-warning",
+        prep: "bg-primary",
+        success: "bg-success", 
+        warning: "bg-warning",
       },
     },
     defaultVariants: {

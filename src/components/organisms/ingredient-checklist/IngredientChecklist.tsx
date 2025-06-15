@@ -146,7 +146,7 @@ export const IngredientChecklist: React.FC<IngredientChecklistProps> = ({
               <span>{completedCount} of {totalCount} completed</span>
               <span>{Math.round(progressPercentage)}%</span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
+            <div className="w-full bg-muted rounded-full h-2">
               <div 
                 className="bg-primary h-2 rounded-full transition-all duration-300 ease-in-out"
                 style={{ width: `${progressPercentage}%` }}
@@ -185,7 +185,7 @@ export const IngredientChecklist: React.FC<IngredientChecklistProps> = ({
                       onCheckedChange={(checked) => 
                         onItemCheck(ingredient.id, checked as boolean)
                       }
-                      className="mt-1 min-w-[16px]"
+                      className="mt-1 min-w-4"
                     />
                     
                     <div className="flex-1 min-w-0">
@@ -215,7 +215,7 @@ export const IngredientChecklist: React.FC<IngredientChecklistProps> = ({
                           placeholder="Add a note (substitution, etc.)"
                           value={notes[ingredient.id] || ''}
                           onChange={(e) => handleNoteChange(ingredient.id, e.target.value)}
-                          className="mt-2 w-full text-sm p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          className="mt-2 w-full text-sm p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         />
                       )}
                     </div>
