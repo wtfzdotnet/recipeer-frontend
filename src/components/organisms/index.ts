@@ -17,6 +17,8 @@ export { RecipeCollectionsCollapsible } from './recipe-collections-collapsible';
 
 // New organisms
 export * from './navigation-menu';
+export { CurrencySelector } from './currency-selector';
+export { CountryLanguageSelector } from './country-language-selector';
 
 // Re-export types
 export type { IngredientChecklistProps } from './ingredient-checklist';
@@ -32,3 +34,5 @@ export type { RecipeCommandPaletteProps, CommandAction, RecipeSearchResult } fro
 export type { FeaturedRecipesCarouselProps, FeaturedRecipe } from './featured-recipes-carousel';
 export type { NutritionAnalyticsChartProps, NutritionData, MacroBreakdown, WeeklyNutritionSummary } from './nutrition-analytics-chart';
 export type { RecipeCollectionsCollapsibleProps, RecipeCollection, CollectionRecipe } from './recipe-collections-collapsible';
+export type { CurrencySelectorProps } from './currency-selector';
+export type { CountryLanguageSelectorProps } from './country-language-selector';

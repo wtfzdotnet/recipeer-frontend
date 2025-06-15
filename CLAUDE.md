@@ -8,6 +8,284 @@ This is a modern React application built with:
 - **Testing**: Vitest 3.2.3 + Playwright 1.53.0
 - **Documentation**: Storybook 9.0.8
 - **Linting**: ESLint 9.25.0
+- **Internationalization**: React i18next with locale-based measurement units and currency
+
+## Internationalization (i18n) & Localization (l10n)
+
+This project implements comprehensive internationalization with locale-based systems for measurements, currency, and cultural preferences.
+
+### Core i18n Architecture
+
+#### Locale System
+- **Supported Locales**: `en-US` (Imperial, USD), `nl-NL` (Metric, EUR), `ar-SA` (Metric, SAR, RTL)
+- **Measurement Systems**: Automatic switching based on locale (Imperial vs Metric)
+- **Currency Integration**: Locale-based currency defaults with manual override
+- **Date/Number Formatting**: Region-specific formatting patterns
+
+#### Translation Infrastructure
+```typescript
+// Usage pattern - ALWAYS use translation hooks
+const { t } = useTranslation('namespace');
+const { locale, changeLocale, formatCurrency } = useLocale();
+
+// Translation with interpolation
+<h1>{t('nutrition.title')}</h1>
+<p>{t('nutrition.servings.perContainer', { count: servings })}</p>
+
+// Currency formatting with locale awareness
+<span>{locale.formatCurrency(price)}</span>
+
+// Unit conversion based on measurement system
+const temperature = locale.measurementSystem === 'metric' 
+  ? `${temp}°C` 
+  : `${convert.temperature.celsiusToFahrenheit(temp)}°F`;
+```
+
+#### Measurement Unit Conversions
+Components must handle automatic unit conversion based on locale:
+
+```typescript
+// Temperature conversion
+const displayTemp = locale.measurementSystem === 'metric' 
+  ? temp // Already in Celsius
+  : convert.temperature.celsiusToFahrenheit(temp);
+
+// Weight conversion  
+const displayWeight = locale.measurementSystem === 'metric'
+  ? `${weight}g`
+  : `${convert.weight.gramsToOunces(weight).toFixed(1)}oz`;
+
+// Volume conversion
+const displayVolume = locale.measurementSystem === 'metric'
+  ? `${volume}ml`
+  : `${convert.volume.millilitersToCups(volume).toFixed(2)} cups`;
+```
+
+### RTL (Right-to-Left) Language Support
+
+**CRITICAL**: All components must be designed for bidirectional text support to enable Arabic, Hebrew, and other RTL languages.
+
+#### RTL Design Principles
+
+1. **Logical Properties Over Physical**
+```css
+/* ❌ Avoid physical properties */
+margin-left: 16px;
+text-align: left;
+border-right: 1px solid;
+
+/* ✅ Use logical properties */
+margin-inline-start: 16px;
+text-align: start;
+border-inline-end: 1px solid;
+```
+
+2. **Tailwind CSS RTL Classes**
+```typescript
+// ✅ RTL-aware spacing
+className="ms-4 me-2" // margin-inline-start/end
+className="ps-4 pe-2" // padding-inline-start/end
+
+// ✅ RTL-aware positioning  
+className="start-0 end-auto" // instead of left-0 right-auto
+
+// ✅ RTL-aware text alignment
+className="text-start" // instead of text-left
+className="text-end"   // instead of text-right
+```
+
+3. **Flexbox and Grid RTL Patterns**
+```typescript
+// ✅ RTL-safe flex layouts
+className="flex justify-start" // Uses logical start
+className="flex-row-reverse" // For RTL direction
+
+// ✅ RTL-safe grid layouts  
+className="grid grid-cols-3 gap-4"
+// Grid automatically handles RTL direction
+```
+
+4. **Icon and Directional Element Guidelines**
+```typescript
+// ✅ Icons that should flip in RTL
+<ChevronRight className="rtl:rotate-180" />
+<ArrowLeft className="rtl:rotate-180" />
+
+// ✅ Icons that should NOT flip in RTL
+<Phone className="" /> // Phones look the same
+<Heart className="" /> // Hearts don't flip
+```
+
+5. **Component Structure for RTL**
+```typescript
+// ✅ RTL-aware component structure
+export const MyComponent = ({ children, className, ...props }) => {
+  const { locale } = useLocale();
+  
+  return (
+    <div 
+      className={cn(
+        "flex items-center gap-2",
+        "rtl:flex-row-reverse", // Reverse order in RTL
+        className
+      )}
+      dir={locale.dir} // Set direction attribute
+      {...props}
+    >
+      <Icon className="rtl:rotate-180" /> {/* Flip if directional */}
+      <span className="text-start">{children}</span>
+    </div>
+  );
+};
+```
+
+6. **Form Layout RTL Guidelines**
+```typescript
+// ✅ RTL-aware form layouts
+<form className="space-y-4">
+  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+    <label className="text-start sm:w-32">{t('label')}</label>
+    <input className="flex-1" />
+  </div>
+</form>
+```
+
+#### RTL Testing Checklist
+
+When creating components, test for RTL compatibility:
+- [ ] Text flows correctly right-to-left
+- [ ] Icons and arrows flip appropriately  
+- [ ] Spacing and margins work logically
+- [ ] Form layouts maintain usability
+- [ ] Navigation elements flow correctly
+- [ ] Modal and dialog positioning works
+- [ ] Dropdown and tooltip positioning adapts
+
+### Translation Maintenance Guidelines
+
+#### File Organization
+```
+src/i18n/locales/
+├── en-US/
+│   ├── common.json       # UI elements, buttons, navigation
+│   ├── nutrition.json    # Domain-specific nutrition terms
+│   └── validation.json   # Form validation messages
+├── nl-NL/
+│   ├── common.json
+│   ├── nutrition.json
+│   └── validation.json
+└── ar-SA/
+    ├── common.json       # Arabic translations with RTL support
+    ├── nutrition.json    # Nutrition terms in Arabic
+    └── validation.json   # Arabic validation messages
+```
+
+#### Translation Key Naming Conventions
+```json
+{
+  "namespace": {
+    "feature": {
+      "specificElement": "Translation text",
+      "withPlural": "{{count}} item",
+      "withPlural_other": "{{count}} items"
+    }
+  }
+}
+```
+
+#### Adding New Languages
+1. **Create locale directory**: `src/i18n/locales/{locale-code}/`
+2. **Add locale config**: Update `LOCALE_CONFIGS` in `locale-config.ts`
+3. **Update i18n resources**: Add to `resources` object in `i18n/index.ts`
+4. **Test RTL compatibility**: If RTL language, test with `dir="rtl"`
+5. **Update TypeScript types**: Add to `SupportedLocale` type
+
+#### External Translation Service Integration
+```typescript
+// Production setup with external service
+const translationProvider = createTranslationProvider(
+  process.env.VITE_TRANSLATION_SERVICE_URL,
+  process.env.VITE_TRANSLATION_API_KEY
+);
+
+// Automatic fallback to local translations in development
+// Supports CI/CD pipeline translation downloads
+```
+
+### Component i18n Requirements
+
+#### For ALL Components:
+- [ ] **No hardcoded strings** - use `t()` function or props
+- [ ] **Interpolation support** for dynamic content
+- [ ] **Pluralization handling** where applicable
+- [ ] **RTL layout compatibility** tested
+- [ ] **Measurement unit awareness** for relevant components
+- [ ] **Currency formatting** using locale methods
+
+#### For Form Components:
+- [ ] **Label translations** with proper context
+- [ ] **Validation message translations**
+- [ ] **Placeholder text translations**
+- [ ] **Error state translations**
+- [ ] **RTL form flow** tested
+
+#### For Data Display Components:
+- [ ] **Number formatting** based on locale
+- [ ] **Date formatting** based on locale
+- [ ] **Currency formatting** based on locale
+- [ ] **Unit conversions** based on measurement system
+
+### Storybook i18n Integration
+
+Stories must demonstrate i18n capabilities:
+
+```typescript
+// ✅ Wrap stories with LocaleProvider
+export default {
+  title: 'Components/MyComponent',
+  decorators: [
+    (Story) => (
+      <LocaleProvider defaultLocale="en-US">
+        <Story />
+      </LocaleProvider>
+    ),
+  ],
+};
+
+// ✅ Show multiple locale variations
+export const EnglishUS: Story = {
+  decorators: [
+    (Story) => (
+      <LocaleProvider defaultLocale="en-US">
+        <Story />
+      </LocaleProvider>
+    ),
+  ],
+};
+
+export const DutchNL: Story = {
+  decorators: [
+    (Story) => (
+      <LocaleProvider defaultLocale="nl-NL">
+        <Story />
+      </LocaleProvider>
+    ),
+  ],
+};
+
+// ✅ RTL testing story
+export const RTLPreview: Story = {
+  decorators: [
+    (Story) => (
+      <div dir="rtl" className="rtl">
+        <LocaleProvider defaultLocale="en-US">
+          <Story />
+        </LocaleProvider>
+      </div>
+    ),
+  ],
+};
+```
 
 ## Atomic Design + Component-Driven Development
 

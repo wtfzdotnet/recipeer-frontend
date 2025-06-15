@@ -8,6 +8,140 @@ This is a modern React application built with:
 - **Testing**: Vitest 3.2.3 + Playwright 1.53.0
 - **Documentation**: Storybook 9.0.8
 - **Linting**: ESLint 9.25.0
+- **Internationalization**: React i18next with locale-based measurement units and currency
+
+## Internationalization (i18n) & Localization (l10n) - MANDATORY
+
+This project implements comprehensive internationalization. **ALL component suggestions must include i18n support.**
+
+### Core i18n Rules for Copilot
+
+#### 1. NEVER Suggest Hardcoded Strings
+```typescript
+// ❌ NEVER suggest this
+<button>Save Recipe</button>
+<p>Cooking time: 30 minutes</p>
+
+// ✅ ALWAYS suggest this  
+const { t } = useTranslation();
+<button>{t('buttons.save')}</button>
+<p>{t('recipe.cookingTime', { minutes: 30 })}</p>
+```
+
+#### 2. ALWAYS Include Translation Hooks
+```typescript
+// ✅ Required pattern for ALL components
+import { useTranslation } from 'react-i18next';
+import { useLocale } from '@/providers/LocaleProvider';
+
+export const MyComponent = () => {
+  const { t } = useTranslation('namespace');
+  const { locale, formatCurrency } = useLocale();
+  
+  return (
+    <div>
+      <h1>{t('title')}</h1>
+      <span>{formatCurrency(price)}</span>
+    </div>
+  );
+};
+```
+
+#### 3. Locale-Aware Measurement Units
+```typescript
+// ✅ Auto-detect and convert units based on locale
+const { locale, convert } = useLocale();
+
+const displayTemp = locale.measurementSystem === 'metric' 
+  ? `${temp}°C`
+  : `${convert.temperature.celsiusToFahrenheit(temp)}°F`;
+
+const displayWeight = locale.measurementSystem === 'metric'
+  ? `${weight}g` 
+  : `${convert.weight.gramsToOunces(weight)}oz`;
+```
+
+#### 4. RTL (Right-to-Left) Compatibility - MANDATORY
+
+**ALL components must support RTL languages (Arabic, Hebrew):**
+
+```typescript
+// ✅ ALWAYS use logical properties
+className="ms-4 me-2 text-start" // NOT ml-4 mr-2 text-left
+
+// ✅ ALWAYS include RTL-aware icons
+<ChevronRight className="rtl:rotate-180" />
+
+// ✅ ALWAYS use RTL-safe layouts
+className="flex justify-start rtl:flex-row-reverse"
+```
+
+### Copilot Auto-Generation Rules
+
+When suggesting components, GitHub Copilot MUST:
+
+1. **Include useTranslation hook** in every component
+2. **Replace ALL strings** with `t()` function calls
+3. **Add locale measurement conversion** for relevant data
+4. **Include RTL layout classes** in Tailwind CSS
+5. **Wrap Storybook stories** with LocaleProvider
+6. **Generate translation keys** in proper namespace structure
+
+### Required Storybook Pattern
+```typescript
+// ✅ ALWAYS wrap stories with LocaleProvider
+export default {
+  decorators: [
+    (Story) => (
+      <LocaleProvider defaultLocale="en-US">
+        <Story />
+      </LocaleProvider>
+    ),
+  ],
+};
+
+// ✅ ALWAYS include RTL testing story
+export const RTLTest: Story = {
+  decorators: [
+    (Story) => (
+      <div dir="rtl" className="rtl">
+        <LocaleProvider defaultLocale="en-US">
+          <Story />
+        </LocaleProvider>
+      </div>
+    ),
+  ],
+};
+```
+
+### Translation Key Structure
+```typescript
+// ✅ Suggested translation structure
+{
+  "componentName": {
+    "title": "Component Title",
+    "description": "Component description", 
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "validation": {
+      "required": "This field is required",
+      "invalid": "Invalid {{fieldType}}"
+    }
+  }
+}
+```
+
+### Locale Support Matrix
+
+| Locale | Language | Region | Measurement | Currency | Direction |
+|--------|----------|--------|-------------|----------|-----------|
+| en-US  | English  | United States | Imperial | USD | LTR |
+| nl-NL  | Dutch    | Netherlands | Metric | EUR | LTR |
+| ar-SA  | Arabic   | Saudi Arabia | Metric | SAR | RTL |
+
+*Arabic (ar-SA) demonstrates complete RTL layout support with right-to-left text direction*
 
 ## Atomic Design + Component-Driven Development
 

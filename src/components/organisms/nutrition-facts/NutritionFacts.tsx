@@ -1,5 +1,6 @@
 import React from 'react';
 import { AlertTriangle, Check, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -99,13 +100,15 @@ const ProgressBar: React.FC<{ percentage: number; className?: string }> = ({
 
 // Dietary compliance badge component
 const ComplianceBadge: React.FC<{ compliance: DietaryCompliance }> = ({ compliance }) => {
+  const { t } = useTranslation('nutrition');
+  
   const badgeConfig = {
-    keto: { label: 'Keto', color: 'bg-primary text-primary-foreground border-primary' },
-    'low-carb': { label: 'Low Carb', color: 'bg-accent text-accent-foreground border-accent' },
-    'high-protein': { label: 'High Protein', color: 'bg-warning text-warning-foreground border-warning' },
-    'low-fat': { label: 'Low Fat', color: 'bg-success text-success-foreground border-success' },
-    'low-sodium': { label: 'Low Sodium', color: 'bg-secondary text-secondary-foreground border-secondary' },
-    'high-fiber': { label: 'High Fiber', color: 'bg-warning text-warning-foreground border-warning' },
+    keto: { label: t('compliance.keto'), color: 'bg-primary text-primary-foreground border-primary' },
+    'low-carb': { label: t('compliance.lowCarb'), color: 'bg-accent text-accent-foreground border-accent' },
+    'high-protein': { label: t('compliance.highProtein'), color: 'bg-warning text-warning-foreground border-warning' },
+    'low-fat': { label: t('compliance.lowFat'), color: 'bg-success text-success-foreground border-success' },
+    'low-sodium': { label: t('compliance.lowSodium'), color: 'bg-secondary text-secondary-foreground border-secondary' },
+    'high-fiber': { label: t('compliance.highFiber'), color: 'bg-warning text-warning-foreground border-warning' },
   };
   
   const config = badgeConfig[compliance];
@@ -158,6 +161,7 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
   className,
   ...props
 }) => {
+  const { t } = useTranslation('nutrition');
   const dailyValues = calculateDailyValues(nutrition);
   const compliance = getDietaryCompliance(nutrition);
   
@@ -167,11 +171,11 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
       <Card className={cn("max-w-sm", compactMode && "max-w-xs")}>
         <CardHeader className="pb-2">
           <CardTitle className="text-xl font-bold text-center border-b-2 border-black pb-2">
-            Nutrition Facts
+            {t('title')}
           </CardTitle>
           <div className="text-sm text-center">
-            <div className="font-medium">Servings per container: {servings}</div>
-            <div className="text-xs text-muted-foreground">Serving size: 1 serving</div>
+            <div className="font-medium">{t('servings.perContainer', { count: servings })}</div>
+            <div className="text-xs text-muted-foreground">{t('servings.servingSize')}</div>
           </div>
         </CardHeader>
         
@@ -179,7 +183,7 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
           {/* Calories */}
           <div className="border-t-8 border-black pt-2">
             <div className="flex justify-between items-center">
-              <span className="text-2xl font-bold">Calories</span>
+              <span className="text-2xl font-bold">{t('calories')}</span>
               <span className="text-3xl font-bold">{nutrition.calories}</span>
             </div>
           </div>
@@ -188,74 +192,74 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
           
           {/* Daily value header */}
           {showDailyValues && (
-            <div className="text-right text-xs font-bold">% Daily Value*</div>
+            <div className="text-right text-xs font-bold">{t('dailyValue')}</div>
           )}
           
           {/* Macronutrients */}
           <div className="space-y-1">
             <NutritionRow
-              label="Total Fat"
-              value={`${nutrition.totalFat}g`}
+              label={t('nutrients.totalFat')}
+              value={`${nutrition.totalFat}${t('units.grams')}`}
               dailyValue={dailyValues.totalFat}
               showDailyValue={showDailyValues}
               bold
             />
             <NutritionRow
-              label="Saturated Fat"
-              value={`${nutrition.saturatedFat}g`}
+              label={t('nutrients.saturatedFat')}
+              value={`${nutrition.saturatedFat}${t('units.grams')}`}
               dailyValue={dailyValues.saturatedFat}
               showDailyValue={showDailyValues}
               indented
             />
             <NutritionRow
-              label="Trans Fat"
-              value={`${nutrition.transFat}g`}
+              label={t('nutrients.transFat')}
+              value={`${nutrition.transFat}${t('units.grams')}`}
               showDailyValue={false}
               indented
             />
             <NutritionRow
-              label="Cholesterol"
-              value={`${nutrition.cholesterol}mg`}
+              label={t('nutrients.cholesterol')}
+              value={`${nutrition.cholesterol}${t('units.milligrams')}`}
               dailyValue={dailyValues.cholesterol}
               showDailyValue={showDailyValues}
               bold
             />
             <NutritionRow
-              label="Sodium"
-              value={`${nutrition.sodium}mg`}
+              label={t('nutrients.sodium')}
+              value={`${nutrition.sodium}${t('units.milligrams')}`}
               dailyValue={dailyValues.sodium}
               showDailyValue={showDailyValues}
               bold
             />
             <NutritionRow
-              label="Total Carbohydrate"
-              value={`${nutrition.totalCarbohydrates}g`}
+              label={t('nutrients.totalCarbohydrates')}
+              value={`${nutrition.totalCarbohydrates}${t('units.grams')}`}
               dailyValue={dailyValues.totalCarbohydrates}
               showDailyValue={showDailyValues}
               bold
             />
             <NutritionRow
-              label="Dietary Fiber"
-              value={`${nutrition.dietaryFiber}g`}
+              label={t('nutrients.dietaryFiber')}
+              value={`${nutrition.dietaryFiber}${t('units.grams')}`}
               dailyValue={dailyValues.dietaryFiber}
               showDailyValue={showDailyValues}
               indented
             />
             <NutritionRow
-              label="Total Sugars"
-              value={`${nutrition.totalSugars}g`}
+              label={t('nutrients.totalSugars')}
+              value={`${nutrition.totalSugars}${t('units.grams')}`}
               showDailyValue={false}
               indented
             />
             <NutritionRow
-              label="Added Sugars"
-              value={`${nutrition.addedSugars}g`}
+              label={t('nutrients.addedSugars')}
+              value={`${nutrition.addedSugars}${t('units.grams')}`}
               showDailyValue={false}
               indented
             />
             <NutritionRow
-              label="Protein"
-              value={`${nutrition.protein}g`}
+              label={t('nutrients.protein')}
+              value={`${nutrition.protein}${t('units.grams')}`}
               showDailyValue={false}
               bold
             />
@@ -268,32 +272,32 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
               <div className="space-y-1">
                 {nutrition.vitaminD && (
                   <NutritionRow
-                    label="Vitamin D"
-                    value={`${nutrition.vitaminD}mcg`}
+                    label={t('nutrients.vitaminD')}
+                    value={`${nutrition.vitaminD}${t('units.micrograms')}`}
                     dailyValue={dailyValues.vitaminD}
                     showDailyValue={showDailyValues}
                   />
                 )}
                 {nutrition.calcium && (
                   <NutritionRow
-                    label="Calcium"
-                    value={`${nutrition.calcium}mg`}
+                    label={t('nutrients.calcium')}
+                    value={`${nutrition.calcium}${t('units.milligrams')}`}
                     dailyValue={dailyValues.calcium}
                     showDailyValue={showDailyValues}
                   />
                 )}
                 {nutrition.iron && (
                   <NutritionRow
-                    label="Iron"
-                    value={`${nutrition.iron}mg`}
+                    label={t('nutrients.iron')}
+                    value={`${nutrition.iron}${t('units.milligrams')}`}
                     dailyValue={dailyValues.iron}
                     showDailyValue={showDailyValues}
                   />
                 )}
                 {nutrition.potassium && (
                   <NutritionRow
-                    label="Potassium"
-                    value={`${nutrition.potassium}mg`}
+                    label={t('nutrients.potassium')}
+                    value={`${nutrition.potassium}${t('units.milligrams')}`}
                     dailyValue={dailyValues.potassium}
                     showDailyValue={showDailyValues}
                   />
@@ -307,8 +311,7 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
             <>
               <Separator className="my-2 bg-black" />
               <div className="text-xs text-muted-foreground">
-                * The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 
-                2,000 calories a day is used for general nutrition advice.
+                {t('dailyValueFooter')}
               </div>
             </>
           )}
@@ -318,7 +321,7 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
       {/* Dietary compliance badges */}
       {compliance.length > 0 && (
         <div className="space-y-2">
-          <h4 className="text-sm font-medium">Dietary Compliance</h4>
+          <h4 className="text-sm font-medium">{t('dietaryCompliance')}</h4>
           <div className="flex flex-wrap gap-2">
             {compliance.map((item) => (
               <ComplianceBadge key={item} compliance={item} />
@@ -334,7 +337,7 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
             <Alert className="border-destructive bg-destructive">
               <AlertTriangle className="h-4 w-4 text-destructive-foreground" />
               <AlertDescription className="text-destructive-foreground">
-                <strong>Contains:</strong> {allergens.contains.join(', ')}
+                <strong>{t('allergens.contains')}</strong> {allergens.contains.join(', ')}
               </AlertDescription>
             </Alert>
           )}
@@ -343,7 +346,7 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
             <Alert className="border-warning bg-warning">
               <AlertTriangle className="h-4 w-4 text-warning-foreground" />
               <AlertDescription className="text-warning-foreground">
-                <strong>May contain:</strong> {allergens.mayContain.join(', ')}
+                <strong>{t('allergens.mayContain')}</strong> {allergens.mayContain.join(', ')}
               </AlertDescription>
             </Alert>
           )}
@@ -352,7 +355,7 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
             <Alert className="border-success bg-success">
               <Check className="h-4 w-4 text-success-foreground" />
               <AlertDescription className="text-success-foreground">
-                <strong>Free from:</strong> {allergens.freeFrom.join(', ')}
+                <strong>{t('allergens.freeFrom')}</strong> {allergens.freeFrom.join(', ')}
               </AlertDescription>
             </Alert>
           )}

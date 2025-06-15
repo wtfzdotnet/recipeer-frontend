@@ -1,0 +1,58 @@
+{
+  "title": "حقائق غذائية",
+  "servings": {
+    "perContainer": "عدد الحصص في العبوة: {{count}}",
+    "servingSize": "حجم الحصة: حصة واحدة"
+  },
+  "calories": "السعرات الحرارية",
+  "dailyValue": "% القيمة اليومية*",
+  "nutrients": {
+    "totalFat": "إجمالي الدهون",
+    "saturatedFat": "الدهون المشبعة", 
+    "transFat": "الدهون المتحولة",
+    "cholesterol": "الكوليسترول",
+    "sodium": "الصوديوم",
+    "totalCarbohydrates": "إجمالي الكربوهيدرات",
+    "dietaryFiber": "الألياف الغذائية",
+    "totalSugars": "إجمالي السكريات",
+    "addedSugars": "السكريات المضافة",
+    "protein": "البروتين",
+    "vitaminD": "فيتامين د",
+    "calcium": "الكالسيوم",
+    "iron": "الحديد",
+    "potassium": "البوتاسيوم",
+    "vitaminA": "فيتامين أ",
+    "vitaminC": "فيتامين ج"
+  },
+  "units": {
+    "grams": "ج",
+    "milligrams": "مج",
+    "micrograms": "مكج"
+  },
+  "compliance": {
+    "keto": "كيتو",
+    "lowCarb": "قليل الكربوهيدرات",
+    "highProtein": "عالي البروتين",
+    "lowFat": "قليل الدهون", 
+    "lowSodium": "قليل الصوديوم",
+    "highFiber": "عالي الألياف"
+  },
+  "allergens": {
+    "title": "معلومات مسببات الحساسية",
+    "contains": "يحتوي على:",
+    "mayContain": "قد يحتوي على:",
+    "freeFrom": "خالي من:",
+    "common": {
+      "milk": "الحليب",
+      "eggs": "البيض", 
+      "wheat": "القمح",
+      "treeNuts": "المكسرات",
+      "soy": "الصويا",
+      "peanuts": "الفول السوداني",
+      "fish": "السمك",
+      "shellfish": "المحار"
+    }
+  },
+  "dailyValueFooter": "* تخبرك النسبة المئوية للقيمة اليومية (DV) بمقدار مساهمة العنصر الغذائي في حصة من الطعام في النظام الغذائي اليومي. يُستخدم 2000 سعرة حرارية يومياً للحصول على نصائح التغذية العامة.",
+  "dietaryCompliance": "التوافق الغذائي"
+}

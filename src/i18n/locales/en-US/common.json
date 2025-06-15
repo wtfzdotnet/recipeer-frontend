@@ -1,0 +1,76 @@
+{
+  "app": {
+    "title": "Frontend Recipeer - Orange Theme & Nutrition Demo",
+    "description": "A modern recipe application with internationalization support"
+  },
+  "buttons": {
+    "custom": "Custom Button",
+    "shadcn": "Shadcn Button",
+    "default": "Default",
+    "destructive": "Destructive", 
+    "outline": "Outline",
+    "secondary": "Secondary",
+    "ghost": "Ghost",
+    "link": "Link"
+  },
+  "sections": {
+    "buttonTest": "Button Test with Orange Theme",
+    "nutritionDemo": "Nutrition Facts Component",
+    "recipeColors": "Recipe-Themed Colors"
+  },
+  "descriptions": {
+    "directShadcn": "Direct shadcn/ui Button:",
+    "customButton": "Custom Button (wrapping shadcn):",
+    "buttonVariantsShadcn": "Button Variants (Shadcn):",
+    "buttonVariantsCustom": "Button Variants (Custom):",
+    "nutritionLabel": "FDA-compliant nutrition label with daily values, dietary compliance badges, and allergen warnings.",
+    "colorTheme": "This warm orange color palette is inspired by cooking and food preparation. The colors work well for recipe cards, ingredients lists, and cooking instructions. Try toggling between light and dark modes using the button in the top-right corner!"
+  },
+  "language": {
+    "label": "Language",
+    "english": "English",
+    "dutch": "Dutch"
+  },
+  "units": {
+    "temperature": {
+      "celsius": "°C",
+      "fahrenheit": "°F"
+    },
+    "weight": {
+      "grams": "g",
+      "kilograms": "kg",
+      "ounces": "oz",
+      "pounds": "lbs"
+    },
+    "volume": {
+      "milliliters": "ml",
+      "liters": "l",
+      "cups": "cups",
+      "tablespoons": "tbsp",
+      "teaspoons": "tsp"
+    },
+    "length": {
+      "centimeters": "cm",
+      "meters": "m",
+      "inches": "in",
+      "feet": "ft"
+    }
+  },
+  "currency": {
+    "label": "Currency",
+    "symbol": "$",
+    "overrideNote": "Overriding locale default ({{defaultCurrency}})"
+  },
+  "locale": {
+    "preferences": "Locale Preferences",
+    "description": "Select your language, region, and measurement preferences."
+  },
+  "units": {
+    "measurementSystem": "Measurement System",
+    "metric": "Metric (°C, kg, cm)",
+    "imperial": "Imperial (°F, lbs, in)"
+  },
+  "dateFormat": {
+    "label": "Date Format"
+  }
+}
