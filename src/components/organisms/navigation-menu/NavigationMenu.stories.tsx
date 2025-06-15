@@ -100,15 +100,15 @@ export const RecipeCategories: Story = {
             Cuisines
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <div className="grid gap-3 p-6 md:w-96 lg:w-500 lg:grid-cols-[.75fr_1fr]">
               <div className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-orange-50 to-orange-100 p-6 no-underline outline-none focus:shadow-md">
-                    <ChefHat className="h-6 w-6 text-orange-600" />
-                    <div className="mb-2 mt-4 text-lg font-medium text-orange-900">
+                  <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-secondary to-accent p-6 no-underline outline-none focus:shadow-md">
+                    <ChefHat className="h-6 w-6 text-primary" />
+                    <div className="mb-2 mt-4 text-lg font-medium text-foreground">
                       World Cuisines
                     </div>
-                    <p className="text-sm leading-tight text-orange-700">
+                    <p className="text-sm leading-tight text-muted-foreground">
                       Explore authentic recipes from around the globe
                     </p>
                   </div>

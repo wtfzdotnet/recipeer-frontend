@@ -85,10 +85,10 @@ const ProgressBar: React.FC<{ percentage: number; className?: string }> = ({
   className 
 }) => {
   const clampedPercentage = Math.min(percentage, 100);
-  const colorClass = percentage > 100 ? 'bg-red-500' : percentage > 75 ? 'bg-yellow-500' : 'bg-green-500';
+  const colorClass = percentage > 100 ? 'bg-destructive' : percentage > 75 ? 'bg-warning' : 'bg-success';
   
   return (
-    <div className={cn("w-20 h-2 bg-gray-200 rounded-full overflow-hidden", className)}>
+    <div className={cn("w-20 h-2 bg-muted rounded-full overflow-hidden", className)}>
       <div 
         className={cn("h-full transition-all duration-300", colorClass)}
         style={{ width: `${clampedPercentage}%` }}

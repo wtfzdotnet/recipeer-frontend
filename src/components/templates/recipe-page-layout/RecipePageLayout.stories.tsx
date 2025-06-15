@@ -95,15 +95,15 @@ const SampleRecipeContent = () => (
           <span>Serves 4</span>
         </div>
         <div className="flex items-center space-x-2">
-          <Star className="h-4 w-4 fill-current text-yellow-400" />
+          <Star className="h-4 w-4 fill-current text-warning" />
           <span>4.8 (124 reviews)</span>
         </div>
       </div>
     </div>
 
     {/* Recipe Image */}
-    <div className="aspect-video bg-gradient-to-br from-yellow-200 to-orange-300 rounded-lg flex items-center justify-center">
-      <Typography variant="body" className="text-orange-800 font-medium">
+    <div className="aspect-video bg-gradient-to-br from-warning/20 to-primary/30 rounded-lg flex items-center justify-center">
+      <Typography variant="body" className="text-primary font-medium">
         Recipe Image Placeholder
       </Typography>
     </div>

@@ -199,7 +199,7 @@ export const FeaturedRecipesCarousel = React.forwardRef<
                           className={cn(
                             "h-4 w-4",
                             favoriteRecipes.includes(recipe.id) 
-                              ? "fill-red-500 text-red-500" 
+                              ? "fill-destructive text-destructive" 
                               : "text-white"
                           )} 
                         />
