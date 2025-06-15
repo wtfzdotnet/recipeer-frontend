@@ -1,3 +1,15 @@
+# [1.10.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.9.0...v1.10.0) (2025-06-15)
+
+
+### Bug Fixes
+
+* **organisms:** resolve CategoryCard image loading and flickering issues ([2de1bab](https://github.com/wtfzdotnet/recipeer-frontend/commit/2de1bab45c491581375120ae12d0efb389adfd7e))
+
+
+### Features
+
+* **organisms:** implement CategoryCard component with i18n and RTL support ([641fe7e](https://github.com/wtfzdotnet/recipeer-frontend/commit/641fe7e75b129cbf9111f65af0d1d7275c4ca385))
+
 # [1.9.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.8.0...v1.9.0) (2025-06-15)
 
 
