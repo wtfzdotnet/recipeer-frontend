@@ -131,8 +131,8 @@ export const Standard: Story = {
     variant: 'standard',
     showFollowButton: true,
     isFollowing: false,
-    onFollow: fn(),
-    onProfileClick: fn(),
+    onFollow: fn,
+    onProfileClick: fn,
   },
   parameters: {
     docs: {
@@ -150,8 +150,8 @@ export const Compact: Story = {
     variant: 'compact',
     showFollowButton: true,
     isFollowing: false,
-    onFollow: fn(),
-    onProfileClick: fn(),
+    onFollow: fn,
+    onProfileClick: fn,
   },
   parameters: {
     docs: {
@@ -169,8 +169,8 @@ export const Detailed: Story = {
     variant: 'detailed',
     showFollowButton: true,
     isFollowing: false,
-    onFollow: fn(),
-    onProfileClick: fn(),
+    onFollow: fn,
+    onProfileClick: fn,
   },
   parameters: {
     docs: {
@@ -188,8 +188,8 @@ export const Following: Story = {
     variant: 'standard',
     showFollowButton: true,
     isFollowing: true,
-    onFollow: fn(),
-    onProfileClick: fn(),
+    onFollow: fn,
+    onProfileClick: fn,
   },
   parameters: {
     docs: {
@@ -206,7 +206,7 @@ export const ReadOnly: Story = {
     profile: mockHomeBakerProfile,
     variant: 'standard',
     showFollowButton: false,
-    onProfileClick: fn(),
+    onProfileClick: fn,
   },
   parameters: {
     docs: {
@@ -227,8 +227,8 @@ export const VerifiedChef: Story = {
     variant: 'detailed',
     showFollowButton: true,
     isFollowing: false,
-    onFollow: fn(),
-    onProfileClick: fn(),
+    onFollow: fn,
+    onProfileClick: fn,
   },
   parameters: {
     docs: {
@@ -253,8 +253,8 @@ export const MinimalSocial: Story = {
     variant: 'standard',
     showFollowButton: true,
     isFollowing: false,
-    onFollow: fn(),
-    onProfileClick: fn(),
+    onFollow: fn,
+    onProfileClick: fn,
   },
   parameters: {
     docs: {
@@ -275,8 +275,8 @@ export const NoLocation: Story = {
     variant: 'standard',
     showFollowButton: true,
     isFollowing: false,
-    onFollow: fn(),
-    onProfileClick: fn(),
+    onFollow: fn,
+    onProfileClick: fn,
   },
   parameters: {
     docs: {
@@ -314,8 +314,8 @@ export const RTLTest: Story = {
     variant: 'standard',
     showFollowButton: true,
     isFollowing: false,
-    onFollow: fn(),
-    onProfileClick: fn(),
+    onFollow: fn,
+    onProfileClick: fn,
   },
   decorators: [
     (Story) => (
@@ -351,8 +351,8 @@ export const HighStats: Story = {
     variant: 'detailed',
     showFollowButton: true,
     isFollowing: false,
-    onFollow: fn(),
-    onProfileClick: fn(),
+    onFollow: fn,
+    onProfileClick: fn,
   },
   parameters: {
     docs: {
@@ -373,24 +373,24 @@ export const GridExample: Story = {
           variant="compact"
           showFollowButton={true}
           isFollowing={false}
-          onFollow={fn()}
-          onProfileClick={fn()}
+          onFollow={fn}
+          onProfileClick={fn}
         />
         <ProfileCard
           profile={mockHomeBakerProfile}
           variant="compact"
           showFollowButton={true}
           isFollowing={true}
-          onFollow={fn()}
-          onProfileClick={fn()}
+          onFollow={fn}
+          onProfileClick={fn}
         />
         <ProfileCard
           profile={mockInternationalChefProfile}
           variant="compact"
           showFollowButton={true}
           isFollowing={false}
-          onFollow={fn()}
-          onProfileClick={fn()}
+          onFollow={fn}
+          onProfileClick={fn}
         />
       </div>
     </LocaleProvider>
