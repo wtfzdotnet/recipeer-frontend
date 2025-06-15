@@ -180,12 +180,12 @@ describe('RecipeCollectionSaver', () => {
       const breakfastButton = screen.getByText('Breakfast Ideas').closest('button');
       const healthyButton = screen.getByText('Healthy Choices').closest('button');
       
-      // Saved collections should have blue background styling
-      expect(favoritesButton).toHaveClass('bg-blue-50', 'text-blue-700');
-      expect(breakfastButton).toHaveClass('bg-blue-50', 'text-blue-700');
+      // Saved collections should have primary background styling
+      expect(favoritesButton).toHaveClass('bg-primary/10', 'text-primary');
+      expect(breakfastButton).toHaveClass('bg-primary/10', 'text-primary');
       
-      // Unsaved collection should not have blue styling
-      expect(healthyButton).not.toHaveClass('bg-blue-50', 'text-blue-700');
+      // Unsaved collection should not have primary styling
+      expect(healthyButton).not.toHaveClass('bg-primary/10', 'text-primary');
     });
 
     it('toggles collection save state when collection is clicked', async () => {

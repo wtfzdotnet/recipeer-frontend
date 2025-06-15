@@ -92,7 +92,7 @@ const RecipeCollectionSaver: React.FC<RecipeCollectionSaverProps> = ({
         return isAnySaved ? <Check className={iconSize} /> : <Plus className={iconSize} />;
       case 'heart':
       default:
-        return <Heart className={cn(iconSize, isAnySaved && 'fill-red-500 text-red-500')} />;
+        return <Heart className={cn(iconSize, isAnySaved && 'fill-destructive text-destructive')} />;
     }
   };
 
@@ -151,8 +151,8 @@ const RecipeCollectionSaver: React.FC<RecipeCollectionSaverProps> = ({
               disabled={disabled || saveState === 'saving'}
               className={cn(
                 'flex-1 rounded-r-none border-r-0',
-                isAnySaved && variant === 'heart' && 'text-red-500 border-red-200 hover:bg-red-50',
-                saveState === 'error' && 'border-red-300 text-red-600'
+                isAnySaved && variant === 'heart' && 'text-destructive border-destructive/20 hover:bg-destructive/5',
+                saveState === 'error' && 'border-destructive/30 text-destructive'
               )}
               aria-label={`${isSavedToFavorites ? 'Remove from' : 'Save to'} ${favoritesCollection.name}`}
             >
@@ -188,8 +188,8 @@ const RecipeCollectionSaver: React.FC<RecipeCollectionSaverProps> = ({
             onClick={() => setIsOpen(!isOpen)}
             disabled={disabled || saveState === 'saving'}
             className={cn(
-              isAnySaved && variant === 'heart' && 'text-red-500 border-red-200 hover:bg-red-50',
-              saveState === 'error' && 'border-red-300 text-red-600'
+              isAnySaved && variant === 'heart' && 'text-destructive border-destructive/20 hover:bg-destructive/5',
+              saveState === 'error' && 'border-destructive/30 text-destructive'
             )}
             aria-label="Manage collections"
           >
@@ -212,11 +212,11 @@ const RecipeCollectionSaver: React.FC<RecipeCollectionSaverProps> = ({
       {/* Dropdown */}
       {isOpen && (
         <div className={cn(
-          'absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 z-50',
+          'absolute right-0 mt-2 w-64 bg-background rounded-lg shadow-lg border border-border z-50',
           'animate-in fade-in-0 zoom-in-95 duration-100'
         )}>
           <div className="p-2">
-            <div className="text-sm font-medium text-gray-700 px-2 py-1 mb-2">
+            <div className="text-sm font-medium text-foreground px-2 py-1 mb-2">
               Save to Collections
             </div>
             
@@ -230,25 +230,25 @@ const RecipeCollectionSaver: React.FC<RecipeCollectionSaverProps> = ({
                     onClick={() => handleCollectionToggle(collection.id)}
                     className={cn(
                       'w-full flex items-center justify-between px-2 py-2 text-sm rounded-md',
-                      'hover:bg-gray-100 transition-colors text-left',
-                      isSaved && 'bg-blue-50 text-blue-700'
+                      'hover:bg-accent transition-colors text-left',
+                      isSaved && 'bg-primary/10 text-primary'
                     )}
                   >
                     <div className="flex-1">
                       <div className="font-medium">{collection.name}</div>
                       {collection.description && (
-                        <div className="text-xs text-gray-500 truncate">
+                        <div className="text-xs text-muted-foreground truncate">
                           {collection.description}
                         </div>
                       )}
                       {collection.recipeCount !== undefined && (
-                        <div className="text-xs text-gray-400">
+                        <div className="text-xs text-muted-foreground/60">
                           {collection.recipeCount} recipes
                         </div>
                       )}
                     </div>
                     {isSaved && (
-                      <Check className="h-4 w-4 text-blue-600 ml-2 flex-shrink-0" />
+                      <Check className="h-4 w-4 text-primary ml-2 flex-shrink-0" />
                     )}
                   </button>
                 );
@@ -256,7 +256,7 @@ const RecipeCollectionSaver: React.FC<RecipeCollectionSaverProps> = ({
             </div>
 
             {/* Create new collection */}
-            <div className="border-t border-gray-100 mt-2 pt-2">
+            <div className="border-t border-border mt-2 pt-2">
               {showNewCollectionInput ? (
                 <div className="space-y-2">
                   <input
@@ -266,7 +266,7 @@ const RecipeCollectionSaver: React.FC<RecipeCollectionSaverProps> = ({
                     onChange={(e) => setNewCollectionName(e.target.value)}
                     onKeyDown={handleKeyPress}
                     placeholder="Collection name"
-                    className="w-full px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-2 py-1 text-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                     maxLength={50}
                   />
                   <div className="flex space-x-2">
@@ -294,7 +294,7 @@ const RecipeCollectionSaver: React.FC<RecipeCollectionSaverProps> = ({
               ) : (
                 <button
                   onClick={() => setShowNewCollectionInput(true)}
-                  className="w-full flex items-center px-2 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-md transition-colors"
+                  className="w-full flex items-center px-2 py-2 text-sm text-muted-foreground hover:bg-accent rounded-md transition-colors"
                 >
                   <FolderPlus className="h-4 w-4 mr-2" />
                   Create new collection
