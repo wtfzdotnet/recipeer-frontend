@@ -233,8 +233,8 @@ export const Typography: React.FC<TypographyProps> = ({
             'Bake for 55-60 minutes, or until a toothpick inserted in the center comes out clean.',
             'Cool in the pan for 10 minutes, then turn out onto a wire rack.'
           ].map((step, index) => (
-            <li key={index} className="flex gap-4 text-orange-800">
-              <span className={cn('flex-shrink-0 w-8 h-8 bg-orange-200 text-orange-800 rounded-full flex items-center justify-center font-bold text-sm', fonts.body)}>
+            <li key={index} className="flex gap-4 text-warning-foreground">
+              <span className={cn('flex-shrink-0 w-8 h-8 bg-warning text-warning-foreground rounded-full flex items-center justify-center font-bold text-sm', fonts.body)}>
                 {index + 1}
               </span>
               <span className="pt-1">{step}</span>
@@ -243,15 +243,15 @@ export const Typography: React.FC<TypographyProps> = ({
         </ol>
       </section>
 
-      <div className="bg-orange-100 p-6 rounded-lg border border-orange-200">
-        <h3 className={cn('text-xl font-medium text-orange-900 mb-3', fonts.heading)}>
+      <div className="bg-warning p-6 rounded-lg border border-warning">
+        <h3 className={cn('text-xl font-medium text-warning-foreground mb-3', fonts.heading)}>
           Chef's Notes
         </h3>
-        <p className={cn('text-lg italic text-orange-800 leading-comfortable', fonts.accent)}>
+        <p className={cn('text-lg italic text-warning-foreground leading-comfortable', fonts.accent)}>
           "The secret to extra moist bread is using really ripe apples and not overbaking. 
           I like to add a pinch of cardamom for a special warmth that reminds me of autumn mornings."
         </p>
-        <p className={cn('text-sm text-orange-700 mt-3 leading-relaxed-reading', fonts.body)}>
+        <p className={cn('text-sm text-warning-foreground mt-3 leading-relaxed-reading', fonts.body)}>
           <strong>Storage:</strong> Wrap tightly and store at room temperature for up to 3 days, 
           or freeze for up to 3 months.
         </p>

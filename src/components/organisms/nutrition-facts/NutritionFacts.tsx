@@ -100,12 +100,12 @@ const ProgressBar: React.FC<{ percentage: number; className?: string }> = ({
 // Dietary compliance badge component
 const ComplianceBadge: React.FC<{ compliance: DietaryCompliance }> = ({ compliance }) => {
   const badgeConfig = {
-    keto: { label: 'Keto', color: 'bg-purple-100 text-purple-800 border-purple-200' },
-    'low-carb': { label: 'Low Carb', color: 'bg-blue-100 text-blue-800 border-blue-200' },
-    'high-protein': { label: 'High Protein', color: 'bg-orange-100 text-orange-800 border-orange-200' },
-    'low-fat': { label: 'Low Fat', color: 'bg-green-100 text-green-800 border-green-200' },
-    'low-sodium': { label: 'Low Sodium', color: 'bg-indigo-100 text-indigo-800 border-indigo-200' },
-    'high-fiber': { label: 'High Fiber', color: 'bg-yellow-100 text-yellow-800 border-yellow-200' },
+    keto: { label: 'Keto', color: 'bg-primary text-primary-foreground border-primary' },
+    'low-carb': { label: 'Low Carb', color: 'bg-accent text-accent-foreground border-accent' },
+    'high-protein': { label: 'High Protein', color: 'bg-warning text-warning-foreground border-warning' },
+    'low-fat': { label: 'Low Fat', color: 'bg-success text-success-foreground border-success' },
+    'low-sodium': { label: 'Low Sodium', color: 'bg-secondary text-secondary-foreground border-secondary' },
+    'high-fiber': { label: 'High Fiber', color: 'bg-warning text-warning-foreground border-warning' },
   };
   
   const config = badgeConfig[compliance];
@@ -331,27 +331,27 @@ export const NutritionFacts: React.FC<NutritionFactsProps> = ({
       {showAllergens && allergens && (
         <div className="space-y-2">
           {allergens.contains.length > 0 && (
-            <Alert className="border-red-200 bg-red-50">
-              <AlertTriangle className="h-4 w-4 text-red-600" />
-              <AlertDescription className="text-red-800">
+            <Alert className="border-destructive bg-destructive">
+              <AlertTriangle className="h-4 w-4 text-destructive-foreground" />
+              <AlertDescription className="text-destructive-foreground">
                 <strong>Contains:</strong> {allergens.contains.join(', ')}
               </AlertDescription>
             </Alert>
           )}
           
           {allergens.mayContain.length > 0 && (
-            <Alert className="border-yellow-200 bg-yellow-50">
-              <AlertTriangle className="h-4 w-4 text-yellow-600" />
-              <AlertDescription className="text-yellow-800">
+            <Alert className="border-warning bg-warning">
+              <AlertTriangle className="h-4 w-4 text-warning-foreground" />
+              <AlertDescription className="text-warning-foreground">
                 <strong>May contain:</strong> {allergens.mayContain.join(', ')}
               </AlertDescription>
             </Alert>
           )}
           
           {allergens.freeFrom.length > 0 && (
-            <Alert className="border-green-200 bg-green-50">
-              <Check className="h-4 w-4 text-green-600" />
-              <AlertDescription className="text-green-800">
+            <Alert className="border-success bg-success">
+              <Check className="h-4 w-4 text-success-foreground" />
+              <AlertDescription className="text-success-foreground">
                 <strong>Free from:</strong> {allergens.freeFrom.join(', ')}
               </AlertDescription>
             </Alert>

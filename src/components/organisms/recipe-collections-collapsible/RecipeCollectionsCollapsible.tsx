@@ -302,8 +302,8 @@ export const RecipeCollectionsCollapsible = React.forwardRef<
                                   <Heart 
                                     className={
                                       favoriteRecipes.includes(recipe.id) 
-                                        ? "h-3 w-3 fill-red-500 text-red-500" 
-                                        : "h-3 w-3 text-white"
+                                        ? "h-3 w-3 fill-destructive text-destructive" 
+                                        : "h-3 w-3 text-foreground"
                                     } 
                                   />
                                 </Button>
