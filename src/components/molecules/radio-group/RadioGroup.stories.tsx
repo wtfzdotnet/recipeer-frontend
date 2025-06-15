@@ -322,3 +322,275 @@ export const RecipeDetailsForm = {
     }
   }
 };
+
+// Cultural Heritage Stories
+export const CulturalCuisinePreference: Story = {
+  args: {
+    label: 'Cultural Cuisine Background',
+    helperText: 'Select your primary cultural cooking tradition for personalized recommendations',
+    required: true,
+    options: [
+      { 
+        value: 'mediterranean', 
+        label: 'Mediterranean',
+        helperText: 'Greek, Italian, Spanish, and Middle Eastern traditions'
+      },
+      { 
+        value: 'south-asian', 
+        label: 'South Asian',
+        helperText: 'Indian, Pakistani, Bangladeshi, and Sri Lankan cuisines'
+      },
+      { 
+        value: 'east-asian', 
+        label: 'East Asian',
+        helperText: 'Chinese, Japanese, Korean, and Vietnamese traditions'
+      },
+      { 
+        value: 'latin-american', 
+        label: 'Latin American',
+        helperText: 'Mexican, Brazilian, Argentinian, and Caribbean foods'
+      },
+      { 
+        value: 'african', 
+        label: 'African',
+        helperText: 'West, East, and North African traditional cuisines'
+      },
+      { 
+        value: 'nordic', 
+        label: 'Nordic',
+        helperText: 'Scandinavian and Northern European traditions'
+      },
+    ]
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Cultural cuisine preference selection for personalized recipe recommendations and cultural context.'
+      }
+    }
+  }
+};
+
+export const DietaryRestrictions: Story = {
+  args: {
+    label: 'Dietary Restrictions',
+    helperText: 'Select your primary dietary preference to filter recipe suggestions',
+    options: [
+      { 
+        value: 'none', 
+        label: 'No Restrictions',
+        helperText: 'Open to all food types and ingredients'
+      },
+      { 
+        value: 'vegetarian', 
+        label: 'Vegetarian',
+        helperText: 'No meat, poultry, or fish'
+      },
+      { 
+        value: 'vegan', 
+        label: 'Vegan',
+        helperText: 'No animal products including dairy and eggs'
+      },
+      { 
+        value: 'halal', 
+        label: 'Halal',
+        helperText: 'Following Islamic dietary guidelines'
+      },
+      { 
+        value: 'kosher', 
+        label: 'Kosher',
+        helperText: 'Following Jewish dietary laws'
+      },
+      { 
+        value: 'gluten-free', 
+        label: 'Gluten-Free',
+        helperText: 'No wheat, barley, rye, or other gluten sources'
+      },
+    ]
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Dietary restriction selection with cultural and religious considerations.'
+      }
+    }
+  }
+};
+
+export const CulturalAuthenticity: Story = {
+  args: {
+    label: 'Recipe Authenticity Preference',
+    helperText: 'How important is cultural authenticity in your recipe selection?',
+    orientation: 'vertical',
+    options: [
+      { 
+        value: 'traditional', 
+        label: 'Traditional Only',
+        helperText: 'Show only recipes verified by cultural experts'
+      },
+      { 
+        value: 'mostly-traditional', 
+        label: 'Mostly Traditional',
+        helperText: 'Prefer authentic recipes with minor adaptations'
+      },
+      { 
+        value: 'fusion-friendly', 
+        label: 'Fusion Friendly',
+        helperText: 'Open to creative interpretations and fusion dishes'
+      },
+      { 
+        value: 'modern-adaptations', 
+        label: 'Modern Adaptations',
+        helperText: 'Contemporary takes on traditional recipes welcome'
+      },
+    ]
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Cultural authenticity preference for filtering recipe recommendations and respecting traditional cooking.'
+      }
+    }
+  }
+};
+
+export const RecipeContributorRole: Story = {
+  args: {
+    label: 'Recipe Contributor Role',
+    helperText: 'Select your role when contributing recipes to the community',
+    options: [
+      { 
+        value: 'home-cook', 
+        label: 'Home Cook',
+        helperText: 'Sharing family and personal recipes'
+      },
+      { 
+        value: 'cultural-expert', 
+        label: 'Cultural Expert',
+        helperText: 'Verified expert in traditional cuisine'
+      },
+      { 
+        value: 'professional-chef', 
+        label: 'Professional Chef',
+        helperText: 'Licensed culinary professional'
+      },
+      { 
+        value: 'food-historian', 
+        label: 'Food Historian',
+        helperText: 'Academic or cultural researcher'
+      },
+      { 
+        value: 'community-moderator', 
+        label: 'Community Moderator',
+        helperText: 'Helps maintain cultural sensitivity and accuracy'
+      },
+    ]
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Role-based contributor system for maintaining recipe quality and cultural sensitivity.'
+      }
+    }
+  }
+};
+
+export const CulturalSensitivityLevel: Story = {
+  args: {
+    label: 'Cultural Sensitivity Alerts',
+    helperText: 'Choose how you want to be notified about cultural appropriation concerns',
+    orientation: 'vertical',
+    options: [
+      { 
+        value: 'strict', 
+        label: 'Strict Alerts',
+        helperText: 'Alert for any potential cultural sensitivity issues'
+      },
+      { 
+        value: 'moderate', 
+        label: 'Moderate Alerts',
+        helperText: 'Alert for significant cultural appropriation concerns'
+      },
+      { 
+        value: 'minimal', 
+        label: 'Minimal Alerts',
+        helperText: 'Only alert for flagrant misrepresentation of traditions'
+      },
+      { 
+        value: 'disabled', 
+        label: 'No Alerts',
+        helperText: 'Disable cultural sensitivity notifications'
+      },
+    ]
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Cultural sensitivity notification preferences for respectful recipe sharing.'
+      }
+    }
+  }
+};
+
+// Accessibility and Cultural Example
+export const AccessibilityAndCulturalFeatures: Story = {
+  render: () => (
+    <div className="space-y-8 w-full max-w-2xl">
+      <h3 className="text-lg font-semibold">Cultural & Accessibility Settings</h3>
+      
+      <div className="grid gap-8 md:grid-cols-2">
+        <RadioGroup
+          label="Cuisine Heritage"
+          helperText="Your cultural cooking background"
+          defaultValue="mediterranean"
+          options={[
+            { value: 'mediterranean', label: 'Mediterranean' },
+            { value: 'asian', label: 'Asian' },
+            { value: 'african', label: 'African' },
+            { value: 'latin', label: 'Latin American' },
+          ]}
+        />
+        
+        <RadioGroup
+          label="Recipe Language"
+          helperText="Preferred language for instructions"
+          orientation="vertical"
+          options={[
+            { value: 'en', label: 'English' },
+            { value: 'es', label: 'Español' },
+            { value: 'fr', label: 'Français' },
+            { value: 'ar', label: 'العربية' },
+          ]}
+        />
+        
+        <RadioGroup
+          label="Measurement System"
+          helperText="Preferred units for ingredients"
+          orientation="horizontal"
+          options={[
+            { value: 'metric', label: 'Metric' },
+            { value: 'imperial', label: 'Imperial' },
+            { value: 'both', label: 'Both' },
+          ]}
+        />
+        
+        <RadioGroup
+          label="Content Complexity"
+          helperText="Accessibility preference for recipe instructions"
+          options={[
+            { value: 'simple', label: 'Simple Language', helperText: 'Clear, easy-to-understand instructions' },
+            { value: 'detailed', label: 'Detailed Instructions', helperText: 'Comprehensive step-by-step guidance' },
+            { value: 'professional', label: 'Professional Terms', helperText: 'Technical culinary terminology' },
+          ]}
+        />
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Comprehensive cultural and accessibility settings demonstrating radio groups in real-world multicultural scenarios.'
+      }
+    }
+  }
+};
