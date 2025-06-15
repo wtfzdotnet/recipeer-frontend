@@ -104,10 +104,13 @@ export const RecipeCard = () => { /* component */ };
 
 ```typescript
 // ✅ Design token colors
-className="bg-primary text-destructive border-border"
+className="bg-primary text-primary-foreground border-border"
 className="bg-background text-foreground"
-className="bg-muted text-muted-foreground"
 className="bg-card text-card-foreground"
+className="bg-muted text-muted-foreground"
+className="bg-destructive text-destructive-foreground"
+className="bg-success text-success-foreground"
+className="bg-warning text-warning-foreground"
 
 // ✅ Design token spacing
 className="p-2 m-4 gap-2"           // 8px padding, 16px margin, 8px gap
@@ -124,21 +127,51 @@ export const RecipeCard = () => { /* component */ };
 
 ### Available Design Tokens for Copilot Suggestions:
 
-#### Colors:
+#### Colors (Semantic):
 - `primary`, `primary-foreground`
 - `secondary`, `secondary-foreground`
 - `accent`, `accent-foreground`
 - `background`, `foreground`
 - `card`, `card-foreground`
+- `popover`, `popover-foreground`
 - `muted`, `muted-foreground`
 - `border`, `input`, `ring`
 - `destructive`, `destructive-foreground`
+- `success`, `success-foreground`
+- `warning`, `warning-foreground`
 
-#### Spacing:
-- `p-1` (4px), `p-2` (8px), `p-4` (16px), `p-6` (24px), `p-8` (32px)
-- `m-1` (4px), `m-2` (8px), `m-4` (16px), `m-6` (24px), `m-8` (32px)
-- `gap-1` (4px), `gap-2` (8px), `gap-4` (16px), `gap-6` (24px)
-- `space-y-2` (8px), `space-y-4` (16px), `space-y-6` (24px)
+#### Colors (Data Visualization):
+- `chart-1`, `chart-2`, `chart-3`, `chart-4`, `chart-5`
+
+#### Spacing (Padding/Margin):
+- `p-0.5` (2px), `p-1` (4px), `p-1.5` (6px), `p-2` (8px), `p-3` (12px), `p-4` (16px), `p-5` (20px), `p-6` (24px), `p-8` (32px), `p-10` (40px), `p-12` (48px), `p-16` (64px), `p-20` (80px), `p-24` (96px), `p-32` (128px)
+- `m-0.5` (2px), `m-1` (4px), `m-1.5` (6px), `m-2` (8px), `m-3` (12px), `m-4` (16px), `m-5` (20px), `m-6` (24px), `m-8` (32px), `m-10` (40px), `m-12` (48px), `m-16` (64px), `m-20` (80px), `m-24` (96px), `m-32` (128px)
+- `gap-0.5` (2px), `gap-1` (4px), `gap-1.5` (6px), `gap-2` (8px), `gap-3` (12px), `gap-4` (16px), `gap-5` (20px), `gap-6` (24px), `gap-8` (32px), `gap-10` (40px), `gap-12` (48px), `gap-16` (64px)
+- `space-y-0.5` (2px), `space-y-1` (4px), `space-y-1.5` (6px), `space-y-2` (8px), `space-y-3` (12px), `space-y-4` (16px), `space-y-5` (20px), `space-y-6` (24px), `space-y-8` (32px), `space-y-10` (40px), `space-y-12` (48px), `space-y-16` (64px)
+
+### Real-World Token Usage Examples
+
+Based on actual component implementations in this codebase:
+
+```typescript
+// ✅ Button variants (from Button component)
+className="bg-primary text-primary-foreground hover:bg-primary/90"
+className="bg-destructive text-white hover:bg-destructive/90"
+className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
+className="hover:bg-accent hover:text-accent-foreground"
+
+// ✅ Alert variants (from Alert component)  
+className="border-success text-success"
+className="border-warning text-warning"
+className="border-primary text-primary"
+
+// ✅ Card styling (from Card component)
+className="hover:shadow-md transition-shadow"
+
+// ✅ Focus states (from Button component)
+className="focus-visible:ring-ring/50 focus-visible:ring-1"
+className="aria-invalid:ring-destructive/20"
+```
 
 ## Copilot-Specific Instructions
 
