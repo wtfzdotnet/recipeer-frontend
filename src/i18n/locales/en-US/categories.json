@@ -1,0 +1,23 @@
+{
+  "trending": "Trending",
+  "popularRecipes": "Popular Recipes",
+  "addBookmark": "Add to bookmarks",
+  "removeBookmark": "Remove from bookmarks",
+  "cardAriaLabel": "Browse {{name}} category",
+  "recipeCount": "{{count}} recipe",
+  "recipeCount_plural": "{{count}} recipes",
+  "types": {
+    "cuisine": "Cuisine",
+    "meal": "Meal Type",
+    "dietary": "Dietary",
+    "method": "Cooking Method",
+    "seasonal": "Seasonal"
+  },
+  "authenticity": {
+    "traditional": "Traditional",
+    "modern": "Modern",
+    "fusion": "Fusion",
+    "authentic": "Authentic",
+    "inspired": "Inspired"
+  }
+}

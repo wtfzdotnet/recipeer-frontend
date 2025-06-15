@@ -7,6 +7,7 @@ export { RecipeCollectionSaver } from './recipe-collection-saver';
 export { Dialog } from './dialog';
 export { LoginForm } from './login-form';
 export { RecipeForm } from './form-examples';
+export { CategoryCard } from './category-card';
 
 // Advanced Components
 export { RecipeDataTable } from './recipe-data-table';
@@ -27,6 +28,7 @@ export type { RecipeCollectionSaverProps } from './recipe-collection-saver';
 export type { DialogProps } from './dialog';
 export type { LoginFormProps } from './login-form';
 export type { RecipeFormProps, RecipeFormData } from './form-examples';
+export type { CategoryCardProps } from './category-card';
 
 // Advanced Component Types
 export type { RecipeDataTableProps, Recipe } from './recipe-data-table';

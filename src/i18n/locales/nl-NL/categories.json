@@ -1,0 +1,23 @@
+{
+  "trending": "Trending",
+  "popularRecipes": "Populaire Recepten",
+  "addBookmark": "Toevoegen aan bladwijzers",
+  "removeBookmark": "Verwijderen uit bladwijzers",
+  "cardAriaLabel": "Blader door {{name}} categorie",
+  "recipeCount": "{{count}} recept",
+  "recipeCount_plural": "{{count}} recepten",
+  "types": {
+    "cuisine": "Keuken",
+    "meal": "Maaltijdtype",
+    "dietary": "Dieet",
+    "method": "Kookmethode",
+    "seasonal": "Seizoensgebonden"
+  },
+  "authenticity": {
+    "traditional": "Traditioneel",
+    "modern": "Modern",
+    "fusion": "Fusie",
+    "authentic": "Authentiek",
+    "inspired": "Geïnspireerd"
+  }
+}
