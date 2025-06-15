@@ -1,5 +1,4 @@
 export {
-  navigationMenuTriggerStyle,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
@@ -9,3 +8,4 @@ export {
   NavigationMenuIndicator,
   NavigationMenuViewport,
 } from "./navigation-menu"
+export { navigationMenuTriggerStyle } from "./navigation-menu-styles"
