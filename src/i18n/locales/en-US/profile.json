@@ -1,0 +1,24 @@
+{
+  "stats": {
+    "followers": "Followers",
+    "recipes": "Recipes",
+    "recipesShort": "recipes",
+    "rating": "Rating"
+  },
+  "actions": {
+    "follow": "Follow",
+    "following": "Following",
+    "unfollow": "Unfollow"
+  },
+  "sections": {
+    "specialties": "Specialties",
+    "achievements": "Achievements",
+    "socialLinks": "Social Links"
+  },
+  "badges": {
+    "verified": "Verified Profile"
+  },
+  "socialLinks": {
+    "ariaLabel": "Visit {{platform}} profile {{handle}}"
+  }
+}

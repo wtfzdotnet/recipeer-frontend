@@ -1,0 +1,24 @@
+{
+  "stats": {
+    "followers": "Volgers",
+    "recipes": "Recepten",
+    "recipesShort": "recepten",
+    "rating": "Beoordeling"
+  },
+  "actions": {
+    "follow": "Volgen",
+    "following": "Volgt",
+    "unfollow": "Ontvolgen"
+  },
+  "sections": {
+    "specialties": "Specialiteiten",
+    "achievements": "Prestaties",
+    "socialLinks": "Sociale Links"
+  },
+  "badges": {
+    "verified": "Geverifieerd Profiel"
+  },
+  "socialLinks": {
+    "ariaLabel": "Bezoek {{platform}} profiel {{handle}}"
+  }
+}
