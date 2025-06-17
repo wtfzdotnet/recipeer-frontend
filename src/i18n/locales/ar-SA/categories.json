@@ -1,0 +1,23 @@
+{
+  "trending": "رائج",
+  "popularRecipes": "الوصفات الشائعة",
+  "addBookmark": "إضافة إلى المفضلة",
+  "removeBookmark": "إزالة من المفضلة",
+  "cardAriaLabel": "تصفح فئة {{name}}",
+  "recipeCount": "{{count}} وصفة",
+  "recipeCount_plural": "{{count}} وصفات",
+  "types": {
+    "cuisine": "مطبخ",
+    "meal": "نوع الوجبة",
+    "dietary": "نظام غذائي",
+    "method": "طريقة الطبخ",
+    "seasonal": "موسمي"
+  },
+  "authenticity": {
+    "traditional": "تقليدي",
+    "modern": "حديث",
+    "fusion": "مدمج",
+    "authentic": "أصيل",
+    "inspired": "مستوحى"
+  }
+}

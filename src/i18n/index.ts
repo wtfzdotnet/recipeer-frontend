@@ -13,6 +13,9 @@ import arSANutrition from './locales/ar-SA/nutrition.json';
 import enUSProfile from './locales/en-US/profile.json';
 import nlNLProfile from './locales/nl-NL/profile.json';
 import arSAProfile from './locales/ar-SA/profile.json';
+import enUSCategories from './locales/en-US/categories.json';
+import nlNLCategories from './locales/nl-NL/categories.json';
+import arSACategories from './locales/ar-SA/categories.json';
 
 // Translation resources
 const resources = {
@@ -20,16 +23,19 @@ const resources = {
     common: enUSCommon,
     nutrition: enUSNutrition,
     profile: enUSProfile,
+    categories: enUSCategories
   },
   'nl-NL': {
     common: nlNLCommon,
     nutrition: nlNLNutrition,
     profile: nlNLProfile,
+    categories: nlNLCategories
   },
   'ar-SA': {
     common: arSACommon,
     nutrition: arSANutrition,
-    profile: arSAProfile,
+    profile: arSAProfile
+    categories: arSACategories
   },
 };
 
@@ -74,7 +80,7 @@ i18nInstance
 
     // Default namespace
     defaultNS: 'common',
-    ns: ['common', 'nutrition', 'profile'],
+    ns: ['common', 'nutrition', 'categories', 'profile'],
 
     // Key separator
     keySeparator: '.',

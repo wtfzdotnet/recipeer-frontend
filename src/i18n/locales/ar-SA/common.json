@@ -59,5 +59,39 @@
   "error": "حدث خطأ",
   "success": "تم بنجاح",
   "confirmation": "تأكيد",
-  "warning": "تحذير"
+  "warning": "تحذير",
+  "mealPlan": {
+    "mealTypes": {
+      "breakfast": "الإفطار",
+      "lunch": "الغداء", 
+      "dinner": "العشاء",
+      "snack": "وجبة خفيفة"
+    },
+    "status": {
+      "planned": "مخطط",
+      "prepped": "محضر", 
+      "completed": "مكتمل"
+    },
+    "actions": {
+      "edit": "تعديل الوجبة",
+      "complete": "تحديد كمكتمل",
+      "remove": "إزالة",
+      "addNotes": "إضافة ملاحظات",
+      "substitute": "استبدال الوصفة"
+    },
+    "labels": {
+      "servings": "{{count}} حصة",
+      "servings_other": "{{count}} حصص",
+      "calories": "{{count}} سعرة",
+      "prepTime": "{{time}} تحضير",
+      "notes": "ملاحظات",
+      "scheduledFor": "مجدولة لـ {{date}}",
+      "dragToReorder": "اسحب لإعادة ترتيب الوجبات"
+    },
+    "variants": {
+      "daily": "العرض اليومي",
+      "weekly": "العرض الأسبوعي", 
+      "calendar": "عرض التقويم"
+    }
+  }
 }

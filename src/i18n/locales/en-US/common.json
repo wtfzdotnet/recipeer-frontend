@@ -65,12 +65,46 @@
     "preferences": "Locale Preferences",
     "description": "Select your language, region, and measurement preferences."
   },
-  "units": {
-    "measurementSystem": "Measurement System",
+  "measurementSystem": {
+    "label": "Measurement System",
     "metric": "Metric (°C, kg, cm)",
     "imperial": "Imperial (°F, lbs, in)"
   },
   "dateFormat": {
     "label": "Date Format"
+  },
+  "mealPlan": {
+    "mealTypes": {
+      "breakfast": "Breakfast",
+      "lunch": "Lunch", 
+      "dinner": "Dinner",
+      "snack": "Snack"
+    },
+    "status": {
+      "planned": "Planned",
+      "prepped": "Prepped", 
+      "completed": "Completed"
+    },
+    "actions": {
+      "edit": "Edit Meal",
+      "complete": "Mark Complete",
+      "remove": "Remove",
+      "addNotes": "Add Notes",
+      "substitute": "Replace Recipe"
+    },
+    "labels": {
+      "servings": "{{count}} serving",
+      "servings_other": "{{count}} servings",
+      "calories": "{{count}}cal",
+      "prepTime": "{{time}} prep",
+      "notes": "Notes",
+      "scheduledFor": "Scheduled for {{date}}",
+      "dragToReorder": "Drag to reorder meals"
+    },
+    "variants": {
+      "daily": "Daily View",
+      "weekly": "Weekly View", 
+      "calendar": "Calendar View"
+    }
   }
 }
