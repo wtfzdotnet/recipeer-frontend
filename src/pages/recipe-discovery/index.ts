@@ -1,0 +1,1 @@
+export { RecipeDiscoveryPage } from './recipe-discovery-page';
