@@ -35,6 +35,11 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      spacing: {
+        'recipe-card': 'var(--space-recipe-card)',
+        'content-gap': 'var(--space-content-gap)',
+        'ingredient-gap': 'var(--space-ingredient-gap)',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -93,6 +98,10 @@ export default {
         xl: "0px 10px 10px -5px hsl(0 0% 0% / 0.1), 0px 20px 25px -5px hsl(0 0% 0% / 0.1)",
         "2xl": "0px 25px 50px -12px hsl(0 0% 0% / 0.25)",
         inner: "inset 0px 2px 4px 0px hsl(0 0% 0% / 0.05)",
+        // Enhanced recipe-specific shadows
+        'recipe-card': "0px 2px 8px -2px hsl(0 0% 0% / 0.1), 0px 4px 12px -4px hsl(0 0% 0% / 0.08)",
+        'recipe-card-hover': "0px 4px 12px -3px hsl(0 0% 0% / 0.15), 0px 8px 20px -6px hsl(0 0% 0% / 0.12)",
+        'food-image': "0px 1px 3px 0px hsl(0 0% 0% / 0.1), 0px 1px 2px -1px hsl(0 0% 0% / 0.1)",
       },
       keyframes: {
         "accordion-down": {
