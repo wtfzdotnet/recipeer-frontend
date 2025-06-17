@@ -34,7 +34,7 @@ const resources = {
   'ar-SA': {
     common: arSACommon,
     nutrition: arSANutrition,
-    profile: arSAProfile
+    profile: arSAProfile,
     categories: arSACategories
   },
 };
