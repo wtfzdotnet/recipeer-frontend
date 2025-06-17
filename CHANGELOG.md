@@ -1,3 +1,23 @@
+# [1.12.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.11.0...v1.12.0) (2025-06-17)
+
+
+### Bug Fixes
+
+* **lint:** resolve design token spacing and Fast Refresh warnings ([509c94e](https://github.com/wtfzdotnet/recipeer-frontend/commit/509c94e5a9ee17d4d6fe8d7f42745cc4424a9b62))
+* **lint:** resolve ESLint and React Fast Refresh issues ([e2b57a9](https://github.com/wtfzdotnet/recipeer-frontend/commit/e2b57a94536c90942c0dc94da7912a6abcbe59ec))
+* **lint:** resolve TypeScript and test errors ([651cb17](https://github.com/wtfzdotnet/recipeer-frontend/commit/651cb17bdb67c8070b6f304e4665e2c315ee29d1))
+* **organisms:** correct mock function references in ProfileCard stories ([a3f59e7](https://github.com/wtfzdotnet/recipeer-frontend/commit/a3f59e724c4a50ed63355dfd1e3738446203fb43))
+
+
+### Features
+
+* **organisms:** complete RTL support and documentation for RecipeCard ([ffd816b](https://github.com/wtfzdotnet/recipeer-frontend/commit/ffd816b8de1fea3a7f521c80ec9837ab3c815d2b))
+* **organisms:** implement ProfileCard component with variants and i18n ([8c51f90](https://github.com/wtfzdotnet/recipeer-frontend/commit/8c51f9016149c0638bc1e56a5ad908c7f4d4e643))
+* **organisms:** implement RecipeCard component with all variants and integrations ([a483f77](https://github.com/wtfzdotnet/recipeer-frontend/commit/a483f777eca722671a3401ef9b2adaba162443b5))
+* **tokens:** enhance orange theme with modern recipe platform aesthetics ([1d7d62e](https://github.com/wtfzdotnet/recipeer-frontend/commit/1d7d62e127ae5ed43025f9aeb006d5c95371d9d3))
+* **tokens:** ensure WCAG AA+ compliance and add comprehensive testing ([639701c](https://github.com/wtfzdotnet/recipeer-frontend/commit/639701c73b5b6999ed3f7f1ba34a7f22e30540c0))
+* **tokens:** implement enhanced orange theme with food-focused aesthetics ([c247e8a](https://github.com/wtfzdotnet/recipeer-frontend/commit/c247e8af7dcc6cf304f53043be1a82a8fac53b73))
+
 # [1.11.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.10.0...v1.11.0) (2025-06-15)
 
 
