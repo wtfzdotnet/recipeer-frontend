@@ -12,9 +12,9 @@
     --foreground: #1c1917;
     --foreground: oklch(0.127 0.014 47.604);
     
-    /* Enhanced primary oranges with better saturation */
-    --primary: #ea580c;
-    --primary: oklch(0.705 0.233 47.604);
+    /* Enhanced primary oranges with better saturation and accessibility */
+    --primary: #c2410c;
+    --primary: oklch(0.625 0.233 47.604);
     --primary-foreground: #ffffff;
     --primary-foreground: oklch(1 0 0);
     
@@ -41,23 +41,23 @@
     --destructive-foreground: #ffffff;
     --destructive-foreground: oklch(1 0 0);
     
-    --success: #16a34a;
-    --success: oklch(0.7 0.15 142);
+    --success: #15803d;
+    --success: oklch(0.6 0.15 142);
     --success-foreground: #ffffff;
     --success-foreground: oklch(1 0 0);
     
-    --warning: #f59e0b;
-    --warning: oklch(0.735 0.165 85);
-    --warning-foreground: #92400e;
-    --warning-foreground: oklch(0.35 0.12 85);
+    --warning: #b45309;
+    --warning: oklch(0.545 0.165 85);
+    --warning-foreground: #ffffff;
+    --warning-foreground: oklch(1 0 0);
     
     /* Enhanced interaction colors */
     --border: #e7e5e4;
     --border: oklch(0.918 0.006 47.604);
     --input: #e7e5e4;
     --input: oklch(0.918 0.006 47.604);
-    --ring: #ea580c;
-    --ring: oklch(0.705 0.233 47.604);
+    --ring: #c2410c;
+    --ring: oklch(0.625 0.233 47.604);
     
     /* Enhanced card styling */
     --card: #ffffff;
@@ -71,14 +71,14 @@
     --popover-foreground: oklch(0.127 0.014 47.604);
     
     /* Enhanced chart colors for food data visualization */
-    --chart-1: #ea580c;
-    --chart-1: oklch(0.705 0.233 47.604);
-    --chart-2: #16a34a;
-    --chart-2: oklch(0.7 0.15 142);
+    --chart-1: #c2410c;
+    --chart-1: oklch(0.625 0.233 47.604);
+    --chart-2: #15803d;
+    --chart-2: oklch(0.6 0.15 142);
     --chart-3: #dc2626;
     --chart-3: oklch(0.6 0.2 27);
-    --chart-4: #f59e0b;
-    --chart-4: oklch(0.735 0.165 85);
+    --chart-4: #b45309;
+    --chart-4: oklch(0.545 0.165 85);
     --chart-5: #8b5cf6;
     --chart-5: oklch(0.67 0.174 280.873);
     
