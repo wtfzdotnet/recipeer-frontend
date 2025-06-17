@@ -59,8 +59,8 @@ import {
   findAllByTitle,
   findAllByTestId,
 } from '@testing-library/react';
-import { ReactElement } from 'react';
-import { TestWrapper } from './components/test-wrapper';
+import React, { ReactElement } from 'react';
+import { TestWrapper } from './test-wrapper';
 
 // Custom render function that can be extended with providers if needed
 export function renderWithProviders(

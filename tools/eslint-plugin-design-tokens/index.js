@@ -74,7 +74,8 @@ const designTokensPlugin = {
         schema: [],
       },
       create(context) {
-        const arbitrarySpacingPattern = /\[(\d+(\.\d+)?(px|rem|em))\]/;
+        // Pattern specifically for spacing-related arbitrary values (padding, margin, gap)
+        const arbitrarySpacingPattern = /(^|\s)(p|m|gap|space)-(\w*-?)?\[([^\]]+)\]/;
         const hardcodedSpacingPattern = /(p-|m-|gap-|space-)(x|y|t|r|b|l)-\[([^\]]+)\]/;
 
         return {
