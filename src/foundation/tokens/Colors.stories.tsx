@@ -8,20 +8,40 @@ const meta: Meta = {
     docs: {
       description: {
         component: `
-# Orange Recipe Theme System
+# Enhanced Orange Recipe Theme System
 
-Our warm, orange-inspired color palette is designed specifically for food and recipe applications. All colors use the modern OKLCH color space for better accessibility and perceptual uniformity.
+Our sophisticated, warm orange-inspired color palette is designed specifically for modern food and recipe applications. All colors use the OKLCH color space for superior accessibility and perceptual uniformity.
 
-## OKLCH Color Space
+## Enhanced Food Aesthetics
 
-OKLCH provides better perceptual uniformity than HSL/RGB, ensuring consistent lightness and chroma across all colors in our palette.
+The enhanced theme provides:
+- **Richer Orange Saturation**: Improved warm oranges that better complement food imagery
+- **Fresh Green Accents**: Complementary greens that evoke freshness and natural ingredients
+- **Sophisticated Neutrals**: Warm-toned grays that create an appetizing atmosphere
+- **Strategic CTAs**: Enhanced accent colors for better user engagement
+
+## Color Psychology for Food
+
+- **Primary Orange**: Stimulates appetite and creates warmth
+- **Fresh Greens**: Convey freshness, health, and natural ingredients  
+- **Warm Neutrals**: Provide sophisticated backdrop without competing with food imagery
+- **Earth Tones**: Ground the palette in natural, organic feelings
+
+## OKLCH Benefits
+
+OKLCH provides better perceptual uniformity than HSL/RGB, ensuring:
+- Consistent lightness perception across colors
+- Better accessibility compliance
+- More predictable color relationships
+- Enhanced dark mode transitions
 
 ## Theme Features
 
-- **Food-Inspired Colors**: Warm orange tones that complement recipe imagery
-- **Dark/Light Mode Support**: Full theme switching with system preference detection
-- **WCAG AA+ Compliance**: All color combinations meet accessibility standards
-- **Cultural Appropriateness**: Orange is positive across most cultures for food content
+- **Food-Inspired Enhancement**: Warmer, more saturated oranges with better food appeal
+- **Dark/Light Mode Support**: Full theme switching with improved contrast ratios
+- **WCAG AA+ Compliance**: All color combinations exceed accessibility standards
+- **Cultural Sensitivity**: Orange remains positive across cultures for food content
+- **Modern Recipe Platform Aesthetics**: Aligned with industry-leading platforms
         `
       }
     }
@@ -167,6 +187,62 @@ export const OrangeThemeShowcase = {
                 variable="--destructive" 
                 description="Error states and destructive actions"
               />
+              <ColorSwatch 
+                name="Success" 
+                variable="--success" 
+                description="Success states and positive actions"
+              />
+              <ColorSwatch 
+                name="Warning" 
+                variable="--warning" 
+                description="Warning states and caution indicators"
+              />
+            </div>
+          </section>
+
+          {/* Enhanced Visual Elements Section */}
+          <section className="space-y-4 mb-8">
+            <h2 className="text-2xl font-semibold border-b pb-2 text-foreground">Enhanced Visual Elements</h2>
+            <div className="space-y-6">
+              
+              {/* Enhanced Recipe Card with New Shadows */}
+              <div className="p-recipe-card bg-card border rounded-lg shadow-recipe-card hover:shadow-recipe-card-hover transition-shadow duration-300">
+                <h3 className="text-lg font-semibold text-card-foreground mb-3">🍝 Enhanced Recipe Card</h3>
+                <div className="space-y-3">
+                  <div className="h-32 bg-gradient-to-br from-orange-100 to-red-100 rounded-md shadow-food-image flex items-center justify-center">
+                    <span className="text-4xl">🍅</span>
+                  </div>
+                  <h4 className="font-medium text-card-foreground">Rustic Tomato Basil Pasta</h4>
+                  <p className="text-sm text-muted-foreground">Fresh Roma tomatoes, aromatic basil, and authentic Italian olive oil</p>
+                  <div className="flex gap-ingredient-gap items-center">
+                    <span className="text-xs bg-accent text-accent-foreground px-2 py-1 rounded-full">🌱 Fresh</span>
+                    <span className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded">⏱️ 25 min</span>
+                    <span className="text-xs bg-success text-success-foreground px-2 py-1 rounded">✅ Easy</span>
+                  </div>
+                  <button className="w-full bg-primary text-primary-foreground py-2 rounded-md hover:bg-primary/90 transition-colors font-medium">
+                    View Full Recipe
+                  </button>
+                </div>
+              </div>
+
+              {/* Spacing Demonstration */}
+              <div className="p-6 bg-muted rounded-lg">
+                <h3 className="text-lg font-semibold text-foreground mb-3">📏 Enhanced Spacing System</h3>
+                <div className="space-y-content-gap">
+                  <div className="bg-card p-4 rounded border">
+                    <h4 className="font-medium mb-2">Recipe Card Spacing (1.5rem)</h4>
+                    <p className="text-sm text-muted-foreground">Optimal padding for recipe cards</p>
+                  </div>
+                  <div className="bg-card p-6 rounded border">
+                    <h4 className="font-medium mb-ingredient-gap">Ingredient List</h4>
+                    <div className="space-y-ingredient-gap text-sm">
+                      <div>• 2 cups fresh basil leaves</div>
+                      <div>• 4 large tomatoes, diced</div>
+                      <div>• 3 tbsp extra virgin olive oil</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
