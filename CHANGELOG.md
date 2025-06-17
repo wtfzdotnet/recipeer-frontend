@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.12.0...v1.13.0) (2025-06-17)
+
+
+### Features
+
+* **routing:** implement React Router v6 with lazy loading and protected routes ([35204b8](https://github.com/wtfzdotnet/recipeer-frontend/commit/35204b8321799daa2eea5471c953b0fde7bb3290))
+
 # [1.12.0](https://github.com/wtfzdotnet/recipeer-frontend/compare/v1.11.0...v1.12.0) (2025-06-17)
 
 
