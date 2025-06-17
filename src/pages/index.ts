@@ -1,7 +1,15 @@
 // Pages - Specific page instances with data
-// Currently empty - pages will be added as needed
+// Export all page components for the Recipe Authority Platform
 
-// export { RecipeDetailPage } from './recipe-detail';
-// export { SearchResultsPage } from './search-results'; 
-// export type { RecipeDetailPageProps } from './recipe-detail';
-// export type { SearchResultsPageProps } from './search-results';
+// Core pages
+export * from './home';
+export * from './auth';
+export * from './dashboard';
+export * from './recipes';
+export * from './categories';
+export * from './search';
+export * from './profile';
+export * from './create-recipe';
+
+// Utility exports
+export * from './utils/createPlaceholderPage';

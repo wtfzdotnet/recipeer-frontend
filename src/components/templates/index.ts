@@ -2,5 +2,6 @@
 // Page-level layouts that define content structure
 
 // Barrel export for templates
-// export * from './dashboard-layout';
-// Add new template exports below
+export * from './root-layout';
+export * from './error-boundary';
+export * from './protected-route';
