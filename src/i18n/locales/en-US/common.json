@@ -1,7 +1,8 @@
 {
   "app": {
-    "title": "Frontend Recipeer - Orange Theme & Nutrition Demo",
-    "description": "A modern recipe application with internationalization support"
+    "title": "Recipeer",
+    "description": "A modern recipe application with internationalization support",
+    "footer": "All rights reserved"
   },
   "buttons": {
     "custom": "Custom Button",
@@ -72,6 +73,108 @@
   },
   "dateFormat": {
     "label": "Date Format"
+  },
+  "home": {
+    "hero": {
+      "title": "Discover Amazing Recipes",
+      "subtitle": "Your ultimate destination for delicious recipes, cooking tips, and culinary inspiration.",
+      "exploreRecipes": "Explore Recipes",
+      "joinCommunity": "Join Community"
+    },
+    "features": {
+      "title": "Why Choose Recipeer?",
+      "subtitle": "Everything you need to become a better cook and discover amazing recipes.",
+      "discover": {
+        "title": "Discover Recipes",
+        "description": "Find the perfect recipe for any occasion with our advanced search and filtering."
+      },
+      "plan": {
+        "title": "Meal Planning",
+        "description": "Plan your meals ahead and create shopping lists automatically."
+      },
+      "community": {
+        "title": "Join Community",
+        "description": "Connect with fellow food lovers and share your culinary creations."
+      }
+    },
+    "demo": {
+      "title": "Detailed Nutrition Information",
+      "description": "Get comprehensive nutrition facts and allergen information for every recipe to make informed dietary choices.",
+      "viewRecipes": "View Recipes"
+    }
+  },
+  "recipes": {
+    "discovery": {
+      "title": "Discover Recipes",
+      "subtitle": "Find the perfect recipe for any occasion",
+      "searchPlaceholder": "Search recipes...",
+      "filters": "Filters",
+      "categories": "Popular Categories",
+      "featured": "Featured Recipes",
+      "sampleTitle": "Delicious Recipe {{id}}",
+      "sampleDescription": "A wonderful recipe that will delight your taste buds.",
+      "loadMore": "Load More Recipes"
+    }
+  },
+  "recipe": {
+    "detail": {
+      "back": "Back to Recipes",
+      "sampleTitle": "Delicious Recipe {{id}}",
+      "sampleDescription": "A wonderful recipe that combines traditional flavors with modern techniques.",
+      "cookTime": "30 minutes",
+      "servings": "4 servings",
+      "difficulty": "Intermediate",
+      "startCooking": "Start Cooking",
+      "ingredients": "Ingredients",
+      "instructions": "Instructions",
+      "nutrition": "Nutrition Facts"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Welcome back to Recipeer",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "signIn": "Sign In",
+      "signingIn": "Signing In...",
+      "error": "Invalid email or password",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "backHome": "Back to Home"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {{name}}!",
+    "subtitle": "Here's what's happening in your kitchen",
+    "settings": "Settings",
+    "recentActivity": "Recent Activity",
+    "noActivity": "No recent activity to show",
+    "getStarted": "Start by creating your first recipe or exploring the community",
+    "actions": {
+      "createRecipe": "Create Recipe",
+      "createRecipeDesc": "Share your culinary creations",
+      "myCollections": "My Collections",
+      "myCollectionsDesc": "Organize your favorite recipes",
+      "mealPlan": "Meal Plan",
+      "mealPlanDesc": "Plan your weekly meals"
+    }
+  },
+  "error": {
+    "404": {
+      "title": "Page Not Found",
+      "message": "The page you are looking for does not exist."
+    },
+    "generic": {
+      "title": "Oops!",
+      "message": "Something went wrong. Please try again."
+    },
+    "status": "Error {{status}}",
+    "goHome": "Go Home",
+    "reload": "Reload Page",
+    "details": "Error Details"
   },
   "mealPlan": {
     "mealTypes": {
