@@ -4,9 +4,9 @@
 export { IngredientChecklist } from './ingredient-checklist';
 export { NutritionFacts } from './nutrition-facts';
 export { ProfileCard } from './profile-card';
+export { RecipeCard } from './recipe-card';
 export { RecipeCollectionSaver } from './recipe-collection-saver';
 export { Dialog } from './dialog';
-export { LoginForm } from './login-form';
 export { RecipeForm } from './form-examples';
 export { CategoryCard } from './category-card';
 
@@ -27,9 +27,9 @@ export { MealPlanCard } from './meal-plan-card';
 export type { IngredientChecklistProps } from './ingredient-checklist';
 export type { NutritionFactsProps } from './nutrition-facts';
 export type { ProfileCardProps } from './profile-card';
+export type { RecipeCardProps } from './recipe-card';
 export type { RecipeCollectionSaverProps } from './recipe-collection-saver';
 export type { DialogProps } from './dialog';
-export type { LoginFormProps } from './login-form';
 export type { RecipeFormProps, RecipeFormData } from './form-examples';
 export type { CategoryCardProps } from './category-card';
 
